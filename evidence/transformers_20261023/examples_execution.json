@@ -1,0 +1,6097 @@
+{
+  "complete": true,
+  "plugins": [
+    {
+      "file": "examples\\transformers\\architecture.plugin.json",
+      "sha256": "876ded703bd37d2a9b0a6a939cbd05b40973fc388b96ba6145549f08cfbc1bd3",
+      "result": {
+        "ok": true,
+        "action": "plugin.install",
+        "plugin_id": "local.transformer.recipes"
+      }
+    }
+  ],
+  "examples": [
+    {
+      "file": "examples\\transformers\\cached-pretrained.workflow.json",
+      "sha256": "6e77169df2caacd1a84e1d3399c109511a2bb66863e4f0c8be6848263fb240eb",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 6.84400000000096,
+      "nodes": {
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "a37d2b010d6240c9bc89f48bd2a559f8",
+              "kind": "model",
+              "parameter_count": 111968,
+              "parameter_tensors": 64,
+              "source": {
+                "repo_id": "hf-internal-testing/tiny-random-gpt2",
+                "revision": "71034c5d8bde858ff824298bdedc65515b97d2b9"
+              },
+              "trainable_parameters": 111968
+            }
+          }
+        },
+        "tokenizer": {
+          "status": "succeeded",
+          "outputs": {
+            "tokenizer": {
+              "eos_token_id": 0,
+              "handle": "c63bf67a0fab45b0b2f1e2065c727a7f",
+              "implementation": "GPT2Tokenizer",
+              "kind": "tokenizer",
+              "pad_token_id": 0,
+              "padding_side": "left",
+              "repo_id": "hf-internal-testing/tiny-random-gpt2",
+              "revision": "71034c5d8bde858ff824298bdedc65515b97d2b9",
+              "vocab_size": 1000
+            }
+          }
+        },
+        "data": {
+          "status": "succeeded",
+          "outputs": {
+            "data": {
+              "elements": 30,
+              "fields": {
+                "attention_mask": {
+                  "dtype": "torch.int64",
+                  "elements": 10,
+                  "preview": [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    0,
+                    0,
+                    1,
+                    1,
+                    1
+                  ],
+                  "shape": [
+                    2,
+                    5
+                  ],
+                  "truncated": false
+                },
+                "input_ids": {
+                  "dtype": "torch.int64",
+                  "elements": 10,
+                  "preview": [
+                    195,
+                    800,
+                    79,
+                    206,
+                    750,
+                    0,
+                    0,
+                    195,
+                    800,
+                    79
+                  ],
+                  "shape": [
+                    2,
+                    5
+                  ],
+                  "truncated": false
+                },
+                "labels": {
+                  "dtype": "torch.int64",
+                  "elements": 10,
+                  "preview": [
+                    195,
+                    800,
+                    79,
+                    206,
+                    750,
+                    -100,
+                    -100,
+                    195,
+                    800,
+                    79
+                  ],
+                  "shape": [
+                    2,
+                    5
+                  ],
+                  "truncated": false
+                }
+              },
+              "handle": "40fa773150574f80832fdf1491a0dc20",
+              "kind": "data",
+              "samples": 2
+            }
+          }
+        },
+        "optimizer": {
+          "status": "succeeded",
+          "outputs": {
+            "optimizer": {
+              "kind": "optimizer",
+              "lr": 0.0001,
+              "momentum": 0.0,
+              "name": "AdamW",
+              "weight_decay": 0.0
+            }
+          }
+        },
+        "train": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "batch_size": 2,
+              "gradient_norms": [
+                5.707486152648926,
+                5.383819580078125
+              ],
+              "loss": 6.891114234924316,
+              "loss_history": [
+                6.901928901672363,
+                6.891114234924316
+              ],
+              "optimizer": {
+                "kind": "optimizer",
+                "lr": 0.0001,
+                "momentum": 0.0,
+                "name": "AdamW",
+                "weight_decay": 0.0
+              },
+              "optimizer_state_tensors": 192,
+              "parameter_changed": true,
+              "parameter_count": 111968,
+              "samples": 2,
+              "state_sha256_after": "13394628ab815bd20ebff90886d4dddbcfd0b1b0abcf5a153d234dfed1108c20",
+              "state_sha256_before": "9119662320a73d30cd3c5829ee5a9862231331f069362e458d2c3e52dc46e490",
+              "steps": 2
+            },
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "a37d2b010d6240c9bc89f48bd2a559f8",
+              "kind": "model",
+              "parameter_count": 111968,
+              "parameter_tensors": 64,
+              "trainable_parameters": 111968
+            }
+          }
+        },
+        "pipeline": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "a37d2b010d6240c9bc89f48bd2a559f8",
+              "kind": "model",
+              "parameter_count": 111968,
+              "parameter_tensors": 64,
+              "trainable_parameters": 111968
+            },
+            "result": {
+              "outputs": [
+                [
+                  {
+                    "generated_text": "hello worldorld R R"
+                  }
+                ]
+              ],
+              "task": "text-generation"
+            }
+          }
+        },
+        "before": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "a37d2b010d6240c9bc89f48bd2a559f8",
+              "kind": "model",
+              "parameter_count": 111968,
+              "parameter_tensors": 64,
+              "trainable_parameters": 111968
+            },
+            "report": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "a37d2b010d6240c9bc89f48bd2a559f8",
+              "kind": "model",
+              "parameter_count": 111968,
+              "parameter_tensors": 64,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32000,
+                  "finite": true,
+                  "name": "transformer.wte.weight",
+                  "shape": [
+                    1000,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16384,
+                  "finite": true,
+                  "name": "transformer.wpe.weight",
+                  "shape": [
+                    512,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.1.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.1.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.1.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.1.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.1.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.1.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.2.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.2.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.2.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.2.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.2.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.2.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.3.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.3.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.3.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.3.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.3.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.3.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.4.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.4.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.4.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.4.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.4.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.4.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.ln_f.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.ln_f.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "config": {
+                  "kind": "hf-config",
+                  "model_type": "gpt2",
+                  "values": {
+                    "activation_function": "gelu_new",
+                    "add_cross_attention": false,
+                    "attention_probs_dropout_prob": 0.1,
+                    "attn_pdrop": 0.1,
+                    "bos_token_id": 98,
+                    "chunk_size_feed_forward": 0,
+                    "embd_pdrop": 0.1,
+                    "eos_token_id": 98,
+                    "gradient_checkpointing": false,
+                    "hidden_act": "gelu",
+                    "hidden_dropout_prob": 0.1,
+                    "id2label": {
+                      "0": "LABEL_0",
+                      "1": "LABEL_1"
+                    },
+                    "initializer_range": 0.02,
+                    "intermediate_size": 37,
+                    "is_encoder_decoder": false,
+                    "label2id": {
+                      "LABEL_0": 0,
+                      "LABEL_1": 1
+                    },
+                    "layer_norm_epsilon": 1e-05,
+                    "n_ctx": 512,
+                    "n_embd": 32,
+                    "n_head": 4,
+                    "n_inner": null,
+                    "n_layer": 5,
+                    "n_positions": 512,
+                    "output_attentions": false,
+                    "output_hidden_states": false,
+                    "pad_token_id": 98,
+                    "problem_type": null,
+                    "reorder_and_upcast_attn": false,
+                    "resid_pdrop": 0.1,
+                    "return_dict": true,
+                    "scale_attn_by_inverse_layer_idx": false,
+                    "scale_attn_weights": true,
+                    "summary_activation": null,
+                    "summary_first_dropout": 0.1,
+                    "summary_proj_to_labels": true,
+                    "summary_type": "cls_index",
+                    "summary_use_proj": true,
+                    "tie_word_embeddings": true,
+                    "type_vocab_size": 16,
+                    "use_cache": true,
+                    "vocab_size": 1000
+                  }
+                },
+                "family": "huggingface",
+                "seed": 42,
+                "source": {
+                  "repo_id": "hf-internal-testing/tiny-random-gpt2",
+                  "revision": "71034c5d8bde858ff824298bdedc65515b97d2b9"
+                },
+                "task": "causal-lm"
+              },
+              "state_sha256": "13394628ab815bd20ebff90886d4dddbcfd0b1b0abcf5a153d234dfed1108c20",
+              "trainable_parameters": 111968
+            }
+          }
+        },
+        "checkpoint": {
+          "status": "succeeded",
+          "outputs": {
+            "artifact": {
+              "id": "5338f30791064d099be213ff3437c953",
+              "job_id": "8b85c3071c154a7eb2d73b4d00f64598",
+              "node_id": "checkpoint",
+              "filename": "transformers-model.zip",
+              "mime": "application/zip",
+              "byte_length": 536874,
+              "sha256": "3b9453fa518db6b0bab350215f893f56bce5cc62396c3c7e5609e8303a799b88",
+              "download_url": "/api/graph/artifacts/5338f30791064d099be213ff3437c953"
+            },
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "a37d2b010d6240c9bc89f48bd2a559f8",
+              "kind": "model",
+              "parameter_count": 111968,
+              "parameter_tensors": 64,
+              "trainable_parameters": 111968
+            }
+          }
+        },
+        "load": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "b9915cb8500b4316b8816baa4dbfed89",
+              "kind": "model",
+              "parameter_count": 111968,
+              "parameter_tensors": 64,
+              "trainable_parameters": 111968
+            }
+          }
+        },
+        "after": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "b9915cb8500b4316b8816baa4dbfed89",
+              "kind": "model",
+              "parameter_count": 111968,
+              "parameter_tensors": 64,
+              "trainable_parameters": 111968
+            },
+            "report": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "b9915cb8500b4316b8816baa4dbfed89",
+              "kind": "model",
+              "parameter_count": 111968,
+              "parameter_tensors": 64,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32000,
+                  "finite": true,
+                  "name": "transformer.wte.weight",
+                  "shape": [
+                    1000,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16384,
+                  "finite": true,
+                  "name": "transformer.wpe.weight",
+                  "shape": [
+                    512,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.1.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.1.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.1.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.1.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.1.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.1.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.1.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.2.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.2.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.2.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.2.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.2.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.2.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.2.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.3.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.3.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.3.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.3.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.3.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.3.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.3.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.ln_1.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.ln_1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 3072,
+                  "finite": true,
+                  "name": "transformer.h.4.attn.c_attn.weight",
+                  "shape": [
+                    32,
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 96,
+                  "finite": true,
+                  "name": "transformer.h.4.attn.c_attn.bias",
+                  "shape": [
+                    96
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.4.attn.c_proj.weight",
+                  "shape": [
+                    32,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.attn.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.ln_2.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.ln_2.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.4.mlp.c_fc.weight",
+                  "shape": [
+                    32,
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "transformer.h.4.mlp.c_fc.bias",
+                  "shape": [
+                    128
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4096,
+                  "finite": true,
+                  "name": "transformer.h.4.mlp.c_proj.weight",
+                  "shape": [
+                    128,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.h.4.mlp.c_proj.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.ln_f.weight",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.ln_f.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "config": {
+                  "kind": "hf-config",
+                  "model_type": "gpt2",
+                  "values": {
+                    "activation_function": "gelu_new",
+                    "add_cross_attention": false,
+                    "attention_probs_dropout_prob": 0.1,
+                    "attn_pdrop": 0.1,
+                    "bos_token_id": 98,
+                    "chunk_size_feed_forward": 0,
+                    "embd_pdrop": 0.1,
+                    "eos_token_id": 98,
+                    "gradient_checkpointing": false,
+                    "hidden_act": "gelu",
+                    "hidden_dropout_prob": 0.1,
+                    "id2label": {
+                      "0": "LABEL_0",
+                      "1": "LABEL_1"
+                    },
+                    "initializer_range": 0.02,
+                    "intermediate_size": 37,
+                    "is_encoder_decoder": false,
+                    "label2id": {
+                      "LABEL_0": 0,
+                      "LABEL_1": 1
+                    },
+                    "layer_norm_epsilon": 1e-05,
+                    "n_ctx": 512,
+                    "n_embd": 32,
+                    "n_head": 4,
+                    "n_inner": null,
+                    "n_layer": 5,
+                    "n_positions": 512,
+                    "output_attentions": false,
+                    "output_hidden_states": false,
+                    "pad_token_id": 98,
+                    "problem_type": null,
+                    "reorder_and_upcast_attn": false,
+                    "resid_pdrop": 0.1,
+                    "return_dict": true,
+                    "scale_attn_by_inverse_layer_idx": false,
+                    "scale_attn_weights": true,
+                    "summary_activation": null,
+                    "summary_first_dropout": 0.1,
+                    "summary_proj_to_labels": true,
+                    "summary_type": "cls_index",
+                    "summary_use_proj": true,
+                    "tie_word_embeddings": true,
+                    "type_vocab_size": 16,
+                    "use_cache": true,
+                    "vocab_size": 1000
+                  }
+                },
+                "family": "huggingface",
+                "seed": 42,
+                "source": {
+                  "repo_id": "hf-internal-testing/tiny-random-gpt2",
+                  "revision": "71034c5d8bde858ff824298bdedc65515b97d2b9"
+                },
+                "task": "causal-lm"
+              },
+              "state_sha256": "13394628ab815bd20ebff90886d4dddbcfd0b1b0abcf5a153d234dfed1108c20",
+              "trainable_parameters": 111968
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\checkpoint-roundtrip.workflow.json",
+      "sha256": "063f7e5c506173d8dc7a962a0a50a813fc6b161580c394f4ed9d89120b057fc9",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 3.5159999999996217,
+      "nodes": {
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "96d512217106458499765001d107ae9c",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "data": {
+          "status": "succeeded",
+          "outputs": {
+            "data": {
+              "elements": 6,
+              "fields": {
+                "labels": {
+                  "dtype": "torch.int64",
+                  "elements": 3,
+                  "preview": [
+                    -2,
+                    0,
+                    2
+                  ],
+                  "shape": [
+                    3,
+                    1
+                  ],
+                  "truncated": false
+                },
+                "x": {
+                  "dtype": "torch.float32",
+                  "elements": 3,
+                  "preview": [
+                    -1.0,
+                    0.0,
+                    1.0
+                  ],
+                  "shape": [
+                    3,
+                    1
+                  ],
+                  "truncated": false
+                }
+              },
+              "handle": "e6240b7acfc24a65a57f2e609a92f8ce",
+              "kind": "data",
+              "samples": 3
+            }
+          }
+        },
+        "optimizer": {
+          "status": "succeeded",
+          "outputs": {
+            "optimizer": {
+              "kind": "optimizer",
+              "lr": 0.01,
+              "momentum": 0.9,
+              "name": "SGD",
+              "weight_decay": 0.0
+            }
+          }
+        },
+        "train": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "batch_size": 3,
+              "gradient_norms": [
+                3.5522263050079346,
+                3.500436544418335,
+                3.402259349822998,
+                3.2628982067108154
+              ],
+              "loss": 1.3308182954788208,
+              "loss_history": [
+                1.5218572616577148,
+                1.4865950345993042,
+                1.4210354089736938,
+                1.3308182954788208
+              ],
+              "optimizer": {
+                "kind": "optimizer",
+                "lr": 0.01,
+                "momentum": 0.9,
+                "name": "SGD",
+                "weight_decay": 0.0
+              },
+              "optimizer_state_tensors": 5,
+              "parameter_changed": true,
+              "parameter_count": 33,
+              "samples": 3,
+              "state_sha256_after": "8620f55ff44f99adb460e16093146d2dcb4e7f447911419ab5ef1e91c1b73d1f",
+              "state_sha256_before": "f86d2455f2d718f366881362c6eaeaa850677eaff7271845ad298938a69dd709",
+              "steps": 4
+            },
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "96d512217106458499765001d107ae9c",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "before": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "96d512217106458499765001d107ae9c",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            },
+            "report": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "96d512217106458499765001d107ae9c",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "0.weight",
+                  "shape": [
+                    8,
+                    1
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "0.bias",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "1.weight",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "3.weight",
+                  "shape": [
+                    1,
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1,
+                  "finite": true,
+                  "name": "3.bias",
+                  "shape": [
+                    1
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "family": "sequential",
+                "layers": [
+                  {
+                    "bias": true,
+                    "in_features": 1,
+                    "out_features": 8,
+                    "type": "Linear"
+                  },
+                  {
+                    "eps": 1e-06,
+                    "normalized_shape": 8,
+                    "type": "RMSNorm"
+                  },
+                  {
+                    "type": "GELU"
+                  },
+                  {
+                    "bias": true,
+                    "in_features": 8,
+                    "out_features": 1,
+                    "type": "Linear"
+                  }
+                ],
+                "seed": 42
+              },
+              "state_sha256": "8620f55ff44f99adb460e16093146d2dcb4e7f447911419ab5ef1e91c1b73d1f",
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "checkpoint": {
+          "status": "succeeded",
+          "outputs": {
+            "artifact": {
+              "id": "90b18d8fc57c44dc8d65c2700a1a0231",
+              "job_id": "c6d2de0713c94e65aa060f73b89e012e",
+              "node_id": "checkpoint",
+              "filename": "transformers-model.zip",
+              "mime": "application/zip",
+              "byte_length": 997,
+              "sha256": "e235a24b92fea777c797295f981f06a62deb3dbd3f3c124d93b4463058b7ebb6",
+              "download_url": "/api/graph/artifacts/90b18d8fc57c44dc8d65c2700a1a0231"
+            },
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "96d512217106458499765001d107ae9c",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "load": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "08b782f532bc4e66980ddd9e1d45a94b",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "after": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "08b782f532bc4e66980ddd9e1d45a94b",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            },
+            "report": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "08b782f532bc4e66980ddd9e1d45a94b",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "0.weight",
+                  "shape": [
+                    8,
+                    1
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "0.bias",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "1.weight",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "3.weight",
+                  "shape": [
+                    1,
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1,
+                  "finite": true,
+                  "name": "3.bias",
+                  "shape": [
+                    1
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "family": "sequential",
+                "layers": [
+                  {
+                    "bias": true,
+                    "in_features": 1,
+                    "out_features": 8,
+                    "type": "Linear"
+                  },
+                  {
+                    "eps": 1e-06,
+                    "normalized_shape": 8,
+                    "type": "RMSNorm"
+                  },
+                  {
+                    "type": "GELU"
+                  },
+                  {
+                    "bias": true,
+                    "in_features": 8,
+                    "out_features": 1,
+                    "type": "Linear"
+                  }
+                ],
+                "seed": 42
+              },
+              "state_sha256": "8620f55ff44f99adb460e16093146d2dcb4e7f447911419ab5ef1e91c1b73d1f",
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "evaluate": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "loss": 1.2219655513763428,
+              "parameter_changed": false,
+              "samples": 3,
+              "state_sha256": "8620f55ff44f99adb460e16093146d2dcb4e7f447911419ab5ef1e91c1b73d1f"
+            },
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "08b782f532bc4e66980ddd9e1d45a94b",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\custom-attention.workflow.json",
+      "sha256": "4dce6e05ec7980108e836e367054baf64d94ba646e4d6aef846461a073a6c3cf",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 3.3590000000003783,
+      "nodes": {
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "97cabe225cb34695928ceba89355095c",
+              "kind": "model",
+              "parameter_count": 460,
+              "parameter_tensors": 8,
+              "trainable_parameters": 460
+            }
+          }
+        },
+        "data": {
+          "status": "succeeded",
+          "outputs": {
+            "data": {
+              "elements": 30,
+              "fields": {
+                "input_ids": {
+                  "dtype": "torch.int64",
+                  "elements": 6,
+                  "preview": [
+                    2,
+                    4,
+                    5,
+                    2,
+                    5,
+                    4
+                  ],
+                  "shape": [
+                    2,
+                    3
+                  ],
+                  "truncated": false
+                },
+                "labels": {
+                  "dtype": "torch.int64",
+                  "elements": 24,
+                  "preview": [
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                    1,
+                    0
+                  ],
+                  "shape": [
+                    2,
+                    3,
+                    4
+                  ],
+                  "truncated": false
+                }
+              },
+              "handle": "b725ae07f37b46b7856e5eab76593c43",
+              "kind": "data",
+              "samples": 2
+            }
+          }
+        },
+        "optimizer": {
+          "status": "succeeded",
+          "outputs": {
+            "optimizer": {
+              "kind": "optimizer",
+              "lr": 0.005,
+              "momentum": 0.0,
+              "name": "AdamW",
+              "weight_decay": 0.0
+            }
+          }
+        },
+        "train": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "batch_size": 2,
+              "gradient_norms": [
+                1.6098830699920654,
+                1.469355821609497,
+                1.3406405448913574
+              ],
+              "loss": 0.4691983759403229,
+              "loss_history": [
+                0.6030054688453674,
+                0.532684862613678,
+                0.4691983759403229
+              ],
+              "optimizer": {
+                "kind": "optimizer",
+                "lr": 0.005,
+                "momentum": 0.0,
+                "name": "AdamW",
+                "weight_decay": 0.0
+              },
+              "optimizer_state_tensors": 24,
+              "parameter_changed": true,
+              "parameter_count": 460,
+              "samples": 2,
+              "state_sha256_after": "2e1f1b4b6f8ca76ffbdb166a6b86f2e228c56e600e92e3bb8c703852504a531e",
+              "state_sha256_before": "6802f8943218e2d46f1e3062c9a7af15fed6d5b85a08bbd94aa301e9531c3817",
+              "steps": 3
+            },
+            "model": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "97cabe225cb34695928ceba89355095c",
+              "kind": "model",
+              "parameter_count": 460,
+              "parameter_tensors": 8,
+              "trainable_parameters": 460
+            }
+          }
+        },
+        "evaluate": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "loss": 0.4117013216018677,
+              "parameter_changed": false,
+              "samples": 2,
+              "state_sha256": "2e1f1b4b6f8ca76ffbdb166a6b86f2e228c56e600e92e3bb8c703852504a531e"
+            },
+            "model": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "97cabe225cb34695928ceba89355095c",
+              "kind": "model",
+              "parameter_count": 460,
+              "parameter_tensors": 8,
+              "trainable_parameters": 460
+            }
+          }
+        },
+        "inspect": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "97cabe225cb34695928ceba89355095c",
+              "kind": "model",
+              "parameter_count": 460,
+              "parameter_tensors": 8,
+              "trainable_parameters": 460
+            },
+            "report": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "97cabe225cb34695928ceba89355095c",
+              "kind": "model",
+              "parameter_count": 460,
+              "parameter_tensors": 8,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 128,
+                  "finite": true,
+                  "name": "layers.embed.weight",
+                  "shape": [
+                    16,
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "layers.norm.weight",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 192,
+                  "finite": true,
+                  "name": "layers.attention.attention.in_proj_weight",
+                  "shape": [
+                    24,
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 24,
+                  "finite": true,
+                  "name": "layers.attention.attention.in_proj_bias",
+                  "shape": [
+                    24
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 64,
+                  "finite": true,
+                  "name": "layers.attention.attention.out_proj.weight",
+                  "shape": [
+                    8,
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "layers.attention.attention.out_proj.bias",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "layers.output.weight",
+                  "shape": [
+                    4,
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 4,
+                  "finite": true,
+                  "name": "layers.output.bias",
+                  "shape": [
+                    4
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "code": "h = layers['embed'](inputs['input_ids'])\na = layers['attention'](layers['norm'](h))\nh = h + a\nreturn layers['output'](h)",
+                "family": "custom",
+                "layers": {
+                  "attention": {
+                    "causal": true,
+                    "dropout": 0,
+                    "embed_dim": 8,
+                    "num_heads": 2,
+                    "type": "SelfAttention"
+                  },
+                  "embed": {
+                    "embedding_dim": 8,
+                    "num_embeddings": 16,
+                    "type": "Embedding"
+                  },
+                  "norm": {
+                    "eps": 1e-06,
+                    "normalized_shape": 8,
+                    "type": "RMSNorm"
+                  },
+                  "output": {
+                    "in_features": 8,
+                    "out_features": 4,
+                    "type": "Linear"
+                  }
+                },
+                "seed": 42
+              },
+              "state_sha256": "2e1f1b4b6f8ca76ffbdb166a6b86f2e228c56e600e92e3bb8c703852504a531e",
+              "trainable_parameters": 460
+            }
+          }
+        },
+        "checkpoint": {
+          "status": "succeeded",
+          "outputs": {
+            "artifact": {
+              "id": "ac1e94bd880e465bbca033bd65e52764",
+              "job_id": "9558b6b605b14de6a008eff7b84979e8",
+              "node_id": "checkpoint",
+              "filename": "transformers-model.zip",
+              "mime": "application/zip",
+              "byte_length": 2849,
+              "sha256": "8ed43bc787312010ccb09126db8bb213cbf60f2e0322b087e899523ecd2fb195",
+              "download_url": "/api/graph/artifacts/ac1e94bd880e465bbca033bd65e52764"
+            },
+            "model": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "97cabe225cb34695928ceba89355095c",
+              "kind": "model",
+              "parameter_count": 460,
+              "parameter_tensors": 8,
+              "trainable_parameters": 460
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\custom-forward.workflow.json",
+      "sha256": "29313c14adf4a84f11be45f4f567a345293b5c0614cff79f02b07812551c0ff0",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 3.3440000000009604,
+      "nodes": {
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "87a779bdb7fc432ab968ae3b0634c756",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "data": {
+          "status": "succeeded",
+          "outputs": {
+            "data": {
+              "elements": 6,
+              "fields": {
+                "labels": {
+                  "dtype": "torch.int64",
+                  "elements": 3,
+                  "preview": [
+                    -2,
+                    0,
+                    2
+                  ],
+                  "shape": [
+                    3,
+                    1
+                  ],
+                  "truncated": false
+                },
+                "x": {
+                  "dtype": "torch.float32",
+                  "elements": 3,
+                  "preview": [
+                    -1.0,
+                    0.0,
+                    1.0
+                  ],
+                  "shape": [
+                    3,
+                    1
+                  ],
+                  "truncated": false
+                }
+              },
+              "handle": "2b89d821f8a64c68a04767f1386e6674",
+              "kind": "data",
+              "samples": 3
+            }
+          }
+        },
+        "optimizer": {
+          "status": "succeeded",
+          "outputs": {
+            "optimizer": {
+              "kind": "optimizer",
+              "lr": 0.01,
+              "momentum": 0.0,
+              "name": "AdamW",
+              "weight_decay": 0.0
+            }
+          }
+        },
+        "train": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "batch_size": 3,
+              "gradient_norms": [
+                3.5522263050079346,
+                3.3733792304992676,
+                3.2149064540863037,
+                3.0872316360473633,
+                2.9781854152679443,
+                2.875762701034546,
+                2.774162530899048,
+                2.6704139709472656,
+                2.562368392944336,
+                2.4481289386749268
+              ],
+              "loss": 0.6711440086364746,
+              "loss_history": [
+                1.5218572616577148,
+                1.4120248556137085,
+                1.3107976913452148,
+                1.2145737409591675,
+                1.1204174757003784,
+                1.0275864601135254,
+                0.936052143573761,
+                0.8459458351135254,
+                0.7575168609619141,
+                0.6711440086364746
+              ],
+              "optimizer": {
+                "kind": "optimizer",
+                "lr": 0.01,
+                "momentum": 0.0,
+                "name": "AdamW",
+                "weight_decay": 0.0
+              },
+              "optimizer_state_tensors": 15,
+              "parameter_changed": true,
+              "parameter_count": 33,
+              "samples": 3,
+              "state_sha256_after": "0280243a679e7dcaab55fa33c1a99e35e44837186cdba01ceb73820509f87968",
+              "state_sha256_before": "1c32d39db0cb43a128f921f483f9cdb3c4fe8b3451868641a3426f84ec15b180",
+              "steps": 10
+            },
+            "model": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "87a779bdb7fc432ab968ae3b0634c756",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "evaluate": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "loss": 0.5873170495033264,
+              "parameter_changed": false,
+              "samples": 3,
+              "state_sha256": "0280243a679e7dcaab55fa33c1a99e35e44837186cdba01ceb73820509f87968"
+            },
+            "model": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "87a779bdb7fc432ab968ae3b0634c756",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "checkpoint": {
+          "status": "succeeded",
+          "outputs": {
+            "artifact": {
+              "id": "0b8af8bfd8154ef380fc7705e5ac9037",
+              "job_id": "0a75a558d98e4331a4cdb7c9f72e8086",
+              "node_id": "checkpoint",
+              "filename": "transformers-model.zip",
+              "mime": "application/zip",
+              "byte_length": 1060,
+              "sha256": "1a8f5dbbd625b8cccb5cb1c673f01b6ccfedf458bd5b920ac701ce79ba4148d6",
+              "download_url": "/api/graph/artifacts/0b8af8bfd8154ef380fc7705e5ac9037"
+            },
+            "model": {
+              "architecture": "CustomTensorModel",
+              "device": "cpu",
+              "family": "custom",
+              "handle": "87a779bdb7fc432ab968ae3b0634c756",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\distilbert-classification.workflow.json",
+      "sha256": "07edf793d3f7acf9949abc7fa7aa49bdb42fac0e93c6eed5f3f4d1f09a4011e6",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 5.875,
+      "nodes": {
+        "config": {
+          "status": "succeeded",
+          "outputs": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "distilbert",
+              "values": {
+                "attention_dropout": 0,
+                "dim": 16,
+                "dropout": 0,
+                "hidden_dim": 32,
+                "max_position_embeddings": 32,
+                "n_heads": 2,
+                "n_layers": 1,
+                "num_labels": 2,
+                "pad_token_id": 0,
+                "seq_classif_dropout": 0,
+                "vocab_size": 16
+              }
+            }
+          }
+        },
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertForSequenceClassification",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "2764218d03784c55bb278d175405db8a",
+              "kind": "model",
+              "parameter_count": 3330,
+              "parameter_tensors": 24,
+              "trainable_parameters": 3330
+            }
+          }
+        },
+        "tokenizer": {
+          "status": "succeeded",
+          "outputs": {
+            "tokenizer": {
+              "handle": "e3a4193546cd4a168b3da3de75f7c743",
+              "implementation": "PreTrainedTokenizerFast/WordLevel",
+              "kind": "tokenizer",
+              "padding_side": "left",
+              "vocab_size": 16
+            }
+          }
+        },
+        "data": {
+          "status": "succeeded",
+          "outputs": {
+            "data": {
+              "elements": 18,
+              "fields": {
+                "attention_mask": {
+                  "dtype": "torch.int64",
+                  "elements": 8,
+                  "preview": [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "shape": [
+                    2,
+                    4
+                  ],
+                  "truncated": false
+                },
+                "input_ids": {
+                  "dtype": "torch.int64",
+                  "elements": 8,
+                  "preview": [
+                    2,
+                    6,
+                    8,
+                    3,
+                    2,
+                    7,
+                    8,
+                    3
+                  ],
+                  "shape": [
+                    2,
+                    4
+                  ],
+                  "truncated": false
+                },
+                "labels": {
+                  "dtype": "torch.int64",
+                  "elements": 2,
+                  "preview": [
+                    1,
+                    0
+                  ],
+                  "shape": [
+                    2
+                  ],
+                  "truncated": false
+                }
+              },
+              "handle": "e1ab2ecc1f7a49b39a02b60a541f9160",
+              "kind": "data",
+              "samples": 2
+            }
+          }
+        },
+        "optimizer": {
+          "status": "succeeded",
+          "outputs": {
+            "optimizer": {
+              "kind": "optimizer",
+              "lr": 0.001,
+              "momentum": 0.0,
+              "name": "AdamW",
+              "weight_decay": 0.0
+            }
+          }
+        },
+        "train": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "batch_size": 2,
+              "gradient_norms": [
+                0.0006036399281583726,
+                0.0017206869088113308,
+                0.0006299817468971014
+              ],
+              "loss": 0.6931455135345459,
+              "loss_history": [
+                0.6931486129760742,
+                0.6931493282318115,
+                0.6931455135345459
+              ],
+              "optimizer": {
+                "kind": "optimizer",
+                "lr": 0.001,
+                "momentum": 0.0,
+                "name": "AdamW",
+                "weight_decay": 0.0
+              },
+              "optimizer_state_tensors": 72,
+              "parameter_changed": true,
+              "parameter_count": 3330,
+              "samples": 2,
+              "state_sha256_after": "9d0e9ca811933ad853059d913b3735cbb4c5ecf9af657c7d7e2b73a4a26e966a",
+              "state_sha256_before": "e02952ecae9880d8cf3560c9ab086f4e699f551a1c830b9597b3fdbcd7ac3ed8",
+              "steps": 3
+            },
+            "model": {
+              "architecture": "DistilBertForSequenceClassification",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "2764218d03784c55bb278d175405db8a",
+              "kind": "model",
+              "parameter_count": 3330,
+              "parameter_tensors": 24,
+              "trainable_parameters": 3330
+            }
+          }
+        },
+        "evaluate": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "loss": 0.6931438446044922,
+              "parameter_changed": false,
+              "samples": 2,
+              "state_sha256": "9d0e9ca811933ad853059d913b3735cbb4c5ecf9af657c7d7e2b73a4a26e966a"
+            },
+            "model": {
+              "architecture": "DistilBertForSequenceClassification",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "2764218d03784c55bb278d175405db8a",
+              "kind": "model",
+              "parameter_count": 3330,
+              "parameter_tensors": 24,
+              "trainable_parameters": 3330
+            }
+          }
+        },
+        "pipeline": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertForSequenceClassification",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "2764218d03784c55bb278d175405db8a",
+              "kind": "model",
+              "parameter_count": 3330,
+              "parameter_tensors": 24,
+              "trainable_parameters": 3330
+            },
+            "result": {
+              "outputs": [
+                {
+                  "label": "LABEL_0",
+                  "score": 0.501754641532898
+                },
+                {
+                  "label": "LABEL_0",
+                  "score": 0.5001960396766663
+                }
+              ],
+              "task": "text-classification"
+            }
+          }
+        },
+        "checkpoint": {
+          "status": "succeeded",
+          "outputs": {
+            "artifact": {
+              "id": "6339ba569f034db99ed45a1762bc16d4",
+              "job_id": "7cc0cce65ef644e58f056247f9fc2e25",
+              "node_id": "checkpoint",
+              "filename": "transformers-model.zip",
+              "mime": "application/zip",
+              "byte_length": 13712,
+              "sha256": "47257edc9108aa401064a47bf134a0dbccb3961b3c0f13892cadb7d6aafbe6f6",
+              "download_url": "/api/graph/artifacts/6339ba569f034db99ed45a1762bc16d4"
+            },
+            "model": {
+              "architecture": "DistilBertForSequenceClassification",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "2764218d03784c55bb278d175405db8a",
+              "kind": "model",
+              "parameter_count": 3330,
+              "parameter_tensors": 24,
+              "trainable_parameters": 3330
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\feature-extraction.workflow.json",
+      "sha256": "3527ad96fa5c91c525920ad8eaa3cd4da6c27d52a072f1ab26fd7a137ccb552a",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 5.671999999998661,
+      "nodes": {
+        "config": {
+          "status": "succeeded",
+          "outputs": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "distilbert",
+              "values": {
+                "attention_dropout": 0.1,
+                "dim": 16,
+                "dropout": 0.1,
+                "hidden_dim": 32,
+                "max_position_embeddings": 32,
+                "n_heads": 2,
+                "n_layers": 1,
+                "num_labels": 2,
+                "pad_token_id": 0,
+                "vocab_size": 17
+              }
+            }
+          }
+        },
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "e80755cb140449a2804ade49f48986d5",
+              "kind": "model",
+              "parameter_count": 3040,
+              "parameter_tensors": 20,
+              "trainable_parameters": 3040
+            }
+          }
+        },
+        "tokenizer": {
+          "status": "succeeded",
+          "outputs": {
+            "tokenizer": {
+              "handle": "6f19e1d387d041f59761143c48138e7d",
+              "implementation": "PreTrainedTokenizerFast/WordLevel",
+              "kind": "tokenizer",
+              "padding_side": "left",
+              "vocab_size": 17
+            }
+          }
+        },
+        "pipeline": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "e80755cb140449a2804ade49f48986d5",
+              "kind": "model",
+              "parameter_count": 3040,
+              "parameter_tensors": 20,
+              "trainable_parameters": 3040
+            },
+            "result": {
+              "outputs": [
+                [
+                  [
+                    [
+                      -2.277028799057007,
+                      1.740504503250122,
+                      0.5694897770881653,
+                      -0.29733410477638245,
+                      0.5360555648803711,
+                      0.38940393924713135,
+                      -0.5159193277359009,
+                      -0.444042831659317,
+                      -0.13393455743789673,
+                      0.6399157047271729,
+                      -0.46700072288513184,
+                      -1.7593461275100708,
+                      1.2560979127883911,
+                      0.9606361389160156,
+                      -0.4226243197917938,
+                      0.22512699663639069
+                    ],
+                    [
+                      0.7145090103149414,
+                      -1.0444841384887695,
+                      0.2678191065788269,
+                      -1.7733056545257568,
+                      0.9788423180580139,
+                      -0.6135634183883667,
+                      -0.5167093276977539,
+                      -0.01327577605843544,
+                      -0.4423471987247467,
+                      1.5949431657791138,
+                      -0.14402547478675842,
+                      -0.3238080143928528,
+                      -0.05188635736703873,
+                      -1.5517728328704834,
+                      1.6081246137619019,
+                      1.3109400272369385
+                    ]
+                  ]
+                ],
+                [
+                  [
+                    [
+                      -2.2778685092926025,
+                      1.7394310235977173,
+                      0.5683727264404297,
+                      -0.2913951277732849,
+                      0.5361512899398804,
+                      0.38538044691085815,
+                      -0.5181089639663696,
+                      -0.4400959610939026,
+                      -0.13612253963947296,
+                      0.6429369449615479,
+                      -0.4644310772418976,
+                      -1.762251377105713,
+                      1.254701852798462,
+                      0.9606861472129822,
+                      -0.42260491847991943,
+                      0.22521808743476868
+                    ]
+                  ]
+                ]
+              ],
+              "task": "feature-extraction"
+            }
+          }
+        },
+        "inspect": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "e80755cb140449a2804ade49f48986d5",
+              "kind": "model",
+              "parameter_count": 3040,
+              "parameter_tensors": 20,
+              "trainable_parameters": 3040
+            },
+            "report": {
+              "architecture": "DistilBertModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "e80755cb140449a2804ade49f48986d5",
+              "kind": "model",
+              "parameter_count": 3040,
+              "parameter_tensors": 20,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 272,
+                  "finite": true,
+                  "name": "embeddings.word_embeddings.weight",
+                  "shape": [
+                    17,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "embeddings.position_embeddings.weight",
+                  "shape": [
+                    32,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "embeddings.LayerNorm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "embeddings.LayerNorm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.layer.0.attention.q_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.layer.0.attention.q_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.layer.0.attention.k_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.layer.0.attention.k_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.layer.0.attention.v_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.layer.0.attention.v_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.layer.0.attention.out_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.layer.0.attention.out_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.layer.0.sa_layer_norm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.layer.0.sa_layer_norm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "transformer.layer.0.ffn.lin1.weight",
+                  "shape": [
+                    32,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "transformer.layer.0.ffn.lin1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "transformer.layer.0.ffn.lin2.weight",
+                  "shape": [
+                    16,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.layer.0.ffn.lin2.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.layer.0.output_layer_norm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.layer.0.output_layer_norm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "config": {
+                  "kind": "hf-config",
+                  "model_type": "distilbert",
+                  "values": {
+                    "attention_dropout": 0.1,
+                    "dim": 16,
+                    "dropout": 0.1,
+                    "hidden_dim": 32,
+                    "max_position_embeddings": 32,
+                    "n_heads": 2,
+                    "n_layers": 1,
+                    "num_labels": 2,
+                    "pad_token_id": 0,
+                    "vocab_size": 17
+                  }
+                },
+                "family": "huggingface",
+                "seed": 42,
+                "task": "base"
+              },
+              "state_sha256": "7a8072724127ffc3e626490f2d5cb91931bc29cad07447f8bc8e7e7d865c73cf",
+              "trainable_parameters": 3040
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\fill-mask.workflow.json",
+      "sha256": "c75af36d41619bcf848d08bb899f944ad8795fb079cd7519e6886641a7760667",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 5.96900000000096,
+      "nodes": {
+        "config": {
+          "status": "succeeded",
+          "outputs": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "distilbert",
+              "values": {
+                "attention_dropout": 0.1,
+                "dim": 16,
+                "dropout": 0.1,
+                "hidden_dim": 32,
+                "max_position_embeddings": 32,
+                "n_heads": 2,
+                "n_layers": 1,
+                "num_labels": 2,
+                "pad_token_id": 0,
+                "vocab_size": 17
+              }
+            }
+          }
+        },
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertForMaskedLM",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "e7c45c4fc4074e13aad56be0cf2c324b",
+              "kind": "model",
+              "parameter_count": 3361,
+              "parameter_tensors": 25,
+              "trainable_parameters": 3361
+            }
+          }
+        },
+        "tokenizer": {
+          "status": "succeeded",
+          "outputs": {
+            "tokenizer": {
+              "handle": "511bdee8cd784e6caa87e2d09b969844",
+              "implementation": "PreTrainedTokenizerFast/WordLevel",
+              "kind": "tokenizer",
+              "padding_side": "left",
+              "vocab_size": 17
+            }
+          }
+        },
+        "pipeline": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertForMaskedLM",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "e7c45c4fc4074e13aad56be0cf2c324b",
+              "kind": "model",
+              "parameter_count": 3361,
+              "parameter_tensors": 25,
+              "trainable_parameters": 3361
+            },
+            "result": {
+              "outputs": [
+                {
+                  "score": 0.06874283403158188,
+                  "sequence": "hello world",
+                  "token": 5,
+                  "token_str": "world"
+                },
+                {
+                  "score": 0.06332776695489883,
+                  "sequence": "hello",
+                  "token": 16,
+                  "token_str": "[MASK]"
+                },
+                {
+                  "score": 0.06304669380187988,
+                  "sequence": "hello bad",
+                  "token": 7,
+                  "token_str": "bad"
+                },
+                {
+                  "score": 0.06224619597196579,
+                  "sequence": "hello example",
+                  "token": 8,
+                  "token_str": "example"
+                },
+                {
+                  "score": 0.06068698316812515,
+                  "sequence": "hello",
+                  "token": 3,
+                  "token_str": "[EOS]"
+                }
+              ],
+              "task": "fill-mask"
+            }
+          }
+        },
+        "inspect": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertForMaskedLM",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "e7c45c4fc4074e13aad56be0cf2c324b",
+              "kind": "model",
+              "parameter_count": 3361,
+              "parameter_tensors": 25,
+              "trainable_parameters": 3361
+            },
+            "report": {
+              "architecture": "DistilBertForMaskedLM",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "e7c45c4fc4074e13aad56be0cf2c324b",
+              "kind": "model",
+              "parameter_count": 3361,
+              "parameter_tensors": 25,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 272,
+                  "finite": true,
+                  "name": "distilbert.embeddings.word_embeddings.weight",
+                  "shape": [
+                    17,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "distilbert.embeddings.position_embeddings.weight",
+                  "shape": [
+                    32,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.embeddings.LayerNorm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.embeddings.LayerNorm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.q_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.q_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.k_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.k_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.v_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.v_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.out_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.out_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.sa_layer_norm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.sa_layer_norm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.ffn.lin1.weight",
+                  "shape": [
+                    32,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.ffn.lin1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.ffn.lin2.weight",
+                  "shape": [
+                    16,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.ffn.lin2.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.output_layer_norm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.output_layer_norm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "vocab_transform.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "vocab_transform.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "vocab_layer_norm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "vocab_layer_norm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 17,
+                  "finite": true,
+                  "name": "vocab_projector.bias",
+                  "shape": [
+                    17
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "config": {
+                  "kind": "hf-config",
+                  "model_type": "distilbert",
+                  "values": {
+                    "attention_dropout": 0.1,
+                    "dim": 16,
+                    "dropout": 0.1,
+                    "hidden_dim": 32,
+                    "max_position_embeddings": 32,
+                    "n_heads": 2,
+                    "n_layers": 1,
+                    "num_labels": 2,
+                    "pad_token_id": 0,
+                    "vocab_size": 17
+                  }
+                },
+                "family": "huggingface",
+                "seed": 42,
+                "task": "masked-lm"
+              },
+              "state_sha256": "f293f535be6f842085aa38cf1c5ac9eb636cacc61b4aa15a74c88f3cbd790bd3",
+              "trainable_parameters": 3361
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\plugin-architecture.workflow.json",
+      "sha256": "0bb3a5df68e9d1d18697338186fb6d18dfd64207efed97133e28be24f5ada4b3",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 3.9059999999990396,
+      "nodes": {
+        "recipes": {
+          "status": "succeeded",
+          "outputs": {
+            "layers": [
+              {
+                "type": "Linear",
+                "in_features": 1,
+                "out_features": 8,
+                "bias": true
+              },
+              {
+                "type": "RMSNorm",
+                "normalized_shape": 8,
+                "eps": 1e-06
+              },
+              {
+                "type": "GELU"
+              },
+              {
+                "type": "Linear",
+                "in_features": 8,
+                "out_features": 1,
+                "bias": true
+              }
+            ]
+          }
+        },
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "c82f909c2beb4e3b958ef8fb09ed27c1",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "data": {
+          "status": "succeeded",
+          "outputs": {
+            "data": {
+              "elements": 6,
+              "fields": {
+                "labels": {
+                  "dtype": "torch.int64",
+                  "elements": 3,
+                  "preview": [
+                    -2,
+                    0,
+                    2
+                  ],
+                  "shape": [
+                    3,
+                    1
+                  ],
+                  "truncated": false
+                },
+                "x": {
+                  "dtype": "torch.float32",
+                  "elements": 3,
+                  "preview": [
+                    -1.0,
+                    0.0,
+                    1.0
+                  ],
+                  "shape": [
+                    3,
+                    1
+                  ],
+                  "truncated": false
+                }
+              },
+              "handle": "e1f363ecde424a8fbc86e8d08952549b",
+              "kind": "data",
+              "samples": 3
+            }
+          }
+        },
+        "optimizer": {
+          "status": "succeeded",
+          "outputs": {
+            "optimizer": {
+              "kind": "optimizer",
+              "lr": 0.01,
+              "momentum": 0.0,
+              "name": "AdamW",
+              "weight_decay": 0.0
+            }
+          }
+        },
+        "train": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "batch_size": 3,
+              "gradient_norms": [
+                3.5522263050079346,
+                3.3733792304992676,
+                3.2149064540863037,
+                3.0872316360473633
+              ],
+              "loss": 1.2145737409591675,
+              "loss_history": [
+                1.5218572616577148,
+                1.4120248556137085,
+                1.3107976913452148,
+                1.2145737409591675
+              ],
+              "optimizer": {
+                "kind": "optimizer",
+                "lr": 0.01,
+                "momentum": 0.0,
+                "name": "AdamW",
+                "weight_decay": 0.0
+              },
+              "optimizer_state_tensors": 15,
+              "parameter_changed": true,
+              "parameter_count": 33,
+              "samples": 3,
+              "state_sha256_after": "ef70aa28ec2172a91e9cc364ee73fb15806a8f8f447bc73a7bc281942e8579f9",
+              "state_sha256_before": "f86d2455f2d718f366881362c6eaeaa850677eaff7271845ad298938a69dd709",
+              "steps": 4
+            },
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "c82f909c2beb4e3b958ef8fb09ed27c1",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "inspect": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "c82f909c2beb4e3b958ef8fb09ed27c1",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            },
+            "report": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "c82f909c2beb4e3b958ef8fb09ed27c1",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "0.weight",
+                  "shape": [
+                    8,
+                    1
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "0.bias",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "1.weight",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "3.weight",
+                  "shape": [
+                    1,
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1,
+                  "finite": true,
+                  "name": "3.bias",
+                  "shape": [
+                    1
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "family": "sequential",
+                "layers": [
+                  {
+                    "bias": true,
+                    "in_features": 1,
+                    "out_features": 8,
+                    "type": "Linear"
+                  },
+                  {
+                    "eps": 1e-06,
+                    "normalized_shape": 8,
+                    "type": "RMSNorm"
+                  },
+                  {
+                    "type": "GELU"
+                  },
+                  {
+                    "bias": true,
+                    "in_features": 8,
+                    "out_features": 1,
+                    "type": "Linear"
+                  }
+                ],
+                "seed": 42
+              },
+              "state_sha256": "ef70aa28ec2172a91e9cc364ee73fb15806a8f8f447bc73a7bc281942e8579f9",
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "checkpoint": {
+          "status": "succeeded",
+          "outputs": {
+            "artifact": {
+              "id": "c3afd089847a44d09c010bd776eefa82",
+              "job_id": "b8dbaf36ad854c5a884cff5a99300c26",
+              "node_id": "checkpoint",
+              "filename": "transformers-model.zip",
+              "mime": "application/zip",
+              "byte_length": 1000,
+              "sha256": "97cb10392cfd9903c40cba241e25ebde353dacaab8f027ad84829355d191a9a5",
+              "download_url": "/api/graph/artifacts/c3afd089847a44d09c010bd776eefa82"
+            },
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "c82f909c2beb4e3b958ef8fb09ed27c1",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\rmsnorm-adamw.workflow.json",
+      "sha256": "71f09a5b053db4318ec8143ccf8eca8126f44e3ac4aedae83e7433d99c2f8abb",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 3.75,
+      "nodes": {
+        "input": {
+          "status": "succeeded",
+          "outputs": {
+            "layer": {
+              "bias": true,
+              "in_features": 1,
+              "out_features": 8,
+              "type": "Linear"
+            }
+          }
+        },
+        "norm": {
+          "status": "succeeded",
+          "outputs": {
+            "layer": {
+              "eps": 1e-06,
+              "normalized_shape": 8,
+              "type": "RMSNorm"
+            }
+          }
+        },
+        "gelu": {
+          "status": "succeeded",
+          "outputs": {
+            "layer": {
+              "type": "GELU"
+            }
+          }
+        },
+        "output": {
+          "status": "succeeded",
+          "outputs": {
+            "layer": {
+              "bias": true,
+              "in_features": 8,
+              "out_features": 1,
+              "type": "Linear"
+            }
+          }
+        },
+        "first": {
+          "status": "succeeded",
+          "outputs": {
+            "layers": [
+              {
+                "bias": true,
+                "in_features": 1,
+                "out_features": 8,
+                "type": "Linear"
+              },
+              {
+                "eps": 1e-06,
+                "normalized_shape": 8,
+                "type": "RMSNorm"
+              }
+            ]
+          }
+        },
+        "hidden": {
+          "status": "succeeded",
+          "outputs": {
+            "layers": [
+              {
+                "bias": true,
+                "in_features": 1,
+                "out_features": 8,
+                "type": "Linear"
+              },
+              {
+                "eps": 1e-06,
+                "normalized_shape": 8,
+                "type": "RMSNorm"
+              },
+              {
+                "type": "GELU"
+              }
+            ]
+          }
+        },
+        "layers": {
+          "status": "succeeded",
+          "outputs": {
+            "layers": [
+              {
+                "bias": true,
+                "in_features": 1,
+                "out_features": 8,
+                "type": "Linear"
+              },
+              {
+                "eps": 1e-06,
+                "normalized_shape": 8,
+                "type": "RMSNorm"
+              },
+              {
+                "type": "GELU"
+              },
+              {
+                "bias": true,
+                "in_features": 8,
+                "out_features": 1,
+                "type": "Linear"
+              }
+            ]
+          }
+        },
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "6e233e0a83204be5ab8eec7b8ac99b23",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "data": {
+          "status": "succeeded",
+          "outputs": {
+            "data": {
+              "elements": 6,
+              "fields": {
+                "labels": {
+                  "dtype": "torch.int64",
+                  "elements": 3,
+                  "preview": [
+                    -2,
+                    0,
+                    2
+                  ],
+                  "shape": [
+                    3,
+                    1
+                  ],
+                  "truncated": false
+                },
+                "x": {
+                  "dtype": "torch.float32",
+                  "elements": 3,
+                  "preview": [
+                    -1.0,
+                    0.0,
+                    1.0
+                  ],
+                  "shape": [
+                    3,
+                    1
+                  ],
+                  "truncated": false
+                }
+              },
+              "handle": "e77d7ff1467f458e9e2e61c8113b76f6",
+              "kind": "data",
+              "samples": 3
+            }
+          }
+        },
+        "optimizer": {
+          "status": "succeeded",
+          "outputs": {
+            "optimizer": {
+              "kind": "optimizer",
+              "lr": 0.01,
+              "momentum": 0.0,
+              "name": "AdamW",
+              "weight_decay": 0.0
+            }
+          }
+        },
+        "train": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "batch_size": 3,
+              "gradient_norms": [
+                3.5522263050079346,
+                3.3733792304992676,
+                3.2149064540863037,
+                3.0872316360473633,
+                2.9781854152679443,
+                2.875762701034546,
+                2.774162530899048,
+                2.6704139709472656,
+                2.562368392944336,
+                2.4481289386749268
+              ],
+              "loss": 0.6711440086364746,
+              "loss_history": [
+                1.5218572616577148,
+                1.4120248556137085,
+                1.3107976913452148,
+                1.2145737409591675,
+                1.1204174757003784,
+                1.0275864601135254,
+                0.936052143573761,
+                0.8459458351135254,
+                0.7575168609619141,
+                0.6711440086364746
+              ],
+              "optimizer": {
+                "kind": "optimizer",
+                "lr": 0.01,
+                "momentum": 0.0,
+                "name": "AdamW",
+                "weight_decay": 0.0
+              },
+              "optimizer_state_tensors": 15,
+              "parameter_changed": true,
+              "parameter_count": 33,
+              "samples": 3,
+              "state_sha256_after": "ee79c0e4541ac07a7ff0095023bd828b9062be001f580b6b939f63f3a00e490b",
+              "state_sha256_before": "f86d2455f2d718f366881362c6eaeaa850677eaff7271845ad298938a69dd709",
+              "steps": 10
+            },
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "6e233e0a83204be5ab8eec7b8ac99b23",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "inspect": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "6e233e0a83204be5ab8eec7b8ac99b23",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            },
+            "report": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "6e233e0a83204be5ab8eec7b8ac99b23",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "0.weight",
+                  "shape": [
+                    8,
+                    1
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "0.bias",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "1.weight",
+                  "shape": [
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 8,
+                  "finite": true,
+                  "name": "3.weight",
+                  "shape": [
+                    1,
+                    8
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1,
+                  "finite": true,
+                  "name": "3.bias",
+                  "shape": [
+                    1
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "family": "sequential",
+                "layers": [
+                  {
+                    "bias": true,
+                    "in_features": 1,
+                    "out_features": 8,
+                    "type": "Linear"
+                  },
+                  {
+                    "eps": 1e-06,
+                    "normalized_shape": 8,
+                    "type": "RMSNorm"
+                  },
+                  {
+                    "type": "GELU"
+                  },
+                  {
+                    "bias": true,
+                    "in_features": 8,
+                    "out_features": 1,
+                    "type": "Linear"
+                  }
+                ],
+                "seed": 42
+              },
+              "state_sha256": "ee79c0e4541ac07a7ff0095023bd828b9062be001f580b6b939f63f3a00e490b",
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "checkpoint": {
+          "status": "succeeded",
+          "outputs": {
+            "artifact": {
+              "id": "65c89a70b4504032a67afdc0f1cb8f68",
+              "job_id": "322bb631b36f4b86b6bd65fafe85b114",
+              "node_id": "checkpoint",
+              "filename": "transformers-model.zip",
+              "mime": "application/zip",
+              "byte_length": 1002,
+              "sha256": "99a17fed7ccccdcebc4a2f94289c4878a3304c8c1102685db29c19d988dee673",
+              "download_url": "/api/graph/artifacts/65c89a70b4504032a67afdc0f1cb8f68"
+            },
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "6e233e0a83204be5ab8eec7b8ac99b23",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "load": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "5f3f63c6ec274bb79425a6fc103b7bc9",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        },
+        "evaluate": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "loss": 0.5873170495033264,
+              "parameter_changed": false,
+              "samples": 3,
+              "state_sha256": "ee79c0e4541ac07a7ff0095023bd828b9062be001f580b6b939f63f3a00e490b"
+            },
+            "model": {
+              "architecture": "Sequential",
+              "device": "cpu",
+              "family": "sequential",
+              "handle": "5f3f63c6ec274bb79425a6fc103b7bc9",
+              "kind": "model",
+              "parameter_count": 33,
+              "parameter_tensors": 5,
+              "trainable_parameters": 33
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\text-pipeline.workflow.json",
+      "sha256": "287db142aee060491bceb7ce6b0c7f71927ddfa0974dcdaf14f76c046369387c",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 5.859000000000378,
+      "nodes": {
+        "config": {
+          "status": "succeeded",
+          "outputs": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "gpt2",
+              "values": {
+                "bos_token_id": 2,
+                "eos_token_id": 3,
+                "n_ctx": 32,
+                "n_embd": 16,
+                "n_head": 2,
+                "n_layer": 1,
+                "n_positions": 32,
+                "pad_token_id": 0,
+                "vocab_size": 16
+              }
+            }
+          }
+        },
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "10ad5c643208474e9b302cde02e383f8",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            }
+          }
+        },
+        "tokenizer": {
+          "status": "succeeded",
+          "outputs": {
+            "tokenizer": {
+              "handle": "5dc2bfc22a114b08a5a649ff2535ab1a",
+              "implementation": "PreTrainedTokenizerFast/WordLevel",
+              "kind": "tokenizer",
+              "padding_side": "left",
+              "vocab_size": 16
+            }
+          }
+        },
+        "pipeline": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "10ad5c643208474e9b302cde02e383f8",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            },
+            "result": {
+              "outputs": [
+                [
+                  {
+                    "generated_text": "hello worldworld world world"
+                  }
+                ],
+                [
+                  {
+                    "generated_text": "hellohello hello hello"
+                  }
+                ]
+              ],
+              "task": "text-generation"
+            }
+          }
+        },
+        "inspect": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "10ad5c643208474e9b302cde02e383f8",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            },
+            "report": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "10ad5c643208474e9b302cde02e383f8",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.wte.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "transformer.wpe.weight",
+                  "shape": [
+                    32,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 768,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.weight",
+                  "shape": [
+                    16,
+                    48
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 48,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.bias",
+                  "shape": [
+                    48
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.weight",
+                  "shape": [
+                    16,
+                    64
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 64,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.bias",
+                  "shape": [
+                    64
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.weight",
+                  "shape": [
+                    64,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.ln_f.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.ln_f.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "config": {
+                  "kind": "hf-config",
+                  "model_type": "gpt2",
+                  "values": {
+                    "bos_token_id": 2,
+                    "eos_token_id": 3,
+                    "n_ctx": 32,
+                    "n_embd": 16,
+                    "n_head": 2,
+                    "n_layer": 1,
+                    "n_positions": 32,
+                    "pad_token_id": 0,
+                    "vocab_size": 16
+                  }
+                },
+                "family": "huggingface",
+                "seed": 42,
+                "task": "causal-lm"
+              },
+              "state_sha256": "9998d13cb1fcf4a1e4e1e21ecce5f4f137f1a6c23dcf1b5d83efe364e74652e7",
+              "trainable_parameters": 4080
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\tiny-gpt2.workflow.json",
+      "sha256": "5f9cfda7180d5c1ae4247c4b10feb3ae89f4a28b5cf49d108af5a370c16e695f",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 6.015999999999622,
+      "nodes": {
+        "config": {
+          "status": "succeeded",
+          "outputs": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "gpt2",
+              "values": {
+                "bos_token_id": 2,
+                "eos_token_id": 3,
+                "n_ctx": 32,
+                "n_embd": 16,
+                "n_head": 2,
+                "n_layer": 1,
+                "n_positions": 32,
+                "pad_token_id": 0,
+                "vocab_size": 16
+              }
+            }
+          }
+        },
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "48d53888f21c43b08aa7b7460f0b6751",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            }
+          }
+        },
+        "data": {
+          "status": "succeeded",
+          "outputs": {
+            "data": {
+              "elements": 24,
+              "fields": {
+                "attention_mask": {
+                  "dtype": "torch.int64",
+                  "elements": 8,
+                  "preview": [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "shape": [
+                    2,
+                    4
+                  ],
+                  "truncated": false
+                },
+                "input_ids": {
+                  "dtype": "torch.int64",
+                  "elements": 8,
+                  "preview": [
+                    2,
+                    4,
+                    5,
+                    3,
+                    2,
+                    5,
+                    4,
+                    3
+                  ],
+                  "shape": [
+                    2,
+                    4
+                  ],
+                  "truncated": false
+                },
+                "labels": {
+                  "dtype": "torch.int64",
+                  "elements": 8,
+                  "preview": [
+                    2,
+                    4,
+                    5,
+                    3,
+                    2,
+                    5,
+                    4,
+                    3
+                  ],
+                  "shape": [
+                    2,
+                    4
+                  ],
+                  "truncated": false
+                }
+              },
+              "handle": "0521848043cc4f9db6cdde45f9f45801",
+              "kind": "data",
+              "samples": 2
+            }
+          }
+        },
+        "optimizer": {
+          "status": "succeeded",
+          "outputs": {
+            "optimizer": {
+              "kind": "optimizer",
+              "lr": 0.001,
+              "momentum": 0.0,
+              "name": "AdamW",
+              "weight_decay": 0.0
+            }
+          }
+        },
+        "train": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "batch_size": 2,
+              "gradient_norms": [
+                2.630542039871216,
+                2.629718780517578,
+                2.5192432403564453
+              ],
+              "loss": 2.767927885055542,
+              "loss_history": [
+                2.8467037677764893,
+                2.809612989425659,
+                2.767927885055542
+              ],
+              "optimizer": {
+                "kind": "optimizer",
+                "lr": 0.001,
+                "momentum": 0.0,
+                "name": "AdamW",
+                "weight_decay": 0.0
+              },
+              "optimizer_state_tensors": 48,
+              "parameter_changed": true,
+              "parameter_count": 4080,
+              "samples": 2,
+              "state_sha256_after": "7be2579126fbdeae2cba265fd8ab0625d7e0ea80859036992b605ac299d42bea",
+              "state_sha256_before": "9998d13cb1fcf4a1e4e1e21ecce5f4f137f1a6c23dcf1b5d83efe364e74652e7",
+              "steps": 3
+            },
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "48d53888f21c43b08aa7b7460f0b6751",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            }
+          }
+        },
+        "generate": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "48d53888f21c43b08aa7b7460f0b6751",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            },
+            "result": {
+              "attention_mask": [
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ],
+              "input_ids": [
+                [
+                  2,
+                  4,
+                  5,
+                  3
+                ],
+                [
+                  2,
+                  5,
+                  4,
+                  3
+                ]
+              ],
+              "max_new_tokens": 4,
+              "sequences": [
+                [
+                  2,
+                  4,
+                  5,
+                  3,
+                  3
+                ],
+                [
+                  2,
+                  5,
+                  4,
+                  3,
+                  3
+                ]
+              ],
+              "shape": [
+                2,
+                5
+              ]
+            }
+          }
+        },
+        "inspect": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "48d53888f21c43b08aa7b7460f0b6751",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            },
+            "report": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "48d53888f21c43b08aa7b7460f0b6751",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.wte.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "transformer.wpe.weight",
+                  "shape": [
+                    32,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 768,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.weight",
+                  "shape": [
+                    16,
+                    48
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 48,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.bias",
+                  "shape": [
+                    48
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.weight",
+                  "shape": [
+                    16,
+                    64
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 64,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.bias",
+                  "shape": [
+                    64
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.weight",
+                  "shape": [
+                    64,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.ln_f.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.ln_f.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "config": {
+                  "kind": "hf-config",
+                  "model_type": "gpt2",
+                  "values": {
+                    "bos_token_id": 2,
+                    "eos_token_id": 3,
+                    "n_ctx": 32,
+                    "n_embd": 16,
+                    "n_head": 2,
+                    "n_layer": 1,
+                    "n_positions": 32,
+                    "pad_token_id": 0,
+                    "vocab_size": 16
+                  }
+                },
+                "family": "huggingface",
+                "seed": 42,
+                "task": "causal-lm"
+              },
+              "state_sha256": "7be2579126fbdeae2cba265fd8ab0625d7e0ea80859036992b605ac299d42bea",
+              "trainable_parameters": 4080
+            }
+          }
+        },
+        "checkpoint": {
+          "status": "succeeded",
+          "outputs": {
+            "artifact": {
+              "id": "35399146d30343e9b1821556957f3207",
+              "job_id": "5e5a111b7973416c84cadfd5aa5405ef",
+              "node_id": "checkpoint",
+              "filename": "transformers-model.zip",
+              "mime": "application/zip",
+              "byte_length": 16340,
+              "sha256": "1fc19b3715dec39ea0cb8dd2663c3d15c3ebbc6628482c189a93eed8956a8d62",
+              "download_url": "/api/graph/artifacts/35399146d30343e9b1821556957f3207"
+            },
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "48d53888f21c43b08aa7b7460f0b6751",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\token-classification.workflow.json",
+      "sha256": "89cb1c8c55f2d7ced3e9e051466f649d6d8fc6a2c36996207a4102c70a895ab1",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 6.672000000002299,
+      "nodes": {
+        "config": {
+          "status": "succeeded",
+          "outputs": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "distilbert",
+              "values": {
+                "attention_dropout": 0.1,
+                "dim": 16,
+                "dropout": 0.1,
+                "hidden_dim": 32,
+                "max_position_embeddings": 32,
+                "n_heads": 2,
+                "n_layers": 1,
+                "num_labels": 2,
+                "pad_token_id": 0,
+                "vocab_size": 17
+              }
+            }
+          }
+        },
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertForTokenClassification",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "4b7eeaf39eec4c93a4278b5a50737d21",
+              "kind": "model",
+              "parameter_count": 3074,
+              "parameter_tensors": 22,
+              "trainable_parameters": 3074
+            }
+          }
+        },
+        "tokenizer": {
+          "status": "succeeded",
+          "outputs": {
+            "tokenizer": {
+              "handle": "fef986c5d44e485d853e4978f110569a",
+              "implementation": "PreTrainedTokenizerFast/WordLevel",
+              "kind": "tokenizer",
+              "padding_side": "left",
+              "vocab_size": 17
+            }
+          }
+        },
+        "pipeline": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertForTokenClassification",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "4b7eeaf39eec4c93a4278b5a50737d21",
+              "kind": "model",
+              "parameter_count": 3074,
+              "parameter_tensors": 22,
+              "trainable_parameters": 3074
+            },
+            "result": {
+              "outputs": [
+                [
+                  {
+                    "end": 5,
+                    "entity": "LABEL_0",
+                    "index": 0,
+                    "score": 0.5243923664093018,
+                    "start": 0,
+                    "word": "hello"
+                  },
+                  {
+                    "end": 11,
+                    "entity": "LABEL_1",
+                    "index": 1,
+                    "score": 0.5452240109443665,
+                    "start": 6,
+                    "word": "world"
+                  }
+                ]
+              ],
+              "task": "token-classification"
+            }
+          }
+        },
+        "inspect": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "DistilBertForTokenClassification",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "4b7eeaf39eec4c93a4278b5a50737d21",
+              "kind": "model",
+              "parameter_count": 3074,
+              "parameter_tensors": 22,
+              "trainable_parameters": 3074
+            },
+            "report": {
+              "architecture": "DistilBertForTokenClassification",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "4b7eeaf39eec4c93a4278b5a50737d21",
+              "kind": "model",
+              "parameter_count": 3074,
+              "parameter_tensors": 22,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 272,
+                  "finite": true,
+                  "name": "distilbert.embeddings.word_embeddings.weight",
+                  "shape": [
+                    17,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "distilbert.embeddings.position_embeddings.weight",
+                  "shape": [
+                    32,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.embeddings.LayerNorm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.embeddings.LayerNorm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.q_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.q_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.k_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.k_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.v_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.v_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.out_lin.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.attention.out_lin.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.sa_layer_norm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.sa_layer_norm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.ffn.lin1.weight",
+                  "shape": [
+                    32,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.ffn.lin1.bias",
+                  "shape": [
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.ffn.lin2.weight",
+                  "shape": [
+                    16,
+                    32
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.ffn.lin2.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.output_layer_norm.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "distilbert.transformer.layer.0.output_layer_norm.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 32,
+                  "finite": true,
+                  "name": "classifier.weight",
+                  "shape": [
+                    2,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 2,
+                  "finite": true,
+                  "name": "classifier.bias",
+                  "shape": [
+                    2
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "config": {
+                  "kind": "hf-config",
+                  "model_type": "distilbert",
+                  "values": {
+                    "attention_dropout": 0.1,
+                    "dim": 16,
+                    "dropout": 0.1,
+                    "hidden_dim": 32,
+                    "max_position_embeddings": 32,
+                    "n_heads": 2,
+                    "n_layers": 1,
+                    "num_labels": 2,
+                    "pad_token_id": 0,
+                    "vocab_size": 17
+                  }
+                },
+                "family": "huggingface",
+                "seed": 42,
+                "task": "token-classification"
+              },
+              "state_sha256": "d1d4aaae9e8182712294799b69237cde74e30a882245aba8bab4d8bf8102a123",
+              "trainable_parameters": 3074
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "examples\\transformers\\tokenize-train-generate.workflow.json",
+      "sha256": "8a1754a7444088582a6d1a2d0a7c86f0a803a0388151e9ab10089cfe3d7a7acb",
+      "status": "succeeded",
+      "error": null,
+      "seconds": 6.702999999997701,
+      "nodes": {
+        "config": {
+          "status": "succeeded",
+          "outputs": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "gpt2",
+              "values": {
+                "bos_token_id": 2,
+                "eos_token_id": 3,
+                "n_ctx": 32,
+                "n_embd": 16,
+                "n_head": 2,
+                "n_layer": 1,
+                "n_positions": 32,
+                "pad_token_id": 0,
+                "vocab_size": 16
+              }
+            }
+          }
+        },
+        "model": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "1e194ca65c01426ca54015003979460d",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            }
+          }
+        },
+        "tokenizer": {
+          "status": "succeeded",
+          "outputs": {
+            "tokenizer": {
+              "handle": "b564fe42324042818253d9c66878e50e",
+              "implementation": "PreTrainedTokenizerFast/WordLevel",
+              "kind": "tokenizer",
+              "padding_side": "left",
+              "vocab_size": 16
+            }
+          }
+        },
+        "data": {
+          "status": "succeeded",
+          "outputs": {
+            "data": {
+              "elements": 12,
+              "fields": {
+                "attention_mask": {
+                  "dtype": "torch.int64",
+                  "elements": 4,
+                  "preview": [
+                    1,
+                    1,
+                    0,
+                    1
+                  ],
+                  "shape": [
+                    2,
+                    2
+                  ],
+                  "truncated": false
+                },
+                "input_ids": {
+                  "dtype": "torch.int64",
+                  "elements": 4,
+                  "preview": [
+                    4,
+                    5,
+                    0,
+                    4
+                  ],
+                  "shape": [
+                    2,
+                    2
+                  ],
+                  "truncated": false
+                },
+                "labels": {
+                  "dtype": "torch.int64",
+                  "elements": 4,
+                  "preview": [
+                    4,
+                    5,
+                    -100,
+                    4
+                  ],
+                  "shape": [
+                    2,
+                    2
+                  ],
+                  "truncated": false
+                }
+              },
+              "handle": "ef0c79fef7054efcbe437e63a7eadc50",
+              "kind": "data",
+              "samples": 2
+            }
+          }
+        },
+        "optimizer": {
+          "status": "succeeded",
+          "outputs": {
+            "optimizer": {
+              "kind": "optimizer",
+              "lr": 0.001,
+              "momentum": 0.0,
+              "name": "AdamW",
+              "weight_decay": 0.0
+            }
+          }
+        },
+        "train": {
+          "status": "succeeded",
+          "outputs": {
+            "metrics": {
+              "batch_size": 2,
+              "gradient_norms": [
+                4.769845008850098,
+                4.843593120574951
+              ],
+              "loss": 2.7692666053771973,
+              "loss_history": [
+                2.8422999382019043,
+                2.7692666053771973
+              ],
+              "optimizer": {
+                "kind": "optimizer",
+                "lr": 0.001,
+                "momentum": 0.0,
+                "name": "AdamW",
+                "weight_decay": 0.0
+              },
+              "optimizer_state_tensors": 48,
+              "parameter_changed": true,
+              "parameter_count": 4080,
+              "samples": 2,
+              "state_sha256_after": "852bb780dcf6ec1d7193b4a4678861b370825150090eef779b0bdbc692a8c92c",
+              "state_sha256_before": "9998d13cb1fcf4a1e4e1e21ecce5f4f137f1a6c23dcf1b5d83efe364e74652e7",
+              "steps": 2
+            },
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "1e194ca65c01426ca54015003979460d",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            }
+          }
+        },
+        "forward": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "1e194ca65c01426ca54015003979460d",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            },
+            "result": {
+              "outputs": {
+                "logits": {
+                  "dtype": "torch.float32",
+                  "elements": 64,
+                  "preview": [
+                    0.14595775306224823,
+                    -0.16481700539588928,
+                    0.059990860521793365,
+                    -0.08253806084394455,
+                    0.19175554811954498,
+                    0.042679160833358765,
+                    -0.1100507602095604,
+                    -0.05745662376284599,
+                    0.0019877643790096045,
+                    -0.1047009751200676,
+                    0.12815140187740326,
+                    -0.12702636420726776,
+                    0.05819636210799217,
+                    0.012783883139491081,
+                    0.08984512090682983,
+                    -0.05624314025044441,
+                    0.016803989186882973,
+                    -0.012604068964719772,
+                    -0.10012804716825485,
+                    -0.03345609828829765,
+                    -0.019368527457118034,
+                    0.28844642639160156,
+                    0.03160308301448822,
+                    0.15903237462043762,
+                    -0.0006151550333015621,
+                    -0.012684879824519157,
+                    0.08146033436059952,
+                    0.05012772977352142,
+                    -0.03307072073221207,
+                    0.11056075990200043,
+                    -0.06588057428598404,
+                    0.14377166330814362,
+                    0.21311110258102417,
+                    -0.19415751099586487,
+                    0.026547402143478394,
+                    -0.05627526342868805,
+                    0.12143260985612869,
+                    0.05023745074868202,
+                    -0.0785292312502861,
+                    -0.0965401828289032,
+                    -0.0034211708698421717,
+                    -0.07749523222446442,
+                    0.0947507694363594,
+                    -0.08853060007095337,
+                    0.017354490235447884,
+                    -0.005199599079787731,
+                    0.06179739534854889,
+                    -0.001752775628119707,
+                    0.08246943354606628,
+                    -0.12970994412899017,
+                    -0.12546417117118835,
+                    0.05437985435128212,
+                    0.17271453142166138,
+                    0.0012618540786206722,
+                    -0.07270631194114685,
+                    0.019923347979784012,
+                    -0.0052212816663086414,
+                    0.00363289937376976,
+                    0.014726466499269009,
+                    -0.046997833997011185,
+                    -0.04432305693626404,
+                    0.10574142634868622,
+                    0.09218905121088028,
+                    0.038867730647325516
+                  ],
+                  "shape": [
+                    2,
+                    2,
+                    16
+                  ],
+                  "truncated": false
+                },
+                "past_key_values": "DynamicCache"
+              }
+            }
+          }
+        },
+        "generate": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "1e194ca65c01426ca54015003979460d",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            },
+            "result": {
+              "attention_mask": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "input_ids": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  0,
+                  4
+                ]
+              ],
+              "max_new_tokens": 3,
+              "sequences": [
+                [
+                  4,
+                  5,
+                  5,
+                  5,
+                  5
+                ],
+                [
+                  0,
+                  4,
+                  4,
+                  4,
+                  4
+                ]
+              ],
+              "shape": [
+                2,
+                5
+              ]
+            }
+          }
+        },
+        "inspect": {
+          "status": "succeeded",
+          "outputs": {
+            "model": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "1e194ca65c01426ca54015003979460d",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "trainable_parameters": 4080
+            },
+            "report": {
+              "architecture": "GPT2LMHeadModel",
+              "device": "cpu",
+              "family": "huggingface",
+              "handle": "1e194ca65c01426ca54015003979460d",
+              "kind": "model",
+              "parameter_count": 4080,
+              "parameter_tensors": 16,
+              "parameters": [
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.wte.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 512,
+                  "finite": true,
+                  "name": "transformer.wpe.weight",
+                  "shape": [
+                    32,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_1.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 768,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.weight",
+                  "shape": [
+                    16,
+                    48
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 48,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_attn.bias",
+                  "shape": [
+                    48
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 256,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.weight",
+                  "shape": [
+                    16,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.attn.c_proj.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.ln_2.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.weight",
+                  "shape": [
+                    16,
+                    64
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 64,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_fc.bias",
+                  "shape": [
+                    64
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 1024,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.weight",
+                  "shape": [
+                    64,
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.h.0.mlp.c_proj.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.ln_f.weight",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                },
+                {
+                  "dtype": "torch.float32",
+                  "elements": 16,
+                  "finite": true,
+                  "name": "transformer.ln_f.bias",
+                  "shape": [
+                    16
+                  ],
+                  "trainable": true
+                }
+              ],
+              "recipe": {
+                "config": {
+                  "kind": "hf-config",
+                  "model_type": "gpt2",
+                  "values": {
+                    "bos_token_id": 2,
+                    "eos_token_id": 3,
+                    "n_ctx": 32,
+                    "n_embd": 16,
+                    "n_head": 2,
+                    "n_layer": 1,
+                    "n_positions": 32,
+                    "pad_token_id": 0,
+                    "vocab_size": 16
+                  }
+                },
+                "family": "huggingface",
+                "seed": 42,
+                "task": "causal-lm"
+              },
+              "state_sha256": "852bb780dcf6ec1d7193b4a4678861b370825150090eef779b0bdbc692a8c92c",
+              "trainable_parameters": 4080
+            }
+          }
+        }
+      }
+    }
+  ],
+  "passed": 13,
+  "failed": 0
+}

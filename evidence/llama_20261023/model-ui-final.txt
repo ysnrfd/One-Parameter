@@ -1,0 +1,42 @@
+✓ normalization owns its data and clamps only the view
+✓ node creation merges literal input defaults and settings without sharing objects
+✓ node IDs are unique across bulk creation
+✓ successive palette placements find nearby distinct non-overlapping positions without moving existing nodes
+✓ palette placement accounts for tall port lists while explicit adds, imports and paste keep their positions
+✓ connection validates types and leaves its input graph unchanged
+✓ one incoming edge replaces the old wire while outgoing fan-out remains
+✓ self-loops and multi-node cycles are rejected before mutation
+✓ missing nodes and ports are explicit errors
+✓ incompatible port types reject without replacing existing edges
+✓ runtime-compatible conversions include config/dataset object and string run
+✓ copy retains only internal edges and paste remaps both ends
+✓ copy and paste never mutate clipboard or baseline
+✓ delete cleans every incident edge but preserves unrelated content
+✓ undo and redo capture real graph state and discard alternate futures
+✓ history limit is bounded and clone isolation is complete
+✓ literal parser handles all available node field types
+✓ invalid literals do not silently turn into zero, null, or a different type
+✓ configuration literals preserve every decimal digit of 64-bit seeds
+✓ lossless transport retains positive and negative wide integer literals
+✓ number-looking strings and escaped content never become numeric wrappers
+✓ strict typed integer edits reject precision loss while generic JSON preserves exact data
+✓ decimal and exponent float syntax remains valid and finite
+✓ JSON grammar and duplicate decoded keys fail explicitly
+✓ negative zero survives nested cloning, JSON serialization and configuration
+✓ wide values survive move, duplicate, copy/paste, undo and exported workflow import
+✓ pretty encoding is valid JSON and never mistakes a normal raw property for a wrapper
+✓ disconnected node documents retain their definitions and settings
+✓ configuration seed normalization never bypasses JSON grammar
+✓ unsafe decimal and exponent seed numbers reject before rounded digits can be committed
+✓ strict seed normalization retains exact literals and accepts safe integer exponent notation
+✓ sparse arrays encode valid JSON null slots without reading inherited indexes
+✓ unsafe integral Number values encode their actual binary64 integer rather than rounded display digits
+✓ large floating edits and opaque integers survive serialization together with negative zero
+✓ dense architecture builder creates editable many-parameter modules and distinct optimizer/training blocks
+✓ dense builder accepts arbitrary bounded hidden layer counts, widths and linear-only models
+✓ dense builder rejects invalid widths, enum values, nonfinite rates and out-of-range seeds before graph mutation
+✓ dense builder preserves custom tensor data exactly and keeps recipe branches independent
+✓ Transformers jobs are identified only by their captured executable node types
+✓ runtime observations derive parameter counts, loss and artifacts only from completed node outputs
+✓ observation previews tolerate failure, nonfinite samples and outputs without training
+Passed 41 graph editor model tests.

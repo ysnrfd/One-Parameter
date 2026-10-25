@@ -1,0 +1,8 @@
+Resolved 1 package in 1m 01s
+   Building single-parameter-observatory @ file:///C:/Users/Atieh/Documents/ChatGPT/One%20Parameter
+      Built single-parameter-observatory @ file:///C:/Users/Atieh/Documents/ChatGPT/One%20Parameter
+Prepared 1 package in 3m 30s
+Uninstalled 1 package in 300ms
+Installed 1 package in 944ms
+ - single-parameter-observatory==1.2.0 (from file:///C:/Users/Atieh/Documents/ChatGPT/One%20Parameter)
+ + single-parameter-observatory==1.3.0 (from file:///C:/Users/Atieh/Documents/ChatGPT/One%20Parameter)

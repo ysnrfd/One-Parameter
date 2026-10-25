@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: Table of Contents page with header, title, multi-level list, and footer.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: N/A\nFIGURES: N/A\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857773,
+  "id": "202610012029310cbc0007044648b0",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "202610012029310cbc0007044648b0",
+  "usage": {
+    "completion_tokens": 54,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2200
+  }
+}

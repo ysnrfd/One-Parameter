@@ -1,0 +1,61 @@
+{
+  "repo_id": "hf-internal-testing/tiny-random-gpt2",
+  "revision": "71034c5d8bde858ff824298bdedc65515b97d2b9",
+  "cache_snapshot": "C:\\Users\\Atieh\\.cache\\huggingface\\hub\\models--hf-internal-testing--tiny-random-gpt2\\snapshots\\71034c5d8bde858ff824298bdedc65515b97d2b9",
+  "token": false,
+  "downloaded_patterns": [
+    "config.json",
+    "model.safetensors",
+    "tokenizer.json",
+    "tokenizer_config.json",
+    "special_tokens_map.json",
+    "vocab.json",
+    "merges.txt"
+  ],
+  "files": [
+    {
+      "path": "config.json",
+      "bytes": 807,
+      "sha256": "9ad49cd2ff58daa38243e4eeaac13b1259786d9418e45bfc01a1fd1fe1089e77",
+      "url": "https://huggingface.co/hf-internal-testing/tiny-random-gpt2/resolve/71034c5d8bde858ff824298bdedc65515b97d2b9/config.json"
+    },
+    {
+      "path": "model.safetensors",
+      "bytes": 453864,
+      "sha256": "8111d5afb0715dbf5a31396d31432cb56370ba23f6650a035ea0fc8a20b4e500",
+      "url": "https://huggingface.co/hf-internal-testing/tiny-random-gpt2/resolve/71034c5d8bde858ff824298bdedc65515b97d2b9/model.safetensors"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 17454,
+      "sha256": "e62fc5f642751cf5d0bf542adb6aba88624b696f26f5f40aff7e4a53788eb85c",
+      "url": "https://huggingface.co/hf-internal-testing/tiny-random-gpt2/resolve/71034c5d8bde858ff824298bdedc65515b97d2b9/tokenizer.json"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 236,
+      "sha256": "1e664fe1a5bc404dcb204a76c76bc4100c91bd12c66098d8a8090b11b6ee6f0d",
+      "url": "https://huggingface.co/hf-internal-testing/tiny-random-gpt2/resolve/71034c5d8bde858ff824298bdedc65515b97d2b9/tokenizer_config.json"
+    },
+    {
+      "path": "special_tokens_map.json",
+      "bytes": 90,
+      "sha256": "c0b3c279b6ecdb71996a86ffb4d4ab94dfdb5df95f00bac9515688faef2ff5dd",
+      "url": "https://huggingface.co/hf-internal-testing/tiny-random-gpt2/resolve/71034c5d8bde858ff824298bdedc65515b97d2b9/special_tokens_map.json"
+    },
+    {
+      "path": "vocab.json",
+      "bytes": 10419,
+      "sha256": "eda8bd11b5763cec815aa93b5524cf7aeed42b49c772134355451460f46c299c",
+      "url": "https://huggingface.co/hf-internal-testing/tiny-random-gpt2/resolve/71034c5d8bde858ff824298bdedc65515b97d2b9/vocab.json"
+    },
+    {
+      "path": "merges.txt",
+      "bytes": 4883,
+      "sha256": "150ce8950a91d89c2711cc5d0ca54895236a479a36913137409ac254806bf468",
+      "url": "https://huggingface.co/hf-internal-testing/tiny-random-gpt2/resolve/71034c5d8bde858ff824298bdedc65515b97d2b9/merges.txt"
+    }
+  ],
+  "total_bytes": 487753,
+  "scope": "Explicit public tiny demo model acquisition for cached-only pretrained execution; not a quality model; not redistributed in release source"
+}

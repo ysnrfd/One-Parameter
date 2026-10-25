@@ -1,0 +1,29 @@
+test_large_dataset_within_json_budget_can_be_transformed (single_parameter_observatory.tests.test_studio_plugins.TestScriptSandbox.test_large_dataset_within_json_budget_can_be_transformed) ... ERROR
+test_negative_zero_input_and_computation_keep_their_sign (single_parameter_observatory.tests.test_studio_plugins.TestScriptSandbox.test_negative_zero_input_and_computation_keep_their_sign) ... ERROR
+
+======================================================================
+ERROR: test_large_dataset_within_json_budget_can_be_transformed (single_parameter_observatory.tests.test_studio_plugins.TestScriptSandbox.test_large_dataset_within_json_budget_can_be_transformed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Atieh\Documents\ChatGPT\One Parameter\single_parameter_observatory\tests\test_studio_plugins.py", line 398, in test_large_dataset_within_json_budget_can_be_transformed
+    result = execute_script(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\Atieh\Documents\ChatGPT\One Parameter\single_parameter_observatory\studio_plugins.py", line 541, in execute_script
+    raise ScriptSandboxError(
+single_parameter_observatory.studio_plugins.ScriptSandboxError: Script runtime initialization exceeded its 30-second startup deadline (last phase: runtime import)
+
+======================================================================
+ERROR: test_negative_zero_input_and_computation_keep_their_sign (single_parameter_observatory.tests.test_studio_plugins.TestScriptSandbox.test_negative_zero_input_and_computation_keep_their_sign)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Atieh\Documents\ChatGPT\One Parameter\single_parameter_observatory\tests\test_studio_plugins.py", line 349, in test_negative_zero_input_and_computation_keep_their_sign
+    result = execute_script(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\Atieh\Documents\ChatGPT\One Parameter\single_parameter_observatory\studio_plugins.py", line 541, in execute_script
+    raise ScriptSandboxError(
+single_parameter_observatory.studio_plugins.ScriptSandboxError: Script runtime initialization exceeded its 30-second startup deadline (last phase: runtime import)
+
+----------------------------------------------------------------------
+Ran 2 tests in 69.486s
+
+FAILED (errors=2)

@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: Body page of an engineering audit report containing introductory text, a software environment table, a section header, descriptive text, and a verification claims table.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: Two tables present; both are horizontally centered with dark blue headers (white text), clear gridlines, and no column overflow or text clipping within cells.\nFIGURES: N/A\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857783,
+  "id": "20261001202940bf08b3f19e5244f3",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20261001202940bf08b3f19e5244f3",
+  "usage": {
+    "completion_tokens": 94,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2240
+  }
+}

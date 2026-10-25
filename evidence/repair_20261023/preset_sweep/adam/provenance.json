@@ -1,0 +1,208 @@
+{
+  "environment": {
+    "python_version": "3.12.15",
+    "python_executable": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\.venv\\Scripts\\python.exe",
+    "torch_version": "2.14.1+cpu",
+    "torch_file": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\.venv\\Lib\\site-packages\\torch\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "operating_system": "Windows 11",
+    "device": "cpu",
+    "default_dtype": "torch.float32",
+    "num_threads": 6,
+    "numpy_version": "2.5.4",
+    "matplotlib_version": "3.11.2",
+    "matplotlib_backend": "tkagg",
+    "parallel_info": "cuda_available=False mps_available=True"
+  },
+  "optimizer_source_audit": {
+    "optimizer_name": "adam",
+    "class_name": "Adam",
+    "class_module": "torch.optim.adam",
+    "source_file": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\.venv\\Lib\\site-packages\\torch\\optim\\adam.py",
+    "constructor_parameters": [
+      "params",
+      "lr",
+      "betas",
+      "eps",
+      "weight_decay",
+      "amsgrad",
+      "foreach",
+      "maximize",
+      "capturable",
+      "differentiable",
+      "fused",
+      "decoupled_weight_decay"
+    ],
+    "supported_hyperparameters": [
+      "lr",
+      "weight_decay",
+      "betas",
+      "eps",
+      "amsgrad"
+    ],
+    "dropped_hyperparameters": [],
+    "group_flags": {
+      "amsgrad": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "capturable": false,
+      "decoupled_weight_decay": false,
+      "differentiable": false,
+      "eps": 1e-08,
+      "foreach": null,
+      "fused": null,
+      "lr": 0.1,
+      "maximize": false,
+      "weight_decay": 0.01
+    },
+    "source_findings": {
+      "source_text_available": true,
+      "single_tensor_function_found": true,
+      "uses_lerp_for_moment1": true,
+      "uses_mul_add_for_moment1": false,
+      "has_capturable_branch": true,
+      "decay_before_update": true,
+      "decay_after_update_add_param": false,
+      "coupled_decay_into_grad": true,
+      "eps_added_outside_sqrt": true,
+      "eps_added_inside_sqrt": false,
+      "amsgrad_present": true,
+      "for_each_reference_present": true,
+      "single_tensor_source_excerpt": "def _single_tensor_adam(\n    params: list[Tensor],\n    grads: list[Tensor],\n    exp_avgs: list[Tensor],\n    exp_avg_sqs: list[Tensor],\n    max_exp_avg_sqs: list[Tensor],\n    state_steps: list[Tensor],\n    grad_scale: Tensor | None,\n    found_inf: Tensor | None,\n    *,\n    amsgrad: bool,\n    has_complex: bool,\n    beta1: float | Tensor,\n    beta2: float | Tensor,\n    lr: float | Tensor,\n    weight_decay: float,\n    eps: float,\n    maximize: bool,\n    capturable: bool,\n    differentiable: bool,\n    decoupled_weight_decay: bool,\n) -> None:\n    if grad_scale is not None or found_inf is not None:\n        raise AssertionError(\"Expected grad_scale and found_inf to be None\")\n\n    if torch.jit.is_scripting():\n        # this assert is due to JIT being dumb and not realizing that the ops below\n        # have overloads to handle both float and Tensor lrs, so we just assert it's\n        # a float since most people using JIT are using floats\n        if not isinstance(lr, float):\n            raise AssertionError(f\"Expected lr to be a float, but got {type(lr)}\")\n        if not isinstance(beta1, float):\n            raise AssertionError(f\"Expected beta1 to be a float, but got {type(beta1)}\")\n        if not isinstance(beta2, float):\n            raise AssertionError(f\"Expected beta2 to be a float, but got {type(beta2)}\")\n    else:\n        lr = _to_scalar(lr)\n        beta1 = _to_scalar(beta1)\n        beta2 = _to_scalar(beta2)\n\n    # We only shuffle around the beta when it is a Tensor, otherwise, we prefer\n    # treating it as a scalar.\n    # Note: ensure type declaration is under conditional check for isinstance\n    # or else torchscript will get cranky about the DeviceDict type.\n    if isinstance(beta1, Tensor):\n        beta1_dict: DeviceDtypeDict | None = {(beta1.device, beta1.dtype): beta1}\n    else:\n        beta1_dict = None\n\n    for i, param in enumerate(params):\n        grad = grads[i] if not maximize else -grads[i]\n        exp_avg = exp_avgs[i]\n        exp_avg_sq = exp_avg_sqs[i]\n        step_t = state_steps[i]\n\n        # If compiling, the compiler will handle cudagraph checks, see note [torch.compile x capturable]\n        if not torch.compiler.is_compiling() and capturable:\n            capturable_supported_devices = _get_capturable_supported_devices()\n            if not (\n                param.device.type == step_t.device.type\n                and param.device.type in capturable_supported_devices\n            ):\n                raise AssertionError(\n                    f\"If capturable=True, params and state_steps must be on supported devices: {capturable_supported_devices}.\"\n                )\n\n        # update step\n        step_t += 1\n\n        if weight_decay != 0:\n            if decoupled_weight_decay:\n                # Perform step weight decay\n                param.mul_(1 - lr * weight_decay)\n            else:\n                # Nested if is necessary to bypass jitscript rules\n                if differentiable and isinstance(weight_decay, Tensor):\n                    if weight_decay.requires_grad:\n                        grad = grad.addcmul_(param.clone(), weight_decay)\n                    else:\n                        grad = grad.add(param, alpha=weight_decay)\n                else:\n                    grad = grad.add(param, alpha=weight_decay)\n\n        if torch.is_complex(param):\n            grad = torch.view_as_real(grad)\n            exp_avg = torch.view_as_real(exp_avg)\n            exp_avg_sq = torch.view_as_real(exp_avg_sq)\n            if amsgrad:\n                max_exp_avg_sqs[i] = torch.view_as_real(max_exp_avg_sqs[i])\n            param = torch.view_as_real(param)\n\n        device = param.device\n\n        if beta1_dict is not None:\n            dtype = param.dtype  # type: ignore[union-attr]\n\n            # cast to workaround https://github.com/pytorch/pytorch/issues/140601\n            key = (device, dtype)\n            if key not in beta1_dict:\n                beta1_dict[key] = beta1.to(  # type: ignore[union-attr]\n                    d"
+    },
+    "torch_version": "2.14.1+cpu"
+  },
+  "optimizer_semantics_probe": {
+    "optimizer": "adam",
+    "torch_version": "2.14.1+cpu",
+    "probe_gradient": -0.11545121669769287,
+    "probe_loss": 3.015829086303711,
+    "measured_variant": "adam[lerp,coupled,outside]",
+    "bit_exact": true,
+    "candidates": [
+      {
+        "variant": "adam[lerp,coupled,outside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adam[lerp,coupled,inside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adam[mul_add,coupled,outside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adam[mul_add,coupled,inside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adam[lerp,decoupled,outside]",
+        "ulp_error": 16777
+      },
+      {
+        "variant": "adam[lerp,decoupled,inside]",
+        "ulp_error": 16777
+      },
+      {
+        "variant": "adam[mul_add,decoupled,outside]",
+        "ulp_error": 16777
+      },
+      {
+        "variant": "adam[mul_add,decoupled,inside]",
+        "ulp_error": 16777
+      }
+    ],
+    "source_findings": {
+      "source_text_available": true,
+      "single_tensor_function_found": true,
+      "uses_lerp_for_moment1": true,
+      "uses_mul_add_for_moment1": false,
+      "has_capturable_branch": true,
+      "decay_before_update": true,
+      "decay_after_update_add_param": false,
+      "coupled_decay_into_grad": true,
+      "eps_added_outside_sqrt": true,
+      "eps_added_inside_sqrt": false,
+      "amsgrad_present": true,
+      "for_each_reference_present": true,
+      "single_tensor_source_excerpt": "def _single_tensor_adam(\n    params: list[Tensor],\n    grads: list[Tensor],\n    exp_avgs: list[Tensor],\n    exp_avg_sqs: list[Tensor],\n    max_exp_avg_sqs: list[Tensor],\n    state_steps: list[Tensor],\n    grad_scale: Tensor | None,\n    found_inf: Tensor | None,\n    *,\n    amsgrad: bool,\n    has_complex: bool,\n    beta1: float | Tensor,\n    beta2: float | Tensor,\n    lr: float | Tensor,\n    weight_decay: float,\n    eps: float,\n    maximize: bool,\n    capturable: bool,\n    differentiable: bool,\n    decoupled_weight_decay: bool,\n) -> None:\n    if grad_scale is not None or found_inf is not None:\n        raise AssertionError(\"Expected grad_scale and found_inf to be None\")\n\n    if torch.jit.is_scripting():\n        # this assert is due to JIT being dumb and not realizing that the ops below\n        # have overloads to handle both float and Tensor lrs, so we just assert it's\n        # a float since most people using JIT are using floats\n        if not isinstance(lr, float):\n            raise AssertionError(f\"Expected lr to be a float, but got {type(lr)}\")\n        if not isinstance(beta1, float):\n            raise AssertionError(f\"Expected beta1 to be a float, but got {type(beta1)}\")\n        if not isinstance(beta2, float):\n            raise AssertionError(f\"Expected beta2 to be a float, but got {type(beta2)}\")\n    else:\n        lr = _to_scalar(lr)\n        beta1 = _to_scalar(beta1)\n        beta2 = _to_scalar(beta2)\n\n    # We only shuffle around the beta when it is a Tensor, otherwise, we prefer\n    # treating it as a scalar.\n    # Note: ensure type declaration is under conditional check for isinstance\n    # or else torchscript will get cranky about the DeviceDict type.\n    if isinstance(beta1, Tensor):\n        beta1_dict: DeviceDtypeDict | None = {(beta1.device, beta1.dtype): beta1}\n    else:\n        beta1_dict = None\n\n    for i, param in enumerate(params):\n        grad = grads[i] if not maximize else -grads[i]\n        exp_avg = exp_avgs[i]\n        exp_avg_sq = exp_avg_sqs[i]\n        step_t = state_steps[i]\n\n        # If compiling, the compiler will handle cudagraph checks, see note [torch.compile x capturable]\n        if not torch.compiler.is_compiling() and capturable:\n            capturable_supported_devices = _get_capturable_supported_devices()\n            if not (\n                param.device.type == step_t.device.type\n                and param.device.type in capturable_supported_devices\n            ):\n                raise AssertionError(\n                    f\"If capturable=True, params and state_steps must be on supported devices: {capturable_supported_devices}.\"\n                )\n\n        # update step\n        step_t += 1\n\n        if weight_decay != 0:\n            if decoupled_weight_decay:\n                # Perform step weight decay\n                param.mul_(1 - lr * weight_decay)\n            else:\n                # Nested if is necessary to bypass jitscript rules\n                if differentiable and isinstance(weight_decay, Tensor):\n                    if weight_decay.requires_grad:\n                        grad = grad.addcmul_(param.clone(), weight_decay)\n                    else:\n                        grad = grad.add(param, alpha=weight_decay)\n                else:\n                    grad = grad.add(param, alpha=weight_decay)\n\n        if torch.is_complex(param):\n            grad = torch.view_as_real(grad)\n            exp_avg = torch.view_as_real(exp_avg)\n            exp_avg_sq = torch.view_as_real(exp_avg_sq)\n            if amsgrad:\n                max_exp_avg_sqs[i] = torch.view_as_real(max_exp_avg_sqs[i])\n            param = torch.view_as_real(param)\n\n        device = param.device\n\n        if beta1_dict is not None:\n            dtype = param.dtype  # type: ignore[union-attr]\n\n            # cast to workaround https://github.com/pytorch/pytorch/issues/140601\n            key = (device, dtype)\n            if key not in beta1_dict:\n                beta1_dict[key] = beta1.to(  # type: ignore[union-attr]\n                    d"
+    },
+    "note": "Measured on a throwaway parameter: the variant listed in 'measured_variant' is the one that reproduces this PyTorch build's update bit for bit."
+  },
+  "parameter": {
+    "name": "w",
+    "class": "Parameter",
+    "shape": [],
+    "numel": 1,
+    "dtype": "torch.float32",
+    "requires_grad": true,
+    "device": "cpu",
+    "element_size": 4,
+    "is_leaf": true,
+    "buffers": [
+      "input_scale",
+      "output_scale"
+    ],
+    "trainable_parameter_count": 1,
+    "raw_storage": {
+      "dtype": "torch.float32",
+      "element_size_bytes": 4,
+      "numel": 1,
+      "total_bytes": 4,
+      "raw_storage_bytes": "00 00 00 C0",
+      "storage_nbytes": 4,
+      "storage_nbytes_method": "UntypedStorage.nbytes()",
+      "shape": [],
+      "device": "cpu",
+      "is_floating_point": true
+    }
+  },
+  "dataset": {
+    "samples": 512,
+    "batch_size": 1,
+    "steps_per_epoch": 512,
+    "walk": "linear",
+    "shuffled": false,
+    "target_true_parameter": 1.5,
+    "noise_std": 0.0,
+    "input_min": -2.0,
+    "input_max": 2.0
+  },
+  "lr_schedule": "constant",
+  "bit_validation": {
+    "raw_uint32": 3221225472,
+    "decoded_value": -2.0,
+    "round_trip_ok": true,
+    "numpy_agreement": true,
+    "numpy_version": "2.5.4",
+    "storage_bytes": "00 00 00 C0",
+    "element_size": 4,
+    "ulp_matches_bit_spacing": true,
+    "nextafter_matches_ulp": true,
+    "status": "PASS",
+    "notes": [
+      "Round-trip check: the decoded sign/exponent/fraction re-encode to the observed raw word.",
+      "numpy and torch reinterpretation paths are compared against each other, so a systematic error in one would show up as a disagreement."
+    ]
+  },
+  "ulp_validation": {
+    "value": -2.0,
+    "previous": -2.000000238418579,
+    "next": -1.9999998807907104,
+    "walk_steps": 4,
+    "walk_reaches_next": true,
+    "walk_reaches_previous": true,
+    "ulp_distance_check": 4,
+    "ulp_distance_expected": 4,
+    "status": "PASS"
+  },
+  "notes": [
+    "Real training: torch loss.backward() and optimizer.step() only. No gradient is assigned, no parameter value is written outside the optimizer, and no trajectory is precomputed.",
+    "The float64 track is a separate real run of the same forward shape in a different precision. It is a reference, not ground truth."
+  ]
+}

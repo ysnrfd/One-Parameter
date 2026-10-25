@@ -1,0 +1,6 @@
+test_plugin_install_disable_enable_update_and_actual_execution (single_parameter_observatory.tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_plugin_install_disable_enable_update_and_actual_execution) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.672s
+
+OK

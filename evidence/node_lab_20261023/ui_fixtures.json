@@ -1,0 +1,5319 @@
+{
+  "schema_version": "spobs-studio-ui-fixtures/1",
+  "version": "1.3.0",
+  "capabilities": {
+    "version": "1.3.0",
+    "torch_version": "2.14.1+cpu",
+    "project_schema": "spobs-studio/1",
+    "presets": {
+      "adamw": {
+        "description": "Default. Decoupled weight decay, real autograd, moderate steps.",
+        "config": {
+          "name": "adamw",
+          "seed": "20260926",
+          "initial_value": -2.0,
+          "optimizer": "adamw",
+          "lr": 0.1,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "adamw_decay_only": {
+        "description": "Weight decay as the only driving force (zero-initial gradient is impossible to force, so this preset uses a far-from-optimum start and isolates the decoupled decay term in the update breakdown).",
+        "config": {
+          "name": "adamw_decay_only",
+          "seed": "20260926",
+          "initial_value": 8.0,
+          "optimizer": "adamw",
+          "lr": 0.1,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.5,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "adam": {
+        "description": "L2 weight decay coupled into the gradient by the optimizer itself.",
+        "config": {
+          "name": "adam",
+          "seed": "20260926",
+          "initial_value": -2.0,
+          "optimizer": "adam",
+          "lr": 0.1,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "sgd": {
+        "description": "Plain SGD, no momentum, no weight decay: the simplest real update.",
+        "config": {
+          "name": "sgd",
+          "seed": "20260926",
+          "initial_value": -2.0,
+          "optimizer": "sgd",
+          "lr": 0.05,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.0,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "sgd_momentum": {
+        "description": "SGD with momentum and Nesterov acceleration.",
+        "config": {
+          "name": "sgd_momentum",
+          "seed": "20260926",
+          "initial_value": -2.0,
+          "optimizer": "sgd",
+          "lr": 0.02,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.0,
+          "momentum": 0.9,
+          "dampening": 0.0,
+          "nesterov": true,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "small_gradient": {
+        "description": "Small-gradient regime: |x| is tiny, so dL/dw is tiny as well.",
+        "config": {
+          "name": "small_gradient",
+          "seed": "20260926",
+          "initial_value": -2.0,
+          "optimizer": "adamw",
+          "lr": 0.1,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -0.001,
+            "input_max": 0.001,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "large_gradient": {
+        "description": "Large-gradient regime: |x| and the initial distance are both large.",
+        "config": {
+          "name": "large_gradient",
+          "seed": "20260926",
+          "initial_value": -12.0,
+          "optimizer": "adamw",
+          "lr": 0.05,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -6.0,
+            "input_max": 6.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "near_stationary": {
+        "description": "Near-stationary regime: the parameter starts at the optimum, so the gradient is ~0 from the first step onward.",
+        "config": {
+          "name": "near_stationary",
+          "seed": "20260926",
+          "initial_value": 1.5,
+          "optimizer": "adamw",
+          "lr": 0.1,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "oscillatory": {
+        "description": "Oscillatory regime: a large learning rate on a sign-alternating input stream is observed for update-sign changes (the sign flip alone does not force the MSE gradient to alternate).",
+        "config": {
+          "name": "oscillatory",
+          "seed": "20260926",
+          "initial_value": -3.0,
+          "optimizer": "adamw",
+          "lr": 1.2,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "alternating"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "fp32_resolution": {
+        "description": "FP32-resolution-sensitive regime: the learning rate is small enough that the optimizer's candidate update falls below one ULP of the stored float32 value, so updates are attempted but the stored parameter does not move. The start is offset from the known optimum so the gradient is genuinely non-zero - starting exactly at it would make the candidate update zero and demonstrate nothing.",
+        "config": {
+          "name": "fp32_resolution",
+          "seed": "20260926",
+          "initial_value": 1.5001,
+          "optimizer": "adamw",
+          "lr": 1e-09,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.0,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 60,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      },
+      "diverging": {
+        "description": "Divergence regime: the learning rate is far outside the stable range, which drives the real loss and the real parameter to non-finite values so the non-finite detector is exercised. Uses the linear (non-tanh) model, because a saturated tanh kills the gradient and the run would stall at a large finite value instead of diverging.",
+        "config": {
+          "name": "diverging",
+          "seed": "20260926",
+          "initial_value": -5.0,
+          "optimizer": "sgd",
+          "lr": 1000000000.0,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.0,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 40,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -8.0,
+            "input_max": 8.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": false
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        }
+      }
+    },
+    "default_config": {
+      "name": "adamw",
+      "seed": "20260926",
+      "initial_value": -2.0,
+      "optimizer": "adamw",
+      "lr": 0.1,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.01,
+      "momentum": 0.0,
+      "dampening": 0.0,
+      "nesterov": false,
+      "amsgrad": false,
+      "maximize": false,
+      "lr_schedule": "constant",
+      "lr_final_factor": 0.1,
+      "steps": 200,
+      "zero_grad_set_to_none": true,
+      "accumulation_micro_batches": 1,
+      "stop_on_nonfinite": true,
+      "dataset": {
+        "samples": 512,
+        "batch_size": 1,
+        "input_min": -2.0,
+        "input_max": 2.0,
+        "target_true_parameter": 1.5,
+        "noise_std": 0.0,
+        "shuffle_batches": false,
+        "seed": "20260926",
+        "walk": "linear"
+      },
+      "model": {
+        "input_scale": 1.0,
+        "output_scale": 1.0,
+        "use_tanh": true
+      },
+      "landscape": {
+        "enabled": true,
+        "every": 25,
+        "radius": 0.25,
+        "points": 17,
+        "dtype": "float64"
+      },
+      "validation": {
+        "enabled": true,
+        "every": 1,
+        "gradient_rtol": 1e-06,
+        "finite_difference_rtol": 5e-05,
+        "fd_sweep_decades": [
+          -10.0,
+          -8.0,
+          -6.0,
+          -4.0,
+          -2.0
+        ],
+        "reconstruction_ulp_tolerance": 0,
+        "search_update_variants": true
+      },
+      "stability": {
+        "window": 50,
+        "update_eps": 1e-12,
+        "gradient_eps": 1e-12,
+        "stationary_rel": 1e-09,
+        "oscillation_min_sign_changes": 3,
+        "divergence_loss_growth": 1.05,
+        "divergence_absolute": 0.001,
+        "stagnant_fraction": 0.5
+      },
+      "run_fp64_reference_track": true,
+      "record_full_state_snapshots": true,
+      "live_speed_steps_per_second": 30.0
+    },
+    "config_schema": {
+      "name": {
+        "type": "str",
+        "default": "adamw"
+      },
+      "seed": {
+        "type": "int",
+        "default": "20260926"
+      },
+      "initial_value": {
+        "type": "float",
+        "default": -2.0
+      },
+      "optimizer": {
+        "type": "str",
+        "default": "adamw"
+      },
+      "lr": {
+        "type": "float",
+        "default": 0.1
+      },
+      "betas": {
+        "type": "tuple[float, float]",
+        "default": [
+          0.9,
+          0.999
+        ]
+      },
+      "eps": {
+        "type": "float",
+        "default": 1e-08
+      },
+      "weight_decay": {
+        "type": "float",
+        "default": 0.01
+      },
+      "momentum": {
+        "type": "float",
+        "default": 0.0
+      },
+      "dampening": {
+        "type": "float",
+        "default": 0.0
+      },
+      "nesterov": {
+        "type": "bool",
+        "default": false
+      },
+      "amsgrad": {
+        "type": "bool",
+        "default": false
+      },
+      "maximize": {
+        "type": "bool",
+        "default": false
+      },
+      "lr_schedule": {
+        "type": "str",
+        "default": "constant"
+      },
+      "lr_final_factor": {
+        "type": "float",
+        "default": 0.1
+      },
+      "steps": {
+        "type": "int",
+        "default": 200
+      },
+      "zero_grad_set_to_none": {
+        "type": "bool",
+        "default": true
+      },
+      "accumulation_micro_batches": {
+        "type": "int",
+        "default": 1
+      },
+      "stop_on_nonfinite": {
+        "type": "bool",
+        "default": true
+      },
+      "dataset": {
+        "type": "DatasetConfig",
+        "default": {
+          "samples": 512,
+          "batch_size": 1,
+          "input_min": -2.0,
+          "input_max": 2.0,
+          "target_true_parameter": 1.5,
+          "noise_std": 0.0,
+          "shuffle_batches": false,
+          "seed": "20260926",
+          "walk": "linear"
+        },
+        "fields": {
+          "samples": {
+            "type": "int",
+            "default": 512
+          },
+          "batch_size": {
+            "type": "int",
+            "default": 1
+          },
+          "input_min": {
+            "type": "float",
+            "default": -2.0
+          },
+          "input_max": {
+            "type": "float",
+            "default": 2.0
+          },
+          "target_true_parameter": {
+            "type": "float",
+            "default": 1.5
+          },
+          "noise_std": {
+            "type": "float",
+            "default": 0.0
+          },
+          "shuffle_batches": {
+            "type": "bool",
+            "default": false
+          },
+          "seed": {
+            "type": "int",
+            "default": "20260926"
+          },
+          "walk": {
+            "type": "str",
+            "default": "linear"
+          }
+        }
+      },
+      "model": {
+        "type": "ModelConfig",
+        "default": {
+          "input_scale": 1.0,
+          "output_scale": 1.0,
+          "use_tanh": true
+        },
+        "fields": {
+          "input_scale": {
+            "type": "float",
+            "default": 1.0
+          },
+          "output_scale": {
+            "type": "float",
+            "default": 1.0
+          },
+          "use_tanh": {
+            "type": "bool",
+            "default": true
+          }
+        }
+      },
+      "landscape": {
+        "type": "LandscapeConfig",
+        "default": {
+          "enabled": true,
+          "every": 25,
+          "radius": 0.25,
+          "points": 17,
+          "dtype": "float64"
+        },
+        "fields": {
+          "enabled": {
+            "type": "bool",
+            "default": true
+          },
+          "every": {
+            "type": "int",
+            "default": 25
+          },
+          "radius": {
+            "type": "float",
+            "default": 0.25
+          },
+          "points": {
+            "type": "int",
+            "default": 17
+          },
+          "dtype": {
+            "type": "str",
+            "default": "float64"
+          }
+        }
+      },
+      "validation": {
+        "type": "ValidationConfig",
+        "default": {
+          "enabled": true,
+          "every": 1,
+          "gradient_rtol": 1e-06,
+          "finite_difference_rtol": 5e-05,
+          "fd_sweep_decades": [
+            -10.0,
+            -8.0,
+            -6.0,
+            -4.0,
+            -2.0
+          ],
+          "reconstruction_ulp_tolerance": 0,
+          "search_update_variants": true
+        },
+        "fields": {
+          "enabled": {
+            "type": "bool",
+            "default": true
+          },
+          "every": {
+            "type": "int",
+            "default": 1
+          },
+          "gradient_rtol": {
+            "type": "float",
+            "default": 1e-06
+          },
+          "finite_difference_rtol": {
+            "type": "float",
+            "default": 5e-05
+          },
+          "fd_sweep_decades": {
+            "type": "tuple[float, ...]",
+            "default": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ]
+          },
+          "reconstruction_ulp_tolerance": {
+            "type": "int",
+            "default": 0
+          },
+          "search_update_variants": {
+            "type": "bool",
+            "default": true
+          }
+        }
+      },
+      "stability": {
+        "type": "StabilityCriteria",
+        "default": {
+          "window": 50,
+          "update_eps": 1e-12,
+          "gradient_eps": 1e-12,
+          "stationary_rel": 1e-09,
+          "oscillation_min_sign_changes": 3,
+          "divergence_loss_growth": 1.05,
+          "divergence_absolute": 0.001,
+          "stagnant_fraction": 0.5
+        },
+        "fields": {
+          "window": {
+            "type": "int",
+            "default": 50
+          },
+          "update_eps": {
+            "type": "float",
+            "default": 1e-12
+          },
+          "gradient_eps": {
+            "type": "float",
+            "default": 1e-12
+          },
+          "stationary_rel": {
+            "type": "float",
+            "default": 1e-09
+          },
+          "oscillation_min_sign_changes": {
+            "type": "int",
+            "default": 3
+          },
+          "divergence_loss_growth": {
+            "type": "float",
+            "default": 1.05
+          },
+          "divergence_absolute": {
+            "type": "float",
+            "default": 0.001
+          },
+          "stagnant_fraction": {
+            "type": "float",
+            "default": 0.5
+          }
+        }
+      },
+      "run_fp64_reference_track": {
+        "type": "bool",
+        "default": true
+      },
+      "record_full_state_snapshots": {
+        "type": "bool",
+        "default": true
+      },
+      "live_speed_steps_per_second": {
+        "type": "float",
+        "default": 30.0
+      }
+    },
+    "limits": {
+      "runs": 100,
+      "steps": 1000000,
+      "dataset_rows": 100000
+    }
+  },
+  "state": {
+    "workspace": {
+      "id": "bb0d6754730740148e06c10133a207fd",
+      "name": "Untitled studio",
+      "notes": "",
+      "active_run_id": "9906e96285b54bb4ae5627ffe7767013",
+      "view": {
+        "x": 0.0,
+        "y": 0.0,
+        "zoom": 1.0
+      },
+      "revision": 2
+    },
+    "runs": [
+      {
+        "id": "9906e96285b54bb4ae5627ffe7767013",
+        "name": "AdamW exploration",
+        "parent_id": null,
+        "position": {
+          "x": 80.0,
+          "y": 275.0
+        },
+        "config": {
+          "name": "adamw",
+          "seed": "20260926",
+          "initial_value": -2.0,
+          "optimizer": "adamw",
+          "lr": 0.1,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "nesterov": false,
+          "amsgrad": false,
+          "maximize": false,
+          "lr_schedule": "constant",
+          "lr_final_factor": 0.1,
+          "steps": 200,
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "stop_on_nonfinite": true,
+          "dataset": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": "20260926",
+            "walk": "linear"
+          },
+          "model": {
+            "input_scale": 1.0,
+            "output_scale": 1.0,
+            "use_tanh": true
+          },
+          "landscape": {
+            "enabled": true,
+            "every": 25,
+            "radius": 0.25,
+            "points": 17,
+            "dtype": "float64"
+          },
+          "validation": {
+            "enabled": true,
+            "every": 1,
+            "gradient_rtol": 1e-06,
+            "finite_difference_rtol": 5e-05,
+            "fd_sweep_decades": [
+              -10.0,
+              -8.0,
+              -6.0,
+              -4.0,
+              -2.0
+            ],
+            "reconstruction_ulp_tolerance": 0,
+            "search_update_variants": true
+          },
+          "stability": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "run_fp64_reference_track": true,
+          "record_full_state_snapshots": true,
+          "live_speed_steps_per_second": 30.0
+        },
+        "state": "paused",
+        "step": 2,
+        "parameter": -1.7972145080566406,
+        "loss": 3.9756317138671875,
+        "gradient": -0.016497502103447914,
+        "speed": 30.0,
+        "latest": {
+          "step": 1,
+          "epoch": 0,
+          "batch_index": 1,
+          "global_batch": 1,
+          "input_value": -1.9921722412109375,
+          "target_value": -0.994937539100647,
+          "prediction": 0.9989611506462097,
+          "loss": 3.9756317138671875,
+          "loss_dtype": "torch.float32",
+          "loss_grad_fn": "MeanBackward0",
+          "stages": [
+            {
+              "name": "parameter",
+              "value": -1.8980001211166382,
+              "mean": -1.8980001211166382,
+              "dtype": "torch.float32",
+              "shape": [],
+              "device": "cpu",
+              "requires_grad": true,
+              "grad_fn": null,
+              "is_leaf": true,
+              "finite": true,
+              "numel": 1,
+              "value_is_first_element": false,
+              "raw_uint32": 3220369835,
+              "bits": "10111111111100101111000110101011",
+              "hex": "0xBFF2F1AB"
+            },
+            {
+              "name": "input",
+              "value": -1.9921722412109375,
+              "mean": -1.9921722412109375,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1
+              ],
+              "device": "cpu",
+              "requires_grad": false,
+              "grad_fn": null,
+              "is_leaf": true,
+              "finite": true,
+              "numel": 1,
+              "value_is_first_element": false,
+              "raw_uint32": null,
+              "bits": null,
+              "hex": null
+            },
+            {
+              "name": "z",
+              "value": 3.7811431884765625,
+              "mean": 3.7811431884765625,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1
+              ],
+              "device": "cpu",
+              "requires_grad": true,
+              "grad_fn": "MulBackward0",
+              "is_leaf": false,
+              "finite": true,
+              "numel": 1,
+              "value_is_first_element": false,
+              "raw_uint32": null,
+              "bits": null,
+              "hex": null
+            },
+            {
+              "name": "activation",
+              "value": 0.9989611506462097,
+              "mean": 0.9989611506462097,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1
+              ],
+              "device": "cpu",
+              "requires_grad": true,
+              "grad_fn": "TanhBackward0",
+              "is_leaf": false,
+              "finite": true,
+              "numel": 1,
+              "value_is_first_element": false,
+              "raw_uint32": null,
+              "bits": null,
+              "hex": null
+            },
+            {
+              "name": "prediction",
+              "value": 0.9989611506462097,
+              "mean": 0.9989611506462097,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1
+              ],
+              "device": "cpu",
+              "requires_grad": true,
+              "grad_fn": "MulBackward0",
+              "is_leaf": false,
+              "finite": true,
+              "numel": 1,
+              "value_is_first_element": false,
+              "raw_uint32": null,
+              "bits": null,
+              "hex": null
+            },
+            {
+              "name": "target",
+              "value": -0.994937539100647,
+              "mean": -0.994937539100647,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1
+              ],
+              "device": "cpu",
+              "requires_grad": false,
+              "grad_fn": null,
+              "is_leaf": true,
+              "finite": true,
+              "numel": 1,
+              "value_is_first_element": false,
+              "raw_uint32": null,
+              "bits": null,
+              "hex": null
+            },
+            {
+              "name": "loss",
+              "value": 3.9756317138671875,
+              "mean": 3.9756317138671875,
+              "dtype": "torch.float32",
+              "shape": [],
+              "device": "cpu",
+              "requires_grad": true,
+              "grad_fn": "MeanBackward0",
+              "is_leaf": false,
+              "finite": true,
+              "numel": 1,
+              "value_is_first_element": false,
+              "raw_uint32": null,
+              "bits": null,
+              "hex": null
+            }
+          ],
+          "zero_grad_set_to_none": true,
+          "accumulation_micro_batches": 1,
+          "accumulated_losses": [
+            3.9756317138671875
+          ],
+          "grad_before_zero_grad": -0.010696807876229286,
+          "grad_after_zero_grad": null,
+          "grad_before_backward": null,
+          "grad_after_backward": -0.016497502103447914,
+          "gradient": -0.016497502103447914,
+          "gradient_uint32": 3162973637,
+          "gradient_dtype": "torch.float32",
+          "gradient_shape": [],
+          "gradient_sign": -1,
+          "gradient_magnitude": 0.016497502103447914,
+          "gradient_square": 0.00027216757565326835,
+          "gradient_finite": true,
+          "parameter_before": -1.8980001211166382,
+          "parameter_after": -1.7972145080566406,
+          "parameter_before_uint32": 3220369835,
+          "parameter_after_uint32": 3219524384,
+          "parameter_before_hex": "0xBFF2F1AB",
+          "parameter_hex": "0xBFE60B20",
+          "parameter_bits": "10111111111001100000101100100000",
+          "parameter_exponent_bits": 127,
+          "parameter_fraction_bits": 6687520,
+          "parameter_sign_bit": 1,
+          "actual_delta": 0.10078561305999756,
+          "absolute_delta": 0.10078561305999756,
+          "relative_delta": 0.05310095185910895,
+          "direction": "increased",
+          "xor_mask": 1374859,
+          "changed_bit_count": 12,
+          "changed_bit_positions": [
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            20,
+            22,
+            24,
+            28,
+            30,
+            31
+          ],
+          "sign_changed": false,
+          "exponent_changed": false,
+          "fraction_changed": true,
+          "ulp_previous_distance": 1.1920928955078125e-07,
+          "ulp_next_distance": 1.1920928955078125e-07,
+          "ulp_size": 1.1920928955078125e-07,
+          "ulp_relative_movement": 845451.0,
+          "ulp_distance_count": 845451,
+          "ulp_distance_same_binade": 845451,
+          "stored_fp32_unchanged": false,
+          "update_attempted_but_storage_frozen": false,
+          "snapshot_a_uint32": 3220369835,
+          "snapshot_b_uint32": 3220369835,
+          "snapshot_c_uint32": 3220369835,
+          "snapshot_d_uint32": 3220369835,
+          "snapshot_e_uint32": 3219524384,
+          "snapshot_f_uint32": null,
+          "optimizer_name": "adamw",
+          "learning_rate": 0.1,
+          "optimizer_step_before": 1,
+          "optimizer_step_after": 2,
+          "optimizer_state_present_before": true,
+          "optimizer_state_keys_before": [
+            "exp_avg",
+            "exp_avg_sq",
+            "step"
+          ],
+          "optimizer_state_keys_after": [
+            "exp_avg",
+            "exp_avg_sq",
+            "step"
+          ],
+          "moment1_before": -0.0010696807876229286,
+          "moment2_before": 1.144217023352212e-07,
+          "moment1": -0.002612462965771556,
+          "moment2": 3.864748805426643e-07,
+          "bias_corrected_moment1": -0.013749805083008193,
+          "bias_corrected_moment2": 0.00019333410732499728,
+          "optimizer_total_update": 0.10078561305999756,
+          "optimizer_attempted_update": 0.10078563649701788,
+          "optimizer_adaptive_update": 0.09888768196105957,
+          "optimizer_weight_decay_update": 0.0018979310989379883,
+          "reconstruction_variant": "adamw[lerp,before,outside]",
+          "reconstruction_status": "PASS",
+          "reconstruction_bit_exact": true,
+          "reconstruction_ulp_error": 0,
+          "reconstruction_absolute_error": 0.0,
+          "reconstruction_relative_error": 0.0,
+          "reconstructed_after": -1.7972145080566406,
+          "reconstructed_uint32": 3219524384,
+          "fp64_reconstructed_after": -1.7972144846196203,
+          "fp32_candidate": -1.7972145080566406,
+          "fp32_rounding_error_abs": -2.3437020324479363e-08,
+          "fp32_rounding_error_rel": 1.3040747515141354e-08,
+          "fp32_rounding_sign": -1,
+          "fp32_rounding_ulp": -0.19660397619009018,
+          "fp32_candidate_rounds_to_stored": true,
+          "fp64_track_value": -1.7972138591529154,
+          "fp64_track_loss": 3.975632055405706,
+          "fp64_vs_fp32_abs": 6.489037251977692e-07,
+          "fp64_vs_fp32_ulp": 5.443398980423808,
+          "gradient_analytical": -0.0164971708488947,
+          "gradient_finite_difference": -0.01649717068273451,
+          "gradient_finite_difference_h": 1.8980001211166383e-06,
+          "gradient_fp64_autograd": -0.0164971708488947,
+          "gradient_vs_analytical_rel": 2.0079476429545154e-05,
+          "gradient_vs_analytical_abs": 3.3125455321456054e-07,
+          "gradient_vs_finite_difference_rel": 2.008954867340922e-05,
+          "gradient_vs_finite_difference_abs": 3.3142071340433454e-07,
+          "gradient_tolerance_abs": 3.807955354005513e-06,
+          "finite_difference_tolerance_abs": 4.616316717293344e-06,
+          "gradient_validation_status": "PASS",
+          "landscape_computed": false,
+          "landscape_radius": 0.25,
+          "landscape_points": 17,
+          "landscape_loss_at_centre": null,
+          "landscape_minimum_loss": null,
+          "landscape_first_derivative": null,
+          "landscape_second_derivative": null,
+          "landscape_restoration_verified": false,
+          "finite": true,
+          "nonfinite_detected": false,
+          "parameter_hash_before": "8236d922a4ce4ffc",
+          "parameter_hash_after": "8218c7bb633df032",
+          "events": [
+            "FORWARD_COMPLETE",
+            "LOSS_COMPUTED",
+            "BACKWARD_STARTED",
+            "GRADIENT_AVAILABLE",
+            "OPTIMIZER_STATE_READ",
+            "OPTIMIZER_STEP_STARTED",
+            "OPTIMIZER_STEP_COMPLETED",
+            "BIT_PATTERN_CHANGED",
+            "PARAMETER_CHANGED",
+            "FP32_ROUNDING_OBSERVED"
+          ],
+          "previous_hash": "50281bb3edfe1401d5683c83597ec6015869d1e17ca8060a3154eb48596df31e",
+          "record_hash": "27c87d017915b3c01664c1dc99977bca5a9f0a2a03e9c832481478d25bad63f5"
+        },
+        "series": [
+          {
+            "step": 0,
+            "w": -1.8980001211166382,
+            "loss": 3.977567672729492,
+            "gradient": -0.010696807876229286,
+            "delta": 0.10199987888336182,
+            "moment1": -0.0010696807876229286,
+            "moment2": 1.144217023352212e-07,
+            "lr": 0.1,
+            "fp64": -1.898000093479848
+          },
+          {
+            "step": 1,
+            "w": -1.7972145080566406,
+            "loss": 3.9756317138671875,
+            "gradient": -0.016497502103447914,
+            "delta": 0.10078561305999756,
+            "moment1": -0.002612462965771556,
+            "moment2": 3.864748805426643e-07,
+            "lr": 0.1,
+            "fp64": -1.7972138591529154
+          }
+        ],
+        "series_total": 2,
+        "series_sampled": false,
+        "events": [
+          {
+            "step": 0,
+            "code": "INITIALIZED",
+            "detail": "w = -2.0 (0xC0000000, exponent 128, fraction 0)"
+          },
+          {
+            "step": 0,
+            "code": "FORWARD_COMPLETE",
+            "detail": "prediction and intermediates recorded"
+          },
+          {
+            "step": 0,
+            "code": "LOSS_COMPUTED",
+            "detail": "loss = 3.977567672729492"
+          },
+          {
+            "step": 0,
+            "code": "BACKWARD_STARTED",
+            "detail": "loss.backward()"
+          },
+          {
+            "step": 0,
+            "code": "GRADIENT_AVAILABLE",
+            "detail": "parameter.grad written by autograd"
+          },
+          {
+            "step": 0,
+            "code": "LANDSCAPE_PROBED",
+            "detail": "one-dimensional slice over +/-0.25 in float64"
+          },
+          {
+            "step": 0,
+            "code": "OPTIMIZER_STATE_READ",
+            "detail": "lr in force = 0.1; optimizer state before the step is not yet initialised for this parameter"
+          },
+          {
+            "step": 0,
+            "code": "OPTIMIZER_STEP_STARTED",
+            "detail": "adamw.step()"
+          },
+          {
+            "step": 0,
+            "code": "OPTIMIZER_STEP_COMPLETED",
+            "detail": "optimizer.step() returned"
+          },
+          {
+            "step": 0,
+            "code": "OPTIMIZER_STATE_READ",
+            "detail": "adopted update variant 'adamw[lerp,before,outside]', measured from this run's own transition (0 ULP error)"
+          },
+          {
+            "step": 0,
+            "code": "BIT_PATTERN_CHANGED",
+            "detail": "22 bits changed (855637 ULP)"
+          },
+          {
+            "step": 0,
+            "code": "PARAMETER_CHANGED",
+            "detail": "delta = 0.10199987888336182"
+          },
+          {
+            "step": 0,
+            "code": "FP32_ROUNDING_OBSERVED",
+            "detail": "rounding residual -2.7630892018848385e-08 (-0.23178472183644772 ULP)"
+          },
+          {
+            "step": 0,
+            "code": "STABILITY_METRIC_UPDATED",
+            "detail": "mean |update| over window = 0.10199987888336182"
+          },
+          {
+            "step": 1,
+            "code": "FORWARD_COMPLETE",
+            "detail": "prediction and intermediates recorded"
+          },
+          {
+            "step": 1,
+            "code": "LOSS_COMPUTED",
+            "detail": "loss = 3.9756317138671875"
+          },
+          {
+            "step": 1,
+            "code": "BACKWARD_STARTED",
+            "detail": "loss.backward()"
+          },
+          {
+            "step": 1,
+            "code": "GRADIENT_AVAILABLE",
+            "detail": "parameter.grad written by autograd"
+          },
+          {
+            "step": 1,
+            "code": "OPTIMIZER_STATE_READ",
+            "detail": "lr in force = 0.1; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+          },
+          {
+            "step": 1,
+            "code": "OPTIMIZER_STEP_STARTED",
+            "detail": "adamw.step()"
+          },
+          {
+            "step": 1,
+            "code": "OPTIMIZER_STEP_COMPLETED",
+            "detail": "optimizer.step() returned"
+          },
+          {
+            "step": 1,
+            "code": "BIT_PATTERN_CHANGED",
+            "detail": "12 bits changed (845451 ULP)"
+          },
+          {
+            "step": 1,
+            "code": "PARAMETER_CHANGED",
+            "detail": "delta = 0.10078561305999756"
+          },
+          {
+            "step": 1,
+            "code": "FP32_ROUNDING_OBSERVED",
+            "detail": "rounding residual -2.3437020324479363e-08 (-0.19660397619009018 ULP)"
+          },
+          {
+            "step": 1,
+            "code": "STABILITY_METRIC_UPDATED",
+            "detail": "mean |update| over window = 0.10139274597167969"
+          }
+        ],
+        "checkpoints": [],
+        "notes": "",
+        "error": null,
+        "dataset_provenance": {
+          "kind": "generated",
+          "config": {
+            "samples": 512,
+            "batch_size": 1,
+            "input_min": -2.0,
+            "input_max": 2.0,
+            "target_true_parameter": 1.5,
+            "noise_std": 0.0,
+            "shuffle_batches": false,
+            "seed": 20260926,
+            "walk": "linear"
+          }
+        },
+        "interventions": [],
+        "live_intervention": false,
+        "live_optimizer_state": {
+          "step": 2.0,
+          "exp_avg": -0.002612462965771556,
+          "exp_avg_sq": 3.864748805426643e-07
+        },
+        "live_optimizer_initialized": true,
+        "live_learning_rate": 0.1,
+        "integrity": {
+          "status": "unverified",
+          "hash": "27c87d017915b3c01664c1dc99977bca5a9f0a2a03e9c832481478d25bad63f5"
+        }
+      }
+    ],
+    "autosave_error": null,
+    "recovery_notice": null,
+    "ui_drafts_revision": 0
+  },
+  "graph_catalog": {
+    "types": [
+      {
+        "id": "core.number",
+        "title": "Number",
+        "category": "Values",
+        "description": "A finite numeric literal.",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "number",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "number",
+            "default": 1.0
+          }
+        ]
+      },
+      {
+        "id": "core.text",
+        "title": "Text",
+        "category": "Values",
+        "description": "A text literal.",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "string",
+            "default": "Hello, studio"
+          }
+        ]
+      },
+      {
+        "id": "core.boolean",
+        "title": "Boolean",
+        "category": "Values",
+        "description": "A true or false literal.",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "boolean",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "boolean",
+            "default": true
+          }
+        ]
+      },
+      {
+        "id": "core.json",
+        "title": "JSON value",
+        "category": "Values",
+        "description": "Any strict JSON literal.",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "any",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "any",
+            "default": {}
+          }
+        ]
+      },
+      {
+        "id": "core.math",
+        "title": "Math",
+        "category": "Transform",
+        "description": "Finite arithmetic; division by zero is an explicit failure.",
+        "inputs": [
+          {
+            "name": "a",
+            "type": "number",
+            "required": true,
+            "default": 1
+          },
+          {
+            "name": "b",
+            "type": "number",
+            "required": true,
+            "default": 2
+          }
+        ],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "number",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "operation",
+            "type": "string",
+            "default": "add",
+            "options": [
+              "add",
+              "subtract",
+              "multiply",
+              "divide",
+              "power",
+              "min",
+              "max",
+              "modulo"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "core.array",
+        "title": "Array",
+        "category": "Values",
+        "description": "An array literal or an incoming array.",
+        "inputs": [
+          {
+            "name": "items",
+            "type": "array",
+            "required": true,
+            "default": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "array",
+            "required": true
+          }
+        ],
+        "parameters": []
+      },
+      {
+        "id": "core.object",
+        "title": "Object",
+        "category": "Values",
+        "description": "An object literal or an incoming object.",
+        "inputs": [
+          {
+            "name": "value",
+            "type": "object",
+            "required": true,
+            "default": {}
+          }
+        ],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "object",
+            "required": true
+          }
+        ],
+        "parameters": []
+      },
+      {
+        "id": "core.get",
+        "title": "Get property",
+        "category": "Transform",
+        "description": "Read an object key or array index; use default when absent.",
+        "inputs": [
+          {
+            "name": "object",
+            "type": "any",
+            "required": true
+          },
+          {
+            "name": "key",
+            "type": "any",
+            "required": true,
+            "default": "value"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "any",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "default",
+            "type": "any",
+            "default": null
+          }
+        ]
+      },
+      {
+        "id": "core.script",
+        "title": "JavaScript sandbox",
+        "category": "Scripts",
+        "description": "Run bounded JavaScript in an isolated V8 child process. Return an outputs object.",
+        "inputs": [
+          {
+            "name": "inputs",
+            "type": "object",
+            "required": true,
+            "default": {}
+          }
+        ],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "any",
+            "required": true
+          },
+          {
+            "name": "outputs",
+            "type": "object",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "type": "code",
+            "default": "return {value: inputs.value ?? 0};"
+          },
+          {
+            "name": "timeout_ms",
+            "type": "integer",
+            "default": 1000,
+            "min": 10,
+            "max": 10000
+          },
+          {
+            "name": "memory_mb",
+            "type": "integer",
+            "default": 32,
+            "min": 16,
+            "max": 64
+          }
+        ]
+      },
+      {
+        "id": "core.preview",
+        "title": "Preview",
+        "category": "Observe",
+        "description": "Expose the exact incoming JSON value in execution results.",
+        "inputs": [
+          {
+            "name": "value",
+            "type": "any",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "any",
+            "required": true
+          }
+        ],
+        "parameters": []
+      },
+      {
+        "id": "core.config",
+        "title": "Experiment configuration",
+        "category": "Experiments",
+        "description": "Validate a partial config and produce a complete PyTorch experiment config.",
+        "inputs": [
+          {
+            "name": "value",
+            "type": "object",
+            "required": true,
+            "default": {}
+          }
+        ],
+        "outputs": [
+          {
+            "name": "config",
+            "type": "config",
+            "required": true
+          }
+        ],
+        "parameters": []
+      },
+      {
+        "id": "core.dataset",
+        "title": "Custom dataset",
+        "category": "Experiments",
+        "description": "Build finite float32 input/target samples without executing training.",
+        "inputs": [
+          {
+            "name": "inputs",
+            "type": "array",
+            "required": true,
+            "default": [
+              -1,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "targets",
+            "type": "array",
+            "required": true,
+            "default": [
+              -2,
+              0,
+              2
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "name": "dataset",
+            "type": "dataset",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "default": "Node dataset"
+          },
+          {
+            "name": "batch_size",
+            "type": "integer",
+            "default": 3,
+            "min": 1,
+            "max": 100000
+          }
+        ]
+      },
+      {
+        "id": "core.experiment",
+        "title": "Create experiment",
+        "category": "Experiments",
+        "description": "Create an independent real PyTorch experiment; optionally import custom data.",
+        "inputs": [
+          {
+            "name": "config",
+            "type": "config",
+            "required": true,
+            "default": {}
+          },
+          {
+            "name": "dataset",
+            "type": "dataset",
+            "required": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "default": "Node experiment"
+          },
+          {
+            "name": "preset",
+            "type": "string",
+            "default": "adamw"
+          }
+        ]
+      },
+      {
+        "id": "core.train",
+        "title": "Train",
+        "category": "Experiments",
+        "description": "Execute real training steps. Cancellation is checked between completed steps.",
+        "inputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          },
+          {
+            "name": "record",
+            "type": "object",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "steps",
+            "type": "integer",
+            "default": 10,
+            "min": 1,
+            "max": 10000
+          }
+        ]
+      },
+      {
+        "id": "core.branch",
+        "title": "Branch experiment",
+        "category": "Experiments",
+        "description": "Branch exact live parameter, optimizer, scheduler, data and observation state.",
+        "inputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "default": "Node branch"
+          }
+        ]
+      },
+      {
+        "id": "core.checkpoint",
+        "title": "Capture checkpoint",
+        "category": "Experiments",
+        "description": "Capture a complete real training checkpoint on the selected run.",
+        "inputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          },
+          {
+            "name": "checkpoint",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "default": "Node checkpoint"
+          }
+        ]
+      },
+      {
+        "id": "core.inspect",
+        "title": "Inspect experiment",
+        "category": "Observe",
+        "description": "Read an actual recorded step or the live run snapshot; optionally include data.",
+        "inputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "record",
+            "type": "object",
+            "required": true
+          },
+          {
+            "name": "dataset",
+            "type": "object",
+            "required": true
+          },
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "step",
+            "type": "integer",
+            "default": -1,
+            "min": -1,
+            "max": 1000000
+          },
+          {
+            "name": "include_dataset",
+            "type": "boolean",
+            "default": false
+          }
+        ]
+      },
+      {
+        "id": "core.intervene",
+        "title": "Manual intervention",
+        "category": "Experiments",
+        "description": "Explicitly edit finite parameter/LR or supported optimizer memory on a real paused run.",
+        "inputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          },
+          {
+            "name": "changes",
+            "type": "object",
+            "required": true,
+            "default": {
+              "parameter": 1.0
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          },
+          {
+            "name": "record",
+            "type": "object",
+            "required": true
+          }
+        ],
+        "parameters": []
+      },
+      {
+        "id": "core.verify",
+        "title": "Verify record chain",
+        "category": "Observe",
+        "description": "Verify the actual immutable numerical record hash chain.",
+        "inputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          },
+          {
+            "name": "integrity",
+            "type": "object",
+            "required": true
+          }
+        ],
+        "parameters": []
+      },
+      {
+        "id": "core.control",
+        "title": "Experiment control",
+        "category": "Experiments",
+        "description": "Explicitly play, pause, reset live state, or restart an existing experiment.",
+        "inputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          },
+          {
+            "name": "record",
+            "type": "object",
+            "required": true
+          }
+        ],
+        "parameters": [
+          {
+            "name": "operation",
+            "type": "string",
+            "default": "pause",
+            "options": [
+              "play",
+              "pause",
+              "reset",
+              "restart"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "core.export",
+        "title": "Export evidence",
+        "category": "Artifacts",
+        "description": "Generate and retain an immutable ZIP of actual numerical evidence, bound to this execution.",
+        "inputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "run",
+            "type": "run",
+            "required": true
+          },
+          {
+            "name": "artifact",
+            "type": "object",
+            "required": true
+          }
+        ],
+        "parameters": []
+      },
+      {
+        "id": "local.examples/scale",
+        "title": "Scale a number",
+        "category": "Examples",
+        "description": "Multiply a value by a factor.",
+        "inputs": [
+          {
+            "name": "value",
+            "type": "number",
+            "description": "",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "value",
+            "type": "number",
+            "description": ""
+          }
+        ],
+        "parameters": [
+          {
+            "name": "factor",
+            "type": "number",
+            "description": "",
+            "default": 2
+          }
+        ],
+        "plugin_id": "local.examples",
+        "plugin_version": "1.0.0"
+      },
+      {
+        "id": "local.examples/scale_targets",
+        "title": "Scale dataset targets",
+        "category": "Examples",
+        "description": "Transform target values without changing input samples.",
+        "inputs": [
+          {
+            "name": "data",
+            "type": "dataset",
+            "description": "",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "name": "data",
+            "type": "dataset",
+            "description": ""
+          }
+        ],
+        "parameters": [
+          {
+            "name": "factor",
+            "type": "number",
+            "description": "",
+            "default": 2
+          }
+        ],
+        "plugin_id": "local.examples",
+        "plugin_version": "1.0.0"
+      }
+    ],
+    "templates": [
+      {
+        "id": "training",
+        "name": "Training laboratory",
+        "graph": {
+          "name": "Training laboratory",
+          "description": "Configuration \u2192 real experiment \u2192 training \u2192 checkpoint \u2192 observation.",
+          "nodes": [
+            {
+              "id": "config",
+              "type": "core.config",
+              "position": {
+                "x": 40,
+                "y": 80
+              },
+              "params": {
+                "value": {
+                  "steps": 100
+                }
+              }
+            },
+            {
+              "id": "experiment",
+              "type": "core.experiment",
+              "position": {
+                "x": 370,
+                "y": 80
+              },
+              "params": {}
+            },
+            {
+              "id": "train",
+              "type": "core.train",
+              "position": {
+                "x": 700,
+                "y": 80
+              },
+              "params": {
+                "steps": 10
+              }
+            },
+            {
+              "id": "checkpoint",
+              "type": "core.checkpoint",
+              "position": {
+                "x": 1030,
+                "y": 80
+              },
+              "params": {}
+            },
+            {
+              "id": "inspect",
+              "type": "core.inspect",
+              "position": {
+                "x": 1360,
+                "y": 80
+              },
+              "params": {}
+            }
+          ],
+          "edges": [
+            {
+              "id": "config:config-experiment:config",
+              "source": "config",
+              "source_port": "config",
+              "target": "experiment",
+              "target_port": "config"
+            },
+            {
+              "id": "experiment:run-train:run",
+              "source": "experiment",
+              "source_port": "run",
+              "target": "train",
+              "target_port": "run"
+            },
+            {
+              "id": "train:run-checkpoint:run",
+              "source": "train",
+              "source_port": "run",
+              "target": "checkpoint",
+              "target_port": "run"
+            },
+            {
+              "id": "checkpoint:run-inspect:run",
+              "source": "checkpoint",
+              "source_port": "run",
+              "target": "inspect",
+              "target_port": "run"
+            }
+          ],
+          "view": {
+            "x": 0,
+            "y": 0,
+            "zoom": 0.8
+          }
+        }
+      },
+      {
+        "id": "sandbox",
+        "name": "Sandbox playground",
+        "graph": {
+          "name": "Sandbox playground",
+          "description": "A pure JavaScript script transforms JSON inside the bounded sandbox.",
+          "nodes": [
+            {
+              "id": "input",
+              "type": "core.object",
+              "position": {
+                "x": 40,
+                "y": 100
+              },
+              "params": {
+                "value": {
+                  "value": 21
+                }
+              }
+            },
+            {
+              "id": "script",
+              "type": "core.script",
+              "position": {
+                "x": 370,
+                "y": 100
+              },
+              "params": {
+                "code": "return {value: inputs.value * 2};"
+              }
+            },
+            {
+              "id": "preview",
+              "type": "core.preview",
+              "position": {
+                "x": 700,
+                "y": 100
+              },
+              "params": {}
+            }
+          ],
+          "edges": [
+            {
+              "id": "input:value-script:inputs",
+              "source": "input",
+              "source_port": "value",
+              "target": "script",
+              "target_port": "inputs"
+            },
+            {
+              "id": "script:value-preview:value",
+              "source": "script",
+              "source_port": "value",
+              "target": "preview",
+              "target_port": "value"
+            }
+          ],
+          "view": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1
+          }
+        }
+      },
+      {
+        "id": "custom-data",
+        "name": "Custom-data experiment",
+        "graph": {
+          "name": "Custom-data experiment",
+          "description": "A typed dataset and config feed actual PyTorch training.",
+          "nodes": [
+            {
+              "id": "dataset",
+              "type": "core.dataset",
+              "position": {
+                "x": 40,
+                "y": 240
+              },
+              "params": {}
+            },
+            {
+              "id": "config",
+              "type": "core.config",
+              "position": {
+                "x": 40,
+                "y": 40
+              },
+              "params": {}
+            },
+            {
+              "id": "experiment",
+              "type": "core.experiment",
+              "position": {
+                "x": 370,
+                "y": 120
+              },
+              "params": {}
+            },
+            {
+              "id": "train",
+              "type": "core.train",
+              "position": {
+                "x": 700,
+                "y": 120
+              },
+              "params": {
+                "steps": 20
+              }
+            },
+            {
+              "id": "inspect",
+              "type": "core.inspect",
+              "position": {
+                "x": 1030,
+                "y": 120
+              },
+              "params": {
+                "include_dataset": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "id": "config:config-experiment:config",
+              "source": "config",
+              "source_port": "config",
+              "target": "experiment",
+              "target_port": "config"
+            },
+            {
+              "id": "dataset:dataset-experiment:dataset",
+              "source": "dataset",
+              "source_port": "dataset",
+              "target": "experiment",
+              "target_port": "dataset"
+            },
+            {
+              "id": "experiment:run-train:run",
+              "source": "experiment",
+              "source_port": "run",
+              "target": "train",
+              "target_port": "run"
+            },
+            {
+              "id": "train:run-inspect:run",
+              "source": "train",
+              "source_port": "run",
+              "target": "inspect",
+              "target_port": "run"
+            }
+          ],
+          "view": {
+            "x": 0,
+            "y": 0,
+            "zoom": 0.9
+          }
+        }
+      },
+      {
+        "id": "local.examples/scale_workflow",
+        "name": "Example plugin: scale and observe",
+        "graph": {
+          "name": "Plugin scale playground",
+          "description": "A real custom node transforms a typed number and previews the result.",
+          "nodes": [
+            {
+              "id": "number",
+              "type": "core.number",
+              "position": {
+                "x": 40,
+                "y": 100
+              },
+              "params": {
+                "value": 21
+              }
+            },
+            {
+              "id": "scale",
+              "type": "local.examples/scale",
+              "position": {
+                "x": 370,
+                "y": 100
+              },
+              "params": {
+                "factor": 2
+              }
+            },
+            {
+              "id": "preview",
+              "type": "core.preview",
+              "position": {
+                "x": 700,
+                "y": 100
+              },
+              "params": {}
+            }
+          ],
+          "edges": [
+            {
+              "id": "number-scale",
+              "source": "number",
+              "source_port": "value",
+              "target": "scale",
+              "target_port": "value"
+            },
+            {
+              "id": "scale-preview",
+              "source": "scale",
+              "source_port": "value",
+              "target": "preview",
+              "target_port": "value"
+            }
+          ],
+          "view": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1
+          }
+        }
+      }
+    ],
+    "sandbox": {
+      "available": true,
+      "language": "javascript",
+      "runtime": "V8 / mini-racer",
+      "execution": "synchronous-function-body",
+      "fresh_process_per_invocation": true,
+      "code_limit_bytes": 65536,
+      "input_limit_bytes": 1048576,
+      "output_limit_bytes": 1048576,
+      "max_json_depth": 64,
+      "max_output_values": 500000,
+      "max_output_array_length": 100000,
+      "timeout_ms": {
+        "min": 10,
+        "max": 10000,
+        "default": 1000
+      },
+      "memory_mb": {
+        "min": 16,
+        "max": 64,
+        "default": 32
+      },
+      "wall_grace_ms": 30000,
+      "startup_timeout_ms": 30000,
+      "execution_wall_grace_ms": 3000,
+      "worker_request_limit_bytes": 1442816,
+      "windows_process_memory_mb": 256,
+      "windows_process_limit": 1,
+      "windows_job_active": true,
+      "os_virtual_machine": false,
+      "logs": {
+        "max_entries": 100,
+        "max_line_characters": 2048,
+        "max_total_characters": 16384
+      },
+      "host_io": false,
+      "python": false,
+      "network": false,
+      "filesystem": false,
+      "dom": false,
+      "timers": false,
+      "webassembly": false,
+      "numbers": "IEEE-754 binary64; nonexact integer inputs rejected; use decimal strings and BigInt for wide integers",
+      "host_api": false,
+      "description": "Scripts return JSON outputs. Real experiment actions use explicit built-in nodes."
+    },
+    "limits": {
+      "graphs": 100,
+      "nodes_per_graph": 500,
+      "edges_per_graph": 2000,
+      "plugins": 64,
+      "queued_jobs": 16,
+      "job_history": 50,
+      "job_bytes": 8000000,
+      "job_history_bytes": 24000000,
+      "artifact_bytes": 8388608,
+      "graph_registry_bytes": 8000000,
+      "plugin_registry_bytes": 4000000,
+      "graph_bytes": 2000000
+    }
+  },
+  "graph_state": {
+    "revision": 1,
+    "graphs": [
+      {
+        "name": "Training laboratory",
+        "description": "Configuration \u2192 real experiment \u2192 training \u2192 checkpoint \u2192 observation.",
+        "nodes": [
+          {
+            "id": "config",
+            "type": "core.config",
+            "position": {
+              "x": 40,
+              "y": 80
+            },
+            "params": {
+              "value": {
+                "steps": 100
+              }
+            }
+          },
+          {
+            "id": "experiment",
+            "type": "core.experiment",
+            "position": {
+              "x": 370,
+              "y": 80
+            },
+            "params": {}
+          },
+          {
+            "id": "train",
+            "type": "core.train",
+            "position": {
+              "x": 700,
+              "y": 80
+            },
+            "params": {
+              "steps": 10
+            }
+          },
+          {
+            "id": "checkpoint",
+            "type": "core.checkpoint",
+            "position": {
+              "x": 1030,
+              "y": 80
+            },
+            "params": {}
+          },
+          {
+            "id": "inspect",
+            "type": "core.inspect",
+            "position": {
+              "x": 1360,
+              "y": 80
+            },
+            "params": {}
+          }
+        ],
+        "edges": [
+          {
+            "id": "config:config-experiment:config",
+            "source": "config",
+            "source_port": "config",
+            "target": "experiment",
+            "target_port": "config"
+          },
+          {
+            "id": "experiment:run-train:run",
+            "source": "experiment",
+            "source_port": "run",
+            "target": "train",
+            "target_port": "run"
+          },
+          {
+            "id": "train:run-checkpoint:run",
+            "source": "train",
+            "source_port": "run",
+            "target": "checkpoint",
+            "target_port": "run"
+          },
+          {
+            "id": "checkpoint:run-inspect:run",
+            "source": "checkpoint",
+            "source_port": "run",
+            "target": "inspect",
+            "target_port": "run"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 0.8
+        },
+        "id": "starter-training",
+        "revision": 1,
+        "created_at": "2026-10-23T15:04:04.761259+00:00",
+        "updated_at": "2026-10-23T15:04:04.761259+00:00"
+      }
+    ],
+    "active_graph_id": "starter-training",
+    "plugins": [
+      {
+        "id": "local.examples",
+        "enabled": true,
+        "manifest": {
+          "schema_version": "spobs-plugin/1",
+          "id": "local.examples",
+          "name": "Example transformations",
+          "version": "1.0.0",
+          "description": "Copy this manifest to create your own isolated JavaScript nodes.",
+          "nodes": [
+            {
+              "id": "scale",
+              "title": "Scale a number",
+              "category": "Examples",
+              "description": "Multiply a value by a factor.",
+              "inputs": [
+                {
+                  "name": "value",
+                  "type": "number",
+                  "description": "",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "value",
+                  "type": "number",
+                  "description": ""
+                }
+              ],
+              "parameters": [
+                {
+                  "name": "factor",
+                  "type": "number",
+                  "description": "",
+                  "default": 2
+                }
+              ],
+              "code": "console.log('Scaling by', params.factor); return {value: inputs.value * params.factor};"
+            },
+            {
+              "id": "scale_targets",
+              "title": "Scale dataset targets",
+              "category": "Examples",
+              "description": "Transform target values without changing input samples.",
+              "inputs": [
+                {
+                  "name": "data",
+                  "type": "dataset",
+                  "description": "",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "data",
+                  "type": "dataset",
+                  "description": ""
+                }
+              ],
+              "parameters": [
+                {
+                  "name": "factor",
+                  "type": "number",
+                  "description": "",
+                  "default": 2
+                }
+              ],
+              "code": "return {data: {...inputs.data, targets: inputs.data.targets.map(v => v * params.factor), provenance: {...inputs.data.provenance, transform: 'scale_targets', factor: params.factor}}};"
+            }
+          ],
+          "templates": [
+            {
+              "id": "scale_workflow",
+              "name": "Example plugin: scale and observe",
+              "graph": {
+                "name": "Plugin scale playground",
+                "description": "A real custom node transforms a typed number and previews the result.",
+                "nodes": [
+                  {
+                    "id": "number",
+                    "type": "core.number",
+                    "position": {
+                      "x": 40,
+                      "y": 100
+                    },
+                    "params": {
+                      "value": 21
+                    }
+                  },
+                  {
+                    "id": "scale",
+                    "type": "local.examples/scale",
+                    "position": {
+                      "x": 370,
+                      "y": 100
+                    },
+                    "params": {
+                      "factor": 2
+                    }
+                  },
+                  {
+                    "id": "preview",
+                    "type": "core.preview",
+                    "position": {
+                      "x": 700,
+                      "y": 100
+                    },
+                    "params": {}
+                  }
+                ],
+                "edges": [
+                  {
+                    "id": "number-scale",
+                    "source": "number",
+                    "source_port": "value",
+                    "target": "scale",
+                    "target_port": "value"
+                  },
+                  {
+                    "id": "scale-preview",
+                    "source": "scale",
+                    "source_port": "value",
+                    "target": "preview",
+                    "target_port": "value"
+                  }
+                ],
+                "view": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 1
+                }
+              }
+            }
+          ],
+          "panels": [
+            {
+              "id": "example_controls",
+              "title": "Example reusable controls",
+              "description": "Adjust these values and insert them as an Object node for use in your graph.",
+              "fields": [
+                {
+                  "name": "value",
+                  "type": "number",
+                  "description": "",
+                  "default": 21
+                },
+                {
+                  "name": "factor",
+                  "type": "number",
+                  "description": "",
+                  "default": 2,
+                  "min": -100,
+                  "max": 100
+                }
+              ]
+            }
+          ]
+        },
+        "installed_at": "2026-10-23T15:06:48.805760+00:00",
+        "updated_at": "2026-10-23T15:06:48.805760+00:00"
+      }
+    ],
+    "jobs": [],
+    "artifacts": [],
+    "queue_length": 0
+  },
+  "drafts": {
+    "drafts": {
+      "schema_version": "spobs-ui-drafts/1",
+      "runs": {},
+      "plugin": "",
+      "plugin_dirty": false
+    },
+    "revision": 0
+  },
+  "dataset": {
+    "inputs": [
+      -2.0,
+      -1.9921722412109375,
+      -1.984344482421875,
+      -1.976516604423523,
+      -1.9686888456344604,
+      -1.960861086845398,
+      -1.953033208847046,
+      -1.9452054500579834,
+      -1.937377691268921,
+      -1.9295499324798584,
+      -1.921722173690796,
+      -1.9138942956924438,
+      -1.9060665369033813,
+      -1.8982387781143188,
+      -1.8904109001159668,
+      -1.8825831413269043,
+      -1.8747553825378418,
+      -1.8669276237487793,
+      -1.8590998649597168,
+      -1.8512719869613647,
+      -1.8434442281723022,
+      -1.8356164693832397,
+      -1.8277885913848877,
+      -1.8199608325958252,
+      -1.8121330738067627,
+      -1.8043053150177002,
+      -1.7964775562286377,
+      -1.7886496782302856,
+      -1.7808219194412231,
+      -1.7729941606521606,
+      -1.7651662826538086,
+      -1.757338523864746,
+      -1.7495107650756836,
+      -1.741683006286621,
+      -1.7338552474975586,
+      -1.7260273694992065,
+      -1.718199610710144,
+      -1.7103718519210815,
+      -1.7025439739227295,
+      -1.694716215133667,
+      -1.6868884563446045,
+      -1.679060697555542,
+      -1.6712329387664795,
+      -1.6634050607681274,
+      -1.655577301979065,
+      -1.6477495431900024,
+      -1.6399216651916504,
+      -1.632093906402588,
+      -1.6242661476135254,
+      -1.616438388824463,
+      -1.6086106300354004,
+      -1.6007827520370483,
+      -1.5929549932479858,
+      -1.5851272344589233,
+      -1.5772993564605713,
+      -1.5694715976715088,
+      -1.5616438388824463,
+      -1.5538160800933838,
+      -1.5459883213043213,
+      -1.5381604433059692,
+      -1.5303326845169067,
+      -1.5225049257278442,
+      -1.5146770477294922,
+      -1.5068492889404297,
+      -1.4990215301513672,
+      -1.4911937713623047,
+      -1.4833660125732422,
+      -1.4755381345748901,
+      -1.4677103757858276,
+      -1.4598826169967651,
+      -1.452054738998413,
+      -1.4442269802093506,
+      -1.436399221420288,
+      -1.4285714626312256,
+      -1.420743703842163,
+      -1.412915825843811,
+      -1.4050880670547485,
+      -1.397260308265686,
+      -1.389432430267334,
+      -1.3816046714782715,
+      -1.373776912689209,
+      -1.3659491539001465,
+      -1.358121395111084,
+      -1.350293517112732,
+      -1.3424657583236694,
+      -1.334637999534607,
+      -1.3268101215362549,
+      -1.3189823627471924,
+      -1.3111546039581299,
+      -1.3033268451690674,
+      -1.2954990863800049,
+      -1.2876712083816528,
+      -1.2798434495925903,
+      -1.2720156908035278,
+      -1.2641878128051758,
+      -1.2563600540161133,
+      -1.2485322952270508,
+      -1.2407045364379883,
+      -1.2328767776489258,
+      -1.2250488996505737,
+      -1.2172211408615112,
+      -1.2093933820724487,
+      -1.2015655040740967,
+      -1.1937377452850342,
+      -1.1859099864959717,
+      -1.1780822277069092,
+      -1.1702544689178467,
+      -1.1624265909194946,
+      -1.1545988321304321,
+      -1.1467710733413696,
+      -1.1389431953430176,
+      -1.131115436553955,
+      -1.1232876777648926,
+      -1.11545991897583,
+      -1.1076321601867676,
+      -1.0998042821884155,
+      -1.091976523399353,
+      -1.0841487646102905,
+      -1.0763208866119385,
+      -1.068493127822876,
+      -1.0606653690338135,
+      -1.052837610244751,
+      -1.0450098514556885,
+      -1.0371819734573364,
+      -1.029354214668274,
+      -1.0215264558792114,
+      -1.0136985778808594,
+      -1.0058708190917969,
+      -0.9980430603027344,
+      -0.9902153015136719,
+      -0.9823875427246094,
+      -0.9745596647262573,
+      -0.9667319059371948,
+      -0.9589041471481323,
+      -0.9510762691497803,
+      -0.9432485103607178,
+      -0.9354207515716553,
+      -0.9275929927825928,
+      -0.9197652339935303,
+      -0.9119373559951782,
+      -0.9041095972061157,
+      -0.8962818384170532,
+      -0.8884539604187012,
+      -0.8806262016296387,
+      -0.8727984428405762,
+      -0.8649706840515137,
+      -0.8571429252624512,
+      -0.8493150472640991,
+      -0.8414872884750366,
+      -0.8336595296859741,
+      -0.8258316516876221,
+      -0.8180038928985596,
+      -0.8101761341094971,
+      -0.8023483753204346,
+      -0.7945206165313721,
+      -0.78669273853302,
+      -0.7788649797439575,
+      -0.771037220954895,
+      -0.763209342956543,
+      -0.7553815841674805,
+      -0.747553825378418,
+      -0.7397260665893555,
+      -0.731898307800293,
+      -0.7240704298019409,
+      -0.7162426710128784,
+      -0.7084149122238159,
+      -0.7005870342254639,
+      -0.6927592754364014,
+      -0.6849315166473389,
+      -0.6771037578582764,
+      -0.6692759990692139,
+      -0.6614481210708618,
+      -0.6536203622817993,
+      -0.6457926034927368,
+      -0.6379647254943848,
+      -0.6301369667053223,
+      -0.6223092079162598,
+      -0.6144814491271973,
+      -0.6066536903381348,
+      -0.5988258123397827,
+      -0.5909980535507202,
+      -0.5831702947616577,
+      -0.5753424167633057,
+      -0.5675146579742432,
+      -0.5596868991851807,
+      -0.5518591403961182,
+      -0.5440313816070557,
+      -0.5362035036087036,
+      -0.5283757448196411,
+      -0.5205479860305786,
+      -0.5127201080322266,
+      -0.5048923492431641,
+      -0.49706459045410156,
+      -0.48923683166503906,
+      -0.48140907287597656,
+      -0.4735811948776245,
+      -0.465753436088562,
+      -0.4579256772994995,
+      -0.45009779930114746,
+      -0.44227004051208496,
+      -0.43444228172302246,
+      -0.42661452293395996,
+      -0.41878676414489746,
+      -0.4109588861465454,
+      -0.4031311273574829,
+      -0.3953033685684204,
+      -0.38747549057006836,
+      -0.37964773178100586,
+      -0.37181997299194336,
+      -0.36399221420288086,
+      -0.35616445541381836,
+      -0.3483365774154663,
+      -0.3405088186264038,
+      -0.3326810598373413,
+      -0.32485318183898926,
+      -0.31702542304992676,
+      -0.30919766426086426,
+      -0.30136990547180176,
+      -0.29354214668273926,
+      -0.2857142686843872,
+      -0.2778865098953247,
+      -0.2700587511062622,
+      -0.26223087310791016,
+      -0.25440311431884766,
+      -0.24657535552978516,
+      -0.23874759674072266,
+      -0.23091983795166016,
+      -0.2230919599533081,
+      -0.2152642011642456,
+      -0.2074364423751831,
+      -0.19960856437683105,
+      -0.19178080558776855,
+      -0.18395304679870605,
+      -0.17612528800964355,
+      -0.16829752922058105,
+      -0.160469651222229,
+      -0.1526418924331665,
+      -0.144814133644104,
+      -0.13698625564575195,
+      -0.12915849685668945,
+      -0.12133073806762695,
+      -0.11350297927856445,
+      -0.10567522048950195,
+      -0.0978473424911499,
+      -0.0900195837020874,
+      -0.0821918249130249,
+      -0.07436394691467285,
+      -0.06653618812561035,
+      -0.05870842933654785,
+      -0.05088067054748535,
+      -0.04305291175842285,
+      -0.0352250337600708,
+      -0.0273972749710083,
+      -0.0195695161819458,
+      -0.01174163818359375,
+      -0.00391387939453125,
+      0.00391387939453125,
+      0.01174163818359375,
+      0.0195695161819458,
+      0.0273972749710083,
+      0.0352250337600708,
+      0.04305291175842285,
+      0.05088067054748535,
+      0.05870842933654785,
+      0.06653618812561035,
+      0.07436394691467285,
+      0.0821918249130249,
+      0.0900195837020874,
+      0.0978473424911499,
+      0.10567522048950195,
+      0.11350297927856445,
+      0.12133073806762695,
+      0.12915849685668945,
+      0.13698625564575195,
+      0.144814133644104,
+      0.1526418924331665,
+      0.160469651222229,
+      0.16829752922058105,
+      0.17612528800964355,
+      0.18395304679870605,
+      0.19178080558776855,
+      0.19960856437683105,
+      0.2074364423751831,
+      0.2152642011642456,
+      0.2230919599533081,
+      0.23091983795166016,
+      0.23874759674072266,
+      0.24657535552978516,
+      0.25440311431884766,
+      0.26223087310791016,
+      0.2700587511062622,
+      0.2778865098953247,
+      0.2857142686843872,
+      0.29354214668273926,
+      0.30136990547180176,
+      0.30919766426086426,
+      0.31702542304992676,
+      0.32485318183898926,
+      0.3326810598373413,
+      0.3405088186264038,
+      0.3483365774154663,
+      0.35616445541381836,
+      0.36399221420288086,
+      0.37181997299194336,
+      0.37964773178100586,
+      0.38747549057006836,
+      0.3953033685684204,
+      0.4031311273574829,
+      0.4109588861465454,
+      0.41878676414489746,
+      0.42661452293395996,
+      0.43444228172302246,
+      0.44227004051208496,
+      0.45009779930114746,
+      0.4579256772994995,
+      0.465753436088562,
+      0.4735811948776245,
+      0.48140907287597656,
+      0.48923683166503906,
+      0.49706459045410156,
+      0.5048923492431641,
+      0.5127201080322266,
+      0.5205479860305786,
+      0.5283757448196411,
+      0.5362035036087036,
+      0.5440313816070557,
+      0.5518591403961182,
+      0.5596868991851807,
+      0.5675146579742432,
+      0.5753424167633057,
+      0.5831702947616577,
+      0.5909980535507202,
+      0.5988258123397827,
+      0.6066536903381348,
+      0.6144814491271973,
+      0.6223092079162598,
+      0.6301369667053223,
+      0.6379647254943848,
+      0.6457926034927368,
+      0.6536203622817993,
+      0.6614481210708618,
+      0.6692759990692139,
+      0.6771037578582764,
+      0.6849315166473389,
+      0.6927592754364014,
+      0.7005870342254639,
+      0.7084149122238159,
+      0.7162426710128784,
+      0.7240704298019409,
+      0.731898307800293,
+      0.7397260665893555,
+      0.747553825378418,
+      0.7553815841674805,
+      0.763209342956543,
+      0.771037220954895,
+      0.7788649797439575,
+      0.78669273853302,
+      0.7945206165313721,
+      0.8023483753204346,
+      0.8101761341094971,
+      0.8180038928985596,
+      0.8258316516876221,
+      0.8336595296859741,
+      0.8414872884750366,
+      0.8493150472640991,
+      0.8571429252624512,
+      0.8649706840515137,
+      0.8727984428405762,
+      0.8806262016296387,
+      0.8884539604187012,
+      0.8962818384170532,
+      0.9041095972061157,
+      0.9119373559951782,
+      0.9197652339935303,
+      0.9275929927825928,
+      0.9354207515716553,
+      0.9432485103607178,
+      0.9510762691497803,
+      0.9589041471481323,
+      0.9667319059371948,
+      0.9745596647262573,
+      0.9823875427246094,
+      0.9902153015136719,
+      0.9980430603027344,
+      1.0058708190917969,
+      1.0136985778808594,
+      1.0215264558792114,
+      1.029354214668274,
+      1.0371819734573364,
+      1.0450098514556885,
+      1.052837610244751,
+      1.0606653690338135,
+      1.068493127822876,
+      1.0763208866119385,
+      1.0841487646102905,
+      1.091976523399353,
+      1.0998042821884155,
+      1.1076321601867676,
+      1.11545991897583,
+      1.1232876777648926,
+      1.131115436553955,
+      1.1389431953430176,
+      1.1467710733413696,
+      1.1545988321304321,
+      1.1624265909194946,
+      1.1702544689178467,
+      1.1780822277069092,
+      1.1859099864959717,
+      1.1937377452850342,
+      1.2015655040740967,
+      1.2093933820724487,
+      1.2172211408615112,
+      1.2250488996505737,
+      1.2328767776489258,
+      1.2407045364379883,
+      1.2485322952270508,
+      1.2563600540161133,
+      1.2641878128051758,
+      1.2720156908035278,
+      1.2798434495925903,
+      1.2876712083816528,
+      1.2954990863800049,
+      1.3033268451690674,
+      1.3111546039581299,
+      1.3189823627471924,
+      1.3268101215362549,
+      1.334637999534607,
+      1.3424657583236694,
+      1.350293517112732,
+      1.358121395111084,
+      1.3659491539001465,
+      1.373776912689209,
+      1.3816046714782715,
+      1.389432430267334,
+      1.397260308265686,
+      1.4050880670547485,
+      1.412915825843811,
+      1.420743703842163,
+      1.4285714626312256,
+      1.436399221420288,
+      1.4442269802093506,
+      1.452054738998413,
+      1.4598826169967651,
+      1.4677103757858276,
+      1.4755381345748901,
+      1.4833660125732422,
+      1.4911937713623047,
+      1.4990215301513672,
+      1.5068492889404297,
+      1.5146770477294922,
+      1.5225049257278442,
+      1.5303326845169067,
+      1.5381604433059692,
+      1.5459883213043213,
+      1.5538160800933838,
+      1.5616438388824463,
+      1.5694715976715088,
+      1.5772993564605713,
+      1.5851272344589233,
+      1.5929549932479858,
+      1.6007827520370483,
+      1.6086106300354004,
+      1.616438388824463,
+      1.6242661476135254,
+      1.632093906402588,
+      1.6399216651916504,
+      1.6477495431900024,
+      1.655577301979065,
+      1.6634050607681274,
+      1.6712329387664795,
+      1.679060697555542,
+      1.6868884563446045,
+      1.694716215133667,
+      1.7025439739227295,
+      1.7103718519210815,
+      1.718199610710144,
+      1.7260273694992065,
+      1.7338552474975586,
+      1.741683006286621,
+      1.7495107650756836,
+      1.757338523864746,
+      1.7651662826538086,
+      1.7729941606521606,
+      1.7808219194412231,
+      1.7886496782302856,
+      1.7964775562286377,
+      1.8043053150177002,
+      1.8121330738067627,
+      1.8199608325958252,
+      1.8277885913848877,
+      1.8356164693832397,
+      1.8434442281723022,
+      1.8512719869613647,
+      1.8590998649597168,
+      1.8669276237487793,
+      1.8747553825378418,
+      1.8825831413269043,
+      1.8904109001159668,
+      1.8982387781143188,
+      1.9060665369033813,
+      1.9138942956924438,
+      1.921722173690796,
+      1.9295499324798584,
+      1.937377691268921,
+      1.9452054500579834,
+      1.953033208847046,
+      1.960861086845398,
+      1.9686888456344604,
+      1.976516604423523,
+      1.984344482421875,
+      1.9921722412109375,
+      2.0
+    ],
+    "targets": [
+      -0.9950547814369202,
+      -0.994937539100647,
+      -0.9948175549507141,
+      -0.9946947693824768,
+      -0.9945690631866455,
+      -0.9944403767585754,
+      -0.994308590888977,
+      -0.9941737651824951,
+      -0.9940357804298401,
+      -0.9938944578170776,
+      -0.9937498569488525,
+      -0.9936017990112305,
+      -0.9934502840042114,
+      -0.9932951927185059,
+      -0.9931364059448242,
+      -0.9929738640785217,
+      -0.9928075671195984,
+      -0.9926372766494751,
+      -0.9924629926681519,
+      -0.9922845959663391,
+      -0.9921019673347473,
+      -0.9919150471687317,
+      -0.9917237758636475,
+      -0.9915279150009155,
+      -0.9913275241851807,
+      -0.9911223649978638,
+      -0.9909123778343201,
+      -0.99069744348526,
+      -0.990477442741394,
+      -0.9902522563934326,
+      -0.990021824836731,
+      -0.98978590965271,
+      -0.9895445108413696,
+      -0.9892973899841309,
+      -0.9890444874763489,
+      -0.9887856245040894,
+      -0.9885206818580627,
+      -0.9882495403289795,
+      -0.9879719614982605,
+      -0.9876879453659058,
+      -0.9873972535133362,
+      -0.9870997071266174,
+      -0.98679518699646,
+      -0.9864835739135742,
+      -0.9861646294593811,
+      -0.9858382344245911,
+      -0.985504150390625,
+      -0.9851622581481934,
+      -0.9848123788833618,
+      -0.9844542741775513,
+      -0.9840878844261169,
+      -0.9837128520011902,
+      -0.9833290576934814,
+      -0.9829363226890564,
+      -0.9825344085693359,
+      -0.9821231365203857,
+      -0.9817022085189819,
+      -0.981271505355835,
+      -0.9808307886123657,
+      -0.9803797602653503,
+      -0.9799182415008545,
+      -0.9794459342956543,
+      -0.9789627194404602,
+      -0.9784682393074036,
+      -0.9779622554779053,
+      -0.9774444699287415,
+      -0.9769147038459778,
+      -0.9763726592063904,
+      -0.9758180379867554,
+      -0.9752505421638489,
+      -0.9746699333190918,
+      -0.9740758538246155,
+      -0.973468005657196,
+      -0.9728461503982544,
+      -0.9722099304199219,
+      -0.9715589880943298,
+      -0.9708930253982544,
+      -0.9702116847038269,
+      -0.9695146679878235,
+      -0.9688016176223755,
+      -0.9680721163749695,
+      -0.9673258662223816,
+      -0.9665625095367432,
+      -0.965781569480896,
+      -0.9649827480316162,
+      -0.9641655683517456,
+      -0.9633297324180603,
+      -0.9624747037887573,
+      -0.9616001844406128,
+      -0.9607056975364685,
+      -0.959790825843811,
+      -0.9588550329208374,
+      -0.957897961139679,
+      -0.9569191336631775,
+      -0.95591801404953,
+      -0.9548941850662231,
+      -0.9538471698760986,
+      -0.9527763724327087,
+      -0.9516814351081848,
+      -0.9505616426467896,
+      -0.9494166374206543,
+      -0.9482458233833313,
+      -0.9470486640930176,
+      -0.9458245635032654,
+      -0.944572925567627,
+      -0.9432932734489441,
+      -0.9419849514961243,
+      -0.9406473636627197,
+      -0.9392798542976379,
+      -0.9378818869590759,
+      -0.9364527463912964,
+      -0.9349918961524963,
+      -0.9334985613822937,
+      -0.9319721460342407,
+      -0.9304119944572449,
+      -0.9288173317909241,
+      -0.9271875023841858,
+      -0.9255218505859375,
+      -0.9238195419311523,
+      -0.9220799207687378,
+      -0.9203022122383118,
+      -0.918485701084137,
+      -0.9166295528411865,
+      -0.9147329926490784,
+      -0.9127953052520752,
+      -0.9108155965805054,
+      -0.9087930917739868,
+      -0.9067269563674927,
+      -0.9046164155006409,
+      -0.902460515499115,
+      -0.9002584218978882,
+      -0.8980092406272888,
+      -0.8957121968269348,
+      -0.8933663368225098,
+      -0.8909707069396973,
+      -0.8885244131088257,
+      -0.8860265612602234,
+      -0.883476197719574,
+      -0.880872368812561,
+      -0.8782141208648682,
+      -0.875500500202179,
+      -0.8727304935455322,
+      -0.869903028011322,
+      -0.8670173287391663,
+      -0.8640722632408142,
+      -0.8610668182373047,
+      -0.8579999804496765,
+      -0.8548706769943237,
+      -0.8516779541969299,
+      -0.8484207987785339,
+      -0.8450980186462402,
+      -0.8417086601257324,
+      -0.8382516503334045,
+      -0.8347259163856506,
+      -0.8311303853988647,
+      -0.8274639844894409,
+      -0.8237256407737732,
+      -0.8199142813682556,
+      -0.8160287737846375,
+      -0.8120681643486023,
+      -0.8080313205718994,
+      -0.8039171099662781,
+      -0.7997245192527771,
+      -0.7954522967338562,
+      -0.7910996675491333,
+      -0.7866654396057129,
+      -0.7821484804153442,
+      -0.7775477766990662,
+      -0.7728623747825623,
+      -0.7680911421775818,
+      -0.7632330656051636,
+      -0.7582870125770569,
+      -0.7532522082328796,
+      -0.7481275796890259,
+      -0.7429119944572449,
+      -0.7376047372817993,
+      -0.7322047352790833,
+      -0.726711094379425,
+      -0.7211229205131531,
+      -0.7154392004013062,
+      -0.7096592783927917,
+      -0.7037822008132935,
+      -0.6978071331977844,
+      -0.6917334198951721,
+      -0.6855602264404297,
+      -0.6792868375778198,
+      -0.67291259765625,
+      -0.6664367914199829,
+      -0.6598588824272156,
+      -0.6531782746315002,
+      -0.6463942527770996,
+      -0.6395066380500793,
+      -0.6325147747993469,
+      -0.6254183053970337,
+      -0.6182168126106262,
+      -0.6109099388122559,
+      -0.6034975647926331,
+      -0.5959793925285339,
+      -0.5883551836013794,
+      -0.5806249976158142,
+      -0.5727887153625488,
+      -0.5648462772369385,
+      -0.5567978024482727,
+      -0.5486432909965515,
+      -0.5403832197189331,
+      -0.5320175886154175,
+      -0.5235466957092285,
+      -0.514971137046814,
+      -0.5062912106513977,
+      -0.4975075125694275,
+      -0.4886205792427063,
+      -0.4796309471130371,
+      -0.4705396592617035,
+      -0.4613473415374756,
+      -0.4520547688007355,
+      -0.44266313314437866,
+      -0.43317338824272156,
+      -0.4235866367816925,
+      -0.4139040410518646,
+      -0.40412670373916626,
+      -0.3942563235759735,
+      -0.3842941224575043,
+      -0.3742414712905884,
+      -0.36410021781921387,
+      -0.3538719117641449,
+      -0.3435582220554352,
+      -0.33316102623939514,
+      -0.3226819932460785,
+      -0.3121234178543091,
+      -0.30148717761039734,
+      -0.29077520966529846,
+      -0.27998998761177063,
+      -0.26913362741470337,
+      -0.2582084536552429,
+      -0.2472168356180191,
+      -0.23616105318069458,
+      -0.22504395246505737,
+      -0.2138679474592209,
+      -0.2026354968547821,
+      -0.19134965538978577,
+      -0.18001298606395721,
+      -0.1686282902956009,
+      -0.15719842910766602,
+      -0.14572611451148987,
+      -0.13421465456485748,
+      -0.1226668581366539,
+      -0.11108557134866714,
+      -0.0994742140173912,
+      -0.08783570677042007,
+      -0.07617316395044327,
+      -0.06448974460363388,
+      -0.05278843641281128,
+      -0.0410727933049202,
+      -0.02934584580361843,
+      -0.017610635608434677,
+      -0.005870751570910215,
+      0.005870751570910215,
+      0.017610635608434677,
+      0.02934584580361843,
+      0.0410727933049202,
+      0.05278843641281128,
+      0.06448974460363388,
+      0.07617316395044327,
+      0.08783570677042007,
+      0.0994742140173912,
+      0.11108557134866714,
+      0.1226668581366539,
+      0.13421465456485748,
+      0.14572611451148987,
+      0.15719842910766602,
+      0.1686282902956009,
+      0.18001298606395721,
+      0.19134965538978577,
+      0.2026354968547821,
+      0.2138679474592209,
+      0.22504395246505737,
+      0.23616105318069458,
+      0.2472168356180191,
+      0.2582084536552429,
+      0.26913362741470337,
+      0.27998998761177063,
+      0.29077520966529846,
+      0.30148717761039734,
+      0.3121234178543091,
+      0.3226819932460785,
+      0.33316102623939514,
+      0.3435582220554352,
+      0.3538719117641449,
+      0.36410021781921387,
+      0.3742414712905884,
+      0.3842941224575043,
+      0.3942563235759735,
+      0.40412670373916626,
+      0.4139040410518646,
+      0.4235866367816925,
+      0.43317338824272156,
+      0.44266313314437866,
+      0.4520547688007355,
+      0.4613473415374756,
+      0.4705396592617035,
+      0.4796309471130371,
+      0.4886205792427063,
+      0.4975075125694275,
+      0.5062912106513977,
+      0.514971137046814,
+      0.5235466957092285,
+      0.5320175886154175,
+      0.5403832197189331,
+      0.5486432909965515,
+      0.5567978024482727,
+      0.5648462772369385,
+      0.5727887153625488,
+      0.5806249976158142,
+      0.5883551836013794,
+      0.5959793925285339,
+      0.6034975647926331,
+      0.6109099388122559,
+      0.6182168126106262,
+      0.6254183053970337,
+      0.6325147747993469,
+      0.6395066380500793,
+      0.6463942527770996,
+      0.6531782746315002,
+      0.6598588824272156,
+      0.6664367914199829,
+      0.67291259765625,
+      0.6792868375778198,
+      0.6855602264404297,
+      0.6917334198951721,
+      0.6978071331977844,
+      0.7037822008132935,
+      0.7096592783927917,
+      0.7154392004013062,
+      0.7211229205131531,
+      0.726711094379425,
+      0.7322047352790833,
+      0.7376047372817993,
+      0.7429119944572449,
+      0.7481275796890259,
+      0.7532522082328796,
+      0.7582870125770569,
+      0.7632330656051636,
+      0.7680911421775818,
+      0.7728623747825623,
+      0.7775477766990662,
+      0.7821484804153442,
+      0.7866654396057129,
+      0.7910996675491333,
+      0.7954522967338562,
+      0.7997245192527771,
+      0.8039171099662781,
+      0.8080313205718994,
+      0.8120681643486023,
+      0.8160287737846375,
+      0.8199142813682556,
+      0.8237256407737732,
+      0.8274639844894409,
+      0.8311303853988647,
+      0.8347259163856506,
+      0.8382516503334045,
+      0.8417086601257324,
+      0.8450980186462402,
+      0.8484207987785339,
+      0.8516779541969299,
+      0.8548706769943237,
+      0.8579999804496765,
+      0.8610668182373047,
+      0.8640722632408142,
+      0.8670173287391663,
+      0.869903028011322,
+      0.8727304935455322,
+      0.875500500202179,
+      0.8782141208648682,
+      0.880872368812561,
+      0.883476197719574,
+      0.8860265612602234,
+      0.8885244131088257,
+      0.8909707069396973,
+      0.8933663368225098,
+      0.8957121968269348,
+      0.8980092406272888,
+      0.9002584218978882,
+      0.902460515499115,
+      0.9046164155006409,
+      0.9067269563674927,
+      0.9087930917739868,
+      0.9108155965805054,
+      0.9127953052520752,
+      0.9147329926490784,
+      0.9166295528411865,
+      0.918485701084137,
+      0.9203022122383118,
+      0.9220799207687378,
+      0.9238195419311523,
+      0.9255218505859375,
+      0.9271875023841858,
+      0.9288173317909241,
+      0.9304119944572449,
+      0.9319721460342407,
+      0.9334985613822937,
+      0.9349918961524963,
+      0.9364527463912964,
+      0.9378818869590759,
+      0.9392798542976379,
+      0.9406473636627197,
+      0.9419849514961243,
+      0.9432932734489441,
+      0.944572925567627,
+      0.9458245635032654,
+      0.9470486640930176,
+      0.9482458233833313,
+      0.9494166374206543,
+      0.9505616426467896,
+      0.9516814351081848,
+      0.9527763724327087,
+      0.9538471698760986,
+      0.9548941850662231,
+      0.95591801404953,
+      0.9569191336631775,
+      0.957897961139679,
+      0.9588550329208374,
+      0.959790825843811,
+      0.9607056975364685,
+      0.9616001844406128,
+      0.9624747037887573,
+      0.9633297324180603,
+      0.9641655683517456,
+      0.9649827480316162,
+      0.965781569480896,
+      0.9665625095367432,
+      0.9673258662223816,
+      0.9680721163749695,
+      0.9688016176223755,
+      0.9695146679878235,
+      0.9702116847038269,
+      0.9708930253982544,
+      0.9715589880943298,
+      0.9722099304199219,
+      0.9728461503982544,
+      0.973468005657196,
+      0.9740758538246155,
+      0.9746699333190918,
+      0.9752505421638489,
+      0.9758180379867554,
+      0.9763726592063904,
+      0.9769147038459778,
+      0.9774444699287415,
+      0.9779622554779053,
+      0.9784682393074036,
+      0.9789627194404602,
+      0.9794459342956543,
+      0.9799182415008545,
+      0.9803797602653503,
+      0.9808307886123657,
+      0.981271505355835,
+      0.9817022085189819,
+      0.9821231365203857,
+      0.9825344085693359,
+      0.9829363226890564,
+      0.9833290576934814,
+      0.9837128520011902,
+      0.9840878844261169,
+      0.9844542741775513,
+      0.9848123788833618,
+      0.9851622581481934,
+      0.985504150390625,
+      0.9858382344245911,
+      0.9861646294593811,
+      0.9864835739135742,
+      0.98679518699646,
+      0.9870997071266174,
+      0.9873972535133362,
+      0.9876879453659058,
+      0.9879719614982605,
+      0.9882495403289795,
+      0.9885206818580627,
+      0.9887856245040894,
+      0.9890444874763489,
+      0.9892973899841309,
+      0.9895445108413696,
+      0.98978590965271,
+      0.990021824836731,
+      0.9902522563934326,
+      0.990477442741394,
+      0.99069744348526,
+      0.9909123778343201,
+      0.9911223649978638,
+      0.9913275241851807,
+      0.9915279150009155,
+      0.9917237758636475,
+      0.9919150471687317,
+      0.9921019673347473,
+      0.9922845959663391,
+      0.9924629926681519,
+      0.9926372766494751,
+      0.9928075671195984,
+      0.9929738640785217,
+      0.9931364059448242,
+      0.9932951927185059,
+      0.9934502840042114,
+      0.9936017990112305,
+      0.9937498569488525,
+      0.9938944578170776,
+      0.9940357804298401,
+      0.9941737651824951,
+      0.994308590888977,
+      0.9944403767585754,
+      0.9945690631866455,
+      0.9946947693824768,
+      0.9948175549507141,
+      0.994937539100647,
+      0.9950547814369202
+    ],
+    "predictions": [
+      0.9984912276268005,
+      0.9984481930732727,
+      0.9984039664268494,
+      0.9983584880828857,
+      0.9983116388320923,
+      0.9982635378837585,
+      0.9982140064239502,
+      0.998163104057312,
+      0.9981107115745544,
+      0.9980568885803223,
+      0.9980014562606812,
+      0.9979445338249207,
+      0.9978858828544617,
+      0.9978256225585938,
+      0.9977636933326721,
+      0.9976999163627625,
+      0.9976343512535095,
+      0.9975669384002686,
+      0.9974976181983948,
+      0.9974262714385986,
+      0.9973529577255249,
+      0.9972774982452393,
+      0.9971999526023865,
+      0.9971201419830322,
+      0.9970380663871765,
+      0.9969536662101746,
+      0.9968668818473816,
+      0.9967776536941528,
+      0.9966858625411987,
+      0.9965914487838745,
+      0.9964943528175354,
+      0.9963944554328918,
+      0.9962917566299438,
+      0.9961861371994019,
+      0.9960775375366211,
+      0.995965838432312,
+      0.9958509802818298,
+      0.9957327842712402,
+      0.995611310005188,
+      0.9954863786697388,
+      0.995357871055603,
+      0.9952256679534912,
+      0.9950897693634033,
+      0.9949500560760498,
+      0.9948062896728516,
+      0.9946584701538086,
+      0.9945064783096313,
+      0.9943501353263855,
+      0.9941893815994263,
+      0.9940240979194641,
+      0.9938541054725647,
+      0.9936792850494385,
+      0.9934994578361511,
+      0.9933146238327026,
+      0.9931244850158691,
+      0.9929289817810059,
+      0.9927279353141785,
+      0.9925211668014526,
+      0.9923086166381836,
+      0.9920899868011475,
+      0.9918651580810547,
+      0.9916340112686157,
+      0.9913963079452515,
+      0.9911518692970276,
+      0.9909005165100098,
+      0.9906420707702637,
+      0.990376353263855,
+      0.9901030659675598,
+      0.9898220896720886,
+      0.9895331859588623,
+      0.9892361164093018,
+      0.9889306426048279,
+      0.9886165857315063,
+      0.9882936477661133,
+      0.9879615902900696,
+      0.9876201748847961,
+      0.9872691631317139,
+      0.9869082570075989,
+      0.9865371584892273,
+      0.9861556887626648,
+      0.985763430595398,
+      0.9853601455688477,
+      0.98494553565979,
+      0.9845192432403564,
+      0.9840810298919678,
+      0.9836304783821106,
+      0.983167290687561,
+      0.9826910495758057,
+      0.9822015762329102,
+      0.9816982746124268,
+      0.9811809659004211,
+      0.9806491136550903,
+      0.9801024198532104,
+      0.9795404672622681,
+      0.978962779045105,
+      0.9783689379692078,
+      0.977758526802063,
+      0.9771311283111572,
+      0.9764862060546875,
+      0.9758232831954956,
+      0.9751420021057129,
+      0.9744417071342468,
+      0.9737219214439392,
+      0.9729822278022766,
+      0.9722219109535217,
+      0.9714405536651611,
+      0.9706375598907471,
+      0.9698123335838318,
+      0.9689642786979675,
+      0.9680927395820618,
+      0.9671971797943115,
+      0.9662768840789795,
+      0.9653312563896179,
+      0.9643595814704895,
+      0.9633612036705017,
+      0.9623353481292725,
+      0.9612813591957092,
+      0.9601984620094299,
+      0.9590859413146973,
+      0.9579429626464844,
+      0.9567687511444092,
+      0.9555625319480896,
+      0.954323410987854,
+      0.9530505537986755,
+      0.9517431855201721,
+      0.9504002928733826,
+      0.9490209221839905,
+      0.9476042985916138,
+      0.9461494088172913,
+      0.9446552991867065,
+      0.9431208968162537,
+      0.9415451884269714,
+      0.9399272203445435,
+      0.9382659196853638,
+      0.9365601539611816,
+      0.9348088502883911,
+      0.9330108761787415,
+      0.9311650395393372,
+      0.9292702674865723,
+      0.9273252487182617,
+      0.92532879114151,
+      0.9232797622680664,
+      0.9211767315864563,
+      0.9190185070037842,
+      0.9168037176132202,
+      0.9145311117172241,
+      0.9121992588043213,
+      0.9098067283630371,
+      0.9073522090911865,
+      0.9048342108726501,
+      0.9022513031959534,
+      0.899601936340332,
+      0.8968847393989563,
+      0.8940980434417725,
+      0.8912403583526611,
+      0.8883100748062134,
+      0.8853057026863098,
+      0.882225513458252,
+      0.8790678977966309,
+      0.8758312463760376,
+      0.8725138306617737,
+      0.8691139817237854,
+      0.8656299710273743,
+      0.8620599508285522,
+      0.8584024310112,
+      0.8546554446220398,
+      0.8508172631263733,
+      0.8468860983848572,
+      0.8428601026535034,
+      0.8387375473976135,
+      0.8345165848731995,
+      0.8301951885223389,
+      0.8257717490196228,
+      0.8212443590164185,
+      0.816611111164093,
+      0.8118702173233032,
+      0.8070197105407715,
+      0.8020578622817993,
+      0.7969828248023987,
+      0.7917925715446472,
+      0.7864854335784912,
+      0.7810596227645874,
+      0.7755131125450134,
+      0.7698444128036499,
+      0.7640514969825745,
+      0.7581327557563782,
+      0.752086341381073,
+      0.7459105849266052,
+      0.7396039962768555,
+      0.7331647276878357,
+      0.726591169834137,
+      0.7198818922042847,
+      0.7130354046821594,
+      0.7060501575469971,
+      0.6989247798919678,
+      0.6916577816009521,
+      0.6842480897903442,
+      0.6766943335533142,
+      0.6689953207969666,
+      0.6611500978469849,
+      0.6531575918197632,
+      0.6450168490409851,
+      0.6367270350456238,
+      0.6282872557640076,
+      0.6196970343589783,
+      0.6109557747840881,
+      0.6020628213882446,
+      0.5930180549621582,
+      0.5838211178779602,
+      0.5744718909263611,
+      0.5649703145027161,
+      0.5553163886070251,
+      0.5455105304718018,
+      0.535552978515625,
+      0.5254442095756531,
+      0.5151849985122681,
+      0.5047759413719177,
+      0.494218111038208,
+      0.48351237177848816,
+      0.4726598560810089,
+      0.4616622030735016,
+      0.450520783662796,
+      0.4392370879650116,
+      0.42781326174736023,
+      0.4162510633468628,
+      0.404552698135376,
+      0.39272040128707886,
+      0.3807564973831177,
+      0.3686639070510864,
+      0.35644519329071045,
+      0.3441031873226166,
+      0.331641286611557,
+      0.31906259059906006,
+      0.30637043714523315,
+      0.2935684025287628,
+      0.2806600332260132,
+      0.26764950156211853,
+      0.25454065203666687,
+      0.2413373589515686,
+      0.2280443161725998,
+      0.2146657258272171,
+      0.20120608806610107,
+      0.1876700222492218,
+      0.1740621030330658,
+      0.16038759052753448,
+      0.1466512382030487,
+      0.13285787403583527,
+      0.11901307106018066,
+      0.10512183606624603,
+      0.09118945151567459,
+      0.07722126692533493,
+      0.0632225051522255,
+      0.049199026077985764,
+      0.03515612334012985,
+      0.021099111065268517,
+      0.0070339650847017765,
+      -0.0070339650847017765,
+      -0.021099111065268517,
+      -0.03515612334012985,
+      -0.049199026077985764,
+      -0.0632225051522255,
+      -0.07722126692533493,
+      -0.09118945151567459,
+      -0.10512183606624603,
+      -0.11901307106018066,
+      -0.13285787403583527,
+      -0.1466512382030487,
+      -0.16038759052753448,
+      -0.1740621030330658,
+      -0.1876700222492218,
+      -0.20120608806610107,
+      -0.2146657258272171,
+      -0.2280443161725998,
+      -0.2413373589515686,
+      -0.25454065203666687,
+      -0.26764950156211853,
+      -0.2806600332260132,
+      -0.2935684025287628,
+      -0.30637043714523315,
+      -0.31906259059906006,
+      -0.331641286611557,
+      -0.3441031873226166,
+      -0.35644519329071045,
+      -0.3686639070510864,
+      -0.3807564973831177,
+      -0.39272040128707886,
+      -0.404552698135376,
+      -0.4162510633468628,
+      -0.42781326174736023,
+      -0.4392370879650116,
+      -0.450520783662796,
+      -0.4616622030735016,
+      -0.4726598560810089,
+      -0.48351237177848816,
+      -0.494218111038208,
+      -0.5047759413719177,
+      -0.5151849985122681,
+      -0.5254442095756531,
+      -0.535552978515625,
+      -0.5455105304718018,
+      -0.5553163886070251,
+      -0.5649703145027161,
+      -0.5744718909263611,
+      -0.5838211178779602,
+      -0.5930180549621582,
+      -0.6020628213882446,
+      -0.6109557747840881,
+      -0.6196970343589783,
+      -0.6282872557640076,
+      -0.6367270350456238,
+      -0.6450168490409851,
+      -0.6531575918197632,
+      -0.6611500978469849,
+      -0.6689953207969666,
+      -0.6766943335533142,
+      -0.6842480897903442,
+      -0.6916577816009521,
+      -0.6989247798919678,
+      -0.7060501575469971,
+      -0.7130354046821594,
+      -0.7198818922042847,
+      -0.726591169834137,
+      -0.7331647276878357,
+      -0.7396039962768555,
+      -0.7459105849266052,
+      -0.752086341381073,
+      -0.7581327557563782,
+      -0.7640514969825745,
+      -0.7698444128036499,
+      -0.7755131125450134,
+      -0.7810596227645874,
+      -0.7864854335784912,
+      -0.7917925715446472,
+      -0.7969828248023987,
+      -0.8020578622817993,
+      -0.8070197105407715,
+      -0.8118702173233032,
+      -0.816611111164093,
+      -0.8212443590164185,
+      -0.8257717490196228,
+      -0.8301951885223389,
+      -0.8345165848731995,
+      -0.8387375473976135,
+      -0.8428601026535034,
+      -0.8468860983848572,
+      -0.8508172631263733,
+      -0.8546554446220398,
+      -0.8584024310112,
+      -0.8620599508285522,
+      -0.8656299710273743,
+      -0.8691139817237854,
+      -0.8725138306617737,
+      -0.8758312463760376,
+      -0.8790678977966309,
+      -0.882225513458252,
+      -0.8853057026863098,
+      -0.8883100748062134,
+      -0.8912403583526611,
+      -0.8940980434417725,
+      -0.8968847393989563,
+      -0.899601936340332,
+      -0.9022513031959534,
+      -0.9048342108726501,
+      -0.9073522090911865,
+      -0.9098067283630371,
+      -0.9121992588043213,
+      -0.9145311117172241,
+      -0.9168037176132202,
+      -0.9190185070037842,
+      -0.9211767315864563,
+      -0.9232797622680664,
+      -0.92532879114151,
+      -0.9273252487182617,
+      -0.9292702674865723,
+      -0.9311650395393372,
+      -0.9330108761787415,
+      -0.9348088502883911,
+      -0.9365601539611816,
+      -0.9382659196853638,
+      -0.9399272203445435,
+      -0.9415451884269714,
+      -0.9431208968162537,
+      -0.9446552991867065,
+      -0.9461494088172913,
+      -0.9476042985916138,
+      -0.9490209221839905,
+      -0.9504002928733826,
+      -0.9517431855201721,
+      -0.9530505537986755,
+      -0.954323410987854,
+      -0.9555625319480896,
+      -0.9567687511444092,
+      -0.9579429626464844,
+      -0.9590859413146973,
+      -0.9601984620094299,
+      -0.9612813591957092,
+      -0.9623353481292725,
+      -0.9633612036705017,
+      -0.9643595814704895,
+      -0.9653312563896179,
+      -0.9662768840789795,
+      -0.9671971797943115,
+      -0.9680927395820618,
+      -0.9689642786979675,
+      -0.9698123335838318,
+      -0.9706375598907471,
+      -0.9714405536651611,
+      -0.9722219109535217,
+      -0.9729822278022766,
+      -0.9737219214439392,
+      -0.9744417071342468,
+      -0.9751420021057129,
+      -0.9758232831954956,
+      -0.9764862060546875,
+      -0.9771311283111572,
+      -0.977758526802063,
+      -0.9783689379692078,
+      -0.978962779045105,
+      -0.9795404672622681,
+      -0.9801024198532104,
+      -0.9806491136550903,
+      -0.9811809659004211,
+      -0.9816982746124268,
+      -0.9822015762329102,
+      -0.9826910495758057,
+      -0.983167290687561,
+      -0.9836304783821106,
+      -0.9840810298919678,
+      -0.9845192432403564,
+      -0.98494553565979,
+      -0.9853601455688477,
+      -0.985763430595398,
+      -0.9861556887626648,
+      -0.9865371584892273,
+      -0.9869082570075989,
+      -0.9872691631317139,
+      -0.9876201748847961,
+      -0.9879615902900696,
+      -0.9882936477661133,
+      -0.9886165857315063,
+      -0.9889306426048279,
+      -0.9892361164093018,
+      -0.9895331859588623,
+      -0.9898220896720886,
+      -0.9901030659675598,
+      -0.990376353263855,
+      -0.9906420707702637,
+      -0.9909005165100098,
+      -0.9911518692970276,
+      -0.9913963079452515,
+      -0.9916340112686157,
+      -0.9918651580810547,
+      -0.9920899868011475,
+      -0.9923086166381836,
+      -0.9925211668014526,
+      -0.9927279353141785,
+      -0.9929289817810059,
+      -0.9931244850158691,
+      -0.9933146238327026,
+      -0.9934994578361511,
+      -0.9936792850494385,
+      -0.9938541054725647,
+      -0.9940240979194641,
+      -0.9941893815994263,
+      -0.9943501353263855,
+      -0.9945064783096313,
+      -0.9946584701538086,
+      -0.9948062896728516,
+      -0.9949500560760498,
+      -0.9950897693634033,
+      -0.9952256679534912,
+      -0.995357871055603,
+      -0.9954863786697388,
+      -0.995611310005188,
+      -0.9957327842712402,
+      -0.9958509802818298,
+      -0.995965838432312,
+      -0.9960775375366211,
+      -0.9961861371994019,
+      -0.9962917566299438,
+      -0.9963944554328918,
+      -0.9964943528175354,
+      -0.9965914487838745,
+      -0.9966858625411987,
+      -0.9967776536941528,
+      -0.9968668818473816,
+      -0.9969536662101746,
+      -0.9970380663871765,
+      -0.9971201419830322,
+      -0.9971999526023865,
+      -0.9972774982452393,
+      -0.9973529577255249,
+      -0.9974262714385986,
+      -0.9974976181983948,
+      -0.9975669384002686,
+      -0.9976343512535095,
+      -0.9976999163627625,
+      -0.9977636933326721,
+      -0.9978256225585938,
+      -0.9978858828544617,
+      -0.9979445338249207,
+      -0.9980014562606812,
+      -0.9980568885803223,
+      -0.9981107115745544,
+      -0.998163104057312,
+      -0.9982140064239502,
+      -0.9982635378837585,
+      -0.9983116388320923,
+      -0.9983584880828857,
+      -0.9984039664268494,
+      -0.9984481930732727,
+      -0.9984912276268005
+    ],
+    "provenance": {
+      "kind": "generated",
+      "config": {
+        "samples": 512,
+        "batch_size": 1,
+        "input_min": -2.0,
+        "input_max": 2.0,
+        "target_true_parameter": 1.5,
+        "noise_std": 0.0,
+        "shuffle_batches": false,
+        "seed": 20260926,
+        "walk": "linear"
+      }
+    },
+    "description": {
+      "samples": 512,
+      "batch_size": 1,
+      "steps_per_epoch": 512,
+      "walk": "linear",
+      "shuffled": false,
+      "target_true_parameter": 1.5,
+      "noise_std": 0.0,
+      "input_min": -2.0,
+      "input_max": 2.0
+    },
+    "landscape": {
+      "parameters": [
+        -5.753871917724609,
+        -5.687927627563477,
+        -5.621983337402344,
+        -5.556039047241211,
+        -5.490094757080078,
+        -5.424150466918945,
+        -5.358206176757813,
+        -5.2922618865966795,
+        -5.226317596435547,
+        -5.160373306274414,
+        -5.094429016113281,
+        -5.028484725952149,
+        -4.9625404357910154,
+        -4.896596145629883,
+        -4.83065185546875,
+        -4.764707565307617,
+        -4.698763275146485,
+        -4.632818984985351,
+        -4.566874694824219,
+        -4.500930404663086,
+        -4.434986114501953,
+        -4.369041824340821,
+        -4.303097534179687,
+        -4.237153244018555,
+        -4.1712089538574215,
+        -4.105264663696289,
+        -4.039320373535157,
+        -3.9733760833740233,
+        -3.9074317932128904,
+        -3.8414875030517575,
+        -3.775543212890625,
+        -3.709598922729492,
+        -3.643654632568359,
+        -3.5777103424072263,
+        -3.5117660522460934,
+        -3.445821762084961,
+        -3.379877471923828,
+        -3.313933181762695,
+        -3.2479888916015622,
+        -3.1820446014404293,
+        -3.116100311279297,
+        -3.050156021118164,
+        -2.984211730957031,
+        -2.918267440795898,
+        -2.8523231506347653,
+        -2.7863788604736324,
+        -2.7204345703125,
+        -2.654490280151367,
+        -2.588545989990234,
+        -2.522601699829101,
+        -2.4566574096679683,
+        -2.390713119506836,
+        -2.324768829345703,
+        -2.25882453918457,
+        -2.192880249023437,
+        -2.1269359588623042,
+        -2.0609916687011713,
+        -1.9950473785400389,
+        -1.929103088378906,
+        -1.863158798217773,
+        -1.797214508056641,
+        -1.7312702178955082,
+        -1.6653259277343753,
+        -1.5993816375732424,
+        -1.53343734741211,
+        -1.467493057250977,
+        -1.401548767089844,
+        -1.3356044769287112,
+        -1.2696601867675783,
+        -1.2037158966064454,
+        -1.137771606445313,
+        -1.07182731628418,
+        -1.0058830261230471,
+        -0.9399387359619142,
+        -0.8739944458007813,
+        -0.8080501556396489,
+        -0.742105865478516,
+        -0.6761615753173831,
+        -0.6102172851562502,
+        -0.5442729949951173,
+        -0.4783287048339844,
+        -0.4123844146728519,
+        -0.346440124511719,
+        -0.2804958343505861,
+        -0.2145515441894532,
+        -0.1486072540283203,
+        -0.08266296386718786,
+        -0.016718673706054954,
+        0.04922561645507795,
+        0.11516990661621085,
+        0.18111419677734353,
+        0.24705848693847643,
+        0.3130027770996091,
+        0.378947067260742,
+        0.4448913574218749,
+        0.5108356475830076,
+        0.5767799377441405,
+        0.6427242279052734,
+        0.7086685180664061,
+        0.774612808227539,
+        0.8405570983886719,
+        0.9065013885498046,
+        0.9724456787109375,
+        1.0383899688720701,
+        1.104334259033203,
+        1.170278549194336,
+        1.2362228393554686,
+        1.3021671295166015,
+        1.3681114196777342,
+        1.434055709838867,
+        1.5,
+        1.565944290161133,
+        1.6318885803222656,
+        1.6978328704833983,
+        1.7637771606445312,
+        1.829721450805664,
+        1.895665740966797,
+        1.9616100311279296,
+        2.0275543212890623,
+        2.0934986114501952,
+        2.159442901611328
+      ],
+      "losses": [
+        3.1046979345148085,
+        3.103287592112812,
+        3.1018399284118003,
+        3.1003534798608126,
+        3.0988267069602795,
+        3.097257989354542,
+        3.095645620544205,
+        3.0939878021838525,
+        3.092282637927236,
+        3.09052812677782,
+        3.0887221558983966,
+        3.08686249282819,
+        3.0849467770504697,
+        3.0829725108473056,
+        3.080937049370939,
+        3.0788375898534848,
+        3.07667115986737,
+        3.0744346045389634,
+        3.072124572606313,
+        3.069737501198692,
+        3.0672695992011025,
+        3.0647168290498956,
+        3.0620748867865113,
+        3.0593391801746264,
+        3.056504804660886,
+        3.0535665169310597,
+        3.050518705780556,
+        3.047355359980879,
+        3.044070032780315,
+        3.0406558026276285,
+        3.03710522965004,
+        3.033410307350658,
+        3.029562408913839,
+        3.0255522274180833,
+        3.021369709153006,
+        3.017003979116701,
+        3.0124432576304474,
+        3.007674766844413,
+        3.002684625717802,
+        2.9974577318344773,
+        2.9919776281543182,
+        2.9862263524954016,
+        2.9801842671841197,
+        2.973829865889898,
+        2.9671395541683214,
+        2.960087399657045,
+        2.952644847189439,
+        2.944780393293914,
+        2.93645921361329,
+        2.927642735687518,
+        2.9182881482713663,
+        2.9083478368823,
+        2.8977687335694564,
+        2.8864915669414066,
+        2.874449996275076,
+        2.861569611050685,
+        2.847766774542131,
+        2.832947287203388,
+        2.8170048426570005,
+        2.799819246341015,
+        2.7812543646896035,
+        2.7611557717321533,
+        2.739348061170139,
+        2.715631796832578,
+        2.6897800851878335,
+        2.6615347736832,
+        2.630602313048007,
+        2.5966493774680584,
+        2.559298423780566,
+        2.518123503342534,
+        2.4726468361612586,
+        2.422336938756086,
+        2.366609490118368,
+        2.3048326461435367,
+        2.2363391784087816,
+        2.160448583698746,
+        2.0765030668949884,
+        1.9839217699529827,
+        1.8822772946706006,
+        1.7713966350334915,
+        1.6514840319592872,
+        1.5232550187440053,
+        1.3880590225212581,
+        1.2479546676440305,
+        1.105693413110179,
+        0.9645725664188044,
+        0.8281459905351699,
+        0.6998282608757838,
+        0.5824778748102597,
+        0.47806874659861515,
+        0.38753649316017036,
+        0.3108243431121543,
+        0.24708595345844672,
+        0.19496333843066774,
+        0.1528593379065981,
+        0.11915269779387896,
+        0.09233809426660573,
+        0.0710981413726248,
+        0.05432562340805932,
+        0.04111521645011324,
+        0.030739958224192607,
+        0.022622562557432446,
+        0.016307300477904504,
+        0.011435139890280503,
+        0.0077230161159254065,
+        0.004947151081433955,
+        0.0029299210610764874,
+        0.00152965166439663,
+        0.0006327424449740626,
+        0.00014760568515626303,
+        2.952971094656817e-16,
+        0.00012942904873070282,
+        0.0004863513964334135,
+        0.0010300082589164547,
+        0.0017267229875158826,
+        0.0025485620599847523,
+        0.0034722744089133936,
+        0.004478446201168335,
+        0.00555082334751178,
+        0.00667576536554137,
+        0.007841802722826294
+      ],
+      "objective": "full dataset mean squared error, float64 diagnostic"
+    }
+  },
+  "record": {
+    "step": 0,
+    "epoch": 0,
+    "batch_index": 0,
+    "global_batch": 0,
+    "input_value": -2.0,
+    "target_value": -0.9950547814369202,
+    "prediction": 0.9993293285369873,
+    "loss": 3.977567672729492,
+    "loss_dtype": "torch.float32",
+    "loss_grad_fn": "MeanBackward0",
+    "stages": [
+      {
+        "name": "parameter",
+        "value": -2.0,
+        "mean": -2.0,
+        "dtype": "torch.float32",
+        "shape": [],
+        "device": "cpu",
+        "requires_grad": true,
+        "grad_fn": null,
+        "is_leaf": true,
+        "finite": true,
+        "numel": 1,
+        "value_is_first_element": false,
+        "raw_uint32": 3221225472,
+        "bits": "11000000000000000000000000000000",
+        "hex": "0xC0000000"
+      },
+      {
+        "name": "input",
+        "value": -2.0,
+        "mean": -2.0,
+        "dtype": "torch.float32",
+        "shape": [
+          1,
+          1
+        ],
+        "device": "cpu",
+        "requires_grad": false,
+        "grad_fn": null,
+        "is_leaf": true,
+        "finite": true,
+        "numel": 1,
+        "value_is_first_element": false,
+        "raw_uint32": null,
+        "bits": null,
+        "hex": null
+      },
+      {
+        "name": "z",
+        "value": 4.0,
+        "mean": 4.0,
+        "dtype": "torch.float32",
+        "shape": [
+          1,
+          1
+        ],
+        "device": "cpu",
+        "requires_grad": true,
+        "grad_fn": "MulBackward0",
+        "is_leaf": false,
+        "finite": true,
+        "numel": 1,
+        "value_is_first_element": false,
+        "raw_uint32": null,
+        "bits": null,
+        "hex": null
+      },
+      {
+        "name": "activation",
+        "value": 0.9993293285369873,
+        "mean": 0.9993293285369873,
+        "dtype": "torch.float32",
+        "shape": [
+          1,
+          1
+        ],
+        "device": "cpu",
+        "requires_grad": true,
+        "grad_fn": "TanhBackward0",
+        "is_leaf": false,
+        "finite": true,
+        "numel": 1,
+        "value_is_first_element": false,
+        "raw_uint32": null,
+        "bits": null,
+        "hex": null
+      },
+      {
+        "name": "prediction",
+        "value": 0.9993293285369873,
+        "mean": 0.9993293285369873,
+        "dtype": "torch.float32",
+        "shape": [
+          1,
+          1
+        ],
+        "device": "cpu",
+        "requires_grad": true,
+        "grad_fn": "MulBackward0",
+        "is_leaf": false,
+        "finite": true,
+        "numel": 1,
+        "value_is_first_element": false,
+        "raw_uint32": null,
+        "bits": null,
+        "hex": null
+      },
+      {
+        "name": "target",
+        "value": -0.9950547814369202,
+        "mean": -0.9950547814369202,
+        "dtype": "torch.float32",
+        "shape": [
+          1,
+          1
+        ],
+        "device": "cpu",
+        "requires_grad": false,
+        "grad_fn": null,
+        "is_leaf": true,
+        "finite": true,
+        "numel": 1,
+        "value_is_first_element": false,
+        "raw_uint32": null,
+        "bits": null,
+        "hex": null
+      },
+      {
+        "name": "loss",
+        "value": 3.977567672729492,
+        "mean": 3.977567672729492,
+        "dtype": "torch.float32",
+        "shape": [],
+        "device": "cpu",
+        "requires_grad": true,
+        "grad_fn": "MeanBackward0",
+        "is_leaf": false,
+        "finite": true,
+        "numel": 1,
+        "value_is_first_element": false,
+        "raw_uint32": null,
+        "bits": null,
+        "hex": null
+      }
+    ],
+    "zero_grad_set_to_none": true,
+    "accumulation_micro_batches": 1,
+    "accumulated_losses": [
+      3.977567672729492
+    ],
+    "grad_before_zero_grad": null,
+    "grad_after_zero_grad": null,
+    "grad_before_backward": null,
+    "grad_after_backward": -0.010696807876229286,
+    "gradient": -0.010696807876229286,
+    "gradient_uint32": 3157213610,
+    "gradient_dtype": "torch.float32",
+    "gradient_shape": [],
+    "gradient_sign": -1,
+    "gradient_magnitude": 0.010696807876229286,
+    "gradient_square": 0.00011442169874096089,
+    "gradient_finite": true,
+    "parameter_before": -2.0,
+    "parameter_after": -1.8980001211166382,
+    "parameter_before_uint32": 3221225472,
+    "parameter_after_uint32": 3220369835,
+    "parameter_before_hex": "0xC0000000",
+    "parameter_hex": "0xBFF2F1AB",
+    "parameter_bits": "10111111111100101111000110101011",
+    "parameter_exponent_bits": 127,
+    "parameter_fraction_bits": 7532971,
+    "parameter_sign_bit": 1,
+    "actual_delta": 0.10199987888336182,
+    "absolute_delta": 0.10199987888336182,
+    "relative_delta": 0.05099993944168091,
+    "direction": "increased",
+    "xor_mask": 2146628011,
+    "changed_bit_count": 22,
+    "changed_bit_positions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      16,
+      17,
+      18,
+      19,
+      23,
+      24,
+      26,
+      28,
+      30,
+      31
+    ],
+    "sign_changed": false,
+    "exponent_changed": true,
+    "fraction_changed": true,
+    "ulp_previous_distance": 2.384185791015625e-07,
+    "ulp_next_distance": 1.1920928955078125e-07,
+    "ulp_size": 2.384185791015625e-07,
+    "ulp_relative_movement": 427818.5,
+    "ulp_distance_count": 855637,
+    "ulp_distance_same_binade": 427818,
+    "stored_fp32_unchanged": false,
+    "update_attempted_but_storage_frozen": false,
+    "snapshot_a_uint32": 3221225472,
+    "snapshot_b_uint32": 3221225472,
+    "snapshot_c_uint32": 3221225472,
+    "snapshot_d_uint32": 3221225472,
+    "snapshot_e_uint32": 3220369835,
+    "snapshot_f_uint32": null,
+    "optimizer_name": "adamw",
+    "learning_rate": 0.1,
+    "optimizer_step_before": null,
+    "optimizer_step_after": 1,
+    "optimizer_state_present_before": false,
+    "optimizer_state_keys_before": [],
+    "optimizer_state_keys_after": [
+      "exp_avg",
+      "exp_avg_sq",
+      "step"
+    ],
+    "moment1_before": null,
+    "moment2_before": null,
+    "moment1": -0.0010696807876229286,
+    "moment2": 1.144217023352212e-07,
+    "bias_corrected_moment1": -0.010696807876229288,
+    "bias_corrected_moment2": 0.0001144217023352211,
+    "optimizer_total_update": 0.10199987888336182,
+    "optimizer_attempted_update": 0.10199990651425384,
+    "optimizer_adaptive_update": 0.09999990463256836,
+    "optimizer_weight_decay_update": 0.001999974250793457,
+    "reconstruction_variant": "adamw[lerp,before,outside]",
+    "reconstruction_status": "PASS",
+    "reconstruction_bit_exact": true,
+    "reconstruction_ulp_error": 0,
+    "reconstruction_absolute_error": 0.0,
+    "reconstruction_relative_error": 0.0,
+    "reconstructed_after": -1.8980001211166382,
+    "reconstructed_uint32": 3220369835,
+    "fp64_reconstructed_after": -1.8980000934857462,
+    "fp32_candidate": -1.8980001211166382,
+    "fp32_rounding_error_abs": -2.7630892018848385e-08,
+    "fp32_rounding_error_rel": 1.4557898133768395e-08,
+    "fp32_rounding_sign": -1,
+    "fp32_rounding_ulp": -0.23178472183644772,
+    "fp32_candidate_rounds_to_stored": true,
+    "fp64_track_value": -1.898000093479848,
+    "fp64_track_loss": 3.977567863248187,
+    "fp64_vs_fp32_abs": 2.763679018968901e-08,
+    "fp64_vs_fp32_ulp": 0.23183419927954674,
+    "gradient_analytical": -0.010697482783475412,
+    "gradient_finite_difference": -0.010697482788479816,
+    "gradient_finite_difference_h": 2.0000000000000003e-06,
+    "gradient_fp64_autograd": -0.010697482783475412,
+    "gradient_vs_analytical_rel": 6.309028579778069e-05,
+    "gradient_vs_analytical_abs": 6.749072461263023e-07,
+    "gradient_vs_finite_difference_rel": 6.309075357954876e-05,
+    "gradient_vs_finite_difference_abs": 6.749122505294441e-07,
+    "gradient_tolerance_abs": 3.8040017957261586e-06,
+    "finite_difference_tolerance_abs": 4.3281784523666735e-06,
+    "gradient_validation_status": "PASS",
+    "landscape_computed": true,
+    "landscape_radius": 0.25,
+    "landscape_points": 17,
+    "landscape_loss_at_centre": 3.977567863248187,
+    "landscape_minimum_loss": 3.972976512825342,
+    "landscape_first_derivative": -0.010725278143667083,
+    "landscape_second_derivative": -0.04280219866086554,
+    "landscape_restoration_verified": true,
+    "finite": true,
+    "nonfinite_detected": false,
+    "parameter_hash_before": "d5f4488360792be0",
+    "parameter_hash_after": "8236d922a4ce4ffc",
+    "events": [
+      "INITIALIZED",
+      "FORWARD_COMPLETE",
+      "LOSS_COMPUTED",
+      "BACKWARD_STARTED",
+      "GRADIENT_AVAILABLE",
+      "LANDSCAPE_PROBED",
+      "OPTIMIZER_STATE_READ",
+      "OPTIMIZER_STEP_STARTED",
+      "OPTIMIZER_STEP_COMPLETED",
+      "OPTIMIZER_STATE_READ",
+      "BIT_PATTERN_CHANGED",
+      "PARAMETER_CHANGED",
+      "FP32_ROUNDING_OBSERVED"
+    ],
+    "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "record_hash": "50281bb3edfe1401d5683c83597ec6015869d1e17ca8060a3154eb48596df31e"
+  }
+}

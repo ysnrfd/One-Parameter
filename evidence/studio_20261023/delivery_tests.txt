@@ -1,0 +1,8 @@
+test_archive_cannot_be_created_inside_a_source_tree (test_package_delivery.TestPackageDelivery.test_archive_cannot_be_created_inside_a_source_tree) ... ok
+test_every_manifest_member_matches_saved_zip_bytes (test_package_delivery.TestPackageDelivery.test_every_manifest_member_matches_saved_zip_bytes) ... ok
+test_new_source_during_packaging_prevents_publication (test_package_delivery.TestPackageDelivery.test_new_source_during_packaging_prevents_publication) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.055s
+
+OK

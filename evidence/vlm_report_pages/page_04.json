@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: A body page of an engineering audit report containing a horizontal bar chart, a section heading, and three paragraphs of technical text.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: N/A\nFIGURES: The horizontal bar chart is intact, uncropped, and includes a readable caption below it.\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857780,
+  "id": "20261001202938f93df0811a7549ca",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20261001202938f93df0811a7549ca",
+  "usage": {
+    "completion_tokens": 78,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2224
+  }
+}

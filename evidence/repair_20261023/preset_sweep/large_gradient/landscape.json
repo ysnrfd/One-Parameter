@@ -1,0 +1,798 @@
+{
+  "slices": [
+    {
+      "step": 0,
+      "center": -12.0,
+      "center_uint32": 3242196992,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.9999997615814245
+        ],
+        [
+          -0.21875,
+          3.9999997615814245
+        ],
+        [
+          -0.1875,
+          3.9999997615814245
+        ],
+        [
+          -0.15625,
+          3.9999997615814245
+        ],
+        [
+          -0.125,
+          3.9999997615814245
+        ],
+        [
+          -0.09375,
+          3.9999997615814245
+        ],
+        [
+          -0.0625,
+          3.9999997615814245
+        ],
+        [
+          -0.03125,
+          3.9999997615814245
+        ],
+        [
+          0.0,
+          3.9999997615814245
+        ],
+        [
+          0.03125,
+          3.9999997615814245
+        ],
+        [
+          0.0625,
+          3.9999997615814245
+        ],
+        [
+          0.09375,
+          3.9999997615814245
+        ],
+        [
+          0.125,
+          3.9999997615814245
+        ],
+        [
+          0.15625,
+          3.9999997615814245
+        ],
+        [
+          0.1875,
+          3.9999997615814245
+        ],
+        [
+          0.21875,
+          3.9999997615814245
+        ],
+        [
+          0.25,
+          3.9999997615814245
+        ]
+      ],
+      "loss_at_center": 3.9999997615814245,
+      "loss_at_center_remeasured": 3.9999997615814245,
+      "central_first_difference": 0.0,
+      "central_second_difference": 0.0,
+      "minimum_loss": 3.9999997615814245,
+      "argmin_offset": -0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+      "parameter_hash_before": "b091b48c81f8211e",
+      "parameter_hash_after": "b091b48c81f8211e"
+    },
+    {
+      "step": 25,
+      "center": -11.850890159606934,
+      "center_uint32": 3242040639,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.9999992847442947
+        ],
+        [
+          -0.21875,
+          3.9999992847442947
+        ],
+        [
+          -0.1875,
+          3.9999992847442947
+        ],
+        [
+          -0.15625,
+          3.9999992847442947
+        ],
+        [
+          -0.125,
+          3.9999992847442947
+        ],
+        [
+          -0.09375,
+          3.9999992847442947
+        ],
+        [
+          -0.0625,
+          3.9999992847442947
+        ],
+        [
+          -0.03125,
+          3.9999992847442947
+        ],
+        [
+          0.0,
+          3.9999992847442947
+        ],
+        [
+          0.03125,
+          3.9999992847442947
+        ],
+        [
+          0.0625,
+          3.9999992847442947
+        ],
+        [
+          0.09375,
+          3.9999992847442947
+        ],
+        [
+          0.125,
+          3.9999992847442947
+        ],
+        [
+          0.15625,
+          3.9999992847442947
+        ],
+        [
+          0.1875,
+          3.9999992847442947
+        ],
+        [
+          0.21875,
+          3.9999992847442947
+        ],
+        [
+          0.25,
+          3.9999992847442947
+        ]
+      ],
+      "loss_at_center": 3.9999992847442947,
+      "loss_at_center_remeasured": 3.9999992847442947,
+      "central_first_difference": 0.0,
+      "central_second_difference": 0.0,
+      "minimum_loss": 3.9999992847442947,
+      "argmin_offset": -0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+      "parameter_hash_before": "2ccc020512b13a18",
+      "parameter_hash_after": "2ccc020512b13a18"
+    },
+    {
+      "step": 50,
+      "center": -11.703632354736328,
+      "center_uint32": 3241886228,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.999995946885182
+        ],
+        [
+          -0.21875,
+          3.999995946885182
+        ],
+        [
+          -0.1875,
+          3.999995946885182
+        ],
+        [
+          -0.15625,
+          3.999995946885182
+        ],
+        [
+          -0.125,
+          3.999995946885182
+        ],
+        [
+          -0.09375,
+          3.999995946885182
+        ],
+        [
+          -0.0625,
+          3.999995946885182
+        ],
+        [
+          -0.03125,
+          3.999995946885182
+        ],
+        [
+          0.0,
+          3.999995946885182
+        ],
+        [
+          0.03125,
+          3.999995946885182
+        ],
+        [
+          0.0625,
+          3.999995946885182
+        ],
+        [
+          0.09375,
+          3.999995946885182
+        ],
+        [
+          0.125,
+          3.999995946885182
+        ],
+        [
+          0.15625,
+          3.999995946885182
+        ],
+        [
+          0.1875,
+          3.999995946885182
+        ],
+        [
+          0.21875,
+          3.999995946885182
+        ],
+        [
+          0.25,
+          3.999995946885182
+        ]
+      ],
+      "loss_at_center": 3.999995946885182,
+      "loss_at_center_remeasured": 3.999995946885182,
+      "central_first_difference": 0.0,
+      "central_second_difference": 0.0,
+      "minimum_loss": 3.999995946885182,
+      "argmin_offset": -0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+      "parameter_hash_before": "d94ef923d16d85d3",
+      "parameter_hash_after": "d94ef923d16d85d3"
+    },
+    {
+      "step": 75,
+      "center": -11.558206558227539,
+      "center_uint32": 3241733738,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.999975919759752
+        ],
+        [
+          -0.21875,
+          3.999975919759752
+        ],
+        [
+          -0.1875,
+          3.999975919759752
+        ],
+        [
+          -0.15625,
+          3.999975919759752
+        ],
+        [
+          -0.125,
+          3.999975919759752
+        ],
+        [
+          -0.09375,
+          3.999975919759752
+        ],
+        [
+          -0.0625,
+          3.999975919759752
+        ],
+        [
+          -0.03125,
+          3.999975919759752
+        ],
+        [
+          0.0,
+          3.999975919759752
+        ],
+        [
+          0.03125,
+          3.999975919759752
+        ],
+        [
+          0.0625,
+          3.999975919759752
+        ],
+        [
+          0.09375,
+          3.999975919759752
+        ],
+        [
+          0.125,
+          3.999975919759752
+        ],
+        [
+          0.15625,
+          3.999975919759752
+        ],
+        [
+          0.1875,
+          3.999975919759752
+        ],
+        [
+          0.21875,
+          3.999975919759752
+        ],
+        [
+          0.25,
+          3.999975919759752
+        ]
+      ],
+      "loss_at_center": 3.999975919759752,
+      "loss_at_center_remeasured": 3.999975919759752,
+      "central_first_difference": 0.0,
+      "central_second_difference": 0.0,
+      "minimum_loss": 3.999975919759752,
+      "argmin_offset": -0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+      "parameter_hash_before": "dcf02ca9789c3ff7",
+      "parameter_hash_after": "dcf02ca9789c3ff7"
+    },
+    {
+      "step": 100,
+      "center": -11.414583206176758,
+      "center_uint32": 3241583138,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.999860287932634
+        ],
+        [
+          -0.21875,
+          3.999860287932634
+        ],
+        [
+          -0.1875,
+          3.999860287932634
+        ],
+        [
+          -0.15625,
+          3.999860287932634
+        ],
+        [
+          -0.125,
+          3.999860287932634
+        ],
+        [
+          -0.09375,
+          3.999860287932634
+        ],
+        [
+          -0.0625,
+          3.999860287932634
+        ],
+        [
+          -0.03125,
+          3.999860287932634
+        ],
+        [
+          0.0,
+          3.999860287932634
+        ],
+        [
+          0.03125,
+          3.999860287932634
+        ],
+        [
+          0.0625,
+          3.999860287932634
+        ],
+        [
+          0.09375,
+          3.999860287932634
+        ],
+        [
+          0.125,
+          3.999860287932634
+        ],
+        [
+          0.15625,
+          3.999860287932634
+        ],
+        [
+          0.1875,
+          3.999860287932634
+        ],
+        [
+          0.21875,
+          3.999860287932634
+        ],
+        [
+          0.25,
+          3.999860287932634
+        ]
+      ],
+      "loss_at_center": 3.999860287932634,
+      "loss_at_center_remeasured": 3.999860287932634,
+      "central_first_difference": 0.0,
+      "central_second_difference": 0.0,
+      "minimum_loss": 3.999860287932634,
+      "argmin_offset": -0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+      "parameter_hash_before": "dac339c423182f71",
+      "parameter_hash_after": "dac339c423182f71"
+    },
+    {
+      "step": 125,
+      "center": -11.272747993469238,
+      "center_uint32": 3241434413,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.9991867955622276
+        ],
+        [
+          -0.21875,
+          3.9991867955622276
+        ],
+        [
+          -0.1875,
+          3.9991867955622276
+        ],
+        [
+          -0.15625,
+          3.9991867955622276
+        ],
+        [
+          -0.125,
+          3.9991867955622276
+        ],
+        [
+          -0.09375,
+          3.9991867955622276
+        ],
+        [
+          -0.0625,
+          3.9991867955622276
+        ],
+        [
+          -0.03125,
+          3.9991867955622276
+        ],
+        [
+          0.0,
+          3.9991867955622276
+        ],
+        [
+          0.03125,
+          3.9991867955622276
+        ],
+        [
+          0.0625,
+          3.9991867955622276
+        ],
+        [
+          0.09375,
+          3.9991867955622276
+        ],
+        [
+          0.125,
+          3.9991867955622276
+        ],
+        [
+          0.15625,
+          3.9991867955622276
+        ],
+        [
+          0.1875,
+          3.9991867955622276
+        ],
+        [
+          0.21875,
+          3.9991867955622276
+        ],
+        [
+          0.25,
+          3.9991867955622276
+        ]
+      ],
+      "loss_at_center": 3.9991867955622276,
+      "loss_at_center_remeasured": 3.9991867955622276,
+      "central_first_difference": 0.0,
+      "central_second_difference": 0.0,
+      "minimum_loss": 3.9991867955622276,
+      "argmin_offset": -0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+      "parameter_hash_before": "07bfc44a40899ddf",
+      "parameter_hash_after": "07bfc44a40899ddf"
+    },
+    {
+      "step": 150,
+      "center": -11.132673263549805,
+      "center_uint32": 3241287534,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.995270458996888
+        ],
+        [
+          -0.21875,
+          3.995270458996888
+        ],
+        [
+          -0.1875,
+          3.995270458996888
+        ],
+        [
+          -0.15625,
+          3.995270458996888
+        ],
+        [
+          -0.125,
+          3.995270458996888
+        ],
+        [
+          -0.09375,
+          3.995270458996888
+        ],
+        [
+          -0.0625,
+          3.995270458996888
+        ],
+        [
+          -0.03125,
+          3.995270458996888
+        ],
+        [
+          0.0,
+          3.995270458996888
+        ],
+        [
+          0.03125,
+          3.995270458996888
+        ],
+        [
+          0.0625,
+          3.995270458996888
+        ],
+        [
+          0.09375,
+          3.995270458996888
+        ],
+        [
+          0.125,
+          3.995270458996888
+        ],
+        [
+          0.15625,
+          3.995270458996888
+        ],
+        [
+          0.1875,
+          3.995270458996888
+        ],
+        [
+          0.21875,
+          3.995270458996888
+        ],
+        [
+          0.25,
+          3.995270458996888
+        ]
+      ],
+      "loss_at_center": 3.995270458996888,
+      "loss_at_center_remeasured": 3.995270458996888,
+      "central_first_difference": 0.0,
+      "central_second_difference": 0.0,
+      "minimum_loss": 3.995270458996888,
+      "argmin_offset": -0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+      "parameter_hash_before": "a12e810b6b20b788",
+      "parameter_hash_after": "a12e810b6b20b788"
+    },
+    {
+      "step": 175,
+      "center": -10.994340896606445,
+      "center_uint32": 3241142482,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.972592732702651
+        ],
+        [
+          -0.21875,
+          3.972592732702651
+        ],
+        [
+          -0.1875,
+          3.972592732702651
+        ],
+        [
+          -0.15625,
+          3.972592732702651
+        ],
+        [
+          -0.125,
+          3.972592732702651
+        ],
+        [
+          -0.09375,
+          3.972592732702651
+        ],
+        [
+          -0.0625,
+          3.972592732702651
+        ],
+        [
+          -0.03125,
+          3.972592732702651
+        ],
+        [
+          0.0,
+          3.972592732702651
+        ],
+        [
+          0.03125,
+          3.972592732702651
+        ],
+        [
+          0.0625,
+          3.972592732702651
+        ],
+        [
+          0.09375,
+          3.972592732702651
+        ],
+        [
+          0.125,
+          3.972592732702651
+        ],
+        [
+          0.15625,
+          3.972592732702651
+        ],
+        [
+          0.1875,
+          3.972592732702651
+        ],
+        [
+          0.21875,
+          3.972592732702651
+        ],
+        [
+          0.25,
+          3.972592732702651
+        ]
+      ],
+      "loss_at_center": 3.972592732702651,
+      "loss_at_center_remeasured": 3.972592732702651,
+      "central_first_difference": 0.0,
+      "central_second_difference": 0.0,
+      "minimum_loss": 3.972592732702651,
+      "argmin_offset": -0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+      "parameter_hash_before": "e04006f808870f82",
+      "parameter_hash_after": "e04006f808870f82"
+    },
+    {
+      "step": 199,
+      "center": -10.863158226013184,
+      "center_uint32": 3241004927,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.854663638195548
+        ],
+        [
+          -0.21875,
+          3.8546636381954427
+        ],
+        [
+          -0.1875,
+          3.8546636381953285
+        ],
+        [
+          -0.15625,
+          3.854663638195203
+        ],
+        [
+          -0.125,
+          3.854663638195067
+        ],
+        [
+          -0.09375,
+          3.8546636381949204
+        ],
+        [
+          -0.0625,
+          3.85466363819476
+        ],
+        [
+          -0.03125,
+          3.8546636381945856
+        ],
+        [
+          0.0,
+          3.8546636381943973
+        ],
+        [
+          0.03125,
+          3.8546636381941917
+        ],
+        [
+          0.0625,
+          3.8546636381939683
+        ],
+        [
+          0.09375,
+          3.854663638193726
+        ],
+        [
+          0.125,
+          3.8546636381934625
+        ],
+        [
+          0.15625,
+          3.8546636381931765
+        ],
+        [
+          0.1875,
+          3.854663638192865
+        ],
+        [
+          0.21875,
+          3.854663638192528
+        ],
+        [
+          0.25,
+          3.85466363819216
+        ]
+      ],
+      "loss_at_center": 3.8546636381943973,
+      "loss_at_center_remeasured": 3.8546636381943973,
+      "central_first_difference": -6.302514066192089e-12,
+      "central_second_difference": -1.77351466845721e-11,
+      "minimum_loss": 3.85466363819216,
+      "argmin_offset": 0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+      "parameter_hash_before": "314450d02871c896",
+      "parameter_hash_after": "314450d02871c896"
+    }
+  ],
+  "disclaimer": "This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.",
+  "note": "These probes are diagnostics. They are evaluated through a pure loss function that builds a throwaway tensor, so they cannot perturb the recorded trajectory; each slice records the hash of the parameter before and after to prove it."
+}

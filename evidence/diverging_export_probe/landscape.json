@@ -1,0 +1,94 @@
+{
+  "slices": [
+    {
+      "step": 0,
+      "center": -5.0,
+      "center_uint32": 3231711232,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          2916.0
+        ],
+        [
+          -0.21875,
+          2889.0625
+        ],
+        [
+          -0.1875,
+          2862.25
+        ],
+        [
+          -0.15625,
+          2835.5625
+        ],
+        [
+          -0.125,
+          2809.0
+        ],
+        [
+          -0.09375,
+          2782.5625
+        ],
+        [
+          -0.0625,
+          2756.25
+        ],
+        [
+          -0.03125,
+          2730.0625
+        ],
+        [
+          0.0,
+          2704.0
+        ],
+        [
+          0.03125,
+          2678.0625
+        ],
+        [
+          0.0625,
+          2652.25
+        ],
+        [
+          0.09375,
+          2626.5625
+        ],
+        [
+          0.125,
+          2601.0
+        ],
+        [
+          0.15625,
+          2575.5625
+        ],
+        [
+          0.1875,
+          2550.25
+        ],
+        [
+          0.21875,
+          2525.0625
+        ],
+        [
+          0.25,
+          2500.0
+        ]
+      ],
+      "loss_at_center": 2704.0,
+      "loss_at_center_remeasured": 2704.0,
+      "central_first_difference": -832.0,
+      "central_second_difference": 128.0,
+      "minimum_loss": 2500.0,
+      "argmin_offset": 0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice through a high-dimensional optimization problem. It is not the loss landscape of the network, and it says nothing about any other direction in weight space.",
+      "parameter_hash_before": "3b1aaa7e37c08141",
+      "parameter_hash_after": "3b1aaa7e37c08141"
+    }
+  ],
+  "disclaimer": "This is a one-dimensional diagnostic slice through a high-dimensional optimization problem. It is not the loss landscape of the network, and it says nothing about any other direction in weight space.",
+  "note": "These probes are diagnostics. They are evaluated through a pure loss function that builds a throwaway tensor, so they cannot perturb the recorded trajectory; each slice records the hash of the parameter before and after to prove it."
+}

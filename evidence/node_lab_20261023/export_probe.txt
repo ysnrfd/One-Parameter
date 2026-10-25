@@ -1,0 +1,6 @@
+test_export_node_retains_exact_zip_across_later_training_and_project_reopen (single_parameter_observatory.tests.test_studio_graph.TestGraphStudio.test_export_node_retains_exact_zip_across_later_training_and_project_reopen) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 60.631s
+
+OK

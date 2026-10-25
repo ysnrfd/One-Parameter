@@ -1,0 +1,86 @@
+{
+  "sources": [
+    {
+      "path": "examples/transformers/cached-pretrained.workflow.json",
+      "nodes": 10,
+      "edges": 10,
+      "prefix": "qa01:"
+    },
+    {
+      "path": "examples/transformers/checkpoint-roundtrip.workflow.json",
+      "nodes": 9,
+      "edges": 9,
+      "prefix": "qa02:"
+    },
+    {
+      "path": "examples/transformers/custom-attention.workflow.json",
+      "nodes": 7,
+      "edges": 7,
+      "prefix": "qa03:"
+    },
+    {
+      "path": "examples/transformers/custom-forward.workflow.json",
+      "nodes": 6,
+      "edges": 6,
+      "prefix": "qa04:"
+    },
+    {
+      "path": "examples/transformers/distilbert-classification.workflow.json",
+      "nodes": 9,
+      "edges": 9,
+      "prefix": "qa05:"
+    },
+    {
+      "path": "examples/transformers/feature-extraction.workflow.json",
+      "nodes": 5,
+      "edges": 4,
+      "prefix": "qa06:"
+    },
+    {
+      "path": "examples/transformers/fill-mask.workflow.json",
+      "nodes": 5,
+      "edges": 4,
+      "prefix": "qa07:"
+    },
+    {
+      "path": "examples/transformers/plugin-architecture.workflow.json",
+      "nodes": 7,
+      "edges": 6,
+      "prefix": "qa08:"
+    },
+    {
+      "path": "examples/transformers/rmsnorm-adamw.workflow.json",
+      "nodes": 15,
+      "edges": 15,
+      "prefix": "qa09:"
+    },
+    {
+      "path": "examples/transformers/text-pipeline.workflow.json",
+      "nodes": 5,
+      "edges": 4,
+      "prefix": "qa10:"
+    },
+    {
+      "path": "examples/transformers/tiny-gpt2.workflow.json",
+      "nodes": 8,
+      "edges": 8,
+      "prefix": "qa11:"
+    },
+    {
+      "path": "examples/transformers/token-classification.workflow.json",
+      "nodes": 5,
+      "edges": 4,
+      "prefix": "qa12:"
+    },
+    {
+      "path": "examples/transformers/tokenize-train-generate.workflow.json",
+      "nodes": 9,
+      "edges": 10,
+      "prefix": "qa13:"
+    }
+  ],
+  "added_subgraphs": [
+    "Explicit Embedding → LayerNorm → SelfAttention → generic Linear layer → Sequential train/export",
+    "All 21 scalar/core node types, including actual host lifecycle chain"
+  ]
+}

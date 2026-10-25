@@ -1,0 +1,102 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  node-editor:
+    name: node editor model
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: JavaScript syntax and graph model regressions
+        run: |
+          node --check single_parameter_observatory/studio_web/studio.js
+          node --check single_parameter_observatory/studio_web/graph.js
+          node scripts/test_graph_ui.mjs
+
+  lint:
+    name: lint (ruff + mypy)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .[dev]
+      - name: Ruff
+        run: ruff check single_parameter_observatory/
+      - name: Mypy
+        run: mypy single_parameter_observatory/ --config-file pyproject.toml
+
+  tests:
+    name: tests (${{ matrix.os }}, py${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        include:
+          - os: windows-latest
+            python-version: "3.12"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .[export]
+      - name: Unit test suite
+        run: |
+          python -m unittest discover -s single_parameter_observatory/tests \
+                                       -t single_parameter_observatory -v
+      - name: Delivery tooling tests
+        run: python -m unittest discover -s scripts/tests -v
+      - name: Execution checks (smoke configuration)
+        run: |
+          cd single_parameter_observatory && python run_checks.py \
+            --steps 12 --trace-steps 1 --guard-steps 103 --fps-seconds 4.0
+      - name: Upload check log and frames
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checks-${{ matrix.os }}-py${{ matrix.python-version }}
+          path: |
+            single_parameter_observatory/checks_output.txt
+            single_parameter_observatory/run_checks_frames/
+            single_parameter_observatory/run_checks_frames_ink/
+          if-no-files-found: warn
+
+  package:
+    name: distribution builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build sdist and wheel
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/

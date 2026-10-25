@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "checks": {
+    "original_runs_unchanged": true,
+    "original_graph_content_starter-training": true,
+    "original_graph_content_82add0766b0944c5af89b3d02cc17381": true,
+    "original_graph_content_6972c925d8d54b0685e5b148d089ed43": true,
+    "original_graph_content_1b5cd54a27da43f68d70b12420a87a32": true,
+    "pre_upgrade_graphs_starter-training": true,
+    "pre_upgrade_graphs_82add0766b0944c5af89b3d02cc17381": true,
+    "pre_upgrade_graphs_6972c925d8d54b0685e5b148d089ed43": true,
+    "pre_upgrade_graphs_1b5cd54a27da43f68d70b12420a87a32": true,
+    "original_jobs_80ada8885fa941f2bebaf9e02f558c79": true,
+    "original_jobs_265a020e97994963abcd77284c44ba91": true,
+    "pre_upgrade_jobs_80ada8885fa941f2bebaf9e02f558c79": true,
+    "pre_upgrade_jobs_265a020e97994963abcd77284c44ba91": true,
+    "original_artifacts_7ba8dc4376a14d64acf363d64640cee5": true,
+    "original_artifacts_3a0484a0968d45988c8914f5013956db": true,
+    "pre_upgrade_artifacts_7ba8dc4376a14d64acf363d64640cee5": true,
+    "pre_upgrade_artifacts_3a0484a0968d45988c8914f5013956db": true,
+    "custom_job_succeeded": true,
+    "custom_every_node_succeeded": true,
+    "fused_job_succeeded": true,
+    "fused_every_node_succeeded": true,
+    "port-built_job_succeeded": true,
+    "port-built_every_node_succeeded": true,
+    "inline_eps_committed_before_queue": true,
+    "expanded_job_succeeded": true,
+    "expanded_every_node_succeeded": true,
+    "plugin_job_succeeded": true,
+    "plugin_every_node_succeeded": true,
+    "all_13_new_node_types_executed_in_browser": true
+  },
+  "browser_jobs": {
+    "custom": {
+      "job_id": "1c3ac89641ec4d2ab6be6729d8a83b08",
+      "nodes": 52,
+      "edges": 71,
+      "status": "succeeded"
+    },
+    "fused": {
+      "job_id": "8b35f19011c14f7c8c84db3dbd6f2f15",
+      "nodes": 32,
+      "edges": 42,
+      "status": "succeeded"
+    },
+    "port-built": {
+      "job_id": "8cdbfca3e8734985a6dd982b1e8f186d",
+      "nodes": 6,
+      "edges": 5,
+      "status": "succeeded"
+    },
+    "expanded": {
+      "job_id": "b581c9a648584f339b08e1c344ac592c",
+      "nodes": 36,
+      "edges": 47,
+      "status": "succeeded"
+    },
+    "plugin": {
+      "job_id": "2bf3a9e002e44015b92efcc1cf1725af",
+      "nodes": 37,
+      "edges": 48,
+      "status": "succeeded"
+    }
+  },
+  "new_component_types": [
+    "hf.graph_model",
+    "hf.op_add",
+    "hf.op_attention",
+    "hf.op_custom",
+    "hf.op_embedding",
+    "hf.op_linear",
+    "hf.op_multiply",
+    "hf.op_positions",
+    "hf.op_rmsnorm",
+    "hf.op_rope",
+    "hf.op_silu",
+    "hf.op_swiglu",
+    "hf.tensor_input"
+  ],
+  "preserved_original_run_count": 1,
+  "live_graph_count": 8,
+  "note": "Read-only snapshots. Original graph contents are exact; one legacy graph viewport was panned before upgrade. All pre-upgrade graphs, jobs and artifacts remain byte-structurally identical. Additional user edits and graphs are retained. Browser interactions and visual observations are documented separately."
+}

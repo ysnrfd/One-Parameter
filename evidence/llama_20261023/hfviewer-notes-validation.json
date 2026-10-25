@@ -1,0 +1,33 @@
+{
+  "file": "LLAMA_SOURCE_NOTES.md",
+  "packaged_file": "single_parameter_observatory\\LLAMA_SOURCE_NOTES.md",
+  "bytes": 9903,
+  "sha256": "7d40d8af4677272a09fc71464049ef63696ddfdc1716f96432eb1c2fcd7a886a",
+  "root_package_byte_equal": true,
+  "valid_json_fences": 1,
+  "remote_primary_links_preserved": 6,
+  "local_markdown_links": [],
+  "source_distribution_relative_evidence_paths": [
+    {
+      "path": "evidence/llama_20261023/",
+      "exists_in_source_workspace": true
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-installed-llama-source.json",
+      "exists_in_source_workspace": true
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-llama-bundle-receipt.json",
+      "exists_in_source_workspace": true
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-review-summary.json",
+      "exists_in_source_workspace": true
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-source-manifest.json",
+      "exists_in_source_workspace": true
+    }
+  ],
+  "installed_wheel_evidence_scope_explicit": true
+}

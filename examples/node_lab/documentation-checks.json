@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-10-23T16:03:45.245Z",
+  "checks": {
+    "json_files": 9,
+    "json_fences": 9,
+    "javascript_bodies": 4,
+    "extension_function_bodies": 5,
+    "local_links": 19,
+    "workflow_structures": 7
+  },
+  "documents": {
+    "NODE_LAB.md": {
+      "bytes": 18453,
+      "sha256": "731a36b66ec4b1dd741482a2788573a21a6b4bee2bf2e8cac98bee0dd125db80"
+    },
+    "PLUGIN_SDK.md": {
+      "bytes": 27838,
+      "sha256": "0426bf538ac60469c351f546171ef5fd145a4b906b9d97a465e55287081c3ced"
+    },
+    "examples/node_lab/README.md": {
+      "bytes": 5310,
+      "sha256": "25dd68120e0c13a10958eeddbd342df7473841e268b2a9a4d6b84ab6cfcf0401"
+    }
+  },
+  "issues": [],
+  "examples_executed": false,
+  "passed": true
+}

@@ -1,0 +1,292 @@
+{
+  "schema_version": "spobs-release-report-review/1",
+  "scope": "Independent read-only comparison of the current qualification report with saved execution receipts, source example identities, actual browser download bytes, and current lint/compile results. No new browser interaction, model execution, or installed-package qualification was performed in this review.",
+  "reviewed_report_sha256": "1ad5a31d911a712b9ae89879648f839ff0a9a0a569bc59ae82f5c17a0879739f",
+  "status": "passed_with_final_artifact_requalification_pending",
+  "claims": {
+    "python_suite": {
+      "ran396": true,
+      "passed396": true,
+      "all11": true,
+      "elapsed96_9": true,
+      "renderer_fps6_2": true
+    },
+    "graph_model_41": true,
+    "offline_dom": {
+      "passed": 39,
+      "failed": 0,
+      "total": 39,
+      "complete": true,
+      "unexpected_errors": 0
+    },
+    "example_jobs": {
+      "complete": true,
+      "passed": 13,
+      "failed": 0,
+      "files": [
+        {
+          "file": "examples/transformers/cached-pretrained.workflow.json",
+          "status": "succeeded",
+          "node_count": 10,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/checkpoint-roundtrip.workflow.json",
+          "status": "succeeded",
+          "node_count": 9,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/custom-attention.workflow.json",
+          "status": "succeeded",
+          "node_count": 7,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/custom-forward.workflow.json",
+          "status": "succeeded",
+          "node_count": 6,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/distilbert-classification.workflow.json",
+          "status": "succeeded",
+          "node_count": 9,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/feature-extraction.workflow.json",
+          "status": "succeeded",
+          "node_count": 5,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/fill-mask.workflow.json",
+          "status": "succeeded",
+          "node_count": 5,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/plugin-architecture.workflow.json",
+          "status": "succeeded",
+          "node_count": 7,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/rmsnorm-adamw.workflow.json",
+          "status": "succeeded",
+          "node_count": 15,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/text-pipeline.workflow.json",
+          "status": "succeeded",
+          "node_count": 5,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/tiny-gpt2.workflow.json",
+          "status": "succeeded",
+          "node_count": 8,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/token-classification.workflow.json",
+          "status": "succeeded",
+          "node_count": 5,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        },
+        {
+          "file": "examples/transformers/tokenize-train-generate.workflow.json",
+          "status": "succeeded",
+          "node_count": 9,
+          "source_sha256_equal": true,
+          "all_nodes_succeeded": true
+        }
+      ]
+    },
+    "combined_browser_job": {
+      "id": "ecd514c58415415c991ba538abae8be1",
+      "status": "succeeded",
+      "nodes": 135,
+      "edges": 124,
+      "observed_nodes": 135,
+      "all_succeeded": true,
+      "builtin_catalog_count": 48,
+      "missing_builtin_types": [],
+      "plugin_executed": true,
+      "sha256_matches_http_receipt": true,
+      "pipeline_tasks": [
+        "feature-extraction",
+        "fill-mask",
+        "text-classification",
+        "text-generation",
+        "token-classification"
+      ]
+    },
+    "browser_downloads": {
+      "receipt_status": "passed",
+      "physical_files": [
+        {
+          "section": "downloaded_project",
+          "file": "downloaded-project.json",
+          "bytes_equal": true,
+          "sha256_equal": true
+        },
+        {
+          "section": "downloaded_experiment",
+          "file": "downloaded-experiment.zip",
+          "bytes_equal": true,
+          "sha256_equal": true
+        },
+        {
+          "section": "rmsnorm_job",
+          "file": "rmsnorm-job.json",
+          "bytes_equal": true,
+          "sha256_equal": true
+        },
+        {
+          "section": "rmsnorm_model_zip",
+          "file": "rmsnorm-model.zip",
+          "bytes_equal": true,
+          "sha256_equal": true
+        },
+        {
+          "section": "all_nodes_browser_job",
+          "file": "all-nodes.job.json",
+          "bytes_equal": true,
+          "sha256_equal": true
+        },
+        {
+          "section": "downloaded_python_execution",
+          "file": "python-export.job.json",
+          "bytes_equal": true,
+          "sha256_equal": true
+        },
+        {
+          "section": "downloaded_python_execution_related",
+          "file": "browser-exported-workflow.py",
+          "bytes_equal": true,
+          "sha256_equal": true
+        },
+        {
+          "section": "downloaded_python_execution_related",
+          "file": "python-export-artifacts/f4fdf7a911264aeca2977b7a1e0b6951-transformers-model.zip",
+          "bytes_equal": true,
+          "sha256_equal": true
+        }
+      ]
+    },
+    "rmsnorm_training": {
+      "parameter_count": 33,
+      "parameter_tensors": 5,
+      "steps": 20,
+      "loss_first": 1.5218572616577148,
+      "loss_last": 0.05354292690753937,
+      "optimizer_state_tensors": 15,
+      "parameter_changed": true
+    },
+    "python_export_training": {
+      "status": "succeeded",
+      "node_count": 6,
+      "parameter_count": 81,
+      "steps": 4,
+      "optimizer": "RMSprop",
+      "parameter_changed": true
+    },
+    "source_audit": {
+      "runtime_files": 2764,
+      "parsed_runtime_files": 2764,
+      "lines": 1166534,
+      "bytes": 50979457,
+      "ast_failures": 0,
+      "archive_sha256_equal": true
+    },
+    "preservation_receipt_status": "passed",
+    "root_package_report_bytes_equal": true,
+    "browser_ledger_status": "passed within listed scope"
+  },
+  "claim_issues": [],
+  "pending_not_failures": [
+    "Final rebuilt distribution/source/wheel/installed/sdist identity after the report wording correction is being requalified by the parent; the preserved first full installed run passed.",
+    "Final source ZIP and download/RELEASE-2.0.0.json remain parent-owned and pending.",
+    "Final guide target check is deferred until the parent signals ZIP/release index creation; its output will be written under excluded download/."
+  ],
+  "fresh_static_checks": {
+    "ruff_package_and_all_scripts": {
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    "compileall_package_and_all_scripts": {
+      "exit_code": 0
+    },
+    "zip_crc_recheck": {
+      "downloaded_experiment": true,
+      "rmsnorm_model": true,
+      "exported_python_checkpoint": true
+    }
+  },
+  "reviewed_at_utc": "2026-10-23T18:41:37.964Z",
+  "resolved_claim_issues": [
+    {
+      "id": "codegen-training-scope",
+      "severity": "wording",
+      "claim": "Code-generation tests cover actual training.",
+      "finding": "The seven code-generation tests execute an actual pure-core multiplication graph and evidence export, not an optimizer-training node. Training through an exported Python project is separately demonstrated by browser/python-export.job.json.",
+      "suggested_change": "Replace actual training with actual graph execution in the code-generation test bullet; retain the separate browser-export training claim.",
+      "test_source_sha256": "e7dbfb670cc3cbd7f71e76c9b5efd29c33ad9307d3ead509f18614055a5edc60",
+      "evidence": [
+        "single_parameter_observatory/tests/test_studio_codegen.py",
+        "evidence/transformers_20261023/codegen_tests.txt",
+        "evidence/transformers_20261023/browser/python-export.job.json"
+      ],
+      "resolution": "Parent corrected the report to explicit graph execution; actual optimizer training through exported Python remains separately evidenced by browser and installed qualifiers.",
+      "resolved": true
+    }
+  ],
+  "first_installed_qualification": {
+    "receipt": "installed_verification_before_report_correction.json",
+    "receipt_sha256": "85e337a1aeb9104179346cb4c20404019bd508f36bbdd7618d57f2be7850fca6",
+    "status": "passed",
+    "version": "2.0.0",
+    "scope": "Actual installed-wheel execution before the narrow report wording correction. Final current report/distribution hashes are being requalified by the parent.",
+    "node_lab_examples": 7,
+    "transformers_examples": 13,
+    "all_twenty_examples_succeeded": true,
+    "hf_node_types": 27,
+    "pipeline_tasks": [
+      "feature-extraction",
+      "fill-mask",
+      "text-classification",
+      "text-generation",
+      "token-classification"
+    ],
+    "generated_python_returncode": 0,
+    "generated_python_training": {
+      "train": {
+        "type": "hf.train",
+        "steps": 3,
+        "parameter_count": 4080,
+        "state_sha256_before": "9998d13cb1fcf4a1e4e1e21ecce5f4f137f1a6c23dcf1b5d83efe364e74652e7",
+        "state_sha256_after": "7be2579126fbdeae2cba265fd8ab0625d7e0ea80859036992b605ac299d42bea",
+        "loss_first": 2.8467037677764893,
+        "loss_last": 2.767927885055542
+      }
+    },
+    "installed_source_files_equal": 104,
+    "wheel_source_files_equal": 104,
+    "sdist_source_files_equal": 146
+  }
+}

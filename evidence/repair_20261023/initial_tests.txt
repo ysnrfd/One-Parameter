@@ -1,0 +1,185 @@
+test_full_gradient_validation (tests.test_autograd.TestAutograd.test_full_gradient_validation) ... ok
+test_gradient_accumulation (tests.test_autograd.TestAutograd.test_gradient_accumulation)
+With ``set_to_none=False`` a second backward sums into the same grad. ... ok
+test_gradient_analytical (tests.test_autograd.TestAutograd.test_gradient_analytical) ... ok
+test_gradient_autograd (tests.test_autograd.TestAutograd.test_gradient_autograd) ... ok
+test_gradient_finite_difference (tests.test_autograd.TestAutograd.test_gradient_finite_difference) ... ok
+test_gradient_is_not_fabricated (tests.test_autograd.TestAutograd.test_gradient_is_not_fabricated)
+A gradient that is written by hand must not be what the run uses. ... ok
+test_gradient_lifecycle_is_measured (tests.test_autograd.TestAutograd.test_gradient_lifecycle_is_measured)
+The states before/after zero_grad and before/after backward, in order. ... ok
+test_ulp_validation (tests.test_autograd.TestAutograd.test_ulp_validation) ... ok
+test_caller_lists_cannot_change_an_existing_run_configuration (tests.test_config_integrity.TestConfigurationIntegrity.test_caller_lists_cannot_change_an_existing_run_configuration) ... ok
+test_cosine_can_decay_to_zero_and_torch_seed_boundaries_are_accepted (tests.test_config_integrity.TestConfigurationIntegrity.test_cosine_can_decay_to_zero_and_torch_seed_boundaries_are_accepted) ... ok
+test_malformed_configuration_raises_named_error_before_execution (tests.test_config_integrity.TestConfigurationIntegrity.test_malformed_configuration_raises_named_error_before_execution) ... ok
+test_bit_changes (tests.test_fp32.TestBitTransitions.test_bit_changes) ... ok
+test_positions_count_from_the_sign_bit (tests.test_fp32.TestBitTransitions.test_positions_count_from_the_sign_bit) ... ok
+test_transition_matches_ulp_distance (tests.test_fp32.TestBitTransitions.test_transition_matches_ulp_distance)
+A one-ULP move is one ULP, but not necessarily one changed bit. ... ok
+test_encode_rejects_out_of_range_fields (tests.test_fp32.TestEncoding.test_encode_rejects_out_of_range_fields) ... ok
+test_python_float_and_tensor_agree (tests.test_fp32.TestEncoding.test_python_float_and_tensor_agree) ... ok
+test_struct_round_trip (tests.test_fp32.TestEncoding.test_struct_round_trip)
+A double is not a float32: the round trip must return the rounding. ... ok
+test_decode_detects_a_bad_word (tests.test_fp32.TestFloat32Bits.test_decode_detects_a_bad_word)
+A decode that cannot round-trip must raise, not return a plausible value. ... ok
+test_exact_decimal_is_the_exact_expansion (tests.test_fp32.TestFloat32Bits.test_exact_decimal_is_the_exact_expansion)
+`decimal_exact` must be the exact rational value, not a short form. ... ok
+test_exact_decimal_special_values (tests.test_fp32.TestFloat32Bits.test_exact_decimal_special_values) ... ok
+test_exact_fraction_matches_the_stored_value (tests.test_fp32.TestFloat32Bits.test_exact_fraction_matches_the_stored_value) ... ok
+test_exact_helpers_agree_on_magnitude_and_sign (tests.test_fp32.TestFloat32Bits.test_exact_helpers_agree_on_magnitude_and_sign)
+The two exact helpers are distinct in return type but agree in value. ... ok
+test_exponent_and_fraction_layout (tests.test_fp32.TestFloat32Bits.test_exponent_and_fraction_layout) ... ok
+test_float32_bits (tests.test_fp32.TestFloat32Bits.test_float32_bits) ... ok
+test_hex_encoding (tests.test_fp32.TestFloat32Bits.test_hex_encoding) ... ok
+test_shortest_representation_round_trips (tests.test_fp32.TestFloat32Bits.test_shortest_representation_round_trips) ... ok
+test_storage_evidence (tests.test_fp32.TestFloat32Bits.test_storage_evidence) ... ok
+test_subnormal_and_infinity_classification (tests.test_fp32.TestFloat32Bits.test_subnormal_and_infinity_classification) ... ok
+test_tensor_and_struct_paths_agree (tests.test_fp32.TestFloat32Bits.test_tensor_and_struct_paths_agree) ... ok
+test_nextafter (tests.test_fp32.TestULP.test_nextafter) ... ok
+test_ulp (tests.test_fp32.TestULP.test_ulp) ... ok
+test_ulp_distance_rejects_nan (tests.test_fp32.TestULP.test_ulp_distance_rejects_nan) ... ok
+test_ulp_distance_signs (tests.test_fp32.TestULP.test_ulp_distance_signs) ... ok
+test_ulp_matches_the_exponent_field (tests.test_fp32.TestULP.test_ulp_matches_the_exponent_field) ... ok
+test_ulp_movement_is_zero_when_stored_value_does_not_move (tests.test_fp32.TestULP.test_ulp_movement_is_zero_when_stored_value_does_not_move) ... ok
+test_ulp_symmetry_at_power_of_two (tests.test_fp32.TestULP.test_ulp_symmetry_at_power_of_two)
+ULP size must be symmetric under sign at power-of-two boundaries. ... ok
+test_bit_changes (tests.test_numerics.TestParameterTransition.test_bit_changes) ... ok
+test_delta (tests.test_numerics.TestParameterTransition.test_delta)
+The recorded delta is stored-after minus stored-before, by definition. ... ok
+test_forward_does_not_update_the_parameter (tests.test_numerics.TestParameterTransition.test_forward_does_not_update_the_parameter)
+The snapshot chain A == B == C is an observed fact, per step. ... ok
+test_parameter_before_after (tests.test_numerics.TestParameterTransition.test_parameter_before_after)
+Forward and backward must not move the parameter; the step must. ... ok
+test_exact_half_ulp_tie_is_detected_in_exact_arithmetic (tests.test_numerics.TestRounding.test_exact_half_ulp_tie_is_detected_in_exact_arithmetic)
+A real tie must be detected, and a one-ULP near miss must not. ... ok
+test_optimizer_state_still_moves_when_the_parameter_cannot (tests.test_numerics.TestRounding.test_optimizer_state_still_moves_when_the_parameter_cannot)
+Optimizer memory keeps evolving even when the stored value cannot. ... ok
+test_rounding_analysis (tests.test_numerics.TestRounding.test_rounding_analysis)
+A float64 candidate is rounded to float32 and the residual measured. ... ok
+test_rounding_residual_of_a_real_step (tests.test_numerics.TestRounding.test_rounding_residual_of_a_real_step) ... ok
+test_same_binade_metric_matches_the_exact_count_within_a_binade (tests.test_numerics.TestRounding.test_same_binade_metric_matches_the_exact_count_within_a_binade)
+Away from a boundary the two metrics agree, which is why both exist. ... ok
+test_ulp_metrics_diverge_at_a_sign_crossing (tests.test_numerics.TestRounding.test_ulp_metrics_diverge_at_a_sign_crossing)
+The two ULP metrics are different quantities and must be labelled as such. ... ok
+test_update_below_fp32_resolution_is_reported (tests.test_numerics.TestRounding.test_update_below_fp32_resolution_is_reported)
+An update too small to represent must be labelled, not hidden. ... ok
+test_adam (tests.test_optimizer.TestOptimizers.test_adam) ... ok
+test_adamw (tests.test_optimizer.TestOptimizers.test_adamw) ... ok
+test_optimizer_reconstruction (tests.test_optimizer.TestOptimizers.test_optimizer_reconstruction)
+Across optimizers and configurations, the reconstruction is exact. ... ok
+test_optimizer_state_is_read_not_guessed (tests.test_optimizer.TestOptimizers.test_optimizer_state_is_read_not_guessed) ... ok
+test_reconstruction_reports_a_mismatch (tests.test_optimizer.TestOptimizers.test_reconstruction_reports_a_mismatch)
+A deliberately wrong 'actual' value must be reported, not accepted. ... ok
+test_semantics_probe_measures_an_exact_variant (tests.test_optimizer.TestOptimizers.test_semantics_probe_measures_an_exact_variant)
+The probe must find a variant that reproduces the real update exactly. ... ok
+test_sgd (tests.test_optimizer.TestOptimizers.test_sgd) ... ok
+test_sgd_momentum_and_nesterov (tests.test_optimizer.TestOptimizers.test_sgd_momentum_and_nesterov) ... ok
+test_sgd_without_momentum_keeps_no_state (tests.test_optimizer.TestOptimizers.test_sgd_without_momentum_keeps_no_state)
+Observed behaviour: no state entry is created at all, not an empty one. ... ok
+test_source_audit_records_the_installed_implementation (tests.test_optimizer.TestOptimizers.test_source_audit_records_the_installed_implementation) ... ok
+test_source_audit_sgd (tests.test_optimizer.TestOptimizers.test_source_audit_sgd) ... ok
+test_unknown_optimizer_is_rejected (tests.test_optimizer.TestOptimizers.test_unknown_optimizer_is_rejected) ... ok
+test_weight_decay (tests.test_optimizer.TestOptimizers.test_weight_decay)
+With the gradient suppressed, AdamW's decay must still move w. ... ok
+test_weight_decay_is_not_merged_into_the_gradient_for_adamw (tests.test_optimizer.TestOptimizers.test_weight_decay_is_not_merged_into_the_gradient_for_adamw)
+AdamW decays the parameter; the recorded gradient must be unchanged. ... ok
+test_exactly_one_parameter (tests.test_parameter.TestTrackedParameterIdentity.test_exactly_one_parameter)
+The module holds exactly one trainable tensor, and it is a scalar. ... ok
+test_initialization (tests.test_parameter.TestTrackedParameterIdentity.test_initialization) ... ok
+test_parameter_is_float32 (tests.test_parameter.TestTrackedParameterIdentity.test_parameter_is_float32) ... ok
+test_parameter_requires_grad (tests.test_parameter.TestTrackedParameterIdentity.test_parameter_requires_grad) ... ok
+test_parameter_shape (tests.test_parameter.TestTrackedParameterIdentity.test_parameter_shape) ... ok
+test_forward_uses_the_parameter (tests.test_parameter.TestTrackingInvariants.test_forward_uses_the_parameter)
+Changing the parameter must change the prediction: it is really in the graph. ... ok
+test_model_rejects_non_float32_construction (tests.test_parameter.TestTrackingInvariants.test_model_rejects_non_float32_construction) ... ok
+test_tracker_detects_a_frozen_parameter (tests.test_parameter.TestTrackingInvariants.test_tracker_detects_a_frozen_parameter) ... ok
+test_tracker_reports_identity_card (tests.test_parameter.TestTrackingInvariants.test_tracker_reports_identity_card) ... ok
+test_verifier_rejects_a_float64_parameter (tests.test_parameter.TestTrackingInvariants.test_verifier_rejects_a_float64_parameter)
+A tracked object that stops being float32 must be rejected loudly. ... ok
+test_verifier_rejects_a_non_scalar_parameter (tests.test_parameter.TestTrackingInvariants.test_verifier_rejects_a_non_scalar_parameter) ... ok
+test_export (tests.test_recording.TestExport.test_export) ... ok
+test_export_of_an_empty_run_is_explicit (tests.test_recording.TestExport.test_export_of_an_empty_run_is_explicit)
+A run with no steps exports an explicit reason, not a silent empty file. ... ok
+test_event_log_records_real_events (tests.test_recording.TestRecording.test_event_log_records_real_events) ... ok
+test_final_report_contains_measured_values (tests.test_recording.TestRecording.test_final_report_contains_measured_values) ... ok
+test_gradient_lifecycle_is_recorded (tests.test_recording.TestRecording.test_gradient_lifecycle_is_recorded) ... ok
+test_history_hash_chain_detects_tampering (tests.test_recording.TestRecording.test_history_hash_chain_detects_tampering) ... ok
+test_history_length (tests.test_recording.TestRecording.test_history_length) ... ok
+test_nonfinite_detection (tests.test_recording.TestRecording.test_nonfinite_detection)
+A diverging real run must be detected and stopped, not carried on. ... ok
+test_records_are_immutable (tests.test_recording.TestRecording.test_records_are_immutable) ... ok
+test_report_exposes_both_ulp_metrics (tests.test_recording.TestRecording.test_report_exposes_both_ulp_metrics)
+The run aggregate must not be the sign-crossing-dominated count. ... ok
+test_tanh_saturation_prevents_divergence (tests.test_recording.TestRecording.test_tanh_saturation_prevents_divergence)
+A saturated tanh kills the gradient, so a huge lr does not diverge. ... ok
+test_canonical_json_is_deterministic (tests.test_recording.TestReplay.test_canonical_json_is_deterministic) ... ok
+test_replay_survives_a_finished_run (tests.test_recording.TestReplay.test_replay_survives_a_finished_run) ... ok
+test_replay_uses_recorded_states (tests.test_recording.TestReplay.test_replay_uses_recorded_states)
+Replay must return exactly the recorded values, in recorded order. ... ok
+test_hud_interval_follows_configuration (tests.test_regressions.TestDashboardSeriesPanel.test_hud_interval_follows_configuration)
+F-05: ``hud_hz`` must actually drive the HUD refresh cadence. ... ok
+test_refresh_restores_autoscaled_view_limits (tests.test_regressions.TestDashboardSeriesPanel.test_refresh_restores_autoscaled_view_limits) ... ok
+test_saved_frames_contain_series_ink (tests.test_regressions.TestDashboardSeriesPanel.test_saved_frames_contain_series_ink)
+Every saved frame must contain visible data pixels in the series panel. ... ok
+test_diverged_run_exports_strict_json (tests.test_regressions.TestNonFiniteExport.test_diverged_run_exports_strict_json) ... ok
+test_json_safe_stringifies_non_finite_floats (tests.test_regressions.TestNonFiniteExport.test_json_safe_stringifies_non_finite_floats) ... ok
+test_sgd_reconstruction_reports_no_fake_step (tests.test_regressions.TestSgdReconstructionHonesty.test_sgd_reconstruction_reports_no_fake_step) ... ok
+test_pause_really_stops_the_engine (tests.test_training.TestControls.test_pause_really_stops_the_engine)
+A pause must stop real steps, not merely stop drawing. ... ok
+test_reset_restores_the_live_state (tests.test_training.TestControls.test_reset_restores_the_live_state) ... ok
+test_restart_discards_the_history (tests.test_training.TestControls.test_restart_discards_the_history) ... ok
+test_run_n_runs_exactly_n_steps (tests.test_training.TestControls.test_run_n_runs_exactly_n_steps) ... ok
+test_run_n_without_space (tests.test_training.TestControls.test_run_n_without_space)
+Verify command like 'n2' runs 2 steps. ... ok
+test_single_step_advances_exactly_one_step (tests.test_training.TestControls.test_single_step_advances_exactly_one_step) ... ok
+test_speed_control_changes_the_step_rate (tests.test_training.TestControls.test_speed_control_changes_the_step_rate) ... ok
+test_tracking_failure_stops_the_run (tests.test_training.TestSafety.test_tracking_failure_stops_the_run) ... ok
+test_a_flat_gradient_regime_is_not_inferred_from_label (tests.test_training.TestStability.test_a_flat_gradient_regime_is_not_inferred_from_label)
+No regime is ever reported as 'converged'. ... ok
+test_analyzer_reports_no_data_honestly (tests.test_training.TestStability.test_analyzer_reports_no_data_honestly) ... ok
+test_stability_analysis (tests.test_training.TestStability.test_stability_analysis) ... ok
+test_stability_reports_a_stationary_run (tests.test_training.TestStability.test_stability_reports_a_stationary_run)
+A near-zero gradient does not imply a small update. ... ok
+test_stability_reports_oscillation_for_an_oscillatory_run (tests.test_training.TestStability.test_stability_reports_oscillation_for_an_oscillatory_run) ... ok
+test_gradient_is_never_fabricated (tests.test_training.TestTraining.test_gradient_is_never_fabricated)
+The training step must obtain its gradient only from autograd. ... ok
+test_landscape_probe_restores_the_parameter (tests.test_training.TestTraining.test_landscape_probe_restores_the_parameter) ... ok
+test_provenance_records_the_installed_implementation (tests.test_training.TestTraining.test_provenance_records_the_installed_implementation) ... ok
+test_real_training_changes_the_parameter (tests.test_training.TestTraining.test_real_training_changes_the_parameter) ... ok
+test_reconstruction_passes_for_a_real_run (tests.test_training.TestTraining.test_reconstruction_passes_for_a_real_run) ... ok
+test_validation_ledger_has_no_failures (tests.test_training.TestTraining.test_validation_ledger_has_no_failures) ... ok
+test_every_required_subcommand_exists (tests.test_views.TestCliSurface.test_every_required_subcommand_exists) ... ok
+test_presets_all_build_valid_configurations (tests.test_views.TestCliSurface.test_presets_all_build_valid_configurations) ... ok
+test_unknown_preset_is_rejected (tests.test_views.TestCliSurface.test_unknown_preset_is_rejected) ... ok
+test_bit_figure_renders (tests.test_views.TestFigures.test_bit_figure_renders) ... ok
+test_broken_chain_notice_is_printed_once (tests.test_views.TestFigures.test_broken_chain_notice_is_printed_once)
+The chain is checked once, and its notice is printed once. ... ok
+test_draw_bit_pattern_takes_no_previous_argument (tests.test_views.TestFigures.test_draw_bit_pattern_takes_no_previous_argument)
+The parameter that was passed but never read is gone. ... ok
+test_empty_run_figure_says_so (tests.test_views.TestFigures.test_empty_run_figure_says_so) ... ok
+test_exit_status_ordering_is_what_the_comment_claims (tests.test_views.TestFigures.test_exit_status_ordering_is_what_the_comment_claims)
+All four exit statuses, for both a view and a run. ... ok
+test_headless_dashboard_always_writes_a_frame (tests.test_views.TestFigures.test_headless_dashboard_always_writes_a_frame)
+A run that finishes before the first redraw must still leave a frame. ... ok
+test_idle_run_shows_the_message_and_plots_nothing (tests.test_views.TestFigures.test_idle_run_shows_the_message_and_plots_nothing) ... ok
+test_live_dashboard_key_controls_restart_vs_reset (tests.test_views.TestFigures.test_live_dashboard_key_controls_restart_vs_reset)
+'R' and 'shift+r' must restart the experiment, while 'r' resets. ... ok
+test_live_exit_status_separates_the_view_from_the_run (tests.test_views.TestFigures.test_live_exit_status_separates_the_view_from_the_run)
+`live` must exit 0 on a diverged run; `run` must not. ... ok
+test_live_series_table_is_the_only_live_catalogue (tests.test_views.TestFigures.test_live_series_table_is_the_only_live_catalogue)
+The dead third catalogue is gone; the two live ones name each other. ... ok
+test_nonfinite_values_do_not_corrupt_the_axis_limits (tests.test_views.TestFigures.test_nonfinite_values_do_not_corrupt_the_axis_limits)
+A diverged run must still show the steps that were finite. ... ok
+test_overview_figure_renders (tests.test_views.TestFigures.test_overview_figure_renders) ... ok
+test_render_figures_writes_every_file (tests.test_views.TestFigures.test_render_figures_writes_every_file) ... ok
+test_single_step_run_leaves_a_visible_mark_in_both_views (tests.test_views.TestFigures.test_single_step_run_leaves_a_visible_mark_in_both_views)
+One recorded step must be visible in the live and static panels. ... ok
+test_state_card_title_before_and_after_the_first_step (tests.test_views.TestFigures.test_state_card_title_before_and_after_the_first_step)
+The title must not read 'step -1' before anything has run. ... ok
+test_state_card_contains_the_required_fields (tests.test_views.TestStateCard.test_state_card_contains_the_required_fields) ... ok
+test_state_card_on_an_empty_engine (tests.test_views.TestStateCard.test_state_card_on_an_empty_engine) ... ok
+
+----------------------------------------------------------------------
+Ran 131 tests in 49.508s
+
+OK

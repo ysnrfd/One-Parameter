@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "checks": {
+    "runs": true,
+    "workspace": true,
+    "ui_drafts": true,
+    "extensions_schema_version": true,
+    "extensions_active_graph_id": true,
+    "extensions_graphs": true,
+    "extensions_plugins": true,
+    "extensions_jobs": true,
+    "extensions_artifacts": true
+  },
+  "versions": [
+    "2.1.0",
+    "2.2.0"
+  ]
+}

@@ -1,0 +1,27 @@
+scripts\rasterize_audit_pdf.py:7: error: Cannot find implementation or library stub for module named "pypdfium2"  [import-not-found]
+scripts\merge_audit_pdf.py:5: error: Cannot find implementation or library stub for module named "pypdf"  [import-not-found]
+scripts\hf_source_audit.py:107: error: Incompatible types in assignment (expression has type "expr | None", variable has type "expr")  [assignment]
+scripts\hf_source_audit.py:115: error: Incompatible types in assignment (expression has type "expr | None", variable has type "expr")  [assignment]
+scripts\build_audit_pdf.py:20: error: Library stubs not installed for "reportlab.lib"  [import-untyped]
+scripts\build_audit_pdf.py:21: error: Library stubs not installed for "reportlab.lib.enums"  [import-untyped]
+scripts\build_audit_pdf.py:21: note: Hint: "python3 -m pip install types-reportlab"
+scripts\build_audit_pdf.py:21: note: (or run "mypy --install-types" to install all missing stub packages)
+scripts\build_audit_pdf.py:21: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+scripts\build_audit_pdf.py:22: error: Library stubs not installed for "reportlab.lib.pagesizes"  [import-untyped]
+scripts\build_audit_pdf.py:23: error: Library stubs not installed for "reportlab.lib.styles"  [import-untyped]
+scripts\build_audit_pdf.py:24: error: Library stubs not installed for "reportlab.pdfbase"  [import-untyped]
+scripts\build_audit_pdf.py:25: error: Library stubs not installed for "reportlab.pdfbase.pdfmetrics"  [import-untyped]
+scripts\build_audit_pdf.py:26: error: Library stubs not installed for "reportlab.pdfbase.ttfonts"  [import-untyped]
+scripts\build_audit_pdf.py:27: error: Library stubs not installed for "reportlab.platypus"  [import-untyped]
+scripts\build_audit_pdf.py:39: error: Library stubs not installed for "reportlab.platypus.tableofcontents"  [import-untyped]
+scripts\build_audit_pdf.py:62: error: Cannot find implementation or library stub for module named "pdf"  [import-not-found]
+scripts\build_audit_pdf.py:309: error: List item 1 has incompatible type "tuple[str, tuple[int, int], tuple[int, int], int, Any]"; expected "tuple[str, tuple[int, int], tuple[int, int], object]"  [list-item]
+scripts\make_frame_compare.py:60: error: Module has no attribute "LANCZOS"  [attr-defined]
+scripts\verify_studio_install.py:563: error: Incompatible types in assignment (expression has type "Path", variable has type "str")  [assignment]
+scripts\verify_studio_install.py:564: error: "str" has no attribute "rglob"  [attr-defined]
+scripts\verify_studio_install.py:590: error: Incompatible types in assignment (expression has type "TarFile", variable has type "ZipFile")  [assignment]
+scripts\verify_studio_install.py:591: error: "ZipFile" has no attribute "getnames"  [attr-defined]
+scripts\verify_studio_install.py:594: error: "ZipFile" has no attribute "extractfile"; maybe "extract" or "extractall"?  [attr-defined]
+single_parameter_observatory\tests\test_studio_codegen.py:74: error: Module has no attribute "PROJECT_SHA256"  [attr-defined]
+single_parameter_observatory\tests\test_studio_codegen.py:122: error: Argument 2 to "python_project" has incompatible type "Sequence[Collection[str]]"; expected "str"  [arg-type]
+Found 23 errors in 7 files (checked 66 source files)

@@ -1,0 +1,628 @@
+* Getting build dependencies for sdist...
+running egg_info
+writing single_parameter_observatory.egg-info\PKG-INFO
+writing dependency_links to single_parameter_observatory.egg-info\dependency_links.txt
+writing entry points to single_parameter_observatory.egg-info\entry_points.txt
+writing requirements to single_parameter_observatory.egg-info\requires.txt
+writing top-level names to single_parameter_observatory.egg-info\top_level.txt
+reading manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*.py' under directory 'examples\node_lab'
+warning: no files found matching '*.ps1' under directory 'examples\transformers'
+warning: no files found matching '*.py' under directory 'examples\transformers'
+warning: no files found matching '*.py' under directory 'single_parameter_observatory\examples\node_lab'
+warning: no files found matching '*.ps1' under directory 'single_parameter_observatory\examples\transformers'
+warning: no files found matching '*.py' under directory 'single_parameter_observatory\examples\transformers'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing single_parameter_observatory.egg-info\PKG-INFO
+writing dependency_links to single_parameter_observatory.egg-info\dependency_links.txt
+writing entry points to single_parameter_observatory.egg-info\entry_points.txt
+writing requirements to single_parameter_observatory.egg-info\requires.txt
+writing top-level names to single_parameter_observatory.egg-info\top_level.txt
+reading manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*.py' under directory 'examples\node_lab'
+warning: no files found matching '*.ps1' under directory 'examples\transformers'
+warning: no files found matching '*.py' under directory 'examples\transformers'
+warning: no files found matching '*.py' under directory 'single_parameter_observatory\examples\node_lab'
+warning: no files found matching '*.ps1' under directory 'single_parameter_observatory\examples\transformers'
+warning: no files found matching '*.py' under directory 'single_parameter_observatory\examples\transformers'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+running check
+creating single_parameter_observatory-2.2.0
+creating single_parameter_observatory-2.2.0\examples\node_lab
+creating single_parameter_observatory-2.2.0\examples\transformers
+creating single_parameter_observatory-2.2.0\single_parameter_observatory
+creating single_parameter_observatory-2.2.0\single_parameter_observatory.egg-info
+creating single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+creating single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+creating single_parameter_observatory-2.2.0\single_parameter_observatory\studio_web
+creating single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying files to single_parameter_observatory-2.2.0...
+copying AUDIT.md -> single_parameter_observatory-2.2.0
+copying LICENSE -> single_parameter_observatory-2.2.0
+copying LLAMA_BLOCKS.md -> single_parameter_observatory-2.2.0
+copying LLAMA_SOURCE_NOTES.md -> single_parameter_observatory-2.2.0
+copying LLAMA_STUDIO.md -> single_parameter_observatory-2.2.0
+copying Launch Studio.cmd -> single_parameter_observatory-2.2.0
+copying MANIFEST.in -> single_parameter_observatory-2.2.0
+copying NODE_LAB.md -> single_parameter_observatory-2.2.0
+copying NODE_LAB_REPORT.md -> single_parameter_observatory-2.2.0
+copying PLUGIN_SDK.md -> single_parameter_observatory-2.2.0
+copying README.md -> single_parameter_observatory-2.2.0
+copying REPAIR_REPORT.md -> single_parameter_observatory-2.2.0
+copying STUDIO.md -> single_parameter_observatory-2.2.0
+copying STUDIO_REPORT.md -> single_parameter_observatory-2.2.0
+copying TRANSFORMERS_AUDIT.md -> single_parameter_observatory-2.2.0
+copying TRANSFORMERS_REPORT.md -> single_parameter_observatory-2.2.0
+copying TRANSFORMERS_STUDIO.md -> single_parameter_observatory-2.2.0
+copying pyproject.toml -> single_parameter_observatory-2.2.0
+copying requirements.txt -> single_parameter_observatory-2.2.0
+copying examples\node_lab\README.md -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\branch-and-export.workflow.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\catalog.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\custom-data.workflow.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\documentation-checks.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\example.plugin.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\plugin-dataset-training.workflow.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\plugin-scale.workflow.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\powershell-syntax-checks.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\run-workflow.ps1 -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\sandbox.workflow.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\training.workflow.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\node_lab\wide-integer.workflow.json -> single_parameter_observatory-2.2.0\examples\node_lab
+copying examples\transformers\README.md -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\architecture.plugin.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\cached-pretrained.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\checkpoint-roundtrip.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\custom-attention.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\custom-forward.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\distilbert-classification.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\feature-extraction.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\fill-mask.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\llama-blocks-custom.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\llama-blocks.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\llama.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\plugin-architecture.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\rmsnorm-adamw.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\text-pipeline.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\tiny-gpt2.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\token-classification.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying examples\transformers\tokenize-train-generate.workflow.json -> single_parameter_observatory-2.2.0\examples\transformers
+copying single_parameter_observatory\API.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\ARCHITECTURE.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\AUDIT.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\CHANGELOG.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\CONTRIBUTING.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\LICENSE -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\LLAMA_BLOCKS.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\LLAMA_SOURCE_NOTES.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\LLAMA_STUDIO.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\NODE_LAB.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\NODE_LAB_REPORT.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\PLUGIN_SDK.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\README.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\REPAIR_REPORT.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\STUDIO.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\STUDIO_REPORT.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\TRANSFORMERS_AUDIT.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\TRANSFORMERS_REPORT.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\TRANSFORMERS_STUDIO.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\USAGE.md -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\__init__.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\__main__.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\config.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\convergence.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\dashboard.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\errors.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\exporters.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\fp32_inspector.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\main.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\model.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\numerical_analysis.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\optimizer_inspector.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\py.typed -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\recorder.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\requirements.txt -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\run_checks.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_codegen.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_components.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_components_runtime.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_graph.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_plugins.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_script_worker.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_server.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_session.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_transformers.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_transformers_worker.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\tracker.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\training_engine.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\validation.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory\visualization.py -> single_parameter_observatory-2.2.0\single_parameter_observatory
+copying single_parameter_observatory.egg-info\PKG-INFO -> single_parameter_observatory-2.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\SOURCES.txt -> single_parameter_observatory-2.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\dependency_links.txt -> single_parameter_observatory-2.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\entry_points.txt -> single_parameter_observatory-2.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\requires.txt -> single_parameter_observatory-2.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\top_level.txt -> single_parameter_observatory-2.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory\examples\node_lab\README.md -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\branch-and-export.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\catalog.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\custom-data.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\documentation-checks.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\example.plugin.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\plugin-dataset-training.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\plugin-scale.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\powershell-syntax-checks.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\run-workflow.ps1 -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\sandbox.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\training.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\wide-integer.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\transformers\README.md -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\architecture.plugin.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\cached-pretrained.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\checkpoint-roundtrip.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\custom-attention.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\custom-forward.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\distilbert-classification.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\feature-extraction.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\fill-mask.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\llama-blocks-custom.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\llama-blocks.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\llama.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\plugin-architecture.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\rmsnorm-adamw.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\text-pipeline.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\tiny-gpt2.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\token-classification.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\tokenize-train-generate.workflow.json -> single_parameter_observatory-2.2.0\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\studio_web\graph.css -> single_parameter_observatory-2.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\graph.js -> single_parameter_observatory-2.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\graph_core.js -> single_parameter_observatory-2.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\index.html -> single_parameter_observatory-2.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\studio.css -> single_parameter_observatory-2.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\studio.js -> single_parameter_observatory-2.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\transformers.css -> single_parameter_observatory-2.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\transformers.js -> single_parameter_observatory-2.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\tests\__init__.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\_bootstrap.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_autograd.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_config_integrity.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_core_correctness_repairs.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_dashboard_cli_regressions.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_fp32.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_numerics.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_optimizer.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_parameter.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_recording.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_recording_integrity_exports.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_regressions.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_release_checks.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_codegen.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_components.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_extensions_integration.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_graph.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_plugins.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_server.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_session.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_transformers.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_training.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_views.py -> single_parameter_observatory-2.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory.egg-info\SOURCES.txt -> single_parameter_observatory-2.2.0\single_parameter_observatory.egg-info
+Writing single_parameter_observatory-2.2.0\setup.cfg
+Creating tar archive
+removing 'single_parameter_observatory-2.2.0' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing single_parameter_observatory.egg-info\PKG-INFO
+writing dependency_links to single_parameter_observatory.egg-info\dependency_links.txt
+writing entry points to single_parameter_observatory.egg-info\entry_points.txt
+writing requirements to single_parameter_observatory.egg-info\requires.txt
+writing top-level names to single_parameter_observatory.egg-info\top_level.txt
+reading manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*.py' under directory 'examples\node_lab'
+warning: no files found matching '*.ps1' under directory 'examples\transformers'
+warning: no files found matching '*.py' under directory 'examples\transformers'
+warning: no files found matching '*.py' under directory 'single_parameter_observatory\examples\node_lab'
+warning: no files found matching '*.ps1' under directory 'single_parameter_observatory\examples\transformers'
+warning: no files found matching '*.py' under directory 'single_parameter_observatory\examples\transformers'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build\lib\single_parameter_observatory
+copying single_parameter_observatory\config.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\convergence.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\dashboard.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\errors.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\exporters.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\fp32_inspector.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\main.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\model.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\numerical_analysis.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\optimizer_inspector.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\recorder.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\run_checks.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_codegen.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_components.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_components_runtime.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_graph.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_plugins.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_script_worker.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_server.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_session.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_transformers.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_transformers_worker.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\tracker.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\training_engine.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\validation.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\visualization.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\__init__.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\__main__.py -> build\lib\single_parameter_observatory
+creating build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_autograd.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_config_integrity.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_core_correctness_repairs.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_dashboard_cli_regressions.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_fp32.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_numerics.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_optimizer.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_parameter.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_recording.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_recording_integrity_exports.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_regressions.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_release_checks.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_codegen.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_components.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_extensions_integration.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_graph.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_plugins.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_server.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_session.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_transformers.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_training.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_views.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\_bootstrap.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\__init__.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\py.typed -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\API.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\ARCHITECTURE.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\AUDIT.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\CHANGELOG.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\CONTRIBUTING.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\LLAMA_BLOCKS.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\LLAMA_SOURCE_NOTES.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\LLAMA_STUDIO.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\NODE_LAB.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\NODE_LAB_REPORT.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\PLUGIN_SDK.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\README.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\REPAIR_REPORT.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\STUDIO.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\STUDIO_REPORT.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\TRANSFORMERS_AUDIT.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\TRANSFORMERS_REPORT.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\TRANSFORMERS_STUDIO.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\USAGE.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\LICENSE -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\requirements.txt -> build\lib\single_parameter_observatory
+creating build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\graph.css -> build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\graph.js -> build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\graph_core.js -> build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\index.html -> build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\studio.css -> build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\studio.js -> build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\transformers.css -> build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\transformers.js -> build\lib\single_parameter_observatory\studio_web
+creating build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\branch-and-export.workflow.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\catalog.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\custom-data.workflow.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\documentation-checks.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\example.plugin.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\plugin-dataset-training.workflow.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\plugin-scale.workflow.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\powershell-syntax-checks.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\README.md -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\run-workflow.ps1 -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\sandbox.workflow.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\training.workflow.json -> build\lib\single_parameter_observatory\examples\node_lab
+copying single_parameter_observatory\examples\node_lab\wide-integer.workflow.json -> build\lib\single_parameter_observatory\examples\node_lab
+creating build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\architecture.plugin.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\cached-pretrained.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\checkpoint-roundtrip.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\custom-attention.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\custom-forward.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\distilbert-classification.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\feature-extraction.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\fill-mask.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\llama-blocks-custom.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\llama-blocks.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\llama.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\plugin-architecture.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\README.md -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\rmsnorm-adamw.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\text-pipeline.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\tiny-gpt2.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\token-classification.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+copying single_parameter_observatory\examples\transformers\tokenize-train-generate.workflow.json -> build\lib\single_parameter_observatory\examples\transformers
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\single_parameter_observatory
+copying build\lib\single_parameter_observatory\API.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\ARCHITECTURE.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\AUDIT.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\CHANGELOG.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\config.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\CONTRIBUTING.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\convergence.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\dashboard.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\errors.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+creating build\bdist.win-amd64\wheel\single_parameter_observatory\examples
+creating build\bdist.win-amd64\wheel\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\branch-and-export.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\catalog.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\custom-data.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\documentation-checks.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\example.plugin.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\plugin-dataset-training.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\plugin-scale.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\powershell-syntax-checks.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\README.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\run-workflow.ps1 -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\sandbox.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\training.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+copying build\lib\single_parameter_observatory\examples\node_lab\wide-integer.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\node_lab
+creating build\bdist.win-amd64\wheel\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\architecture.plugin.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\cached-pretrained.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\checkpoint-roundtrip.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\custom-attention.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\custom-forward.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\distilbert-classification.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\feature-extraction.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\fill-mask.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\llama-blocks-custom.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\llama-blocks.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\llama.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\plugin-architecture.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\README.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\rmsnorm-adamw.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\text-pipeline.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\tiny-gpt2.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\token-classification.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\examples\transformers\tokenize-train-generate.workflow.json -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\examples\transformers
+copying build\lib\single_parameter_observatory\exporters.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\fp32_inspector.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\LICENSE -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\LLAMA_BLOCKS.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\LLAMA_SOURCE_NOTES.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\LLAMA_STUDIO.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\main.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\model.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\NODE_LAB.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\NODE_LAB_REPORT.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\numerical_analysis.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\optimizer_inspector.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\PLUGIN_SDK.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\py.typed -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\README.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\recorder.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\REPAIR_REPORT.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\requirements.txt -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\run_checks.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\STUDIO.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_codegen.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_components.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_components_runtime.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_graph.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_plugins.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\STUDIO_REPORT.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_script_worker.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_server.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_session.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_transformers.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_transformers_worker.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+creating build\bdist.win-amd64\wheel\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\graph.css -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\graph.js -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\graph_core.js -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\index.html -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\studio.css -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\studio.js -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\transformers.css -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\transformers.js -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+creating build\bdist.win-amd64\wheel\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_autograd.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_config_integrity.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_core_correctness_repairs.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_dashboard_cli_regressions.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_fp32.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_numerics.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_optimizer.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_parameter.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_recording.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_recording_integrity_exports.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_regressions.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_release_checks.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_codegen.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_components.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_extensions_integration.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_graph.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_plugins.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_server.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_session.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_transformers.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_training.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_views.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\_bootstrap.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\__init__.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tracker.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\training_engine.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\TRANSFORMERS_AUDIT.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\TRANSFORMERS_REPORT.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\TRANSFORMERS_STUDIO.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\USAGE.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\validation.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\visualization.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\__init__.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\__main__.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+running install_egg_info
+running egg_info
+writing single_parameter_observatory.egg-info\PKG-INFO
+writing dependency_links to single_parameter_observatory.egg-info\dependency_links.txt
+writing entry points to single_parameter_observatory.egg-info\entry_points.txt
+writing requirements to single_parameter_observatory.egg-info\requires.txt
+writing top-level names to single_parameter_observatory.egg-info\top_level.txt
+reading manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*.py' under directory 'examples\node_lab'
+warning: no files found matching '*.ps1' under directory 'examples\transformers'
+warning: no files found matching '*.py' under directory 'examples\transformers'
+warning: no files found matching '*.py' under directory 'single_parameter_observatory\examples\node_lab'
+warning: no files found matching '*.ps1' under directory 'single_parameter_observatory\examples\transformers'
+warning: no files found matching '*.py' under directory 'single_parameter_observatory\examples\transformers'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+Copying single_parameter_observatory.egg-info to build\bdist.win-amd64\wheel\.\single_parameter_observatory-2.2.0-py3.12.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\single_parameter_observatory-2.2.0.dist-info\WHEEL
+creating 'C:\Users\Atieh\Documents\ChatGPT\One Parameter\download\dist\.tmp-vk025u46\single_parameter_observatory-2.2.0-py3-none-any.whl' and adding 'build\bdist.win-amd64\wheel' to it
+adding 'single_parameter_observatory/API.md'
+adding 'single_parameter_observatory/ARCHITECTURE.md'
+adding 'single_parameter_observatory/AUDIT.md'
+adding 'single_parameter_observatory/CHANGELOG.md'
+adding 'single_parameter_observatory/CONTRIBUTING.md'
+adding 'single_parameter_observatory/LICENSE'
+adding 'single_parameter_observatory/LLAMA_BLOCKS.md'
+adding 'single_parameter_observatory/LLAMA_SOURCE_NOTES.md'
+adding 'single_parameter_observatory/LLAMA_STUDIO.md'
+adding 'single_parameter_observatory/NODE_LAB.md'
+adding 'single_parameter_observatory/NODE_LAB_REPORT.md'
+adding 'single_parameter_observatory/PLUGIN_SDK.md'
+adding 'single_parameter_observatory/README.md'
+adding 'single_parameter_observatory/REPAIR_REPORT.md'
+adding 'single_parameter_observatory/STUDIO.md'
+adding 'single_parameter_observatory/STUDIO_REPORT.md'
+adding 'single_parameter_observatory/TRANSFORMERS_AUDIT.md'
+adding 'single_parameter_observatory/TRANSFORMERS_REPORT.md'
+adding 'single_parameter_observatory/TRANSFORMERS_STUDIO.md'
+adding 'single_parameter_observatory/USAGE.md'
+adding 'single_parameter_observatory/__init__.py'
+adding 'single_parameter_observatory/__main__.py'
+adding 'single_parameter_observatory/config.py'
+adding 'single_parameter_observatory/convergence.py'
+adding 'single_parameter_observatory/dashboard.py'
+adding 'single_parameter_observatory/errors.py'
+adding 'single_parameter_observatory/exporters.py'
+adding 'single_parameter_observatory/fp32_inspector.py'
+adding 'single_parameter_observatory/main.py'
+adding 'single_parameter_observatory/model.py'
+adding 'single_parameter_observatory/numerical_analysis.py'
+adding 'single_parameter_observatory/optimizer_inspector.py'
+adding 'single_parameter_observatory/py.typed'
+adding 'single_parameter_observatory/recorder.py'
+adding 'single_parameter_observatory/requirements.txt'
+adding 'single_parameter_observatory/run_checks.py'
+adding 'single_parameter_observatory/studio_codegen.py'
+adding 'single_parameter_observatory/studio_components.py'
+adding 'single_parameter_observatory/studio_components_runtime.py'
+adding 'single_parameter_observatory/studio_graph.py'
+adding 'single_parameter_observatory/studio_plugins.py'
+adding 'single_parameter_observatory/studio_script_worker.py'
+adding 'single_parameter_observatory/studio_server.py'
+adding 'single_parameter_observatory/studio_session.py'
+adding 'single_parameter_observatory/studio_transformers.py'
+adding 'single_parameter_observatory/studio_transformers_worker.py'
+adding 'single_parameter_observatory/tracker.py'
+adding 'single_parameter_observatory/training_engine.py'
+adding 'single_parameter_observatory/validation.py'
+adding 'single_parameter_observatory/visualization.py'
+adding 'single_parameter_observatory/examples/node_lab/README.md'
+adding 'single_parameter_observatory/examples/node_lab/branch-and-export.workflow.json'
+adding 'single_parameter_observatory/examples/node_lab/catalog.json'
+adding 'single_parameter_observatory/examples/node_lab/custom-data.workflow.json'
+adding 'single_parameter_observatory/examples/node_lab/documentation-checks.json'
+adding 'single_parameter_observatory/examples/node_lab/example.plugin.json'
+adding 'single_parameter_observatory/examples/node_lab/plugin-dataset-training.workflow.json'
+adding 'single_parameter_observatory/examples/node_lab/plugin-scale.workflow.json'
+adding 'single_parameter_observatory/examples/node_lab/powershell-syntax-checks.json'
+adding 'single_parameter_observatory/examples/node_lab/run-workflow.ps1'
+adding 'single_parameter_observatory/examples/node_lab/sandbox.workflow.json'
+adding 'single_parameter_observatory/examples/node_lab/training.workflow.json'
+adding 'single_parameter_observatory/examples/node_lab/wide-integer.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/README.md'
+adding 'single_parameter_observatory/examples/transformers/architecture.plugin.json'
+adding 'single_parameter_observatory/examples/transformers/cached-pretrained.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/checkpoint-roundtrip.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/custom-attention.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/custom-forward.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/distilbert-classification.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/feature-extraction.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/fill-mask.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/llama-blocks-custom.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/llama-blocks.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/llama.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/plugin-architecture.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/rmsnorm-adamw.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/text-pipeline.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/tiny-gpt2.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/token-classification.workflow.json'
+adding 'single_parameter_observatory/examples/transformers/tokenize-train-generate.workflow.json'
+adding 'single_parameter_observatory/studio_web/graph.css'
+adding 'single_parameter_observatory/studio_web/graph.js'
+adding 'single_parameter_observatory/studio_web/graph_core.js'
+adding 'single_parameter_observatory/studio_web/index.html'
+adding 'single_parameter_observatory/studio_web/studio.css'
+adding 'single_parameter_observatory/studio_web/studio.js'
+adding 'single_parameter_observatory/studio_web/transformers.css'
+adding 'single_parameter_observatory/studio_web/transformers.js'
+adding 'single_parameter_observatory/tests/__init__.py'
+adding 'single_parameter_observatory/tests/_bootstrap.py'
+adding 'single_parameter_observatory/tests/test_autograd.py'
+adding 'single_parameter_observatory/tests/test_config_integrity.py'
+adding 'single_parameter_observatory/tests/test_core_correctness_repairs.py'
+adding 'single_parameter_observatory/tests/test_dashboard_cli_regressions.py'
+adding 'single_parameter_observatory/tests/test_fp32.py'
+adding 'single_parameter_observatory/tests/test_numerics.py'
+adding 'single_parameter_observatory/tests/test_optimizer.py'
+adding 'single_parameter_observatory/tests/test_parameter.py'
+adding 'single_parameter_observatory/tests/test_recording.py'
+adding 'single_parameter_observatory/tests/test_recording_integrity_exports.py'
+adding 'single_parameter_observatory/tests/test_regressions.py'
+adding 'single_parameter_observatory/tests/test_release_checks.py'
+adding 'single_parameter_observatory/tests/test_studio_codegen.py'
+adding 'single_parameter_observatory/tests/test_studio_components.py'
+adding 'single_parameter_observatory/tests/test_studio_extensions_integration.py'
+adding 'single_parameter_observatory/tests/test_studio_graph.py'
+adding 'single_parameter_observatory/tests/test_studio_plugins.py'
+adding 'single_parameter_observatory/tests/test_studio_server.py'
+adding 'single_parameter_observatory/tests/test_studio_session.py'
+adding 'single_parameter_observatory/tests/test_studio_transformers.py'
+adding 'single_parameter_observatory/tests/test_training.py'
+adding 'single_parameter_observatory/tests/test_views.py'
+adding 'single_parameter_observatory-2.2.0.dist-info/licenses/LICENSE'
+adding 'single_parameter_observatory-2.2.0.dist-info/METADATA'
+adding 'single_parameter_observatory-2.2.0.dist-info/WHEEL'
+adding 'single_parameter_observatory-2.2.0.dist-info/entry_points.txt'
+adding 'single_parameter_observatory-2.2.0.dist-info/top_level.txt'
+adding 'single_parameter_observatory-2.2.0.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+Successfully built single_parameter_observatory-2.2.0.tar.gz and single_parameter_observatory-2.2.0-py3-none-any.whl

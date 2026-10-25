@@ -1,0 +1,6 @@
+single_parameter_observatory\studio_server.py:254: error: Incompatible types in assignment (expression has type "str | None", variable has type "str")  [assignment]
+single_parameter_observatory\tests\test_studio_plugins.py:255: error: Cannot assign to a method  [method-assign]
+single_parameter_observatory\tests\test_studio_plugins.py:255: error: Invalid "type: ignore" comment  [syntax]
+single_parameter_observatory\tests\test_studio_extensions_integration.py:285: error: Item "None" of "Thread | None" has no attribute "is_alive"  [union-attr]
+single_parameter_observatory\tests\test_studio_extensions_integration.py:303: error: Item "None" of "Thread | None" has no attribute "is_alive"  [union-attr]
+Found 5 errors in 3 files (checked 44 source files)

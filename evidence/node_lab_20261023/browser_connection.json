@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-23",
+  "target": "http://127.0.0.1:8766/#nodes",
+  "available_browsers": [
+    "ChatGPT in-app browser",
+    "Codex MCP Apps"
+  ],
+  "attempts": [
+    {
+      "operation": "createBrowserTab visible=false",
+      "result": "Timed out waiting for Browser webview to attach"
+    },
+    {
+      "operation": "createBrowserTab visible=true",
+      "result": "Timed out waiting for Browser webview to attach"
+    },
+    {
+      "operation": "open_in_codex browser target",
+      "result": "Request did not return; orchestration stopped waiting"
+    },
+    {
+      "operation": "reset CUA session and createBrowserTab",
+      "result": "js execution timed out; kernel reset"
+    },
+    {
+      "operation": "getState after reset, no target navigation",
+      "result": "js execution timed out; browser-control kernel reset"
+    }
+  ],
+  "browser_tabs_observed": 0,
+  "visual_verification": "not completed",
+  "note": "Backend HTTP and offline controller tests are separate evidence; they do not establish browser paint, pointer interactions or responsive visual acceptance.",
+  "final_attempt": {
+    "checked_at": "2026-10-23T17:13:28.484Z",
+    "inventory_recovered": true,
+    "observed_tab_title": "This site can't be reached",
+    "observed_scheme": "data:",
+    "attempted_http_url": "http://127.0.0.1:8766/#nodes",
+    "local_http_health_succeeded": true,
+    "attachment_rejected": true,
+    "rejection": "Browser URL policy rejected attachment to an internal error page because only http and https protocols are permitted; no workaround or alternate surface was attempted.",
+    "user_open_confirmation_received": true,
+    "subsequent_inventory_still_internal_error_page": true,
+    "browser_rendering_pointer_responsive_and_download_acceptance": false
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "frames": 15,
+  "elapsed": 3.8227595999996993,
+  "fps": 3.9238669363360383,
+  "steps": 36,
+  "note": "Unprofiled isolated headless run; default FP64 reference enabled; measured on this host, not a frame-rate guarantee."
+}

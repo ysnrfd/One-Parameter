@@ -1,0 +1,290 @@
+{
+  "name": "Compose RMSNorm and AdamW",
+  "description": "Construct an actual dense/RMSNorm/GELU/dense network from separately connected layer recipes; train, inspect, export and reload it.",
+  "nodes": [
+    {
+      "id": "input",
+      "type": "hf.linear",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "norm",
+      "type": "hf.rmsnorm",
+      "position": {
+        "x": 20,
+        "y": 240
+      },
+      "params": {}
+    },
+    {
+      "id": "gelu",
+      "type": "hf.activation",
+      "position": {
+        "x": 20,
+        "y": 460
+      },
+      "params": {}
+    },
+    {
+      "id": "output",
+      "type": "hf.linear",
+      "position": {
+        "x": 20,
+        "y": 680
+      },
+      "params": {
+        "in_features": 8,
+        "out_features": 1
+      }
+    },
+    {
+      "id": "first",
+      "type": "hf.compose",
+      "position": {
+        "x": 350,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "hidden",
+      "type": "hf.stack",
+      "position": {
+        "x": 680,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "layers",
+      "type": "hf.stack",
+      "position": {
+        "x": 1010,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "model",
+      "type": "hf.sequential",
+      "position": {
+        "x": 1340,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "data",
+      "type": "hf.data",
+      "position": {
+        "x": 1340,
+        "y": 300
+      },
+      "params": {
+        "fields": {
+          "x": [
+            [
+              -1
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "labels": [
+            [
+              -2
+            ],
+            [
+              0
+            ],
+            [
+              2
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 1670,
+        "y": 300
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.01
+      }
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "position": {
+        "x": 2000,
+        "y": 20
+      },
+      "params": {
+        "steps": 10,
+        "batch_size": 3,
+        "loss": "mse"
+      }
+    },
+    {
+      "id": "inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 2330,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 2660,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "load",
+      "type": "hf.load",
+      "position": {
+        "x": 2990,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "evaluate",
+      "type": "hf.evaluate",
+      "position": {
+        "x": 3320,
+        "y": 20
+      },
+      "params": {
+        "loss": "mse"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "input:layer-first:a",
+      "source": "input",
+      "source_port": "layer",
+      "target": "first",
+      "target_port": "a"
+    },
+    {
+      "id": "norm:layer-first:b",
+      "source": "norm",
+      "source_port": "layer",
+      "target": "first",
+      "target_port": "b"
+    },
+    {
+      "id": "first:layers-hidden:layers",
+      "source": "first",
+      "source_port": "layers",
+      "target": "hidden",
+      "target_port": "layers"
+    },
+    {
+      "id": "gelu:layer-hidden:layer",
+      "source": "gelu",
+      "source_port": "layer",
+      "target": "hidden",
+      "target_port": "layer"
+    },
+    {
+      "id": "hidden:layers-layers:layers",
+      "source": "hidden",
+      "source_port": "layers",
+      "target": "layers",
+      "target_port": "layers"
+    },
+    {
+      "id": "output:layer-layers:layer",
+      "source": "output",
+      "source_port": "layer",
+      "target": "layers",
+      "target_port": "layer"
+    },
+    {
+      "id": "layers:layers-model:layers",
+      "source": "layers",
+      "source_port": "layers",
+      "target": "model",
+      "target_port": "layers"
+    },
+    {
+      "id": "model:model-train:model",
+      "source": "model",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-train:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer:optimizer-train:optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train:model-inspect:model",
+      "source": "train",
+      "source_port": "model",
+      "target": "inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "inspect:model-checkpoint:model",
+      "source": "inspect",
+      "source_port": "model",
+      "target": "checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "checkpoint:artifact-load:artifact",
+      "source": "checkpoint",
+      "source_port": "artifact",
+      "target": "load",
+      "target_port": "artifact"
+    },
+    {
+      "id": "load:model-evaluate:model",
+      "source": "load",
+      "source_port": "model",
+      "target": "evaluate",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-evaluate:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "evaluate",
+      "target_port": "data"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.6
+  }
+}

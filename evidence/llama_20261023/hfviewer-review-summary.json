@@ -1,0 +1,97 @@
+{
+  "observed_at_utc": "2026-10-23T18:51:50.652177+00:00",
+  "repo": "embedl/hfviewer",
+  "repo_commit": "26aa6d623298cd60ecbc54c527d3ff545793889b",
+  "repo_sdk": "static",
+  "inventory_entries": 62,
+  "downloaded_text_files": 16,
+  "downloaded_text_bytes": 6679225,
+  "backend_trace_source_present": false,
+  "license_file_in_inventory": false,
+  "manual_review_scope": [
+    "README behavior and product purpose",
+    "index.html external API base configuration",
+    "space-shell.js external iframe/card composition",
+    "app JS graph resolution, manifests, granularity, fidelity/status handling",
+    "actual cached Llama graph and granularity metadata",
+    "installed5.20.2 Llama config, RMSNorm, RoPE, grouped-query attention, gatedMLP, residuals and causalLM class"
+  ],
+  "external_graph": {
+    "repo_id": "meta-llama/Llama-3.2-1B",
+    "status": "ready",
+    "graph_fidelity_reported": "trace-backed",
+    "trace_backed_reported": true,
+    "source_revision_reported": "",
+    "reviewed_source_revision_reported": "",
+    "node_count": 21,
+    "config_summary": {
+      "sourceConfigKey": "root",
+      "model_type": "llama",
+      "num_hidden_layers": 16,
+      "hidden_size": 2048,
+      "intermediate_size": 8192,
+      "num_attention_heads": 32,
+      "num_key_value_heads": 8,
+      "head_dim": 64,
+      "max_position_embeddings": 131072,
+      "vocab_size": 128256
+    },
+    "synthetic_attention_merge": true,
+    "not_execution_evidence": true
+  },
+  "no_weights_downloaded": true,
+  "no_credentials_used": true,
+  "no_external_post_requests": true,
+  "evidence_files": [
+    {
+      "path": "evidence/llama_20261023/hfviewer-api.json",
+      "bytes": 54203,
+      "sha256": "250c4633617a5d1f68c6e5dcc3f4a8df8f75cf0b42f163d1662fd752180ddced"
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-installed-configuration_llama.py",
+      "bytes": 3896,
+      "sha256": "5e2e803d15956cdc402ab1c4a5151a899bd39ddfbecbb81181733657817aaeda"
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-installed-llama-source.json",
+      "bytes": 597,
+      "sha256": "641ccdc37d7737cc51d6eba63c71c94ea4cd101c97accfba413f624bfd436ed7"
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-installed-modeling_llama.py",
+      "bytes": 20255,
+      "sha256": "affc6a4ab36b562a6b4c90b84c4e7939c5417a69ad7bd37e858be5583f189830"
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-llama-_hfviewer_granularity_layout.json",
+      "bytes": 12312,
+      "sha256": "e8b29a275b5eb8fac820abf91dc83711eb5b4c818406ca86da1f0eb0727742a2"
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-llama-bundle-receipt.json",
+      "bytes": 429,
+      "sha256": "53c03c7c4d3d46ad945ff1a142cc3b38f9cb265b6ff0beed9a5d669531265afa"
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-llama-Llama-3.2-1B.json",
+      "bytes": 30337,
+      "sha256": "05ddd77c6dcbd3f72b2cf8c13501ce362d8fc839e8b0c0d7afe2bac0d546af0f"
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-llama-manifest.json",
+      "bytes": 210,
+      "sha256": "f18d0847cb04395d0472f5bea256be596ffb9777c09cb9001bbf8e3ce503ef6c"
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-llama-resolve.json",
+      "bytes": 1851,
+      "sha256": "35c672fd6e6ac0f42537dbe62e0c8f6625a6dc64556af8b8a3ca9d96043b9e2e"
+    },
+    {
+      "path": "evidence/llama_20261023/hfviewer-source-manifest.json",
+      "bytes": 4984,
+      "sha256": "4638a6ff03f7f3db83b207b4e99fef58e7bef5dd5125e31a753ac17723b09680"
+    }
+  ]
+}

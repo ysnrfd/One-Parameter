@@ -1,0 +1,6541 @@
+{
+  "id": "2db41b7f247a421a91109ccd6dcf92e4",
+  "graph_id": "6972c925d8d54b0685e5b148d089ed43",
+  "graph_revision": 2,
+  "graph_name": "Llama decoder training and architecture",
+  "status": "succeeded",
+  "created_at": "2026-10-23T19:08:57.111331+00:00",
+  "started_at": "2026-10-23T19:08:57.114929+00:00",
+  "finished_at": "2026-10-23T19:09:05.571943+00:00",
+  "graph": {
+    "name": "Llama decoder training and architecture",
+    "description": "Real HF LlamaForCausalLM: two decoder layers, RoPE, 4 query/2 KV heads, RMSNorm and SwiGLU. Tokenize local text, measure initial loss, train with AdamW, inspect real modules, export/reload safetensors, compare evaluation and generate. Random initialized educational model; no Meta pretrained weights or downloads.",
+    "nodes": [
+      {
+        "id": "config",
+        "type": "hf.config",
+        "title": "LlamaConfig \u00b7 editable architecture",
+        "position": {
+          "x": 20,
+          "y": 20
+        },
+        "params": {
+          "model_type": "llama",
+          "values": {
+            "vocab_size": 32,
+            "hidden_size": 64,
+            "intermediate_size": 128,
+            "num_hidden_layers": 2,
+            "num_attention_heads": 4,
+            "num_key_value_heads": 2,
+            "max_position_embeddings": 128,
+            "hidden_act": "silu",
+            "rms_norm_eps": 1e-06,
+            "rope_parameters": {
+              "rope_type": "default",
+              "rope_theta": 10000
+            },
+            "attention_dropout": 0,
+            "attention_bias": false,
+            "mlp_bias": false,
+            "tie_word_embeddings": false,
+            "pad_token_id": 0,
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "use_cache": true
+          }
+        }
+      },
+      {
+        "id": "model",
+        "type": "hf.model",
+        "title": "Native LlamaForCausalLM",
+        "position": {
+          "x": 350,
+          "y": 20
+        },
+        "params": {
+          "task": "causal-lm",
+          "seed": 42
+        }
+      },
+      {
+        "id": "tokenizer",
+        "type": "hf.tokenizer",
+        "title": "Local 32-token vocabulary",
+        "position": {
+          "x": 20,
+          "y": 390
+        },
+        "params": {
+          "vocab": {
+            "[PAD]": 0,
+            "[UNK]": 1,
+            "[BOS]": 2,
+            "[EOS]": 3,
+            "the": 4,
+            "cat": 5,
+            "dog": 6,
+            "bird": 7,
+            "sleeps": 8,
+            "runs": 9,
+            "sings": 10,
+            "on": 11,
+            "mat": 12,
+            "grass": 13,
+            "tree": 14,
+            ".": 15,
+            "a": 16,
+            "small": 17,
+            "happy": 18,
+            "red": 19,
+            "blue": 20,
+            "green": 21,
+            "sees": 22,
+            "sun": 23,
+            "moon": 24,
+            "is": 25,
+            "and": 26,
+            "quiet": 27,
+            "soft": 28,
+            "warm": 29,
+            "sky": 30,
+            "cloud": 31
+          },
+          "lowercase": true
+        }
+      },
+      {
+        "id": "data",
+        "type": "hf.tokenize",
+        "title": "Tokenize eight training sentences",
+        "position": {
+          "x": 350,
+          "y": 390
+        },
+        "params": {
+          "texts": [
+            "the cat sleeps on the mat .",
+            "the dog runs on the grass .",
+            "the bird sings on the tree .",
+            "a small cat sees the moon .",
+            "a happy dog sees the sun .",
+            "the sky is blue .",
+            "the grass is green .",
+            "the sun is warm ."
+          ],
+          "max_length": 32,
+          "labels": "causal"
+        }
+      },
+      {
+        "id": "initial-inspect",
+        "type": "hf.inspect",
+        "title": "Inspect untrained Llama modules",
+        "position": {
+          "x": 680,
+          "y": 20
+        },
+        "params": {}
+      },
+      {
+        "id": "initial-eval",
+        "type": "hf.evaluate",
+        "title": "Measure loss before training",
+        "position": {
+          "x": 1010,
+          "y": 20
+        },
+        "params": {
+          "loss": "model"
+        }
+      },
+      {
+        "id": "optimizer",
+        "type": "hf.optimizer",
+        "title": "AdamW \u00b7 all Llama parameters",
+        "position": {
+          "x": 1010,
+          "y": 390
+        },
+        "params": {
+          "name": "AdamW",
+          "lr": 0.003,
+          "weight_decay": 0.01
+        }
+      },
+      {
+        "id": "train",
+        "type": "hf.train",
+        "title": "Train real Llama \u00b7 40 steps",
+        "position": {
+          "x": 1340,
+          "y": 20
+        },
+        "params": {
+          "steps": 40,
+          "batch_size": 8,
+          "loss": "model",
+          "clip_grad_norm": 1
+        }
+      },
+      {
+        "id": "trained-eval",
+        "type": "hf.evaluate",
+        "title": "Measure loss after training",
+        "position": {
+          "x": 1670,
+          "y": 20
+        },
+        "params": {
+          "loss": "model"
+        }
+      },
+      {
+        "id": "trained-inspect",
+        "type": "hf.inspect",
+        "title": "Inspect trained modules and weights",
+        "position": {
+          "x": 2000,
+          "y": 20
+        },
+        "params": {}
+      },
+      {
+        "id": "architecture-checks",
+        "type": "core.script",
+        "title": "Custom script \u00b7 verify native architecture",
+        "position": {
+          "x": 2000,
+          "y": 390
+        },
+        "params": {
+          "code": "if (inputs.architecture !== 'LlamaForCausalLM') throw new Error('Expected native LlamaForCausalLM');\nif (inputs.parameter_count !== 78144 || inputs.parameter_tensors !== 21) throw new Error('Unexpected Llama dimensions or weights');\nconst modules = inputs.modules || [];\nfor (const type of ['LlamaDecoderLayer','LlamaAttention','LlamaMLP','LlamaRMSNorm','LlamaRotaryEmbedding']) {\n  if (!modules.some(m => m.type === type)) throw new Error('Missing native component: ' + type);\n}\nconst p = inputs.parameters;\nfor (let i = 0; i < 2; i++) {\n  for (const part of ['self_attn.q_proj.weight','self_attn.k_proj.weight','self_attn.v_proj.weight','self_attn.o_proj.weight','mlp.gate_proj.weight','mlp.up_proj.weight','mlp.down_proj.weight']) {\n    if (!p.some(t => t.name === `model.layers.${i}.${part}`)) throw new Error('Missing projection ' + part);\n  }\n}\nconsole.log('Verified actual native Llama module and tensor inventory');\nreturn {value:{verified:true,architecture:inputs.architecture,parameters:inputs.parameter_count,tensors:inputs.parameter_tensors,decoder_layers:2,query_heads:4,kv_heads:2,rope:true,normalization:'RMSNorm',feed_forward:'SwiGLU'}};",
+          "timeout_ms": 1000,
+          "memory_mb": 32
+        }
+      },
+      {
+        "id": "checkpoint",
+        "type": "hf.checkpoint",
+        "title": "Export Llama safetensors + recipe",
+        "position": {
+          "x": 2330,
+          "y": 20
+        },
+        "params": {}
+      },
+      {
+        "id": "reload",
+        "type": "hf.load",
+        "title": "Reconstruct and reload Llama",
+        "position": {
+          "x": 2660,
+          "y": 20
+        },
+        "params": {}
+      },
+      {
+        "id": "reloaded-inspect",
+        "type": "hf.inspect",
+        "title": "Verify reloaded parameter state",
+        "position": {
+          "x": 2990,
+          "y": 20
+        },
+        "params": {}
+      },
+      {
+        "id": "reloaded-eval",
+        "type": "hf.evaluate",
+        "title": "Evaluate restored Llama loss",
+        "position": {
+          "x": 3320,
+          "y": 20
+        },
+        "params": {
+          "loss": "model"
+        }
+      },
+      {
+        "id": "prompts",
+        "type": "hf.tokenize",
+        "title": "Left-padded generation prompts",
+        "position": {
+          "x": 2990,
+          "y": 390
+        },
+        "params": {
+          "texts": [
+            "the cat",
+            "the dog",
+            "the sky"
+          ],
+          "max_length": 16,
+          "labels": "none"
+        }
+      },
+      {
+        "id": "forward",
+        "type": "hf.forward",
+        "title": "Actual vocabulary logits",
+        "position": {
+          "x": 3650,
+          "y": 20
+        },
+        "params": {}
+      },
+      {
+        "id": "generate",
+        "type": "hf.generate",
+        "title": "Generate token sequences",
+        "position": {
+          "x": 3980,
+          "y": 20
+        },
+        "params": {
+          "max_new_tokens": 8,
+          "do_sample": false
+        }
+      },
+      {
+        "id": "pipeline",
+        "type": "hf.pipeline",
+        "title": "Decode Llama text generation",
+        "position": {
+          "x": 4310,
+          "y": 20
+        },
+        "params": {
+          "task": "text-generation",
+          "texts": [
+            "the cat",
+            "the dog",
+            "the sky"
+          ],
+          "max_new_tokens": 8
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "config-model",
+        "source": "config",
+        "source_port": "config",
+        "target": "model",
+        "target_port": "config"
+      },
+      {
+        "id": "tokenizer-data",
+        "source": "tokenizer",
+        "source_port": "tokenizer",
+        "target": "data",
+        "target_port": "tokenizer"
+      },
+      {
+        "id": "model-initial",
+        "source": "model",
+        "source_port": "model",
+        "target": "initial-inspect",
+        "target_port": "model"
+      },
+      {
+        "id": "initial-eval-model",
+        "source": "initial-inspect",
+        "source_port": "model",
+        "target": "initial-eval",
+        "target_port": "model"
+      },
+      {
+        "id": "initial-eval-data",
+        "source": "data",
+        "source_port": "data",
+        "target": "initial-eval",
+        "target_port": "data"
+      },
+      {
+        "id": "eval-train",
+        "source": "initial-eval",
+        "source_port": "model",
+        "target": "train",
+        "target_port": "model"
+      },
+      {
+        "id": "data-train",
+        "source": "data",
+        "source_port": "data",
+        "target": "train",
+        "target_port": "data"
+      },
+      {
+        "id": "optimizer-train",
+        "source": "optimizer",
+        "source_port": "optimizer",
+        "target": "train",
+        "target_port": "optimizer"
+      },
+      {
+        "id": "train-eval",
+        "source": "train",
+        "source_port": "model",
+        "target": "trained-eval",
+        "target_port": "model"
+      },
+      {
+        "id": "data-trained-eval",
+        "source": "data",
+        "source_port": "data",
+        "target": "trained-eval",
+        "target_port": "data"
+      },
+      {
+        "id": "trained-eval-inspect",
+        "source": "trained-eval",
+        "source_port": "model",
+        "target": "trained-inspect",
+        "target_port": "model"
+      },
+      {
+        "id": "report-script",
+        "source": "trained-inspect",
+        "source_port": "report",
+        "target": "architecture-checks",
+        "target_port": "inputs"
+      },
+      {
+        "id": "inspect-checkpoint",
+        "source": "trained-inspect",
+        "source_port": "model",
+        "target": "checkpoint",
+        "target_port": "model"
+      },
+      {
+        "id": "checkpoint-reload",
+        "source": "checkpoint",
+        "source_port": "artifact",
+        "target": "reload",
+        "target_port": "artifact"
+      },
+      {
+        "id": "reload-inspect",
+        "source": "reload",
+        "source_port": "model",
+        "target": "reloaded-inspect",
+        "target_port": "model"
+      },
+      {
+        "id": "reloaded-inspect-eval",
+        "source": "reloaded-inspect",
+        "source_port": "model",
+        "target": "reloaded-eval",
+        "target_port": "model"
+      },
+      {
+        "id": "reloaded-data-eval",
+        "source": "data",
+        "source_port": "data",
+        "target": "reloaded-eval",
+        "target_port": "data"
+      },
+      {
+        "id": "tokenizer-prompts",
+        "source": "tokenizer",
+        "source_port": "tokenizer",
+        "target": "prompts",
+        "target_port": "tokenizer"
+      },
+      {
+        "id": "eval-forward",
+        "source": "reloaded-eval",
+        "source_port": "model",
+        "target": "forward",
+        "target_port": "model"
+      },
+      {
+        "id": "prompts-forward",
+        "source": "prompts",
+        "source_port": "data",
+        "target": "forward",
+        "target_port": "data"
+      },
+      {
+        "id": "forward-generate",
+        "source": "forward",
+        "source_port": "model",
+        "target": "generate",
+        "target_port": "model"
+      },
+      {
+        "id": "prompts-generate",
+        "source": "prompts",
+        "source_port": "data",
+        "target": "generate",
+        "target_port": "data"
+      },
+      {
+        "id": "generate-pipeline",
+        "source": "generate",
+        "source_port": "model",
+        "target": "pipeline",
+        "target_port": "model"
+      },
+      {
+        "id": "tokenizer-pipeline",
+        "source": "tokenizer",
+        "source_port": "tokenizer",
+        "target": "pipeline",
+        "target_port": "tokenizer"
+      }
+    ],
+    "view": {
+      "x": -167.09999999999997,
+      "y": 287.875,
+      "zoom": 0.15
+    },
+    "id": "6972c925d8d54b0685e5b148d089ed43",
+    "revision": 2,
+    "created_at": "2026-10-23T19:04:46.840956+00:00",
+    "updated_at": "2026-10-23T19:04:46.979899+00:00"
+  },
+  "definitions": {
+    "core.script": {
+      "id": "core.script",
+      "title": "JavaScript sandbox",
+      "category": "Scripts",
+      "description": "Run bounded JavaScript in an isolated V8 child process. Return an outputs object.",
+      "inputs": [
+        {
+          "name": "inputs",
+          "type": "object",
+          "required": true,
+          "default": {}
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "any",
+          "required": true
+        },
+        {
+          "name": "outputs",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "code",
+          "type": "code",
+          "default": "return {value: inputs.value ?? 0};"
+        },
+        {
+          "name": "timeout_ms",
+          "type": "integer",
+          "default": 1000,
+          "min": 10,
+          "max": 10000
+        },
+        {
+          "name": "memory_mb",
+          "type": "integer",
+          "default": 32,
+          "min": 16,
+          "max": 64
+        }
+      ]
+    },
+    "hf.config": {
+      "id": "hf.config",
+      "title": "HF model configuration",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Create an offline AutoConfig recipe. No model download or remote code.",
+      "inputs": [
+        {
+          "name": "values",
+          "type": "object",
+          "required": true,
+          "default": {
+            "vocab_size": 16,
+            "n_positions": 32,
+            "n_ctx": 32,
+            "n_embd": 16,
+            "n_layer": 1,
+            "n_head": 2,
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "pad_token_id": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "config",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "model_type",
+          "type": "string",
+          "default": "gpt2"
+        }
+      ]
+    },
+    "hf.model": {
+      "id": "hf.model",
+      "title": "HF AutoModel",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Instantiate an actual supported HF model from config after a meta-device parameter budget check.",
+      "inputs": [
+        {
+          "name": "config",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "task",
+          "type": "string",
+          "default": "causal-lm",
+          "options": [
+            "base",
+            "causal-lm",
+            "seq2seq-lm",
+            "sequence-classification",
+            "token-classification",
+            "question-answering",
+            "masked-lm",
+            "image-classification",
+            "audio-classification"
+          ]
+        },
+        {
+          "name": "seed",
+          "type": "integer",
+          "default": 42,
+          "min": 0,
+          "max": 2147483647
+        }
+      ]
+    },
+    "hf.tokenizer": {
+      "id": "hf.tokenizer",
+      "title": "Local HF fast tokenizer",
+      "category": "Transformers \u00b7 Data",
+      "description": "Build a real offline WordLevel PreTrainedTokenizerFast from an editable vocabulary.",
+      "inputs": [
+        {
+          "name": "vocab",
+          "type": "object",
+          "required": true,
+          "default": {
+            "[PAD]": 0,
+            "[UNK]": 1,
+            "[BOS]": 2,
+            "[EOS]": 3,
+            "hello": 4,
+            "world": 5
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tokenizer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "lowercase",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    "hf.tokenize": {
+      "id": "hf.tokenize",
+      "title": "Tokenize text",
+      "category": "Transformers \u00b7 Data",
+      "description": "Tokenize and pad text; causal labels mask padding with -100.",
+      "inputs": [
+        {
+          "name": "tokenizer",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "texts",
+          "type": "array",
+          "required": true,
+          "default": [
+            "hello world",
+            "hello"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "max_length",
+          "type": "integer",
+          "default": 32,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "default": "causal",
+          "options": [
+            "none",
+            "causal"
+          ]
+        }
+      ]
+    },
+    "hf.optimizer": {
+      "id": "hf.optimizer",
+      "title": "Optimizer",
+      "category": "Transformers \u00b7 Training",
+      "description": "Optimizer recipe. Connect to Train alongside a model; AdamW updates the model's complete parameter set.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "optimizer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "AdamW",
+          "options": [
+            "AdamW",
+            "Adam",
+            "SGD",
+            "RMSprop"
+          ]
+        },
+        {
+          "name": "lr",
+          "type": "number",
+          "default": 0.01
+        },
+        {
+          "name": "weight_decay",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "momentum",
+          "type": "number",
+          "default": 0
+        }
+      ]
+    },
+    "hf.train": {
+      "id": "hf.train",
+      "title": "Train multi-parameter model",
+      "category": "Transformers \u00b7 Training",
+      "description": "Actual autograd/optimizer updates, finite loss checks, gradient clipping, measured parameter hashes and loss history.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "optimizer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "metrics",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "steps",
+          "type": "integer",
+          "default": 20,
+          "min": 1
+        },
+        {
+          "name": "batch_size",
+          "type": "integer",
+          "default": 3,
+          "min": 1,
+          "max": 128
+        },
+        {
+          "name": "loss",
+          "type": "string",
+          "default": "mse",
+          "options": [
+            "mse",
+            "cross_entropy",
+            "model"
+          ]
+        },
+        {
+          "name": "clip_grad_norm",
+          "type": "number",
+          "default": 1
+        }
+      ]
+    },
+    "hf.forward": {
+      "id": "hf.forward",
+      "title": "Forward pass",
+      "category": "Transformers \u00b7 Inference",
+      "description": "Run a real model forward; tensors remain in the job worker and expose shape/dtype/value previews.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "result",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    "hf.evaluate": {
+      "id": "hf.evaluate",
+      "title": "Evaluate model",
+      "category": "Transformers \u00b7 Inference",
+      "description": "Evaluate a finite loss and optional classification accuracy without changing weights.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "metrics",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "loss",
+          "type": "string",
+          "default": "mse",
+          "options": [
+            "mse",
+            "cross_entropy",
+            "model"
+          ]
+        }
+      ]
+    },
+    "hf.generate": {
+      "id": "hf.generate",
+      "title": "HF generate",
+      "category": "Transformers \u00b7 Inference",
+      "description": "Real bounded HF autoregressive generation with attention masks and deterministic default sampling.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "result",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "max_new_tokens",
+          "type": "integer",
+          "default": 8,
+          "min": 1,
+          "max": 128
+        },
+        {
+          "name": "do_sample",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "temperature",
+          "type": "number",
+          "default": 1
+        }
+      ]
+    },
+    "hf.pipeline": {
+      "id": "hf.pipeline",
+      "title": "HF pipeline",
+      "category": "Transformers \u00b7 Inference",
+      "description": "Actual Transformers pipeline with a job-local model/tokenizer, offline inference and bounded inputs.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "tokenizer",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "texts",
+          "type": "array",
+          "required": true,
+          "default": [
+            "hello world"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "result",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "task",
+          "type": "string",
+          "default": "text-generation",
+          "options": [
+            "text-generation",
+            "text-classification",
+            "token-classification",
+            "fill-mask",
+            "feature-extraction"
+          ]
+        },
+        {
+          "name": "max_new_tokens",
+          "type": "integer",
+          "default": 8,
+          "min": 1,
+          "max": 128
+        }
+      ]
+    },
+    "hf.inspect": {
+      "id": "hf.inspect",
+      "title": "Inspect model",
+      "category": "Transformers \u00b7 Observe",
+      "description": "Real parameter names, shapes, trainable counts, architecture, finite checks and weight hash.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "report",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    "hf.checkpoint": {
+      "id": "hf.checkpoint",
+      "title": "Export safe model",
+      "category": "Transformers \u00b7 Artifacts",
+      "description": "Immutable ZIP with safetensors weights and a declarative architecture recipe. No pickle or executable model code.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "artifact",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    "hf.load": {
+      "id": "hf.load",
+      "title": "Load safe model",
+      "category": "Transformers \u00b7 Artifacts",
+      "description": "Load only a registered graph artifact, verify safe ZIP/recipe/safetensors and rebuild within model budgets.",
+      "inputs": [
+        {
+          "name": "artifact",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    }
+  },
+  "plugin_versions": {},
+  "order": [
+    "config",
+    "tokenizer",
+    "optimizer",
+    "model",
+    "data",
+    "prompts",
+    "initial-inspect",
+    "initial-eval",
+    "train",
+    "trained-eval",
+    "trained-inspect",
+    "architecture-checks",
+    "checkpoint",
+    "reload",
+    "reloaded-inspect",
+    "reloaded-eval",
+    "forward",
+    "generate",
+    "pipeline"
+  ],
+  "nodes": {
+    "config": {
+      "status": "succeeded",
+      "inputs": {
+        "values": {
+          "vocab_size": 32,
+          "hidden_size": 64,
+          "intermediate_size": 128,
+          "num_hidden_layers": 2,
+          "num_attention_heads": 4,
+          "num_key_value_heads": 2,
+          "max_position_embeddings": 128,
+          "hidden_act": "silu",
+          "rms_norm_eps": 1e-06,
+          "rope_parameters": {
+            "rope_type": "default",
+            "rope_theta": 10000
+          },
+          "attention_dropout": 0,
+          "attention_bias": false,
+          "mlp_bias": false,
+          "tie_word_embeddings": false,
+          "pad_token_id": 0,
+          "bos_token_id": 2,
+          "eos_token_id": 3,
+          "use_cache": true
+        }
+      },
+      "outputs": {
+        "config": {
+          "kind": "hf-config",
+          "model_type": "llama",
+          "values": {
+            "attention_bias": false,
+            "attention_dropout": 0,
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "hidden_act": "silu",
+            "hidden_size": 64,
+            "intermediate_size": 128,
+            "max_position_embeddings": 128,
+            "mlp_bias": false,
+            "num_attention_heads": 4,
+            "num_hidden_layers": 2,
+            "num_key_value_heads": 2,
+            "pad_token_id": 0,
+            "rms_norm_eps": 1e-06,
+            "rope_parameters": {
+              "rope_theta": 10000,
+              "rope_type": "default"
+            },
+            "tie_word_embeddings": false,
+            "use_cache": true,
+            "vocab_size": 32
+          }
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 2219.0000000009604,
+      "parameters": {
+        "model_type": "llama"
+      }
+    },
+    "model": {
+      "status": "succeeded",
+      "inputs": {
+        "config": {
+          "kind": "hf-config",
+          "model_type": "llama",
+          "values": {
+            "attention_bias": false,
+            "attention_dropout": 0,
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "hidden_act": "silu",
+            "hidden_size": 64,
+            "intermediate_size": 128,
+            "max_position_embeddings": 128,
+            "mlp_bias": false,
+            "num_attention_heads": 4,
+            "num_hidden_layers": 2,
+            "num_key_value_heads": 2,
+            "pad_token_id": 0,
+            "rms_norm_eps": 1e-06,
+            "rope_parameters": {
+              "rope_theta": 10000,
+              "rope_type": "default"
+            },
+            "tie_word_embeddings": false,
+            "use_cache": true,
+            "vocab_size": 32
+          }
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 3016.0000000032596,
+      "parameters": {
+        "task": "causal-lm",
+        "seed": 42
+      }
+    },
+    "tokenizer": {
+      "status": "succeeded",
+      "inputs": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "the": 4,
+          "cat": 5,
+          "dog": 6,
+          "bird": 7,
+          "sleeps": 8,
+          "runs": 9,
+          "sings": 10,
+          "on": 11,
+          "mat": 12,
+          "grass": 13,
+          "tree": 14,
+          ".": 15,
+          "a": 16,
+          "small": 17,
+          "happy": 18,
+          "red": 19,
+          "blue": 20,
+          "green": 21,
+          "sees": 22,
+          "sun": 23,
+          "moon": 24,
+          "is": 25,
+          "and": 26,
+          "quiet": 27,
+          "soft": 28,
+          "warm": 29,
+          "sky": 30,
+          "cloud": 31
+        }
+      },
+      "outputs": {
+        "tokenizer": {
+          "handle": "dcc3b7380d1b44f5a6bf025ba5c17ccd",
+          "implementation": "PreTrainedTokenizerFast/WordLevel",
+          "kind": "tokenizer",
+          "padding_side": "left",
+          "vocab_size": 32
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 2186.999999998079,
+      "parameters": {
+        "lowercase": true
+      }
+    },
+    "data": {
+      "status": "succeeded",
+      "inputs": {
+        "tokenizer": {
+          "handle": "dcc3b7380d1b44f5a6bf025ba5c17ccd",
+          "implementation": "PreTrainedTokenizerFast/WordLevel",
+          "kind": "tokenizer",
+          "padding_side": "left",
+          "vocab_size": 32
+        },
+        "texts": [
+          "the cat sleeps on the mat .",
+          "the dog runs on the grass .",
+          "the bird sings on the tree .",
+          "a small cat sees the moon .",
+          "a happy dog sees the sun .",
+          "the sky is blue .",
+          "the grass is green .",
+          "the sun is warm ."
+        ]
+      },
+      "outputs": {
+        "data": {
+          "elements": 168,
+          "fields": {
+            "attention_mask": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "input_ids": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                0,
+                0,
+                4,
+                30,
+                25,
+                20,
+                15,
+                0,
+                0,
+                4,
+                13,
+                25,
+                21,
+                15,
+                0,
+                0,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "labels": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                -100,
+                -100,
+                4,
+                30,
+                25,
+                20,
+                15,
+                -100,
+                -100,
+                4,
+                13,
+                25,
+                21,
+                15,
+                -100,
+                -100,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "2a793bd945804b05bf8a93b05e385f8f",
+          "kind": "data",
+          "samples": 8
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 14.999999999417923,
+      "parameters": {
+        "max_length": 32,
+        "labels": "causal"
+      }
+    },
+    "initial-inspect": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "report": {
+          "architecture": "LlamaForCausalLM",
+          "config": {
+            "attention_bias": false,
+            "attention_dropout": 0,
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "head_dim": 16,
+            "hidden_act": "silu",
+            "hidden_size": 64,
+            "intermediate_size": 128,
+            "max_position_embeddings": 128,
+            "mlp_bias": false,
+            "model_type": "llama",
+            "num_attention_heads": 4,
+            "num_hidden_layers": 2,
+            "num_key_value_heads": 2,
+            "pad_token_id": 0,
+            "rms_norm_eps": 1e-06,
+            "rope_parameters": {
+              "rope_theta": 10000,
+              "rope_type": "default"
+            },
+            "tie_word_embeddings": false,
+            "vocab_size": 32
+          },
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "module_count": 33,
+          "modules": [
+            {
+              "children": [
+                "model",
+                "lm_head"
+              ],
+              "children_truncated": false,
+              "depth": 0,
+              "direct_parameter_count": 0,
+              "name": "",
+              "parameter_tensors": 21,
+              "parent": null,
+              "total_parameter_count": 78144,
+              "trainable_parameters": 78144,
+              "type": "LlamaForCausalLM"
+            },
+            {
+              "children": [
+                "model.embed_tokens",
+                "model.layers",
+                "model.norm",
+                "model.rotary_emb"
+              ],
+              "children_truncated": false,
+              "depth": 1,
+              "direct_parameter_count": 0,
+              "name": "model",
+              "parameter_tensors": 20,
+              "parent": "",
+              "total_parameter_count": 76096,
+              "trainable_parameters": 76096,
+              "type": "LlamaModel"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 2048,
+              "name": "model.embed_tokens",
+              "parameter_tensors": 1,
+              "parent": "model",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Embedding"
+            },
+            {
+              "children": [
+                "model.layers.0",
+                "model.layers.1"
+              ],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 0,
+              "name": "model.layers",
+              "parameter_tensors": 18,
+              "parent": "model",
+              "total_parameter_count": 73984,
+              "trainable_parameters": 73984,
+              "type": "ModuleList"
+            },
+            {
+              "children": [
+                "model.layers.0.self_attn",
+                "model.layers.0.mlp",
+                "model.layers.0.input_layernorm",
+                "model.layers.0.post_attention_layernorm"
+              ],
+              "children_truncated": false,
+              "depth": 3,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0",
+              "parameter_tensors": 9,
+              "parent": "model.layers",
+              "total_parameter_count": 36992,
+              "trainable_parameters": 36992,
+              "type": "LlamaDecoderLayer"
+            },
+            {
+              "children": [
+                "model.layers.0.self_attn.q_proj",
+                "model.layers.0.self_attn.k_proj",
+                "model.layers.0.self_attn.v_proj",
+                "model.layers.0.self_attn.o_proj"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.self_attn",
+              "parameter_tensors": 4,
+              "parent": "model.layers.0",
+              "total_parameter_count": 12288,
+              "trainable_parameters": 12288,
+              "type": "LlamaAttention"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.0.self_attn.q_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.0.self_attn.k_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.0.self_attn.v_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.0.self_attn.o_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [
+                "model.layers.0.mlp.gate_proj",
+                "model.layers.0.mlp.up_proj",
+                "model.layers.0.mlp.down_proj",
+                "model.layers.0.mlp.act_fn"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.mlp",
+              "parameter_tensors": 3,
+              "parent": "model.layers.0",
+              "total_parameter_count": 24576,
+              "trainable_parameters": 24576,
+              "type": "LlamaMLP"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.gate_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.up_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.down_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.mlp.act_fn",
+              "parameter_tensors": 0,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "SiLUActivation"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.0.input_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.0.post_attention_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [
+                "model.layers.1.self_attn",
+                "model.layers.1.mlp",
+                "model.layers.1.input_layernorm",
+                "model.layers.1.post_attention_layernorm"
+              ],
+              "children_truncated": false,
+              "depth": 3,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1",
+              "parameter_tensors": 9,
+              "parent": "model.layers",
+              "total_parameter_count": 36992,
+              "trainable_parameters": 36992,
+              "type": "LlamaDecoderLayer"
+            },
+            {
+              "children": [
+                "model.layers.1.self_attn.q_proj",
+                "model.layers.1.self_attn.k_proj",
+                "model.layers.1.self_attn.v_proj",
+                "model.layers.1.self_attn.o_proj"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.self_attn",
+              "parameter_tensors": 4,
+              "parent": "model.layers.1",
+              "total_parameter_count": 12288,
+              "trainable_parameters": 12288,
+              "type": "LlamaAttention"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.1.self_attn.q_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.1.self_attn.k_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.1.self_attn.v_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.1.self_attn.o_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [
+                "model.layers.1.mlp.gate_proj",
+                "model.layers.1.mlp.up_proj",
+                "model.layers.1.mlp.down_proj",
+                "model.layers.1.mlp.act_fn"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.mlp",
+              "parameter_tensors": 3,
+              "parent": "model.layers.1",
+              "total_parameter_count": 24576,
+              "trainable_parameters": 24576,
+              "type": "LlamaMLP"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.gate_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.up_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.down_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.mlp.act_fn",
+              "parameter_tensors": 0,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "SiLUActivation"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.1.input_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.1.post_attention_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 64,
+              "name": "model.norm",
+              "parameter_tensors": 1,
+              "parent": "model",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 0,
+              "name": "model.rotary_emb",
+              "parameter_tensors": 0,
+              "parent": "model",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "LlamaRotaryEmbedding"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 1,
+              "direct_parameter_count": 2048,
+              "name": "lm_head",
+              "parameter_tensors": 1,
+              "parent": "",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            }
+          ],
+          "modules_truncated": false,
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "parameters": [
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.embed_tokens.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.0.self_attn.q_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.0.self_attn.k_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.0.self_attn.v_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.0.self_attn.o_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.gate_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.up_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.down_proj.weight",
+              "shape": [
+                64,
+                128
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.0.input_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.0.post_attention_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.1.self_attn.q_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.1.self_attn.k_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.1.self_attn.v_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.1.self_attn.o_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.gate_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.up_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.down_proj.weight",
+              "shape": [
+                64,
+                128
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.1.input_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.1.post_attention_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.norm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "lm_head.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            }
+          ],
+          "recipe": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "llama",
+              "values": {
+                "attention_bias": false,
+                "attention_dropout": 0,
+                "bos_token_id": 2,
+                "eos_token_id": 3,
+                "hidden_act": "silu",
+                "hidden_size": 64,
+                "intermediate_size": 128,
+                "max_position_embeddings": 128,
+                "mlp_bias": false,
+                "num_attention_heads": 4,
+                "num_hidden_layers": 2,
+                "num_key_value_heads": 2,
+                "pad_token_id": 0,
+                "rms_norm_eps": 1e-06,
+                "rope_parameters": {
+                  "rope_theta": 10000,
+                  "rope_type": "default"
+                },
+                "tie_word_embeddings": false,
+                "use_cache": true,
+                "vocab_size": 32
+              }
+            },
+            "family": "huggingface",
+            "seed": 42,
+            "task": "causal-lm"
+          },
+          "state_sha256": "7b7e944150fa5a467914d7bd9b805b062460b4cac79d708c28dd135303bd25b4",
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {}
+    },
+    "initial-eval": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "data": {
+          "elements": 168,
+          "fields": {
+            "attention_mask": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "input_ids": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                0,
+                0,
+                4,
+                30,
+                25,
+                20,
+                15,
+                0,
+                0,
+                4,
+                13,
+                25,
+                21,
+                15,
+                0,
+                0,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "labels": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                -100,
+                -100,
+                4,
+                30,
+                25,
+                20,
+                15,
+                -100,
+                -100,
+                4,
+                13,
+                25,
+                21,
+                15,
+                -100,
+                -100,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "2a793bd945804b05bf8a93b05e385f8f",
+          "kind": "data",
+          "samples": 8
+        }
+      },
+      "outputs": {
+        "metrics": {
+          "loss": 3.488792896270752,
+          "parameter_changed": false,
+          "samples": 8,
+          "state_sha256": "7b7e944150fa5a467914d7bd9b805b062460b4cac79d708c28dd135303bd25b4"
+        },
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 46.999999998661224,
+      "parameters": {
+        "loss": "model"
+      }
+    },
+    "optimizer": {
+      "status": "succeeded",
+      "inputs": {},
+      "outputs": {
+        "optimizer": {
+          "kind": "optimizer",
+          "lr": 0.003,
+          "momentum": 0.0,
+          "name": "AdamW",
+          "weight_decay": 0.01
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {
+        "name": "AdamW",
+        "lr": 0.003,
+        "weight_decay": 0.01,
+        "momentum": 0
+      }
+    },
+    "train": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "data": {
+          "elements": 168,
+          "fields": {
+            "attention_mask": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "input_ids": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                0,
+                0,
+                4,
+                30,
+                25,
+                20,
+                15,
+                0,
+                0,
+                4,
+                13,
+                25,
+                21,
+                15,
+                0,
+                0,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "labels": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                -100,
+                -100,
+                4,
+                30,
+                25,
+                20,
+                15,
+                -100,
+                -100,
+                4,
+                13,
+                25,
+                21,
+                15,
+                -100,
+                -100,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "2a793bd945804b05bf8a93b05e385f8f",
+          "kind": "data",
+          "samples": 8
+        },
+        "optimizer": {
+          "kind": "optimizer",
+          "lr": 0.003,
+          "momentum": 0.0,
+          "name": "AdamW",
+          "weight_decay": 0.01
+        }
+      },
+      "outputs": {
+        "metrics": {
+          "batch_size": 8,
+          "gradient_norms": [
+            2.7435882091522217,
+            2.281968593597412,
+            2.183279275894165,
+            2.4750537872314453,
+            3.055696964263916,
+            2.633913040161133,
+            3.171168565750122,
+            2.131141185760498,
+            2.448151111602783,
+            2.0148375034332275,
+            1.949026346206665,
+            1.6730698347091675,
+            1.552830457687378,
+            1.465908408164978,
+            1.4044618606567383,
+            1.2598828077316284,
+            1.0738829374313354,
+            0.958568811416626,
+            0.8503379821777344,
+            0.7353212237358093,
+            0.6463908553123474,
+            0.5564852356910706,
+            0.48543983697891235,
+            0.42392465472221375,
+            0.3637922704219818,
+            0.31514808535575867,
+            0.27590838074684143,
+            0.23492634296417236,
+            0.20972613990306854,
+            0.18570852279663086,
+            0.15707701444625854,
+            0.14996612071990967,
+            0.12380023300647736,
+            0.11601144075393677,
+            0.10399578511714935,
+            0.09191823750734329,
+            0.09021743386983871,
+            0.07727710902690887,
+            0.07671431452035904,
+            0.06214216724038124
+          ],
+          "loss": 0.2960086762905121,
+          "loss_history": [
+            3.488792896270752,
+            3.1540567874908447,
+            2.9310569763183594,
+            2.724318265914917,
+            2.5228686332702637,
+            2.3291213512420654,
+            2.1827914714813232,
+            2.0043156147003174,
+            1.8663301467895508,
+            1.723172664642334,
+            1.5870120525360107,
+            1.4561572074890137,
+            1.3340091705322266,
+            1.2190097570419312,
+            1.1122708320617676,
+            1.0135345458984375,
+            0.9210377335548401,
+            0.8366668820381165,
+            0.7607479691505432,
+            0.6927779912948608,
+            0.6326224207878113,
+            0.5798788666725159,
+            0.5343446731567383,
+            0.49500396847724915,
+            0.4611905813217163,
+            0.4327164590358734,
+            0.4087464511394501,
+            0.3884081542491913,
+            0.37147217988967896,
+            0.35726869106292725,
+            0.3453354835510254,
+            0.3355363607406616,
+            0.3271520733833313,
+            0.32025590538978577,
+            0.31442689895629883,
+            0.30945274233818054,
+            0.30528366565704346,
+            0.3017074167728424,
+            0.29866087436676025,
+            0.2960086762905121
+          ],
+          "optimizer": {
+            "kind": "optimizer",
+            "lr": 0.003,
+            "momentum": 0.0,
+            "name": "AdamW",
+            "weight_decay": 0.01
+          },
+          "optimizer_state_tensors": 63,
+          "parameter_changed": true,
+          "parameter_count": 78144,
+          "samples": 8,
+          "state_sha256_after": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+          "state_sha256_before": "7b7e944150fa5a467914d7bd9b805b062460b4cac79d708c28dd135303bd25b4",
+          "steps": 40
+        },
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 281.00000000267755,
+      "parameters": {
+        "steps": 40,
+        "batch_size": 8,
+        "loss": "model",
+        "clip_grad_norm": 1
+      }
+    },
+    "trained-eval": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "data": {
+          "elements": 168,
+          "fields": {
+            "attention_mask": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "input_ids": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                0,
+                0,
+                4,
+                30,
+                25,
+                20,
+                15,
+                0,
+                0,
+                4,
+                13,
+                25,
+                21,
+                15,
+                0,
+                0,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "labels": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                -100,
+                -100,
+                4,
+                30,
+                25,
+                20,
+                15,
+                -100,
+                -100,
+                4,
+                13,
+                25,
+                21,
+                15,
+                -100,
+                -100,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "2a793bd945804b05bf8a93b05e385f8f",
+          "kind": "data",
+          "samples": 8
+        }
+      },
+      "outputs": {
+        "metrics": {
+          "loss": 0.29380911588668823,
+          "parameter_changed": false,
+          "samples": 8,
+          "state_sha256": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb"
+        },
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {
+        "loss": "model"
+      }
+    },
+    "trained-inspect": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "report": {
+          "architecture": "LlamaForCausalLM",
+          "config": {
+            "attention_bias": false,
+            "attention_dropout": 0,
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "head_dim": 16,
+            "hidden_act": "silu",
+            "hidden_size": 64,
+            "intermediate_size": 128,
+            "max_position_embeddings": 128,
+            "mlp_bias": false,
+            "model_type": "llama",
+            "num_attention_heads": 4,
+            "num_hidden_layers": 2,
+            "num_key_value_heads": 2,
+            "pad_token_id": 0,
+            "rms_norm_eps": 1e-06,
+            "rope_parameters": {
+              "rope_theta": 10000,
+              "rope_type": "default"
+            },
+            "tie_word_embeddings": false,
+            "vocab_size": 32
+          },
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "module_count": 33,
+          "modules": [
+            {
+              "children": [
+                "model",
+                "lm_head"
+              ],
+              "children_truncated": false,
+              "depth": 0,
+              "direct_parameter_count": 0,
+              "name": "",
+              "parameter_tensors": 21,
+              "parent": null,
+              "total_parameter_count": 78144,
+              "trainable_parameters": 78144,
+              "type": "LlamaForCausalLM"
+            },
+            {
+              "children": [
+                "model.embed_tokens",
+                "model.layers",
+                "model.norm",
+                "model.rotary_emb"
+              ],
+              "children_truncated": false,
+              "depth": 1,
+              "direct_parameter_count": 0,
+              "name": "model",
+              "parameter_tensors": 20,
+              "parent": "",
+              "total_parameter_count": 76096,
+              "trainable_parameters": 76096,
+              "type": "LlamaModel"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 2048,
+              "name": "model.embed_tokens",
+              "parameter_tensors": 1,
+              "parent": "model",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Embedding"
+            },
+            {
+              "children": [
+                "model.layers.0",
+                "model.layers.1"
+              ],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 0,
+              "name": "model.layers",
+              "parameter_tensors": 18,
+              "parent": "model",
+              "total_parameter_count": 73984,
+              "trainable_parameters": 73984,
+              "type": "ModuleList"
+            },
+            {
+              "children": [
+                "model.layers.0.self_attn",
+                "model.layers.0.mlp",
+                "model.layers.0.input_layernorm",
+                "model.layers.0.post_attention_layernorm"
+              ],
+              "children_truncated": false,
+              "depth": 3,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0",
+              "parameter_tensors": 9,
+              "parent": "model.layers",
+              "total_parameter_count": 36992,
+              "trainable_parameters": 36992,
+              "type": "LlamaDecoderLayer"
+            },
+            {
+              "children": [
+                "model.layers.0.self_attn.q_proj",
+                "model.layers.0.self_attn.k_proj",
+                "model.layers.0.self_attn.v_proj",
+                "model.layers.0.self_attn.o_proj"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.self_attn",
+              "parameter_tensors": 4,
+              "parent": "model.layers.0",
+              "total_parameter_count": 12288,
+              "trainable_parameters": 12288,
+              "type": "LlamaAttention"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.0.self_attn.q_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.0.self_attn.k_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.0.self_attn.v_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.0.self_attn.o_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [
+                "model.layers.0.mlp.gate_proj",
+                "model.layers.0.mlp.up_proj",
+                "model.layers.0.mlp.down_proj",
+                "model.layers.0.mlp.act_fn"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.mlp",
+              "parameter_tensors": 3,
+              "parent": "model.layers.0",
+              "total_parameter_count": 24576,
+              "trainable_parameters": 24576,
+              "type": "LlamaMLP"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.gate_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.up_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.down_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.mlp.act_fn",
+              "parameter_tensors": 0,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "SiLUActivation"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.0.input_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.0.post_attention_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [
+                "model.layers.1.self_attn",
+                "model.layers.1.mlp",
+                "model.layers.1.input_layernorm",
+                "model.layers.1.post_attention_layernorm"
+              ],
+              "children_truncated": false,
+              "depth": 3,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1",
+              "parameter_tensors": 9,
+              "parent": "model.layers",
+              "total_parameter_count": 36992,
+              "trainable_parameters": 36992,
+              "type": "LlamaDecoderLayer"
+            },
+            {
+              "children": [
+                "model.layers.1.self_attn.q_proj",
+                "model.layers.1.self_attn.k_proj",
+                "model.layers.1.self_attn.v_proj",
+                "model.layers.1.self_attn.o_proj"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.self_attn",
+              "parameter_tensors": 4,
+              "parent": "model.layers.1",
+              "total_parameter_count": 12288,
+              "trainable_parameters": 12288,
+              "type": "LlamaAttention"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.1.self_attn.q_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.1.self_attn.k_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.1.self_attn.v_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.1.self_attn.o_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [
+                "model.layers.1.mlp.gate_proj",
+                "model.layers.1.mlp.up_proj",
+                "model.layers.1.mlp.down_proj",
+                "model.layers.1.mlp.act_fn"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.mlp",
+              "parameter_tensors": 3,
+              "parent": "model.layers.1",
+              "total_parameter_count": 24576,
+              "trainable_parameters": 24576,
+              "type": "LlamaMLP"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.gate_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.up_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.down_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.mlp.act_fn",
+              "parameter_tensors": 0,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "SiLUActivation"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.1.input_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.1.post_attention_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 64,
+              "name": "model.norm",
+              "parameter_tensors": 1,
+              "parent": "model",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 0,
+              "name": "model.rotary_emb",
+              "parameter_tensors": 0,
+              "parent": "model",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "LlamaRotaryEmbedding"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 1,
+              "direct_parameter_count": 2048,
+              "name": "lm_head",
+              "parameter_tensors": 1,
+              "parent": "",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            }
+          ],
+          "modules_truncated": false,
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "parameters": [
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.embed_tokens.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.0.self_attn.q_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.0.self_attn.k_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.0.self_attn.v_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.0.self_attn.o_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.gate_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.up_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.down_proj.weight",
+              "shape": [
+                64,
+                128
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.0.input_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.0.post_attention_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.1.self_attn.q_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.1.self_attn.k_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.1.self_attn.v_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.1.self_attn.o_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.gate_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.up_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.down_proj.weight",
+              "shape": [
+                64,
+                128
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.1.input_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.1.post_attention_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.norm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "lm_head.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            }
+          ],
+          "recipe": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "llama",
+              "values": {
+                "attention_bias": false,
+                "attention_dropout": 0,
+                "bos_token_id": 2,
+                "eos_token_id": 3,
+                "hidden_act": "silu",
+                "hidden_size": 64,
+                "intermediate_size": 128,
+                "max_position_embeddings": 128,
+                "mlp_bias": false,
+                "num_attention_heads": 4,
+                "num_hidden_layers": 2,
+                "num_key_value_heads": 2,
+                "pad_token_id": 0,
+                "rms_norm_eps": 1e-06,
+                "rope_parameters": {
+                  "rope_theta": 10000,
+                  "rope_type": "default"
+                },
+                "tie_word_embeddings": false,
+                "use_cache": true,
+                "vocab_size": 32
+              }
+            },
+            "family": "huggingface",
+            "seed": 42,
+            "task": "causal-lm"
+          },
+          "state_sha256": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 15.99999999962165,
+      "parameters": {}
+    },
+    "architecture-checks": {
+      "status": "succeeded",
+      "inputs": {
+        "inputs": {
+          "architecture": "LlamaForCausalLM",
+          "config": {
+            "attention_bias": false,
+            "attention_dropout": 0,
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "head_dim": 16,
+            "hidden_act": "silu",
+            "hidden_size": 64,
+            "intermediate_size": 128,
+            "max_position_embeddings": 128,
+            "mlp_bias": false,
+            "model_type": "llama",
+            "num_attention_heads": 4,
+            "num_hidden_layers": 2,
+            "num_key_value_heads": 2,
+            "pad_token_id": 0,
+            "rms_norm_eps": 1e-06,
+            "rope_parameters": {
+              "rope_theta": 10000,
+              "rope_type": "default"
+            },
+            "tie_word_embeddings": false,
+            "vocab_size": 32
+          },
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "module_count": 33,
+          "modules": [
+            {
+              "children": [
+                "model",
+                "lm_head"
+              ],
+              "children_truncated": false,
+              "depth": 0,
+              "direct_parameter_count": 0,
+              "name": "",
+              "parameter_tensors": 21,
+              "parent": null,
+              "total_parameter_count": 78144,
+              "trainable_parameters": 78144,
+              "type": "LlamaForCausalLM"
+            },
+            {
+              "children": [
+                "model.embed_tokens",
+                "model.layers",
+                "model.norm",
+                "model.rotary_emb"
+              ],
+              "children_truncated": false,
+              "depth": 1,
+              "direct_parameter_count": 0,
+              "name": "model",
+              "parameter_tensors": 20,
+              "parent": "",
+              "total_parameter_count": 76096,
+              "trainable_parameters": 76096,
+              "type": "LlamaModel"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 2048,
+              "name": "model.embed_tokens",
+              "parameter_tensors": 1,
+              "parent": "model",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Embedding"
+            },
+            {
+              "children": [
+                "model.layers.0",
+                "model.layers.1"
+              ],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 0,
+              "name": "model.layers",
+              "parameter_tensors": 18,
+              "parent": "model",
+              "total_parameter_count": 73984,
+              "trainable_parameters": 73984,
+              "type": "ModuleList"
+            },
+            {
+              "children": [
+                "model.layers.0.self_attn",
+                "model.layers.0.mlp",
+                "model.layers.0.input_layernorm",
+                "model.layers.0.post_attention_layernorm"
+              ],
+              "children_truncated": false,
+              "depth": 3,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0",
+              "parameter_tensors": 9,
+              "parent": "model.layers",
+              "total_parameter_count": 36992,
+              "trainable_parameters": 36992,
+              "type": "LlamaDecoderLayer"
+            },
+            {
+              "children": [
+                "model.layers.0.self_attn.q_proj",
+                "model.layers.0.self_attn.k_proj",
+                "model.layers.0.self_attn.v_proj",
+                "model.layers.0.self_attn.o_proj"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.self_attn",
+              "parameter_tensors": 4,
+              "parent": "model.layers.0",
+              "total_parameter_count": 12288,
+              "trainable_parameters": 12288,
+              "type": "LlamaAttention"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.0.self_attn.q_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.0.self_attn.k_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.0.self_attn.v_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.0.self_attn.o_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [
+                "model.layers.0.mlp.gate_proj",
+                "model.layers.0.mlp.up_proj",
+                "model.layers.0.mlp.down_proj",
+                "model.layers.0.mlp.act_fn"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.mlp",
+              "parameter_tensors": 3,
+              "parent": "model.layers.0",
+              "total_parameter_count": 24576,
+              "trainable_parameters": 24576,
+              "type": "LlamaMLP"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.gate_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.up_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.down_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.mlp.act_fn",
+              "parameter_tensors": 0,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "SiLUActivation"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.0.input_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.0.post_attention_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [
+                "model.layers.1.self_attn",
+                "model.layers.1.mlp",
+                "model.layers.1.input_layernorm",
+                "model.layers.1.post_attention_layernorm"
+              ],
+              "children_truncated": false,
+              "depth": 3,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1",
+              "parameter_tensors": 9,
+              "parent": "model.layers",
+              "total_parameter_count": 36992,
+              "trainable_parameters": 36992,
+              "type": "LlamaDecoderLayer"
+            },
+            {
+              "children": [
+                "model.layers.1.self_attn.q_proj",
+                "model.layers.1.self_attn.k_proj",
+                "model.layers.1.self_attn.v_proj",
+                "model.layers.1.self_attn.o_proj"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.self_attn",
+              "parameter_tensors": 4,
+              "parent": "model.layers.1",
+              "total_parameter_count": 12288,
+              "trainable_parameters": 12288,
+              "type": "LlamaAttention"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.1.self_attn.q_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.1.self_attn.k_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.1.self_attn.v_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.1.self_attn.o_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [
+                "model.layers.1.mlp.gate_proj",
+                "model.layers.1.mlp.up_proj",
+                "model.layers.1.mlp.down_proj",
+                "model.layers.1.mlp.act_fn"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.mlp",
+              "parameter_tensors": 3,
+              "parent": "model.layers.1",
+              "total_parameter_count": 24576,
+              "trainable_parameters": 24576,
+              "type": "LlamaMLP"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.gate_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.up_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.down_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.mlp.act_fn",
+              "parameter_tensors": 0,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "SiLUActivation"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.1.input_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.1.post_attention_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 64,
+              "name": "model.norm",
+              "parameter_tensors": 1,
+              "parent": "model",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 0,
+              "name": "model.rotary_emb",
+              "parameter_tensors": 0,
+              "parent": "model",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "LlamaRotaryEmbedding"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 1,
+              "direct_parameter_count": 2048,
+              "name": "lm_head",
+              "parameter_tensors": 1,
+              "parent": "",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            }
+          ],
+          "modules_truncated": false,
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "parameters": [
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.embed_tokens.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.0.self_attn.q_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.0.self_attn.k_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.0.self_attn.v_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.0.self_attn.o_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.gate_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.up_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.down_proj.weight",
+              "shape": [
+                64,
+                128
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.0.input_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.0.post_attention_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.1.self_attn.q_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.1.self_attn.k_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.1.self_attn.v_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.1.self_attn.o_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.gate_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.up_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.down_proj.weight",
+              "shape": [
+                64,
+                128
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.1.input_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.1.post_attention_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.norm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "lm_head.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            }
+          ],
+          "recipe": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "llama",
+              "values": {
+                "attention_bias": false,
+                "attention_dropout": 0,
+                "bos_token_id": 2,
+                "eos_token_id": 3,
+                "hidden_act": "silu",
+                "hidden_size": 64,
+                "intermediate_size": 128,
+                "max_position_embeddings": 128,
+                "mlp_bias": false,
+                "num_attention_heads": 4,
+                "num_hidden_layers": 2,
+                "num_key_value_heads": 2,
+                "pad_token_id": 0,
+                "rms_norm_eps": 1e-06,
+                "rope_parameters": {
+                  "rope_theta": 10000,
+                  "rope_type": "default"
+                },
+                "tie_word_embeddings": false,
+                "use_cache": true,
+                "vocab_size": 32
+              }
+            },
+            "family": "huggingface",
+            "seed": 42,
+            "task": "causal-lm"
+          },
+          "state_sha256": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+          "trainable_parameters": 78144
+        }
+      },
+      "outputs": {
+        "value": {
+          "verified": true,
+          "architecture": "LlamaForCausalLM",
+          "parameters": 78144,
+          "tensors": 21,
+          "decoder_layers": 2,
+          "query_heads": 4,
+          "kv_heads": 2,
+          "rope": true,
+          "normalization": "RMSNorm",
+          "feed_forward": "SwiGLU"
+        },
+        "outputs": {
+          "value": {
+            "verified": true,
+            "architecture": "LlamaForCausalLM",
+            "parameters": 78144,
+            "tensors": 21,
+            "decoder_layers": 2,
+            "query_heads": 4,
+            "kv_heads": 2,
+            "rope": true,
+            "normalization": "RMSNorm",
+            "feed_forward": "SwiGLU"
+          }
+        }
+      },
+      "logs": [
+        "log: Verified actual native Llama module and tensor inventory"
+      ],
+      "error": null,
+      "duration_ms": 389.9999999994179,
+      "parameters": {
+        "code": "if (inputs.architecture !== 'LlamaForCausalLM') throw new Error('Expected native LlamaForCausalLM');\nif (inputs.parameter_count !== 78144 || inputs.parameter_tensors !== 21) throw new Error('Unexpected Llama dimensions or weights');\nconst modules = inputs.modules || [];\nfor (const type of ['LlamaDecoderLayer','LlamaAttention','LlamaMLP','LlamaRMSNorm','LlamaRotaryEmbedding']) {\n  if (!modules.some(m => m.type === type)) throw new Error('Missing native component: ' + type);\n}\nconst p = inputs.parameters;\nfor (let i = 0; i < 2; i++) {\n  for (const part of ['self_attn.q_proj.weight','self_attn.k_proj.weight','self_attn.v_proj.weight','self_attn.o_proj.weight','mlp.gate_proj.weight','mlp.up_proj.weight','mlp.down_proj.weight']) {\n    if (!p.some(t => t.name === `model.layers.${i}.${part}`)) throw new Error('Missing projection ' + part);\n  }\n}\nconsole.log('Verified actual native Llama module and tensor inventory');\nreturn {value:{verified:true,architecture:inputs.architecture,parameters:inputs.parameter_count,tensors:inputs.parameter_tensors,decoder_layers:2,query_heads:4,kv_heads:2,rope:true,normalization:'RMSNorm',feed_forward:'SwiGLU'}};",
+        "timeout_ms": 1000,
+        "memory_mb": 32
+      }
+    },
+    "checkpoint": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "outputs": {
+        "artifact": {
+          "id": "a203aa7e8d1e47c0abf3ccd5648992be",
+          "job_id": "2db41b7f247a421a91109ccd6dcf92e4",
+          "node_id": "checkpoint",
+          "filename": "transformers-model.zip",
+          "mime": "application/zip",
+          "byte_length": 291655,
+          "sha256": "aa2767aa36def1fe0eb3bc40592e148c24e88509d51a6e3b1bcaa03212a94463",
+          "download_url": "/api/graph/artifacts/a203aa7e8d1e47c0abf3ccd5648992be"
+        },
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "46c38c9888144a998fb354a71618a14f",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 15.99999999962165,
+      "parameters": {}
+    },
+    "reload": {
+      "status": "succeeded",
+      "inputs": {
+        "artifact": {
+          "id": "a203aa7e8d1e47c0abf3ccd5648992be",
+          "job_id": "2db41b7f247a421a91109ccd6dcf92e4",
+          "node_id": "checkpoint",
+          "filename": "transformers-model.zip",
+          "mime": "application/zip",
+          "byte_length": 291655,
+          "sha256": "aa2767aa36def1fe0eb3bc40592e148c24e88509d51a6e3b1bcaa03212a94463",
+          "download_url": "/api/graph/artifacts/a203aa7e8d1e47c0abf3ccd5648992be"
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 14.999999999417923,
+      "parameters": {}
+    },
+    "reloaded-inspect": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "report": {
+          "architecture": "LlamaForCausalLM",
+          "config": {
+            "attention_bias": false,
+            "attention_dropout": 0,
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "head_dim": 16,
+            "hidden_act": "silu",
+            "hidden_size": 64,
+            "intermediate_size": 128,
+            "max_position_embeddings": 128,
+            "mlp_bias": false,
+            "model_type": "llama",
+            "num_attention_heads": 4,
+            "num_hidden_layers": 2,
+            "num_key_value_heads": 2,
+            "pad_token_id": 0,
+            "rms_norm_eps": 1e-06,
+            "rope_parameters": {
+              "rope_theta": 10000,
+              "rope_type": "default"
+            },
+            "tie_word_embeddings": false,
+            "vocab_size": 32
+          },
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "module_count": 33,
+          "modules": [
+            {
+              "children": [
+                "model",
+                "lm_head"
+              ],
+              "children_truncated": false,
+              "depth": 0,
+              "direct_parameter_count": 0,
+              "name": "",
+              "parameter_tensors": 21,
+              "parent": null,
+              "total_parameter_count": 78144,
+              "trainable_parameters": 78144,
+              "type": "LlamaForCausalLM"
+            },
+            {
+              "children": [
+                "model.embed_tokens",
+                "model.layers",
+                "model.norm",
+                "model.rotary_emb"
+              ],
+              "children_truncated": false,
+              "depth": 1,
+              "direct_parameter_count": 0,
+              "name": "model",
+              "parameter_tensors": 20,
+              "parent": "",
+              "total_parameter_count": 76096,
+              "trainable_parameters": 76096,
+              "type": "LlamaModel"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 2048,
+              "name": "model.embed_tokens",
+              "parameter_tensors": 1,
+              "parent": "model",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Embedding"
+            },
+            {
+              "children": [
+                "model.layers.0",
+                "model.layers.1"
+              ],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 0,
+              "name": "model.layers",
+              "parameter_tensors": 18,
+              "parent": "model",
+              "total_parameter_count": 73984,
+              "trainable_parameters": 73984,
+              "type": "ModuleList"
+            },
+            {
+              "children": [
+                "model.layers.0.self_attn",
+                "model.layers.0.mlp",
+                "model.layers.0.input_layernorm",
+                "model.layers.0.post_attention_layernorm"
+              ],
+              "children_truncated": false,
+              "depth": 3,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0",
+              "parameter_tensors": 9,
+              "parent": "model.layers",
+              "total_parameter_count": 36992,
+              "trainable_parameters": 36992,
+              "type": "LlamaDecoderLayer"
+            },
+            {
+              "children": [
+                "model.layers.0.self_attn.q_proj",
+                "model.layers.0.self_attn.k_proj",
+                "model.layers.0.self_attn.v_proj",
+                "model.layers.0.self_attn.o_proj"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.self_attn",
+              "parameter_tensors": 4,
+              "parent": "model.layers.0",
+              "total_parameter_count": 12288,
+              "trainable_parameters": 12288,
+              "type": "LlamaAttention"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.0.self_attn.q_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.0.self_attn.k_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.0.self_attn.v_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.0.self_attn.o_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [
+                "model.layers.0.mlp.gate_proj",
+                "model.layers.0.mlp.up_proj",
+                "model.layers.0.mlp.down_proj",
+                "model.layers.0.mlp.act_fn"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.mlp",
+              "parameter_tensors": 3,
+              "parent": "model.layers.0",
+              "total_parameter_count": 24576,
+              "trainable_parameters": 24576,
+              "type": "LlamaMLP"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.gate_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.up_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.0.mlp.down_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 0,
+              "name": "model.layers.0.mlp.act_fn",
+              "parameter_tensors": 0,
+              "parent": "model.layers.0.mlp",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "SiLUActivation"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.0.input_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.0.post_attention_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.0",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [
+                "model.layers.1.self_attn",
+                "model.layers.1.mlp",
+                "model.layers.1.input_layernorm",
+                "model.layers.1.post_attention_layernorm"
+              ],
+              "children_truncated": false,
+              "depth": 3,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1",
+              "parameter_tensors": 9,
+              "parent": "model.layers",
+              "total_parameter_count": 36992,
+              "trainable_parameters": 36992,
+              "type": "LlamaDecoderLayer"
+            },
+            {
+              "children": [
+                "model.layers.1.self_attn.q_proj",
+                "model.layers.1.self_attn.k_proj",
+                "model.layers.1.self_attn.v_proj",
+                "model.layers.1.self_attn.o_proj"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.self_attn",
+              "parameter_tensors": 4,
+              "parent": "model.layers.1",
+              "total_parameter_count": 12288,
+              "trainable_parameters": 12288,
+              "type": "LlamaAttention"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.1.self_attn.q_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.1.self_attn.k_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 2048,
+              "name": "model.layers.1.self_attn.v_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 4096,
+              "name": "model.layers.1.self_attn.o_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.self_attn",
+              "total_parameter_count": 4096,
+              "trainable_parameters": 4096,
+              "type": "Linear"
+            },
+            {
+              "children": [
+                "model.layers.1.mlp.gate_proj",
+                "model.layers.1.mlp.up_proj",
+                "model.layers.1.mlp.down_proj",
+                "model.layers.1.mlp.act_fn"
+              ],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.mlp",
+              "parameter_tensors": 3,
+              "parent": "model.layers.1",
+              "total_parameter_count": 24576,
+              "trainable_parameters": 24576,
+              "type": "LlamaMLP"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.gate_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.up_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 8192,
+              "name": "model.layers.1.mlp.down_proj",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 8192,
+              "trainable_parameters": 8192,
+              "type": "Linear"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 5,
+              "direct_parameter_count": 0,
+              "name": "model.layers.1.mlp.act_fn",
+              "parameter_tensors": 0,
+              "parent": "model.layers.1.mlp",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "SiLUActivation"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.1.input_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 4,
+              "direct_parameter_count": 64,
+              "name": "model.layers.1.post_attention_layernorm",
+              "parameter_tensors": 1,
+              "parent": "model.layers.1",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 64,
+              "name": "model.norm",
+              "parameter_tensors": 1,
+              "parent": "model",
+              "total_parameter_count": 64,
+              "trainable_parameters": 64,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 0,
+              "name": "model.rotary_emb",
+              "parameter_tensors": 0,
+              "parent": "model",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "LlamaRotaryEmbedding"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 1,
+              "direct_parameter_count": 2048,
+              "name": "lm_head",
+              "parameter_tensors": 1,
+              "parent": "",
+              "total_parameter_count": 2048,
+              "trainable_parameters": 2048,
+              "type": "Linear"
+            }
+          ],
+          "modules_truncated": false,
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "parameters": [
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.embed_tokens.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.0.self_attn.q_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.0.self_attn.k_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.0.self_attn.v_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.0.self_attn.o_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.gate_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.up_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.0.mlp.down_proj.weight",
+              "shape": [
+                64,
+                128
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.0.input_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.0.post_attention_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.1.self_attn.q_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.1.self_attn.k_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "model.layers.1.self_attn.v_proj.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4096,
+              "finite": true,
+              "name": "model.layers.1.self_attn.o_proj.weight",
+              "shape": [
+                64,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.gate_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.up_proj.weight",
+              "shape": [
+                128,
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8192,
+              "finite": true,
+              "name": "model.layers.1.mlp.down_proj.weight",
+              "shape": [
+                64,
+                128
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.1.input_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.layers.1.post_attention_layernorm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 64,
+              "finite": true,
+              "name": "model.norm.weight",
+              "shape": [
+                64
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 2048,
+              "finite": true,
+              "name": "lm_head.weight",
+              "shape": [
+                32,
+                64
+              ],
+              "trainable": true
+            }
+          ],
+          "recipe": {
+            "config": {
+              "kind": "hf-config",
+              "model_type": "llama",
+              "values": {
+                "attention_bias": false,
+                "attention_dropout": 0,
+                "bos_token_id": 2,
+                "eos_token_id": 3,
+                "hidden_act": "silu",
+                "hidden_size": 64,
+                "intermediate_size": 128,
+                "max_position_embeddings": 128,
+                "mlp_bias": false,
+                "num_attention_heads": 4,
+                "num_hidden_layers": 2,
+                "num_key_value_heads": 2,
+                "pad_token_id": 0,
+                "rms_norm_eps": 1e-06,
+                "rope_parameters": {
+                  "rope_theta": 10000,
+                  "rope_type": "default"
+                },
+                "tie_word_embeddings": false,
+                "use_cache": true,
+                "vocab_size": 32
+              }
+            },
+            "family": "huggingface",
+            "seed": 42,
+            "task": "causal-lm"
+          },
+          "state_sha256": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {}
+    },
+    "reloaded-eval": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "data": {
+          "elements": 168,
+          "fields": {
+            "attention_mask": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "input_ids": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                0,
+                0,
+                4,
+                30,
+                25,
+                20,
+                15,
+                0,
+                0,
+                4,
+                13,
+                25,
+                21,
+                15,
+                0,
+                0,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            },
+            "labels": {
+              "dtype": "torch.int64",
+              "elements": 56,
+              "preview": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                12,
+                15,
+                4,
+                6,
+                9,
+                11,
+                4,
+                13,
+                15,
+                4,
+                7,
+                10,
+                11,
+                4,
+                14,
+                15,
+                16,
+                17,
+                5,
+                22,
+                4,
+                24,
+                15,
+                16,
+                18,
+                6,
+                22,
+                4,
+                23,
+                15,
+                -100,
+                -100,
+                4,
+                30,
+                25,
+                20,
+                15,
+                -100,
+                -100,
+                4,
+                13,
+                25,
+                21,
+                15,
+                -100,
+                -100,
+                4,
+                23,
+                25,
+                29,
+                15
+              ],
+              "shape": [
+                8,
+                7
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "2a793bd945804b05bf8a93b05e385f8f",
+          "kind": "data",
+          "samples": 8
+        }
+      },
+      "outputs": {
+        "metrics": {
+          "loss": 0.29380911588668823,
+          "parameter_changed": false,
+          "samples": 8,
+          "state_sha256": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb"
+        },
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {
+        "loss": "model"
+      }
+    },
+    "prompts": {
+      "status": "succeeded",
+      "inputs": {
+        "tokenizer": {
+          "handle": "dcc3b7380d1b44f5a6bf025ba5c17ccd",
+          "implementation": "PreTrainedTokenizerFast/WordLevel",
+          "kind": "tokenizer",
+          "padding_side": "left",
+          "vocab_size": 32
+        },
+        "texts": [
+          "the cat",
+          "the dog",
+          "the sky"
+        ]
+      },
+      "outputs": {
+        "data": {
+          "elements": 12,
+          "fields": {
+            "attention_mask": {
+              "dtype": "torch.int64",
+              "elements": 6,
+              "preview": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "shape": [
+                3,
+                2
+              ],
+              "truncated": false
+            },
+            "input_ids": {
+              "dtype": "torch.int64",
+              "elements": 6,
+              "preview": [
+                4,
+                5,
+                4,
+                6,
+                4,
+                30
+              ],
+              "shape": [
+                3,
+                2
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "abc4793278a44fbbb8a25ee03ecfc0d6",
+          "kind": "data",
+          "samples": 3
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {
+        "max_length": 16,
+        "labels": "none"
+      }
+    },
+    "forward": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "data": {
+          "elements": 12,
+          "fields": {
+            "attention_mask": {
+              "dtype": "torch.int64",
+              "elements": 6,
+              "preview": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "shape": [
+                3,
+                2
+              ],
+              "truncated": false
+            },
+            "input_ids": {
+              "dtype": "torch.int64",
+              "elements": 6,
+              "preview": [
+                4,
+                5,
+                4,
+                6,
+                4,
+                30
+              ],
+              "shape": [
+                3,
+                2
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "abc4793278a44fbbb8a25ee03ecfc0d6",
+          "kind": "data",
+          "samples": 3
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "result": {
+          "outputs": {
+            "logits": {
+              "dtype": "torch.float32",
+              "elements": 192,
+              "preview": [
+                -1.0536861419677734,
+                -1.0135302543640137,
+                -1.0715676546096802,
+                -1.0734039545059204,
+                -0.5046376585960388,
+                4.731999397277832,
+                4.819899559020996,
+                4.735184669494629,
+                -1.1372441053390503,
+                -0.9613075256347656,
+                -0.7605656981468201,
+                -0.7401211261749268,
+                -1.319118857383728,
+                4.769805908203125,
+                -0.4924026429653168,
+                -0.9729940891265869,
+                -0.9806644916534424,
+                -1.2305793762207031,
+                -1.2410212755203247,
+                -1.0149502754211426,
+                -0.7673754096031189,
+                -1.4616546630859375,
+                -0.41104474663734436,
+                4.740999221801758,
+                -0.5849888324737549,
+                0.23005490005016327,
+                -1.0213444232940674,
+                -1.0359810590744019,
+                -1.0497145652770996,
+                -1.012463092803955,
+                4.722020149230957,
+                -1.0860114097595215,
+                0.07586130499839783,
+                0.21150203049182892,
+                0.23221398890018463,
+                0.25252220034599304,
+                -0.4903012812137604,
+                -1.3790217638015747,
+                -0.4250091314315796,
+                -0.7438881397247314,
+                6.858492851257324,
+                0.6537890434265137,
+                0.40937626361846924,
+                1.4579837322235107,
+                0.2728048861026764,
+                0.22763732075691223,
+                -0.685856819152832,
+                -0.36300069093704224,
+                0.33212965726852417,
+                -0.6692510843276978,
+                -0.7060450315475464,
+                0.03729139268398285,
+                -1.3047007322311401,
+                -0.14760059118270874,
+                0.32810521125793457,
+                -0.9645683169364929,
+                -0.7662138342857361,
+                0.05395989120006561,
+                -0.007428811863064766,
+                0.043375372886657715,
+                0.02660800702869892,
+                -0.26219886541366577,
+                -0.5153092741966248,
+                -0.0364932082593441
+              ],
+              "shape": [
+                3,
+                2,
+                32
+              ],
+              "truncated": true
+            },
+            "past_key_values": "DynamicCache"
+          }
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 14.999999999417923,
+      "parameters": {}
+    },
+    "generate": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "data": {
+          "elements": 12,
+          "fields": {
+            "attention_mask": {
+              "dtype": "torch.int64",
+              "elements": 6,
+              "preview": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "shape": [
+                3,
+                2
+              ],
+              "truncated": false
+            },
+            "input_ids": {
+              "dtype": "torch.int64",
+              "elements": 6,
+              "preview": [
+                4,
+                5,
+                4,
+                6,
+                4,
+                30
+              ],
+              "shape": [
+                3,
+                2
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "abc4793278a44fbbb8a25ee03ecfc0d6",
+          "kind": "data",
+          "samples": 3
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "result": {
+          "attention_mask": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "input_ids": [
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              30
+            ]
+          ],
+          "max_new_tokens": 8,
+          "sequences": [
+            [
+              4,
+              5,
+              8,
+              11,
+              4,
+              12,
+              15,
+              4,
+              12,
+              15
+            ],
+            [
+              4,
+              6,
+              9,
+              11,
+              4,
+              13,
+              15,
+              4,
+              13,
+              15
+            ],
+            [
+              4,
+              30,
+              25,
+              20,
+              15,
+              4,
+              13,
+              15,
+              4,
+              4
+            ]
+          ],
+          "shape": [
+            3,
+            10
+          ]
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 32.00000000288128,
+      "parameters": {
+        "max_new_tokens": 8,
+        "do_sample": false,
+        "temperature": 1
+      }
+    },
+    "pipeline": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "tokenizer": {
+          "handle": "dcc3b7380d1b44f5a6bf025ba5c17ccd",
+          "implementation": "PreTrainedTokenizerFast/WordLevel",
+          "kind": "tokenizer",
+          "padding_side": "left",
+          "vocab_size": 32
+        },
+        "texts": [
+          "the cat",
+          "the dog",
+          "the sky"
+        ]
+      },
+      "outputs": {
+        "model": {
+          "architecture": "LlamaForCausalLM",
+          "device": "cpu",
+          "family": "huggingface",
+          "handle": "74a4251d92494b699c4a628b4899227b",
+          "kind": "model",
+          "parameter_count": 78144,
+          "parameter_tensors": 21,
+          "trainable_parameters": 78144
+        },
+        "result": {
+          "outputs": [
+            [
+              {
+                "generated_text": "the cat sleeps on the mat . the mat .",
+                "generated_token_ids": [
+                  4,
+                  5,
+                  8,
+                  11,
+                  4,
+                  12,
+                  15,
+                  4,
+                  12,
+                  15
+                ]
+              }
+            ],
+            [
+              {
+                "generated_text": "the dog runs on the grass . the grass .",
+                "generated_token_ids": [
+                  4,
+                  6,
+                  9,
+                  11,
+                  4,
+                  13,
+                  15,
+                  4,
+                  13,
+                  15
+                ]
+              }
+            ],
+            [
+              {
+                "generated_text": "the sky is blue . the grass . the the",
+                "generated_token_ids": [
+                  4,
+                  30,
+                  25,
+                  20,
+                  15,
+                  4,
+                  13,
+                  15,
+                  4,
+                  4
+                ]
+              }
+            ]
+          ],
+          "task": "text-generation"
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 139.99999999941792,
+      "parameters": {
+        "task": "text-generation",
+        "max_new_tokens": 8
+      }
+    }
+  },
+  "events": [
+    {
+      "time": "2026-10-23T19:08:57.111331+00:00",
+      "type": "queued",
+      "message": "Captured an immutable workflow and node-definition snapshot",
+      "node_id": null
+    },
+    {
+      "time": "2026-10-23T19:08:57.114929+00:00",
+      "type": "started",
+      "message": "Workflow execution started",
+      "node_id": null
+    },
+    {
+      "time": "2026-10-23T19:08:57.115929+00:00",
+      "type": "node_started",
+      "message": "HF model configuration",
+      "node_id": "config"
+    },
+    {
+      "time": "2026-10-23T19:08:59.335557+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "config"
+    },
+    {
+      "time": "2026-10-23T19:08:59.339977+00:00",
+      "type": "node_started",
+      "message": "Local HF fast tokenizer",
+      "node_id": "tokenizer"
+    },
+    {
+      "time": "2026-10-23T19:09:01.524607+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "tokenizer"
+    },
+    {
+      "time": "2026-10-23T19:09:01.524607+00:00",
+      "type": "node_started",
+      "message": "Optimizer",
+      "node_id": "optimizer"
+    },
+    {
+      "time": "2026-10-23T19:09:01.527116+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "optimizer"
+    },
+    {
+      "time": "2026-10-23T19:09:01.528117+00:00",
+      "type": "node_started",
+      "message": "HF AutoModel",
+      "node_id": "model"
+    },
+    {
+      "time": "2026-10-23T19:09:04.547372+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "model"
+    },
+    {
+      "time": "2026-10-23T19:09:04.547372+00:00",
+      "type": "node_started",
+      "message": "Tokenize text",
+      "node_id": "data"
+    },
+    {
+      "time": "2026-10-23T19:09:04.563925+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "data"
+    },
+    {
+      "time": "2026-10-23T19:09:04.565429+00:00",
+      "type": "node_started",
+      "message": "Tokenize text",
+      "node_id": "prompts"
+    },
+    {
+      "time": "2026-10-23T19:09:04.567436+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "prompts"
+    },
+    {
+      "time": "2026-10-23T19:09:04.568436+00:00",
+      "type": "node_started",
+      "message": "Inspect model",
+      "node_id": "initial-inspect"
+    },
+    {
+      "time": "2026-10-23T19:09:04.574954+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "initial-inspect"
+    },
+    {
+      "time": "2026-10-23T19:09:04.577201+00:00",
+      "type": "node_started",
+      "message": "Evaluate model",
+      "node_id": "initial-eval"
+    },
+    {
+      "time": "2026-10-23T19:09:04.625971+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "initial-eval"
+    },
+    {
+      "time": "2026-10-23T19:09:04.627526+00:00",
+      "type": "node_started",
+      "message": "Train multi-parameter model",
+      "node_id": "train"
+    },
+    {
+      "time": "2026-10-23T19:09:04.911754+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "train"
+    },
+    {
+      "time": "2026-10-23T19:09:04.912754+00:00",
+      "type": "node_started",
+      "message": "Evaluate model",
+      "node_id": "trained-eval"
+    },
+    {
+      "time": "2026-10-23T19:09:04.918445+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "trained-eval"
+    },
+    {
+      "time": "2026-10-23T19:09:04.920364+00:00",
+      "type": "node_started",
+      "message": "Inspect model",
+      "node_id": "trained-inspect"
+    },
+    {
+      "time": "2026-10-23T19:09:04.925318+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "trained-inspect"
+    },
+    {
+      "time": "2026-10-23T19:09:04.928322+00:00",
+      "type": "node_started",
+      "message": "JavaScript sandbox",
+      "node_id": "architecture-checks"
+    },
+    {
+      "time": "2026-10-23T19:09:05.312621+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "architecture-checks"
+    },
+    {
+      "time": "2026-10-23T19:09:05.312621+00:00",
+      "type": "node_started",
+      "message": "Export safe model",
+      "node_id": "checkpoint"
+    },
+    {
+      "time": "2026-10-23T19:09:05.342682+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "checkpoint"
+    },
+    {
+      "time": "2026-10-23T19:09:05.344601+00:00",
+      "type": "node_started",
+      "message": "Load safe model",
+      "node_id": "reload"
+    },
+    {
+      "time": "2026-10-23T19:09:05.366649+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "reload"
+    },
+    {
+      "time": "2026-10-23T19:09:05.369918+00:00",
+      "type": "node_started",
+      "message": "Inspect model",
+      "node_id": "reloaded-inspect"
+    },
+    {
+      "time": "2026-10-23T19:09:05.376951+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "reloaded-inspect"
+    },
+    {
+      "time": "2026-10-23T19:09:05.378982+00:00",
+      "type": "node_started",
+      "message": "Evaluate model",
+      "node_id": "reloaded-eval"
+    },
+    {
+      "time": "2026-10-23T19:09:05.385463+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "reloaded-eval"
+    },
+    {
+      "time": "2026-10-23T19:09:05.388218+00:00",
+      "type": "node_started",
+      "message": "Forward pass",
+      "node_id": "forward"
+    },
+    {
+      "time": "2026-10-23T19:09:05.392690+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "forward"
+    },
+    {
+      "time": "2026-10-23T19:09:05.398167+00:00",
+      "type": "node_started",
+      "message": "HF generate",
+      "node_id": "generate"
+    },
+    {
+      "time": "2026-10-23T19:09:05.426997+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "generate"
+    },
+    {
+      "time": "2026-10-23T19:09:05.428565+00:00",
+      "type": "node_started",
+      "message": "HF pipeline",
+      "node_id": "pipeline"
+    },
+    {
+      "time": "2026-10-23T19:09:05.565685+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "pipeline"
+    },
+    {
+      "time": "2026-10-23T19:09:05.565685+00:00",
+      "type": "succeeded",
+      "message": "All workflow nodes completed",
+      "node_id": null
+    }
+  ],
+  "error": null,
+  "idempotency_key": null,
+  "partial_effects": "Completed experiment actions are retained if a later node fails or execution is cancelled.",
+  "snapshot_sha256": "49a5274c1b51c14e2d7799b1d2e7ce1907e25e7565c3aace50fb6606243329b3"
+}

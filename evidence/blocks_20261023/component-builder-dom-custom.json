@@ -1,0 +1,44 @@
+{
+  "schema_version": "spobs-component-builder-dom/1",
+  "scope": "Offline JSDOM controller behavior and generated-graph schema checks using the current runtime catalog. The small baseline observation fixture is synthetic. When actual_job_sha256 is present, an additional inspector check consumes that successful runtime job receipt without rerunning its tensor computation. Real browser rendering, pointer behavior and actual tensor computation require separate qualification.",
+  "catalog_sha256": "478fafc5199579250e27c58ebce889a02ec39147003943a64b2940fa236fc9b5",
+  "actual_job_sha256": "4352058e6d134355761dfe81406552d588865dc3d3f1d739211a21ff89611216",
+  "actual_job_id": "8ca1ed08bdef49268b2010e98287e1d3",
+  "passed": 13,
+  "failed": 0,
+  "checks": [
+    "Actual component catalog enables the visual builder and searchable block library",
+    "Expanded Llama graph has valid catalog ports, parameters, DAG topology and nonoverlapping node footprints",
+    "Multiple decoder layers keep independent weights and preserve all residual and rotary connections",
+    "Fused SwiGLU and custom activation produce actual alternative connected operations",
+    "Invalid head geometry, dimensions, learning rates, corpus and parameter budgets retain clear validation errors",
+    "Vocabulary expansion safely sizes the embedding and LM head for additional plain-text training sentences",
+    "Visual builder shows component branches and validates geometry without creating or queuing a workflow",
+    "Corrected builder inputs clear stale submission errors and reenable creation without any invalid mutation",
+    "Custom activation is optional, remains editable, and creates a complete connected training workflow",
+    "Executed tensor-graph reports render all real expression operations with shape and tensor details",
+    "Actual successful execution receipt drives every operation, tensor, shape, source connection and custom-code inspector",
+    "Visual execution entry point selects the requested actual model job and rejects unavailable or non-Transformers jobs without mutations",
+    "Unavailable component catalog disables entry points and unexpected controller errors are absent"
+  ],
+  "error": null,
+  "unexpected_errors": [],
+  "generated_graphs": {
+    "expanded": {
+      "nodes": 36,
+      "edges": 47
+    },
+    "multilayer": {
+      "nodes": 52,
+      "edges": 71
+    },
+    "fused": {
+      "nodes": 32,
+      "edges": 42
+    },
+    "custom": {
+      "nodes": 36,
+      "edges": 47
+    }
+  }
+}

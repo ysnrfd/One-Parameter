@@ -1,0 +1,60 @@
+{
+  "name": "Exact decimal integer in JavaScript",
+  "description": "Pure JSON transform: preserve a wide integer as a decimal string, use BigInt for addition, then preview its exact string result.",
+  "nodes": [
+    {
+      "id": "input",
+      "type": "core.object",
+      "position": {
+        "x": 40,
+        "y": 100
+      },
+      "params": {
+        "value": {
+          "seed": "9223372036854775807"
+        }
+      }
+    },
+    {
+      "id": "script",
+      "type": "core.script",
+      "position": {
+        "x": 370,
+        "y": 100
+      },
+      "params": {
+        "code": "return {value: (BigInt(inputs.seed) + 1n).toString()};"
+      }
+    },
+    {
+      "id": "preview",
+      "type": "core.preview",
+      "position": {
+        "x": 700,
+        "y": 100
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "input-value-script-inputs",
+      "source": "input",
+      "source_port": "value",
+      "target": "script",
+      "target_port": "inputs"
+    },
+    {
+      "id": "script-value-preview-value",
+      "source": "script",
+      "source_port": "value",
+      "target": "preview",
+      "target_port": "value"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}

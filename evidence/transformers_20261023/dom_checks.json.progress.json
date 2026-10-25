@@ -1,0 +1,197 @@
+{
+  "phase": "Guarded API requests carry captured workspace identity and unexpected controller errors are absent",
+  "started_at": "2026-10-23T18:16:44.733Z",
+  "passed": 38,
+  "checks": [
+    {
+      "name": "All nine views navigate, expose active content and preserve the live workspace",
+      "passed": true,
+      "duration_ms": 351
+    },
+    {
+      "name": "Pending experiment selection blocks stale verification, training, configuration and downloads until acknowledged",
+      "passed": true,
+      "duration_ms": 192
+    },
+    {
+      "name": "Transformers workbench uses the actual runtime catalog, templates and searchable block descriptions",
+      "passed": true,
+      "duration_ms": 60
+    },
+    {
+      "name": "Architecture builder retains invalid input, then creates a full editable tensor workflow without execution",
+      "passed": true,
+      "duration_ms": 119
+    },
+    {
+      "name": "Transformers templates open actual catalog graphs and custom forward blocks expose editable multiline code",
+      "passed": true,
+      "duration_ms": 236
+    },
+    {
+      "name": "Transformers observations show actual-shaped model reports, finite loss charts and only registered artifact downloads",
+      "passed": true,
+      "duration_ms": 165
+    },
+    {
+      "name": "Imported editor drafts preserve wide integer seeds before controls render and save",
+      "passed": true,
+      "duration_ms": 5
+    },
+    {
+      "name": "Actual fixture timeline, complete forensic record, data samples and optimizer fields render",
+      "passed": true,
+      "duration_ms": 228
+    },
+    {
+      "name": "Live nonfinite storage and historical finite storage use authoritative uint32 words",
+      "passed": true,
+      "duration_ms": 40
+    },
+    {
+      "name": "Manual negative zero and bit edits send exact float32 words; optimizer JSON intervenes explicitly",
+      "passed": true,
+      "duration_ms": 77
+    },
+    {
+      "name": "Historical pinning and Follow live preserve unapplied bit edits without reviving applied edits",
+      "passed": true,
+      "duration_ms": 116
+    },
+    {
+      "name": "Main experiment controls create, rename, play, pause, step, set speed and reject invalid step counts",
+      "passed": true,
+      "duration_ms": 232
+    },
+    {
+      "name": "Configuration controls preserve negative zero and complete advanced JSON including 64-bit seeds",
+      "passed": true,
+      "duration_ms": 122
+    },
+    {
+      "name": "CSV import remains unapplied, survives draft persistence and downloads original negative-zero text",
+      "passed": true,
+      "duration_ms": 195
+    },
+    {
+      "name": "Workspace and run notes save explicitly, names and complete project downloads remain functional",
+      "passed": true,
+      "duration_ms": 141
+    },
+    {
+      "name": "Evidence export and integrity validation use real routes; checkpoint create and restore controls are wired",
+      "passed": true,
+      "duration_ms": 220
+    },
+    {
+      "name": "Timeline SVG, checkpoint deletion, fork, reset, restart and experiment deletion remain wired",
+      "passed": true,
+      "duration_ms": 268
+    },
+    {
+      "name": "Commands, help, fullscreen, mobile inspector and world zoom controls have working state changes",
+      "passed": true,
+      "duration_ms": 120
+    },
+    {
+      "name": "Workflow creation, searchable typed palette and literal input inspector accept real editable values",
+      "passed": true,
+      "duration_ms": 179
+    },
+    {
+      "name": "Consecutive palette additions do not overlap, retain existing positions and preserve selection and undo history",
+      "passed": true,
+      "duration_ms": 85
+    },
+    {
+      "name": "Dropdown parameter changes undo and redo in a single history step",
+      "passed": true,
+      "duration_ms": 42
+    },
+    {
+      "name": "Click-to-connect typed ports, connection form and disconnect controls update the graph",
+      "passed": true,
+      "duration_ms": 156
+    },
+    {
+      "name": "Invalid field buffers survive unrelated deletion, undo, redo and project draft serialization",
+      "passed": true,
+      "duration_ms": 248
+    },
+    {
+      "name": "Selection, copy, paste, duplicate, delete, undo and redo preserve model data and wide integers",
+      "passed": true,
+      "duration_ms": 92
+    },
+    {
+      "name": "Full workflow JSON editing and standalone exports/imports preserve integer and signed-zero bytes",
+      "passed": true,
+      "duration_ms": 80
+    },
+    {
+      "name": "Runnable Python download waits for graph draft acknowledgement and rejects unapplied invalid fields without execution",
+      "passed": true,
+      "duration_ms": 208
+    },
+    {
+      "name": "Graph validation, explicit queue, cancellation despite invalid draft and raw results download work",
+      "passed": true,
+      "duration_ms": 135
+    },
+    {
+      "name": "Extreme finite numeric output charts contain finite coordinates and trusted imported artifact IDs download safely",
+      "passed": true,
+      "duration_ms": 81
+    },
+    {
+      "name": "Custom node wizard creates a persistent manifest draft; plugin install and palette refresh are explicit",
+      "passed": true,
+      "duration_ms": 207
+    },
+    {
+      "name": "Declarative panels support config/dataset JSON, preserve -0 numeric defaults and save raw field drafts",
+      "passed": true,
+      "duration_ms": 151
+    },
+    {
+      "name": "Plugin enable, disable, version update, download and removal controls change actual registry requests",
+      "passed": true,
+      "duration_ms": 225
+    },
+    {
+      "name": "Another tab changing plugin availability refreshes the node catalog without reloading the page",
+      "passed": true,
+      "duration_ms": 143
+    },
+    {
+      "name": "Older in-flight graph polls cannot regress the accepted workflow revision or saved name",
+      "passed": true,
+      "duration_ms": 152
+    },
+    {
+      "name": "Keeping a conflicted graph as a new workflow preserves invalid raw node fields",
+      "passed": true,
+      "duration_ms": 211
+    },
+    {
+      "name": "Draft CAS conflict preserves local edits; explicit Keep saves with a fresh revision",
+      "passed": true,
+      "duration_ms": 80
+    },
+    {
+      "name": "Draft CAS explicit Load replaces local buffers with the saved drafts",
+      "passed": true,
+      "duration_ms": 69
+    },
+    {
+      "name": "Project Open quiesces graph autosave before commit and ignores old delayed work while draft loading waits",
+      "passed": true,
+      "duration_ms": 917
+    },
+    {
+      "name": "Cross-tab project replacement blocks stale mutations and downloads, retains local recovery and explicitly reloads",
+      "passed": true,
+      "duration_ms": 89
+    }
+  ]
+}

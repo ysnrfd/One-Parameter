@@ -1,0 +1,368 @@
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=77
+* Getting build dependencies for sdist...
+running egg_info
+writing single_parameter_observatory.egg-info\PKG-INFO
+writing dependency_links to single_parameter_observatory.egg-info\dependency_links.txt
+writing entry points to single_parameter_observatory.egg-info\entry_points.txt
+writing requirements to single_parameter_observatory.egg-info\requires.txt
+writing top-level names to single_parameter_observatory.egg-info\top_level.txt
+reading manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+* Installed build dependency versions:
+  - setuptools==84.2.1
+* Building sdist...
+running sdist
+running egg_info
+writing single_parameter_observatory.egg-info\PKG-INFO
+writing dependency_links to single_parameter_observatory.egg-info\dependency_links.txt
+writing entry points to single_parameter_observatory.egg-info\entry_points.txt
+writing requirements to single_parameter_observatory.egg-info\requires.txt
+writing top-level names to single_parameter_observatory.egg-info\top_level.txt
+reading manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+running check
+creating single_parameter_observatory-1.2.0
+creating single_parameter_observatory-1.2.0\single_parameter_observatory
+creating single_parameter_observatory-1.2.0\single_parameter_observatory.egg-info
+creating single_parameter_observatory-1.2.0\single_parameter_observatory\studio_web
+creating single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying files to single_parameter_observatory-1.2.0...
+copying AUDIT.md -> single_parameter_observatory-1.2.0
+copying LICENSE -> single_parameter_observatory-1.2.0
+copying Launch Studio.cmd -> single_parameter_observatory-1.2.0
+copying MANIFEST.in -> single_parameter_observatory-1.2.0
+copying README.md -> single_parameter_observatory-1.2.0
+copying REPAIR_REPORT.md -> single_parameter_observatory-1.2.0
+copying STUDIO.md -> single_parameter_observatory-1.2.0
+copying STUDIO_REPORT.md -> single_parameter_observatory-1.2.0
+copying pyproject.toml -> single_parameter_observatory-1.2.0
+copying requirements.txt -> single_parameter_observatory-1.2.0
+copying single_parameter_observatory\API.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\ARCHITECTURE.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\AUDIT.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\CHANGELOG.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\CONTRIBUTING.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\LICENSE -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\README.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\REPAIR_REPORT.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\STUDIO.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\STUDIO_REPORT.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\USAGE.md -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\__init__.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\__main__.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\config.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\convergence.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\dashboard.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\errors.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\exporters.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\fp32_inspector.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\main.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\model.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\numerical_analysis.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\optimizer_inspector.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\py.typed -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\recorder.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\requirements.txt -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\run_checks.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_server.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\studio_session.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\tracker.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\training_engine.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\validation.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory\visualization.py -> single_parameter_observatory-1.2.0\single_parameter_observatory
+copying single_parameter_observatory.egg-info\PKG-INFO -> single_parameter_observatory-1.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\SOURCES.txt -> single_parameter_observatory-1.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\dependency_links.txt -> single_parameter_observatory-1.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\entry_points.txt -> single_parameter_observatory-1.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\requires.txt -> single_parameter_observatory-1.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory.egg-info\top_level.txt -> single_parameter_observatory-1.2.0\single_parameter_observatory.egg-info
+copying single_parameter_observatory\studio_web\index.html -> single_parameter_observatory-1.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\studio.css -> single_parameter_observatory-1.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\studio.js -> single_parameter_observatory-1.2.0\single_parameter_observatory\studio_web
+copying single_parameter_observatory\tests\__init__.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\_bootstrap.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_autograd.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_config_integrity.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_core_correctness_repairs.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_dashboard_cli_regressions.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_fp32.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_numerics.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_optimizer.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_parameter.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_recording.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_recording_integrity_exports.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_regressions.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_release_checks.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_server.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_session.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_training.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_views.py -> single_parameter_observatory-1.2.0\single_parameter_observatory\tests
+Writing single_parameter_observatory-1.2.0\setup.cfg
+Creating tar archive
+removing 'single_parameter_observatory-1.2.0' (and everything under it)
+* Building wheel from sdist
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=77
+* Getting build dependencies for wheel...
+running egg_info
+writing single_parameter_observatory.egg-info\PKG-INFO
+writing dependency_links to single_parameter_observatory.egg-info\dependency_links.txt
+writing entry points to single_parameter_observatory.egg-info\entry_points.txt
+writing requirements to single_parameter_observatory.egg-info\requires.txt
+writing top-level names to single_parameter_observatory.egg-info\top_level.txt
+reading manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+* Installed build dependency versions:
+  - setuptools==84.2.1
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build\lib\single_parameter_observatory
+copying single_parameter_observatory\config.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\convergence.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\dashboard.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\errors.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\exporters.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\fp32_inspector.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\main.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\model.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\numerical_analysis.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\optimizer_inspector.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\recorder.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\run_checks.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_server.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\studio_session.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\tracker.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\training_engine.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\validation.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\visualization.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\__init__.py -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\__main__.py -> build\lib\single_parameter_observatory
+creating build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_autograd.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_config_integrity.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_core_correctness_repairs.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_dashboard_cli_regressions.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_fp32.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_numerics.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_optimizer.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_parameter.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_recording.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_recording_integrity_exports.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_regressions.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_release_checks.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_server.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_studio_session.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_training.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\test_views.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\_bootstrap.py -> build\lib\single_parameter_observatory\tests
+copying single_parameter_observatory\tests\__init__.py -> build\lib\single_parameter_observatory\tests
+running egg_info
+writing single_parameter_observatory.egg-info\PKG-INFO
+writing dependency_links to single_parameter_observatory.egg-info\dependency_links.txt
+writing entry points to single_parameter_observatory.egg-info\entry_points.txt
+writing requirements to single_parameter_observatory.egg-info\requires.txt
+writing top-level names to single_parameter_observatory.egg-info\top_level.txt
+reading manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'single_parameter_observatory.egg-info\SOURCES.txt'
+copying single_parameter_observatory\API.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\ARCHITECTURE.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\AUDIT.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\CHANGELOG.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\CONTRIBUTING.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\LICENSE -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\README.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\REPAIR_REPORT.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\STUDIO.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\STUDIO_REPORT.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\USAGE.md -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\py.typed -> build\lib\single_parameter_observatory
+copying single_parameter_observatory\requirements.txt -> build\lib\single_parameter_observatory
+creating build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\index.html -> build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\studio.css -> build\lib\single_parameter_observatory\studio_web
+copying single_parameter_observatory\studio_web\studio.js -> build\lib\single_parameter_observatory\studio_web
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\single_parameter_observatory
+copying build\lib\single_parameter_observatory\API.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\ARCHITECTURE.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\AUDIT.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\CHANGELOG.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\config.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\CONTRIBUTING.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\convergence.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\dashboard.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\errors.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\exporters.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\fp32_inspector.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\LICENSE -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\main.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\model.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\numerical_analysis.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\optimizer_inspector.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\py.typed -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\README.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\recorder.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\REPAIR_REPORT.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\requirements.txt -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\run_checks.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\STUDIO.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\STUDIO_REPORT.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_server.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\studio_session.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+creating build\bdist.win-amd64\wheel\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\index.html -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\studio.css -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+copying build\lib\single_parameter_observatory\studio_web\studio.js -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\studio_web
+creating build\bdist.win-amd64\wheel\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_autograd.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_config_integrity.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_core_correctness_repairs.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_dashboard_cli_regressions.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_fp32.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_numerics.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_optimizer.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_parameter.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_recording.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_recording_integrity_exports.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_regressions.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_release_checks.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_server.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_studio_session.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_training.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\test_views.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\_bootstrap.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tests\__init__.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory\tests
+copying build\lib\single_parameter_observatory\tracker.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\training_engine.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\USAGE.md -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\validation.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\visualization.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\__init__.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+copying build\lib\single_parameter_observatory\__main__.py -> build\bdist.win-amd64\wheel\.\single_parameter_observatory
+running install_egg_info
+Copying single_parameter_observatory.egg-info to build\bdist.win-amd64\wheel\.\single_parameter_observatory-1.2.0-py3.12.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\single_parameter_observatory-1.2.0.dist-info\WHEEL
+creating 'C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\download\\dist\\.tmp-02wbal67\\single_parameter_observatory-1.2.0-py3-none-any.whl' and adding 'build\\bdist.win-amd64\\wheel' to it
+adding 'single_parameter_observatory/API.md'
+adding 'single_parameter_observatory/ARCHITECTURE.md'
+adding 'single_parameter_observatory/AUDIT.md'
+adding 'single_parameter_observatory/CHANGELOG.md'
+adding 'single_parameter_observatory/CONTRIBUTING.md'
+adding 'single_parameter_observatory/LICENSE'
+adding 'single_parameter_observatory/README.md'
+adding 'single_parameter_observatory/REPAIR_REPORT.md'
+adding 'single_parameter_observatory/STUDIO.md'
+adding 'single_parameter_observatory/STUDIO_REPORT.md'
+adding 'single_parameter_observatory/USAGE.md'
+adding 'single_parameter_observatory/__init__.py'
+adding 'single_parameter_observatory/__main__.py'
+adding 'single_parameter_observatory/config.py'
+adding 'single_parameter_observatory/convergence.py'
+adding 'single_parameter_observatory/dashboard.py'
+adding 'single_parameter_observatory/errors.py'
+adding 'single_parameter_observatory/exporters.py'
+adding 'single_parameter_observatory/fp32_inspector.py'
+adding 'single_parameter_observatory/main.py'
+adding 'single_parameter_observatory/model.py'
+adding 'single_parameter_observatory/numerical_analysis.py'
+adding 'single_parameter_observatory/optimizer_inspector.py'
+adding 'single_parameter_observatory/py.typed'
+adding 'single_parameter_observatory/recorder.py'
+adding 'single_parameter_observatory/requirements.txt'
+adding 'single_parameter_observatory/run_checks.py'
+adding 'single_parameter_observatory/studio_server.py'
+adding 'single_parameter_observatory/studio_session.py'
+adding 'single_parameter_observatory/tracker.py'
+adding 'single_parameter_observatory/training_engine.py'
+adding 'single_parameter_observatory/validation.py'
+adding 'single_parameter_observatory/visualization.py'
+adding 'single_parameter_observatory/studio_web/index.html'
+adding 'single_parameter_observatory/studio_web/studio.css'
+adding 'single_parameter_observatory/studio_web/studio.js'
+adding 'single_parameter_observatory/tests/__init__.py'
+adding 'single_parameter_observatory/tests/_bootstrap.py'
+adding 'single_parameter_observatory/tests/test_autograd.py'
+adding 'single_parameter_observatory/tests/test_config_integrity.py'
+adding 'single_parameter_observatory/tests/test_core_correctness_repairs.py'
+adding 'single_parameter_observatory/tests/test_dashboard_cli_regressions.py'
+adding 'single_parameter_observatory/tests/test_fp32.py'
+adding 'single_parameter_observatory/tests/test_numerics.py'
+adding 'single_parameter_observatory/tests/test_optimizer.py'
+adding 'single_parameter_observatory/tests/test_parameter.py'
+adding 'single_parameter_observatory/tests/test_recording.py'
+adding 'single_parameter_observatory/tests/test_recording_integrity_exports.py'
+adding 'single_parameter_observatory/tests/test_regressions.py'
+adding 'single_parameter_observatory/tests/test_release_checks.py'
+adding 'single_parameter_observatory/tests/test_studio_server.py'
+adding 'single_parameter_observatory/tests/test_studio_session.py'
+adding 'single_parameter_observatory/tests/test_training.py'
+adding 'single_parameter_observatory/tests/test_views.py'
+adding 'single_parameter_observatory-1.2.0.dist-info/licenses/LICENSE'
+adding 'single_parameter_observatory-1.2.0.dist-info/METADATA'
+adding 'single_parameter_observatory-1.2.0.dist-info/WHEEL'
+adding 'single_parameter_observatory-1.2.0.dist-info/entry_points.txt'
+adding 'single_parameter_observatory-1.2.0.dist-info/top_level.txt'
+adding 'single_parameter_observatory-1.2.0.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+WARNING Package 'single_parameter_observatory.studio_web' is absent from the `packages` configuration.
+!!
+
+        ********************************************************************************
+        ############################
+        # Package would be ignored #
+        ############################
+        Python recognizes 'single_parameter_observatory.studio_web' as an importable package[^1],
+        but it is absent from setuptools' `packages` configuration.
+
+        This leads to an ambiguous overall configuration. If you want to distribute this
+        package, please make sure that 'single_parameter_observatory.studio_web' is explicitly added
+        to the `packages` configuration field.
+
+        Alternatively, you can also rely on setuptools' discovery methods
+        (for example by using `find_namespace_packages(...)`/`find_namespace:`
+        instead of `find_packages(...)`/`find:`).
+
+        You can read more about "package discovery" on setuptools documentation page:
+
+        - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+        If you don't want 'single_parameter_observatory.studio_web' to be distributed and are
+        already explicitly excluding 'single_parameter_observatory.studio_web' via
+        `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+        you can try to use `exclude_package_data`, or `include-package-data=False` in
+        combination with a more fine grained `package-data` configuration.
+
+        You can read more about "package data files" on setuptools documentation page:
+
+        - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+        [^1]: For Python, any directory (with suitable naming) can be imported,
+              even if it does not contain any `.py` files.
+              On the other hand, currently there is no concept of package data
+              directory, all directories are treated like packages.
+        ********************************************************************************
+
+!!
+Successfully built single_parameter_observatory-1.2.0.tar.gz and single_parameter_observatory-1.2.0-py3-none-any.whl

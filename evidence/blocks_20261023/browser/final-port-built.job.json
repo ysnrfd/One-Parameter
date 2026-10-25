@@ -1,0 +1,1137 @@
+{
+  "id": "8cdbfca3e8734985a6dd982b1e8f186d",
+  "graph_id": "f72f3eda01c84b19958fea10f2ed473b",
+  "graph_revision": 10,
+  "graph_name": "Port-built token model \u00b7 browser",
+  "status": "succeeded",
+  "created_at": "2026-10-23T20:16:22.513821+00:00",
+  "started_at": "2026-10-23T20:16:22.584113+00:00",
+  "finished_at": "2026-10-23T20:16:34.548546+00:00",
+  "graph": {
+    "name": "Port-built token model \u00b7 browser",
+    "id": "f72f3eda01c84b19958fea10f2ed473b",
+    "description": "",
+    "nodes": [
+      {
+        "id": "node_d17fc78da32a4cc8",
+        "type": "hf.op_rmsnorm",
+        "title": "RMSNorm operation",
+        "position": {
+          "x": 49,
+          "y": 220
+        },
+        "params": {
+          "normalized_shape": 32,
+          "eps": 1e-05
+        }
+      },
+      {
+        "id": "node_3781af91813f4973",
+        "type": "hf.op_embedding",
+        "title": "Token embedding",
+        "position": {
+          "x": 335,
+          "y": 123
+        },
+        "params": {
+          "num_embeddings": 32,
+          "embedding_dim": 32
+        }
+      },
+      {
+        "id": "node_95f1380d91164692",
+        "type": "hf.tensor_input",
+        "title": "Token / mask input",
+        "position": {
+          "x": 178,
+          "y": -193
+        },
+        "params": {
+          "field": "input_ids",
+          "dtype": "int64"
+        }
+      },
+      {
+        "id": "node_b61c32031c0b4907",
+        "type": "hf.op_linear",
+        "title": "Projection / LM head",
+        "position": {
+          "x": 338,
+          "y": 448
+        },
+        "params": {
+          "in_features": 32,
+          "out_features": 32,
+          "bias": false
+        }
+      },
+      {
+        "id": "node_236fc6bd2e8042de",
+        "type": "hf.graph_model",
+        "title": "Compile visual causal model",
+        "position": {
+          "x": 627,
+          "y": 303
+        },
+        "params": {
+          "vocab_size": 32,
+          "max_positions": 64,
+          "pad_token_id": 0,
+          "bos_token_id": 2,
+          "eos_token_id": 3,
+          "seed": 42
+        }
+      },
+      {
+        "id": "node_2fb1e478d9f347c8",
+        "type": "hf.inspect",
+        "title": "Inspect model",
+        "position": {
+          "x": 916,
+          "y": 491
+        },
+        "params": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_5f03a05eedd446c8",
+        "source": "node_3781af91813f4973",
+        "source_port": "x",
+        "target": "node_d17fc78da32a4cc8",
+        "target_port": "x"
+      },
+      {
+        "id": "edge_864331a169ed4602",
+        "source": "node_95f1380d91164692",
+        "source_port": "x",
+        "target": "node_3781af91813f4973",
+        "target_port": "x"
+      },
+      {
+        "id": "edge_4a1b5e2b74b04f51",
+        "source": "node_d17fc78da32a4cc8",
+        "source_port": "x",
+        "target": "node_b61c32031c0b4907",
+        "target_port": "x"
+      },
+      {
+        "id": "edge_e03d46d2377f4e57",
+        "source": "node_b61c32031c0b4907",
+        "source_port": "x",
+        "target": "node_236fc6bd2e8042de",
+        "target_port": "logits"
+      },
+      {
+        "id": "edge_f1e71a9e63ec4032",
+        "source": "node_236fc6bd2e8042de",
+        "source_port": "model",
+        "target": "node_2fb1e478d9f347c8",
+        "target_port": "model"
+      }
+    ],
+    "view": {
+      "x": 28.065777777777775,
+      "y": 134.86478472222223,
+      "zoom": 0.24355555555555555
+    },
+    "revision": 10,
+    "created_at": "2026-10-23T20:05:50.012747+00:00",
+    "updated_at": "2026-10-23T20:16:22.302534+00:00"
+  },
+  "definitions": {
+    "hf.inspect": {
+      "id": "hf.inspect",
+      "title": "Inspect model",
+      "category": "Transformers \u00b7 Observe",
+      "description": "Real parameter names, shapes, trainable counts, architecture, finite checks and weight hash.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "report",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    "hf.tensor_input": {
+      "id": "hf.tensor_input",
+      "title": "Token / mask input",
+      "category": "Llama blocks \u00b7 Tensor flow",
+      "description": "A symbolic model input. Its connected operations replay on every forward pass, training update and generated token.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "x",
+          "type": "tensor-expression",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "field",
+          "type": "string",
+          "default": "input_ids",
+          "options": [
+            "input_ids",
+            "attention_mask",
+            "position_ids"
+          ]
+        },
+        {
+          "name": "dtype",
+          "type": "string",
+          "default": "int64",
+          "options": [
+            "int64",
+            "float32",
+            "bool"
+          ]
+        }
+      ]
+    },
+    "hf.op_embedding": {
+      "id": "hf.op_embedding",
+      "title": "Token embedding",
+      "category": "Llama blocks \u00b7 Embedding",
+      "description": "Editable trainable vocabulary table; converts token IDs into hidden vectors.",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "tensor-expression",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x",
+          "type": "tensor-expression",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "num_embeddings",
+          "type": "integer",
+          "default": 32,
+          "min": 1,
+          "max": 262144
+        },
+        {
+          "name": "embedding_dim",
+          "type": "integer",
+          "default": 32,
+          "min": 1,
+          "max": 262144
+        }
+      ]
+    },
+    "hf.op_linear": {
+      "id": "hf.op_linear",
+      "title": "Projection / LM head",
+      "category": "Llama blocks \u00b7 Projection",
+      "description": "A separately registered trainable Linear projection. Use for Q, K, V, attention output, gate, up, down or vocabulary head.",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "tensor-expression",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x",
+          "type": "tensor-expression",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "in_features",
+          "type": "integer",
+          "default": 32,
+          "min": 1,
+          "max": 262144
+        },
+        {
+          "name": "out_features",
+          "type": "integer",
+          "default": 32,
+          "min": 1,
+          "max": 262144
+        },
+        {
+          "name": "bias",
+          "type": "boolean",
+          "default": false
+        }
+      ]
+    },
+    "hf.op_rmsnorm": {
+      "id": "hf.op_rmsnorm",
+      "title": "RMSNorm operation",
+      "category": "Llama blocks \u00b7 Normalization",
+      "description": "Trainable RMS normalization in the forward graph, with float32 variance accumulation and editable epsilon.",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "tensor-expression",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x",
+          "type": "tensor-expression",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "normalized_shape",
+          "type": "integer",
+          "default": 32,
+          "min": 1,
+          "max": 262144
+        },
+        {
+          "name": "eps",
+          "type": "number",
+          "default": 1e-06,
+          "min": 1e-12,
+          "max": 1
+        }
+      ]
+    },
+    "hf.graph_model": {
+      "id": "hf.graph_model",
+      "title": "Compile visual causal model",
+      "category": "Llama blocks \u00b7 Model",
+      "description": "Compile the connected tensor DAG into a trainable causal language model. Shared visual nodes register weights once; the saved recipe replays for training, generation and checkpoint reload.",
+      "inputs": [
+        {
+          "name": "logits",
+          "type": "tensor-expression",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "vocab_size",
+          "type": "integer",
+          "default": 32,
+          "min": 1,
+          "max": 262144
+        },
+        {
+          "name": "max_positions",
+          "type": "integer",
+          "default": 64,
+          "min": 2,
+          "max": 512
+        },
+        {
+          "name": "pad_token_id",
+          "type": "integer",
+          "default": 0,
+          "min": 0
+        },
+        {
+          "name": "bos_token_id",
+          "type": "integer",
+          "default": 2,
+          "min": 0
+        },
+        {
+          "name": "eos_token_id",
+          "type": "integer",
+          "default": 3,
+          "min": 0
+        },
+        {
+          "name": "seed",
+          "type": "integer",
+          "default": 42,
+          "min": 0,
+          "max": 2147483647
+        }
+      ]
+    }
+  },
+  "plugin_versions": {},
+  "order": [
+    "node_95f1380d91164692",
+    "node_3781af91813f4973",
+    "node_d17fc78da32a4cc8",
+    "node_b61c32031c0b4907",
+    "node_236fc6bd2e8042de",
+    "node_2fb1e478d9f347c8"
+  ],
+  "nodes": {
+    "node_d17fc78da32a4cc8": {
+      "status": "succeeded",
+      "inputs": {
+        "x": {
+          "kind": "tensor-expression",
+          "nodes": [
+            {
+              "id": "op0001",
+              "inputs": {},
+              "op": "hf.tensor_input",
+              "params": {
+                "dtype": "int64",
+                "field": "input_ids"
+              }
+            },
+            {
+              "id": "op0002",
+              "inputs": {
+                "x": "op0001"
+              },
+              "op": "hf.op_embedding",
+              "params": {
+                "embedding_dim": 32,
+                "num_embeddings": 32
+              }
+            }
+          ],
+          "output": "op0002"
+        }
+      },
+      "outputs": {
+        "x": {
+          "kind": "tensor-expression",
+          "nodes": [
+            {
+              "id": "op0001",
+              "inputs": {},
+              "op": "hf.tensor_input",
+              "params": {
+                "dtype": "int64",
+                "field": "input_ids"
+              }
+            },
+            {
+              "id": "op0002",
+              "inputs": {
+                "x": "op0001"
+              },
+              "op": "hf.op_embedding",
+              "params": {
+                "embedding_dim": 32,
+                "num_embeddings": 32
+              }
+            },
+            {
+              "id": "op0003",
+              "inputs": {
+                "x": "op0002"
+              },
+              "op": "hf.op_rmsnorm",
+              "params": {
+                "eps": 1e-05,
+                "normalized_shape": 32
+              }
+            }
+          ],
+          "output": "op0003"
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {
+        "normalized_shape": 32,
+        "eps": 1e-05
+      }
+    },
+    "node_3781af91813f4973": {
+      "status": "succeeded",
+      "inputs": {
+        "x": {
+          "kind": "tensor-expression",
+          "nodes": [
+            {
+              "id": "op0001",
+              "inputs": {},
+              "op": "hf.tensor_input",
+              "params": {
+                "dtype": "int64",
+                "field": "input_ids"
+              }
+            }
+          ],
+          "output": "op0001"
+        }
+      },
+      "outputs": {
+        "x": {
+          "kind": "tensor-expression",
+          "nodes": [
+            {
+              "id": "op0001",
+              "inputs": {},
+              "op": "hf.tensor_input",
+              "params": {
+                "dtype": "int64",
+                "field": "input_ids"
+              }
+            },
+            {
+              "id": "op0002",
+              "inputs": {
+                "x": "op0001"
+              },
+              "op": "hf.op_embedding",
+              "params": {
+                "embedding_dim": 32,
+                "num_embeddings": 32
+              }
+            }
+          ],
+          "output": "op0002"
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {
+        "num_embeddings": 32,
+        "embedding_dim": 32
+      }
+    },
+    "node_95f1380d91164692": {
+      "status": "succeeded",
+      "inputs": {},
+      "outputs": {
+        "x": {
+          "kind": "tensor-expression",
+          "nodes": [
+            {
+              "id": "op0001",
+              "inputs": {},
+              "op": "hf.tensor_input",
+              "params": {
+                "dtype": "int64",
+                "field": "input_ids"
+              }
+            }
+          ],
+          "output": "op0001"
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 9594.000000004598,
+      "parameters": {
+        "field": "input_ids",
+        "dtype": "int64"
+      }
+    },
+    "node_b61c32031c0b4907": {
+      "status": "succeeded",
+      "inputs": {
+        "x": {
+          "kind": "tensor-expression",
+          "nodes": [
+            {
+              "id": "op0001",
+              "inputs": {},
+              "op": "hf.tensor_input",
+              "params": {
+                "dtype": "int64",
+                "field": "input_ids"
+              }
+            },
+            {
+              "id": "op0002",
+              "inputs": {
+                "x": "op0001"
+              },
+              "op": "hf.op_embedding",
+              "params": {
+                "embedding_dim": 32,
+                "num_embeddings": 32
+              }
+            },
+            {
+              "id": "op0003",
+              "inputs": {
+                "x": "op0002"
+              },
+              "op": "hf.op_rmsnorm",
+              "params": {
+                "eps": 1e-05,
+                "normalized_shape": 32
+              }
+            }
+          ],
+          "output": "op0003"
+        }
+      },
+      "outputs": {
+        "x": {
+          "kind": "tensor-expression",
+          "nodes": [
+            {
+              "id": "op0001",
+              "inputs": {},
+              "op": "hf.tensor_input",
+              "params": {
+                "dtype": "int64",
+                "field": "input_ids"
+              }
+            },
+            {
+              "id": "op0002",
+              "inputs": {
+                "x": "op0001"
+              },
+              "op": "hf.op_embedding",
+              "params": {
+                "embedding_dim": 32,
+                "num_embeddings": 32
+              }
+            },
+            {
+              "id": "op0003",
+              "inputs": {
+                "x": "op0002"
+              },
+              "op": "hf.op_rmsnorm",
+              "params": {
+                "eps": 1e-05,
+                "normalized_shape": 32
+              }
+            },
+            {
+              "id": "op0004",
+              "inputs": {
+                "x": "op0003"
+              },
+              "op": "hf.op_linear",
+              "params": {
+                "bias": false,
+                "in_features": 32,
+                "out_features": 32
+              }
+            }
+          ],
+          "output": "op0004"
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {
+        "in_features": 32,
+        "out_features": 32,
+        "bias": false
+      }
+    },
+    "node_236fc6bd2e8042de": {
+      "status": "succeeded",
+      "inputs": {
+        "logits": {
+          "kind": "tensor-expression",
+          "nodes": [
+            {
+              "id": "op0001",
+              "inputs": {},
+              "op": "hf.tensor_input",
+              "params": {
+                "dtype": "int64",
+                "field": "input_ids"
+              }
+            },
+            {
+              "id": "op0002",
+              "inputs": {
+                "x": "op0001"
+              },
+              "op": "hf.op_embedding",
+              "params": {
+                "embedding_dim": 32,
+                "num_embeddings": 32
+              }
+            },
+            {
+              "id": "op0003",
+              "inputs": {
+                "x": "op0002"
+              },
+              "op": "hf.op_rmsnorm",
+              "params": {
+                "eps": 1e-05,
+                "normalized_shape": 32
+              }
+            },
+            {
+              "id": "op0004",
+              "inputs": {
+                "x": "op0003"
+              },
+              "op": "hf.op_linear",
+              "params": {
+                "bias": false,
+                "in_features": 32,
+                "out_features": 32
+              }
+            }
+          ],
+          "output": "op0004"
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "TensorGraphCausalLM",
+          "device": "cpu",
+          "family": "tensor-graph",
+          "handle": "d8a69cc769064dd3afa39b458b128686",
+          "kind": "model",
+          "parameter_count": 2080,
+          "parameter_tensors": 3,
+          "trainable_parameters": 2080
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 2266.0000000032596,
+      "parameters": {
+        "vocab_size": 32,
+        "max_positions": 64,
+        "pad_token_id": 0,
+        "bos_token_id": 2,
+        "eos_token_id": 3,
+        "seed": 42
+      }
+    },
+    "node_2fb1e478d9f347c8": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "TensorGraphCausalLM",
+          "device": "cpu",
+          "family": "tensor-graph",
+          "handle": "d8a69cc769064dd3afa39b458b128686",
+          "kind": "model",
+          "parameter_count": 2080,
+          "parameter_tensors": 3,
+          "trainable_parameters": 2080
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "TensorGraphCausalLM",
+          "device": "cpu",
+          "family": "tensor-graph",
+          "handle": "d8a69cc769064dd3afa39b458b128686",
+          "kind": "model",
+          "parameter_count": 2080,
+          "parameter_tensors": 3,
+          "trainable_parameters": 2080
+        },
+        "report": {
+          "architecture": "TensorGraphCausalLM",
+          "config": {
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "max_position_embeddings": 64,
+            "model_type": "studio-tensor-graph",
+            "pad_token_id": 0,
+            "vocab_size": 32
+          },
+          "device": "cpu",
+          "family": "tensor-graph",
+          "handle": "d8a69cc769064dd3afa39b458b128686",
+          "kind": "model",
+          "module_count": 6,
+          "modules": [
+            {
+              "children": [
+                "operations"
+              ],
+              "children_truncated": false,
+              "depth": 0,
+              "direct_parameter_count": 0,
+              "name": "",
+              "parameter_tensors": 3,
+              "parent": null,
+              "total_parameter_count": 2080,
+              "trainable_parameters": 2080,
+              "type": "TensorGraphCausalLM"
+            },
+            {
+              "children": [
+                "operations.op0001",
+                "operations.op0002",
+                "operations.op0003",
+                "operations.op0004"
+              ],
+              "children_truncated": false,
+              "depth": 1,
+              "direct_parameter_count": 0,
+              "name": "operations",
+              "parameter_tensors": 3,
+              "parent": "",
+              "total_parameter_count": 2080,
+              "trainable_parameters": 2080,
+              "type": "ModuleDict"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 0,
+              "name": "operations.op0001",
+              "parameter_tensors": 0,
+              "parent": "operations",
+              "total_parameter_count": 0,
+              "trainable_parameters": 0,
+              "type": "Identity"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 1024,
+              "name": "operations.op0002",
+              "parameter_tensors": 1,
+              "parent": "operations",
+              "total_parameter_count": 1024,
+              "trainable_parameters": 1024,
+              "type": "Embedding"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 32,
+              "name": "operations.op0003",
+              "parameter_tensors": 1,
+              "parent": "operations",
+              "total_parameter_count": 32,
+              "trainable_parameters": 32,
+              "type": "LlamaRMSNorm"
+            },
+            {
+              "children": [],
+              "children_truncated": false,
+              "depth": 2,
+              "direct_parameter_count": 1024,
+              "name": "operations.op0004",
+              "parameter_tensors": 1,
+              "parent": "operations",
+              "total_parameter_count": 1024,
+              "trainable_parameters": 1024,
+              "type": "Linear"
+            }
+          ],
+          "modules_truncated": false,
+          "parameter_count": 2080,
+          "parameter_tensors": 3,
+          "parameters": [
+            {
+              "dtype": "torch.float32",
+              "elements": 1024,
+              "finite": true,
+              "name": "operations.op0002.weight",
+              "shape": [
+                32,
+                32
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 32,
+              "finite": true,
+              "name": "operations.op0003.weight",
+              "shape": [
+                32
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 1024,
+              "finite": true,
+              "name": "operations.op0004.weight",
+              "shape": [
+                32,
+                32
+              ],
+              "trainable": true
+            }
+          ],
+          "recipe": {
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "expression": {
+              "kind": "tensor-expression",
+              "nodes": [
+                {
+                  "id": "op0001",
+                  "inputs": {},
+                  "op": "hf.tensor_input",
+                  "params": {
+                    "dtype": "int64",
+                    "field": "input_ids"
+                  }
+                },
+                {
+                  "id": "op0002",
+                  "inputs": {
+                    "x": "op0001"
+                  },
+                  "op": "hf.op_embedding",
+                  "params": {
+                    "embedding_dim": 32,
+                    "num_embeddings": 32
+                  }
+                },
+                {
+                  "id": "op0003",
+                  "inputs": {
+                    "x": "op0002"
+                  },
+                  "op": "hf.op_rmsnorm",
+                  "params": {
+                    "eps": 1e-05,
+                    "normalized_shape": 32
+                  }
+                },
+                {
+                  "id": "op0004",
+                  "inputs": {
+                    "x": "op0003"
+                  },
+                  "op": "hf.op_linear",
+                  "params": {
+                    "bias": false,
+                    "in_features": 32,
+                    "out_features": 32
+                  }
+                }
+              ],
+              "output": "op0004"
+            },
+            "family": "tensor-graph",
+            "max_positions": 64,
+            "pad_token_id": 0,
+            "seed": 42,
+            "task": "causal-lm",
+            "vocab_size": 32
+          },
+          "state_sha256": "0fcc7e73018e432af07d931eb9db8014be71cc6c6497f34a9a5be56eadd53465",
+          "tensor_graph": {
+            "execution": "Connected operations replay on every forward with registered shared parameters",
+            "expression": {
+              "kind": "tensor-expression",
+              "nodes": [
+                {
+                  "id": "op0001",
+                  "inputs": {},
+                  "op": "hf.tensor_input",
+                  "params": {
+                    "dtype": "int64",
+                    "field": "input_ids"
+                  }
+                },
+                {
+                  "id": "op0002",
+                  "inputs": {
+                    "x": "op0001"
+                  },
+                  "op": "hf.op_embedding",
+                  "params": {
+                    "embedding_dim": 32,
+                    "num_embeddings": 32
+                  }
+                },
+                {
+                  "id": "op0003",
+                  "inputs": {
+                    "x": "op0002"
+                  },
+                  "op": "hf.op_rmsnorm",
+                  "params": {
+                    "eps": 1e-05,
+                    "normalized_shape": 32
+                  }
+                },
+                {
+                  "id": "op0004",
+                  "inputs": {
+                    "x": "op0003"
+                  },
+                  "op": "hf.op_linear",
+                  "params": {
+                    "bias": false,
+                    "in_features": 32,
+                    "out_features": 32
+                  }
+                }
+              ],
+              "output": "op0004"
+            },
+            "operation_count": 4,
+            "operation_shapes": {
+              "op0001": [
+                "batch",
+                "sequence"
+              ],
+              "op0002": [
+                "batch",
+                "sequence",
+                32
+              ],
+              "op0003": [
+                "batch",
+                "sequence",
+                32
+              ],
+              "op0004": [
+                "batch",
+                "sequence",
+                32
+              ]
+            }
+          },
+          "trainable_parameters": 2080
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 15.999999995983671,
+      "parameters": {}
+    }
+  },
+  "events": [
+    {
+      "time": "2026-10-23T20:16:22.515170+00:00",
+      "type": "queued",
+      "message": "Captured an immutable workflow and node-definition snapshot",
+      "node_id": null
+    },
+    {
+      "time": "2026-10-23T20:16:22.584113+00:00",
+      "type": "started",
+      "message": "Workflow execution started",
+      "node_id": null
+    },
+    {
+      "time": "2026-10-23T20:16:22.593134+00:00",
+      "type": "node_started",
+      "message": "Token / mask input",
+      "node_id": "node_95f1380d91164692"
+    },
+    {
+      "time": "2026-10-23T20:16:32.184501+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "node_95f1380d91164692"
+    },
+    {
+      "time": "2026-10-23T20:16:32.190491+00:00",
+      "type": "node_started",
+      "message": "Token embedding",
+      "node_id": "node_3781af91813f4973"
+    },
+    {
+      "time": "2026-10-23T20:16:32.200571+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "node_3781af91813f4973"
+    },
+    {
+      "time": "2026-10-23T20:16:32.208572+00:00",
+      "type": "node_started",
+      "message": "RMSNorm operation",
+      "node_id": "node_d17fc78da32a4cc8"
+    },
+    {
+      "time": "2026-10-23T20:16:32.216629+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "node_d17fc78da32a4cc8"
+    },
+    {
+      "time": "2026-10-23T20:16:32.228118+00:00",
+      "type": "node_started",
+      "message": "Projection / LM head",
+      "node_id": "node_b61c32031c0b4907"
+    },
+    {
+      "time": "2026-10-23T20:16:32.235676+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "node_b61c32031c0b4907"
+    },
+    {
+      "time": "2026-10-23T20:16:32.242759+00:00",
+      "type": "node_started",
+      "message": "Compile visual causal model",
+      "node_id": "node_236fc6bd2e8042de"
+    },
+    {
+      "time": "2026-10-23T20:16:34.518933+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "node_236fc6bd2e8042de"
+    },
+    {
+      "time": "2026-10-23T20:16:34.525484+00:00",
+      "type": "node_started",
+      "message": "Inspect model",
+      "node_id": "node_2fb1e478d9f347c8"
+    },
+    {
+      "time": "2026-10-23T20:16:34.548546+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "node_2fb1e478d9f347c8"
+    },
+    {
+      "time": "2026-10-23T20:16:34.548546+00:00",
+      "type": "succeeded",
+      "message": "All workflow nodes completed",
+      "node_id": null
+    }
+  ],
+  "error": null,
+  "idempotency_key": "execution_bce6a490865845db",
+  "partial_effects": "Completed experiment actions are retained if a later node fails or execution is cancelled.",
+  "snapshot_sha256": "319dc8913c162f3af3ba81b3f1f59619b22a81af702a166b2e980db0c568e3a9"
+}

@@ -1,0 +1,87 @@
+{
+  "ledger": {
+    "gradient_checks": 5,
+    "gradient_failures": 0,
+    "finite_difference_failures": 0,
+    "reconstruction_checks": 5,
+    "reconstruction_failures": 0,
+    "bit_checks": 1,
+    "bit_failures": 0,
+    "ulp_checks": 1,
+    "ulp_failures": 0,
+    "max_gradient_relative_error": 6.309028579778069e-05,
+    "max_gradient_absolute_error": 6.749072461263023e-07,
+    "max_finite_difference_relative_error": 6.309075357954876e-05,
+    "max_finite_difference_absolute_error": 6.749122505294441e-07,
+    "max_reconstruction_ulp_error": 0,
+    "total_failures": 0,
+    "failure_notes": []
+  },
+  "per_step": [
+    {
+      "step": 0,
+      "gradient_analytical": -0.010697482783475412,
+      "gradient_finite_difference": -0.010697482788479816,
+      "gradient_finite_difference_h": 2.0000000000000003e-06,
+      "gradient_fp64_autograd": -0.010697482783475412,
+      "gradient_vs_analytical_rel": 6.309028579778069e-05,
+      "gradient_vs_finite_difference_rel": 6.309075357954876e-05,
+      "status": "PASS",
+      "reconstruction_status": "PASS",
+      "reconstruction_ulp_error": 0,
+      "reconstruction_bit_exact": true
+    },
+    {
+      "step": 1,
+      "gradient_analytical": -0.0164971708488947,
+      "gradient_finite_difference": -0.01649717068273451,
+      "gradient_finite_difference_h": 1.8980001211166383e-06,
+      "gradient_fp64_autograd": -0.0164971708488947,
+      "gradient_vs_analytical_rel": 2.0079476429545154e-05,
+      "gradient_vs_finite_difference_rel": 2.008954867340922e-05,
+      "status": "PASS",
+      "reconstruction_status": "PASS",
+      "reconstruction_ulp_error": 0,
+      "reconstruction_bit_exact": true
+    },
+    {
+      "step": 2,
+      "gradient_analytical": -0.0252305504538244,
+      "gradient_finite_difference": -0.02523055045229379,
+      "gradient_finite_difference_h": 1.7972145080566407e-06,
+      "gradient_fp64_autograd": -0.0252305504538244,
+      "gradient_vs_analytical_rel": 2.187612146482987e-06,
+      "gradient_vs_finite_difference_rel": 2.1875514817096435e-06,
+      "status": "PASS",
+      "reconstruction_status": "PASS",
+      "reconstruction_ulp_error": 0,
+      "reconstruction_bit_exact": true
+    },
+    {
+      "step": 3,
+      "gradient_analytical": -0.03820362797392383,
+      "gradient_finite_difference": -0.03820362774509722,
+      "gradient_finite_difference_h": 1.698049306869507e-06,
+      "gradient_fp64_autograd": -0.03820362797392383,
+      "gradient_vs_analytical_rel": 5.196972412479533e-06,
+      "gradient_vs_finite_difference_rel": 5.190982787024093e-06,
+      "status": "PASS",
+      "reconstruction_status": "PASS",
+      "reconstruction_ulp_error": 0,
+      "reconstruction_bit_exact": true
+    },
+    {
+      "step": 4,
+      "gradient_analytical": -0.057244106820162496,
+      "gradient_finite_difference": -0.05724410676050415,
+      "gradient_finite_difference_h": 1.600601077079773e-06,
+      "gradient_fp64_autograd": -0.057244106820162496,
+      "gradient_vs_analytical_rel": 2.478299799961367e-06,
+      "gradient_vs_finite_difference_rel": 2.4793419770331006e-06,
+      "status": "PASS",
+      "reconstruction_status": "PASS",
+      "reconstruction_ulp_error": 0,
+      "reconstruction_bit_exact": true
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "name": "Safe model checkpoint round trip",
+  "description": "Train a multi-parameter network, export actual safetensors, rebuild from its recipe and evaluate the restored weights in the same execution.",
+  "nodes": [
+    {
+      "id": "model",
+      "type": "hf.sequential",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "data",
+      "type": "hf.data",
+      "position": {
+        "x": 20,
+        "y": 350
+      },
+      "params": {
+        "fields": {
+          "x": [
+            [
+              -1
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "labels": [
+            [
+              -2
+            ],
+            [
+              0
+            ],
+            [
+              2
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 350,
+        "y": 350
+      },
+      "params": {
+        "name": "SGD",
+        "lr": 0.01,
+        "momentum": 0.9
+      }
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "position": {
+        "x": 700,
+        "y": 20
+      },
+      "params": {
+        "steps": 4,
+        "batch_size": 3,
+        "loss": "mse"
+      }
+    },
+    {
+      "id": "before",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1030,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1360,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "load",
+      "type": "hf.load",
+      "position": {
+        "x": 1690,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "after",
+      "type": "hf.inspect",
+      "position": {
+        "x": 2020,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "evaluate",
+      "type": "hf.evaluate",
+      "position": {
+        "x": 2350,
+        "y": 20
+      },
+      "params": {
+        "loss": "mse"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "model:model-train:model",
+      "source": "model",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-train:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer:optimizer-train:optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train:model-before:model",
+      "source": "train",
+      "source_port": "model",
+      "target": "before",
+      "target_port": "model"
+    },
+    {
+      "id": "before:model-checkpoint:model",
+      "source": "before",
+      "source_port": "model",
+      "target": "checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "checkpoint:artifact-load:artifact",
+      "source": "checkpoint",
+      "source_port": "artifact",
+      "target": "load",
+      "target_port": "artifact"
+    },
+    {
+      "id": "load:model-after:model",
+      "source": "load",
+      "source_port": "model",
+      "target": "after",
+      "target_port": "model"
+    },
+    {
+      "id": "after:model-evaluate:model",
+      "source": "after",
+      "source_port": "model",
+      "target": "evaluate",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-evaluate:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "evaluate",
+      "target_port": "data"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.6
+  }
+}

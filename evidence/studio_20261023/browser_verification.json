@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "browser": "Codex in-app browser",
+  "viewport": {
+    "width": 884,
+    "height": 884
+  },
+  "views_verified": [
+    "world",
+    "timeline",
+    "microscope",
+    "data",
+    "journal",
+    "artifacts"
+  ],
+  "project_runs": 7,
+  "all_restored_engine_state_hashes_equal": true,
+  "restored_selected_run_id": "2f9dfd656e3f450cb3fd32dce3137fe0",
+  "restored_exact_seed": "18446744073709551615",
+  "restored_custom_batch_size": 2,
+  "workspace_notes_preserved": true,
+  "project_sha256": "9ce31549904b08a521adef8f8207377807ae9ee121d10b42f99b7f5eafce20c6",
+  "export_zip_sha256": "2c60ffb913fd0252a206371e597ef41cf2e3c2429815c73d0b38566607bb5c73",
+  "export_zip_members": [
+    "bit_history.csv",
+    "checkpoint.json",
+    "dataset.json",
+    "events.csv",
+    "landscape.json",
+    "optimizer_state_history.csv",
+    "provenance.json",
+    "stability.csv",
+    "summary.json",
+    "trajectory.csv",
+    "trajectory.json",
+    "trajectory.npz",
+    "trajectory.parquet",
+    "validation.json"
+  ],
+  "console_errors_after_final_reload": [],
+  "observed_timeline_chart_size": {
+    "width": 446,
+    "height": 238
+  },
+  "screenshot": "studio_timeline.png"
+}

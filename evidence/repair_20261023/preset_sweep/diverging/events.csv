@@ -1,0 +1,39 @@
+step,code,detail
+0,INITIALIZED,"w = -5.0 (0xC0A00000, exponent 129, fraction 2097152)"
+0,FORWARD_COMPLETE,prediction and intermediates recorded
+0,LOSS_COMPUTED,loss = 2704.0
+0,BACKWARD_STARTED,loss.backward()
+0,GRADIENT_AVAILABLE,parameter.grad written by autograd
+0,LANDSCAPE_PROBED,one-dimensional slice over +/-0.25 in float64
+0,OPTIMIZER_STATE_READ,lr in force = 1000000000.0; optimizer state before the step is not yet initialised for this parameter
+0,OPTIMIZER_STEP_STARTED,sgd.step()
+0,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+0,OPTIMIZER_STATE_READ,"adopted update variant 'sgd[clone_grad,coupled_into_grad]', measured from this run's own transition (0 ULP error)"
+0,BIT_PATTERN_CHANGED,15 bits changed (2481043216 ULP)
+0,PARAMETER_CHANGED,delta = 831999967237.0
+0,FP32_ROUNDING_OBSERVED,rounding residual -32763.0 (-0.4999237060546875 ULP)
+0,STABILITY_METRIC_UPDATED,mean |update| over window = 831999967237.0
+1,FORWARD_COMPLETE,prediction and intermediates recorded
+1,LOSS_COMPUTED,loss = 4.395622072103639e+25
+1,BACKWARD_STARTED,loss.backward()
+1,GRADIENT_AVAILABLE,parameter.grad written by autograd
+1,OPTIMIZER_STATE_READ,lr in force = 1000000000.0; optimizer state before the step is not yet initialised for this parameter
+1,OPTIMIZER_STEP_STARTED,sgd.step()
+1,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+1,BIT_PATTERN_CHANGED,20 bits changed (-3103045509 ULP)
+1,PARAMETER_CHANGED,delta = -1.0566400389735312e+23
+1,FP32_ROUNDING_OBSERVED,rounding residual 1378294884728832.0 (0.15302147157490253 ULP)
+1,STABILITY_METRIC_UPDATED,mean |update| over window = 5.283200194909255e+22
+2,FORWARD_COMPLETE,prediction and intermediates recorded
+2,LOSS_COMPUTED,loss = inf
+2,BACKWARD_STARTED,loss.backward()
+2,GRADIENT_AVAILABLE,parameter.grad written by autograd
+2,OPTIMIZER_STATE_READ,lr in force = 1000000000.0; optimizer state before the step is not yet initialised for this parameter
+2,OPTIMIZER_STEP_STARTED,sgd.step()
+2,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+2,BIT_PATTERN_CHANGED,16 bits changed (3721862218 ULP)
+2,PARAMETER_CHANGED,delta = 1.3314081022881067e+34
+2,FP32_ROUNDING_OBSERVED,rounding residual 5.2541462695474924e+26 (0.4244265556335449 ULP)
+2,NONFINITE_DETECTED,"a tracked quantity became NaN or infinite during this step: w = 1.3314081022775404e+34, gradient = -1.331408049746644e+25, loss = inf; non-finite optimizer entries = []"
+2,STABILITY_METRIC_UPDATED,mean |update| over window = 4.4380270076622435e+33
+2,RUN_ABORTED,non-finite state at step 2: the run was stopped rather than continuing with meaningless values

@@ -1,0 +1,194 @@
+{
+  "name": "Tiny offline GPT-2 training and generation",
+  "description": "Create random tiny GPT-2 weights locally, train two token sequences with AdamW, generate four tokens, inspect all parameter tensors and export safetensors.",
+  "nodes": [
+    {
+      "id": "config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "data",
+      "type": "hf.data",
+      "position": {
+        "x": 20,
+        "y": 350
+      },
+      "params": {
+        "fields": {
+          "input_ids": [
+            [
+              2,
+              4,
+              5,
+              3
+            ],
+            [
+              2,
+              5,
+              4,
+              3
+            ]
+          ],
+          "attention_mask": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "labels": [
+            [
+              2,
+              4,
+              5,
+              3
+            ],
+            [
+              2,
+              5,
+              4,
+              3
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 350,
+        "y": 350
+      },
+      "params": {
+        "lr": 0.001
+      }
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "position": {
+        "x": 700,
+        "y": 20
+      },
+      "params": {
+        "steps": 3,
+        "batch_size": 2,
+        "loss": "model"
+      }
+    },
+    {
+      "id": "generate",
+      "type": "hf.generate",
+      "position": {
+        "x": 1030,
+        "y": 20
+      },
+      "params": {
+        "max_new_tokens": 4
+      }
+    },
+    {
+      "id": "inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1360,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1690,
+        "y": 20
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "config:config-model:config",
+      "source": "config",
+      "source_port": "config",
+      "target": "model",
+      "target_port": "config"
+    },
+    {
+      "id": "model:model-train:model",
+      "source": "model",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-train:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer:optimizer-train:optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train:model-generate:model",
+      "source": "train",
+      "source_port": "model",
+      "target": "generate",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-generate:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "generate",
+      "target_port": "data"
+    },
+    {
+      "id": "generate:model-inspect:model",
+      "source": "generate",
+      "source_port": "model",
+      "target": "inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "inspect:model-checkpoint:model",
+      "source": "inspect",
+      "source_port": "model",
+      "target": "checkpoint",
+      "target_port": "model"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.6
+  }
+}

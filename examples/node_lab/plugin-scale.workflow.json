@@ -1,0 +1,58 @@
+{
+  "name": "Plugin scale playground",
+  "description": "A real custom node transforms a typed number and previews the result.",
+  "nodes": [
+    {
+      "id": "number",
+      "type": "core.number",
+      "position": {
+        "x": 40,
+        "y": 100
+      },
+      "params": {
+        "value": 21
+      }
+    },
+    {
+      "id": "scale",
+      "type": "local.examples/scale",
+      "position": {
+        "x": 370,
+        "y": 100
+      },
+      "params": {
+        "factor": 2
+      }
+    },
+    {
+      "id": "preview",
+      "type": "core.preview",
+      "position": {
+        "x": 700,
+        "y": 100
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "number-scale",
+      "source": "number",
+      "source_port": "value",
+      "target": "scale",
+      "target_port": "value"
+    },
+    {
+      "id": "scale-preview",
+      "source": "scale",
+      "source_port": "value",
+      "target": "preview",
+      "target_port": "value"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}

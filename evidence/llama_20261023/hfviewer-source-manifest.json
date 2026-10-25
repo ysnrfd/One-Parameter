@@ -1,0 +1,104 @@
+{
+  "repo": "embedl/hfviewer",
+  "revision": "26aa6d623298cd60ecbc54c527d3ff545793889b",
+  "all_inventory_entries": 62,
+  "source_files": [
+    {
+      "path": "README.md",
+      "bytes": 33662,
+      "sha256": "641f6cb75ca6178cb9ec068240d1a4623cce6d1b12dd35fc64c2ad354b90a0b5",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/README.md"
+    },
+    {
+      "path": "assets/hf_gallery/curated-popular/manifest.json",
+      "bytes": 2331,
+      "sha256": "15b7906bb008c7e7d214bc64e9e781c40b7eeb220feed159fc3cb39b02180d8b",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/assets/hf_gallery/curated-popular/manifest.json"
+    },
+    {
+      "path": "assets/hf_gallery/manifest.json",
+      "bytes": 5405,
+      "sha256": "cd6d9a32114be81f2c268a7701981afd29223ce96eac70008464dab40855f4a0",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/assets/hf_gallery/manifest.json"
+    },
+    {
+      "path": "hf-shell-app-2f72b4506d16.js",
+      "bytes": 2598197,
+      "sha256": "2f72b4506d16eee42a18b928b17dee4b54b61a0c823a955ad09c07bf8b0f59d5",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/hf-shell-app-2f72b4506d16.js"
+    },
+    {
+      "path": "hf-shell-css-2417117ca803.css",
+      "bytes": 3102,
+      "sha256": "2417117ca8034b90913dd98fd4cee7b77de5b8ed71d96a6c4faf91b39e4aa42b",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/hf-shell-css-2417117ca803.css"
+    },
+    {
+      "path": "hf-shell-css-2d1528ca9686.css",
+      "bytes": 723749,
+      "sha256": "2d1528ca96864e2615c0c393779fd4792d8aea8d1897a958fdbcc0218bf23cf0",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/hf-shell-css-2d1528ca9686.css"
+    },
+    {
+      "path": "hf-shell-css-49d8c9b6b1d8.css",
+      "bytes": 74780,
+      "sha256": "49d8c9b6b1d88be8c4e1f5e85e41420381a9082234e40716954e25263ddd6d86",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/hf-shell-css-49d8c9b6b1d8.css"
+    },
+    {
+      "path": "index.html",
+      "bytes": 648051,
+      "sha256": "9e7c44512c6f097ba83961266aa22ae4596a8531d061163a40bc68e91bc9d065",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/index.html"
+    },
+    {
+      "path": "models/glossary_filters.json",
+      "bytes": 364411,
+      "sha256": "a6e34d701470e101ba59826fabb9935e08818b7d579ab8de968ecb9b397c054d",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/models/glossary_filters.json"
+    },
+    {
+      "path": "models/models.json",
+      "bytes": 1824023,
+      "sha256": "6da8dd2fd42fa36844653b135396ef3276175593f926d172aee63f3bae11e97c",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/models/models.json"
+    },
+    {
+      "path": "models/orgs.json",
+      "bytes": 263601,
+      "sha256": "42bd4d920bd8a1098d18b3d04532952f69039a45557188dcbb2b6394682c6793",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/models/orgs.json"
+    },
+    {
+      "path": "models/trending_meta.json",
+      "bytes": 306,
+      "sha256": "5661936682f75a20f32fdfe063a6a022946118b0fdf500ca35b7b61d1bea3327",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/models/trending_meta.json"
+    },
+    {
+      "path": "space-auth.js",
+      "bytes": 33009,
+      "sha256": "de6378a7ebb682feaa3b99287ccb1743dd97688e2d95b56c027247f6afaca893",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/space-auth.js"
+    },
+    {
+      "path": "space-shell.js",
+      "bytes": 83788,
+      "sha256": "e3760652428b8c47f5eb58b1978ed1a82b6e15f66255dd0fd73f52ae9c03ada7",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/space-shell.js"
+    },
+    {
+      "path": "style.css",
+      "bytes": 1973,
+      "sha256": "f8e65ce20ff118628c0f132058d21d302f3dcc7983465e11daea1cd095b2ad5d",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/style.css"
+    },
+    {
+      "path": "visualizer/hfDeployButton.js",
+      "bytes": 18837,
+      "sha256": "40300c2e099fd5675dd3d4eb8aaabceed8d57b6e21a2200b2016fbfc0cf64136",
+      "url": "https://huggingface.co/spaces/embedl/hfviewer/resolve/26aa6d623298cd60ecbc54c527d3ff545793889b/visualizer/hfDeployButton.js"
+    }
+  ],
+  "read_at_utc": "2026-10-23T18:49:32Z"
+}

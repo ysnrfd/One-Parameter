@@ -1,0 +1,49 @@
+{
+  "complete": true,
+  "passed": 5,
+  "failed": 0,
+  "scope": "Isolated trusted helper functions on synthetic temporary inputs; original historical reports were not regenerated.",
+  "checks": [
+    {
+      "name": "historical crop helper source-derived bounds",
+      "size": [
+        96,
+        45
+      ],
+      "passed": true
+    },
+    {
+      "name": "Pillow Resampling.LANCZOS preserves original numeric filter bytes",
+      "size": [
+        80,
+        40
+      ],
+      "passed": true
+    },
+    {
+      "name": "pixel analysis helper on finite synthetic input",
+      "metrics": {
+        "frame": "source.png",
+        "dir": "spobs-historical-helpers-puqb657q",
+        "colored_pct": 100.0,
+        "white_pct": 0.0,
+        "dark_pct": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "ReportLab variadic styles and heading metadata render to temporary PDF",
+      "pdf_bytes": 1817,
+      "passed": true
+    },
+    {
+      "name": "typed native PDFium subset renders actual temporary PDF",
+      "pages": 1,
+      "image_size": [
+        1000,
+        1000
+      ],
+      "passed": true
+    }
+  ]
+}

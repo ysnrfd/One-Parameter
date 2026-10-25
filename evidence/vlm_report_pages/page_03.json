@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: Executive Summary page of an engineering audit report with header, body text, three summary metric boxes, and footer.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: N/A\nFIGURES: Three metric boxes are intact, horizontally centered, and contain readable text; no captions present for these specific elements.\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857777,
+  "id": "20261001202933ffb7901f79eb436c",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20261001202933ffb7901f79eb436c",
+  "usage": {
+    "completion_tokens": 79,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2225
+  }
+}

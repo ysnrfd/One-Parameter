@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: A4 body page with header, two sections of text (5.1, 5.2), a code block, and footer.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: N/A\nFIGURES: N/A\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857801,
+  "id": "202610012029586aa6ae6779e84866",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "202610012029586aa6ae6779e84866",
+  "usage": {
+    "completion_tokens": 66,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2212
+  }
+}

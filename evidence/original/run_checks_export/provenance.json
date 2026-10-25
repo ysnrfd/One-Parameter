@@ -1,0 +1,214 @@
+{
+  "environment": {
+    "python_version": "3.11.2",
+    "python_executable": "/usr/bin/python3",
+    "torch_version": "2.14.0+cpu",
+    "torch_file": "/tmp/torch/__init__.py",
+    "platform": "Linux-4.19.0-gvisor-x86_64-with-glibc2.36",
+    "machine": "x86_64",
+    "processor": "unknown",
+    "operating_system": "Linux 4.19.0-gvisor",
+    "device": "cpu",
+    "default_dtype": "torch.float32",
+    "num_threads": 2,
+    "numpy_version": "1.24.2",
+    "matplotlib_version": "3.10.1",
+    "matplotlib_backend": "Agg",
+    "parallel_info": "cuda_available=False mps_available=False"
+  },
+  "optimizer_source_audit": {
+    "optimizer_name": "adamw",
+    "class_name": "AdamW",
+    "class_module": "torch.optim.adamw",
+    "source_file": "/tmp/torch/optim/adamw.py",
+    "constructor_parameters": [
+      "params",
+      "lr",
+      "betas",
+      "eps",
+      "weight_decay",
+      "amsgrad",
+      "maximize"
+    ],
+    "supported_hyperparameters": [
+      "lr",
+      "weight_decay",
+      "betas",
+      "eps",
+      "amsgrad"
+    ],
+    "dropped_hyperparameters": [],
+    "group_flags": {
+      "amsgrad": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "lr": 0.1,
+      "maximize": false,
+      "weight_decay": 0.01
+    },
+    "source_findings": {
+      "source_text_available": true,
+      "single_tensor_function_found": true,
+      "uses_lerp_for_moment1": true,
+      "uses_mul_add_for_moment1": false,
+      "has_capturable_branch": false,
+      "decay_before_update": true,
+      "decay_after_update_add_param": false,
+      "coupled_decay_into_grad": false,
+      "eps_added_outside_sqrt": true,
+      "eps_added_inside_sqrt": false,
+      "amsgrad_present": true,
+      "for_each_reference_present": false,
+      "single_tensor_source_excerpt": "def _single_tensor_adamw(params, grads, exp_avgs, exp_avg_sqs, max_exp_avg_sqs, state_steps, *, amsgrad, beta1, beta2, lr, weight_decay, eps, maximize):\n    for i, param in enumerate(params):\n        grad = grads[i]\n        exp_avg = exp_avgs[i]\n        exp_avg_sq = exp_avg_sqs[i]\n        step_t = state_steps[i]\n\n        step_t.add_(1)\n        step = step_t.item()\n\n        # Perform stepweight decay\n        param.mul_(1 - lr * weight_decay)\n\n        if maximize:\n            grad = -grad\n\n        # Decay the first and second moment running average coefficient\n        exp_avg.lerp_(grad, 1 - beta1)\n        exp_avg_sq.mul_(beta2).addcmul_(grad, grad, value=1 - beta2)\n\n        bias_correction1 = 1 - beta1 ** step\n        bias_correction2 = 1 - beta2 ** step\n        step_size = lr / bias_correction1\n        bias_correction2_sqrt = math.sqrt(bias_correction2)\n\n        denom = (exp_avg_sq.sqrt() / bias_correction2_sqrt).add_(eps)\n        param.addcdiv_(exp_avg, denom, value=-step_size)\n"
+    },
+    "torch_version": "2.14.0+cpu"
+  },
+  "optimizer_semantics_probe": {
+    "optimizer": "adamw",
+    "torch_version": "2.14.0+cpu",
+    "probe_gradient": -0.11545121669769287,
+    "probe_loss": 3.015829086303711,
+    "measured_variant": "adamw[lerp,before,outside]",
+    "bit_exact": true,
+    "candidates": [
+      {
+        "variant": "adamw[lerp,before,outside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adamw[lerp,before,inside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adamw[lerp,after_original,outside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adamw[lerp,after_original,inside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adamw[lerp,after_current,outside]",
+        "ulp_error": 839
+      },
+      {
+        "variant": "adamw[lerp,after_current,inside]",
+        "ulp_error": 839
+      },
+      {
+        "variant": "adamw[mul_add,before,outside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adamw[mul_add,before,inside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adamw[mul_add,after_original,outside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adamw[mul_add,after_original,inside]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "adamw[mul_add,after_current,outside]",
+        "ulp_error": 839
+      },
+      {
+        "variant": "adamw[mul_add,after_current,inside]",
+        "ulp_error": 839
+      }
+    ],
+    "source_findings": {
+      "source_text_available": true,
+      "single_tensor_function_found": true,
+      "uses_lerp_for_moment1": true,
+      "uses_mul_add_for_moment1": false,
+      "has_capturable_branch": false,
+      "decay_before_update": true,
+      "decay_after_update_add_param": false,
+      "coupled_decay_into_grad": false,
+      "eps_added_outside_sqrt": true,
+      "eps_added_inside_sqrt": false,
+      "amsgrad_present": true,
+      "for_each_reference_present": false,
+      "single_tensor_source_excerpt": "def _single_tensor_adamw(params, grads, exp_avgs, exp_avg_sqs, max_exp_avg_sqs, state_steps, *, amsgrad, beta1, beta2, lr, weight_decay, eps, maximize):\n    for i, param in enumerate(params):\n        grad = grads[i]\n        exp_avg = exp_avgs[i]\n        exp_avg_sq = exp_avg_sqs[i]\n        step_t = state_steps[i]\n\n        step_t.add_(1)\n        step = step_t.item()\n\n        # Perform stepweight decay\n        param.mul_(1 - lr * weight_decay)\n\n        if maximize:\n            grad = -grad\n\n        # Decay the first and second moment running average coefficient\n        exp_avg.lerp_(grad, 1 - beta1)\n        exp_avg_sq.mul_(beta2).addcmul_(grad, grad, value=1 - beta2)\n\n        bias_correction1 = 1 - beta1 ** step\n        bias_correction2 = 1 - beta2 ** step\n        step_size = lr / bias_correction1\n        bias_correction2_sqrt = math.sqrt(bias_correction2)\n\n        denom = (exp_avg_sq.sqrt() / bias_correction2_sqrt).add_(eps)\n        param.addcdiv_(exp_avg, denom, value=-step_size)\n"
+    },
+    "note": "Measured on a throwaway parameter: the variant listed in 'measured_variant' is the one that reproduces this PyTorch build's update bit for bit."
+  },
+  "parameter": {
+    "name": "w",
+    "class": "Parameter",
+    "shape": [],
+    "numel": 1,
+    "dtype": "torch.float32",
+    "requires_grad": true,
+    "device": "cpu",
+    "element_size": 4,
+    "is_leaf": true,
+    "buffers": [
+      "input_scale",
+      "output_scale"
+    ],
+    "trainable_parameter_count": 1,
+    "raw_storage": {
+      "dtype": "torch.float32",
+      "element_size_bytes": 4,
+      "numel": 1,
+      "total_bytes": 4,
+      "raw_storage_bytes": "00 00 00 C0",
+      "storage_nbytes": 4,
+      "storage_nbytes_method": "UntypedStorage.nbytes()",
+      "shape": [],
+      "device": "cpu",
+      "is_floating_point": true
+    }
+  },
+  "dataset": {
+    "samples": 512,
+    "batch_size": 1,
+    "steps_per_epoch": 512,
+    "walk": "linear",
+    "shuffled": false,
+    "target_true_parameter": 1.5,
+    "noise_std": 0.0,
+    "input_min": -2.0,
+    "input_max": 2.0
+  },
+  "lr_schedule": "constant",
+  "bit_validation": {
+    "raw_uint32": 3221225472,
+    "decoded_value": -2.0,
+    "round_trip_ok": true,
+    "numpy_agreement": true,
+    "numpy_version": "1.24.2",
+    "storage_bytes": "00 00 00 C0",
+    "element_size": 4,
+    "ulp_matches_bit_spacing": true,
+    "nextafter_matches_ulp": true,
+    "status": "PASS",
+    "notes": [
+      "Round-trip check: the decoded sign/exponent/fraction re-encode to the observed raw word.",
+      "numpy and torch reinterpretation paths are compared against each other, so a systematic error in one would show up as a disagreement."
+    ]
+  },
+  "ulp_validation": {
+    "value": -2.0,
+    "previous": -2.000000238418579,
+    "next": -1.9999998807907104,
+    "walk_steps": 4,
+    "walk_reaches_next": true,
+    "walk_reaches_previous": true,
+    "ulp_distance_check": 4,
+    "ulp_distance_expected": 4,
+    "status": "PASS"
+  },
+  "notes": [
+    "Real training: torch loss.backward() and optimizer.step() only. No gradient is assigned, no parameter value is written outside the optimizer, and no trajectory is precomputed.",
+    "The float64 track is a separate real run of the same forward shape in a different precision. It is a reference, not ground truth."
+  ]
+}

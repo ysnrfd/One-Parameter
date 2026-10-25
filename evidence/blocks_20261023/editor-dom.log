@@ -1,0 +1,152 @@
+PHASE loading jsdom
+PHASE reading fixtures
+PHASE creating offline DOM
+PHASE evaluating graph_core.js
+PHASE evaluating studio.js
+PHASE evaluating graph.js
+PHASE evaluating transformers.js
+PHASE waiting for initial fixture rendering
+RUN All nine views navigate, expose active content and preserve the live workspace
+VIEW world
+VIEW timeline
+VIEW microscope
+VIEW data
+VIEW journal
+VIEW artifacts
+VIEW nodes
+VIEW plugins
+VIEW transformers
+✓ All nine views navigate, expose active content and preserve the live workspace
+RUN Pending experiment selection blocks stale verification, training, configuration and downloads until acknowledged
+VIEW artifacts
+✓ Pending experiment selection blocks stale verification, training, configuration and downloads until acknowledged
+RUN Transformers workbench uses the actual runtime catalog, templates and searchable block descriptions
+VIEW transformers
+✓ Transformers workbench uses the actual runtime catalog, templates and searchable block descriptions
+RUN Architecture builder retains invalid input, then creates a full editable tensor workflow without execution
+VIEW transformers
+✓ Architecture builder retains invalid input, then creates a full editable tensor workflow without execution
+RUN Transformers templates open actual catalog graphs and custom forward blocks expose editable multiline code
+VIEW transformers
+VIEW transformers
+✓ Transformers templates open actual catalog graphs and custom forward blocks expose editable multiline code
+RUN Transformers observations show actual-shaped model reports, finite loss charts and only registered artifact downloads
+VIEW transformers
+✓ Transformers observations show actual-shaped model reports, finite loss charts and only registered artifact downloads
+RUN Actual executed Llama report drives decoder selection, GQA projection shapes and filtered module inventory
+VIEW transformers
+✓ Actual executed Llama report drives decoder selection, GQA projection shapes and filtered module inventory
+RUN Imported editor drafts preserve wide integer seeds before controls render and save
+✓ Imported editor drafts preserve wide integer seeds before controls render and save
+RUN Actual fixture timeline, complete forensic record, data samples and optimizer fields render
+VIEW timeline
+VIEW microscope
+VIEW data
+VIEW microscope
+✓ Actual fixture timeline, complete forensic record, data samples and optimizer fields render
+RUN Live nonfinite storage and historical finite storage use authoritative uint32 words
+✓ Live nonfinite storage and historical finite storage use authoritative uint32 words
+RUN Manual negative zero and bit edits send exact float32 words; optimizer JSON intervenes explicitly
+✓ Manual negative zero and bit edits send exact float32 words; optimizer JSON intervenes explicitly
+RUN Historical pinning and Follow live preserve unapplied bit edits without reviving applied edits
+✓ Historical pinning and Follow live preserve unapplied bit edits without reviving applied edits
+RUN Main experiment controls create, rename, play, pause, step, set speed and reject invalid step counts
+✓ Main experiment controls create, rename, play, pause, step, set speed and reject invalid step counts
+RUN Configuration controls preserve negative zero and complete advanced JSON including 64-bit seeds
+✓ Configuration controls preserve negative zero and complete advanced JSON including 64-bit seeds
+RUN CSV import remains unapplied, survives draft persistence and downloads original negative-zero text
+VIEW data
+✓ CSV import remains unapplied, survives draft persistence and downloads original negative-zero text
+RUN Workspace and run notes save explicitly, names and complete project downloads remain functional
+VIEW journal
+✓ Workspace and run notes save explicitly, names and complete project downloads remain functional
+RUN Evidence export and integrity validation use real routes; checkpoint create and restore controls are wired
+VIEW artifacts
+✓ Evidence export and integrity validation use real routes; checkpoint create and restore controls are wired
+RUN Timeline SVG, checkpoint deletion, fork, reset, restart and experiment deletion remain wired
+VIEW timeline
+VIEW artifacts
+✓ Timeline SVG, checkpoint deletion, fork, reset, restart and experiment deletion remain wired
+RUN Commands, help, fullscreen, mobile inspector and world zoom controls have working state changes
+VIEW world
+✓ Commands, help, fullscreen, mobile inspector and world zoom controls have working state changes
+RUN Workflow creation, searchable typed palette and literal input inspector accept real editable values
+VIEW nodes
+✓ Workflow creation, searchable typed palette and literal input inspector accept real editable values
+RUN Consecutive palette additions do not overlap, retain existing positions and preserve selection and undo history
+✓ Consecutive palette additions do not overlap, retain existing positions and preserve selection and undo history
+RUN Inspector and library collapse at desktop widths, remain accessible, and cancel connections when layout changes
+VIEW nodes
+✓ Inspector and library collapse at desktop widths, remain accessible, and cancel connections when layout changes
+RUN Dropdown parameter changes undo and redo in a single history step
+✓ Dropdown parameter changes undo and redo in a single history step
+RUN Click-to-connect typed ports, connection form and disconnect controls update the graph
+✓ Click-to-connect typed ports, connection form and disconnect controls update the graph
+RUN Output drag into blank canvas opens typed discovery and adds a connected block in one reversible action
+VIEW nodes
+✓ Output drag into blank canvas opens typed discovery and adds a connected block in one reversible action
+RUN Input drag keeps an existing wire until choice, supports keyboard producer search and replaces it atomically
+✓ Input drag keeps an existing wire until choice, supports keyboard producer search and replaces it atomically
+RUN Reverse input-to-output gestures connect existing ports and reject incompatible replacements without partial edits
+✓ Reverse input-to-output gestures connect existing ports and reject incompatible replacements without partial edits
+RUN Connection gestures highlight opposite compatible ports and cancel safely on outside, route, pointer cancel and project quiescence
+VIEW transformers
+VIEW nodes
+✓ Connection gestures highlight opposite compatible ports and cancel safely on outside, route, pointer cancel and project quiescence
+RUN Interrupted node and pan gestures restore their original draft without creating an untracked position edit
+✓ Interrupted node and pan gestures restore their original draft without creating an untracked position edit
+RUN Architecture cards expose real primitive settings and retain invalid inline drafts across undo and serialization
+✓ Architecture cards expose real primitive settings and retain invalid inline drafts across undo and serialization
+RUN Focused inline input validates immediately, blocks stale-value queueing and commits without duplicate change-event history
+✓ Focused inline input validates immediately, blocks stale-value queueing and commits without duplicate change-event history
+RUN Tensor dtype and rank discovery excludes known invalid producers and consumers while custom outputs stay flexible
+✓ Tensor dtype and rank discovery excludes known invalid producers and consumers while custom outputs stay flexible
+RUN Invalid field buffers survive unrelated deletion, undo, redo and project draft serialization
+✓ Invalid field buffers survive unrelated deletion, undo, redo and project draft serialization
+RUN Selection, copy, paste, duplicate, delete, undo and redo preserve model data and wide integers
+✓ Selection, copy, paste, duplicate, delete, undo and redo preserve model data and wide integers
+RUN Full workflow JSON editing and standalone exports/imports preserve integer and signed-zero bytes
+✓ Full workflow JSON editing and standalone exports/imports preserve integer and signed-zero bytes
+RUN Runnable Python download waits for graph draft acknowledgement and rejects unapplied invalid fields without execution
+VIEW nodes
+✓ Runnable Python download waits for graph draft acknowledgement and rejects unapplied invalid fields without execution
+RUN Graph validation, explicit queue, cancellation despite invalid draft and raw results download work
+✓ Graph validation, explicit queue, cancellation despite invalid draft and raw results download work
+RUN Extreme finite numeric output charts contain finite coordinates and trusted imported artifact IDs download safely
+✓ Extreme finite numeric output charts contain finite coordinates and trusted imported artifact IDs download safely
+RUN Actual component job renders visual operations, losses, generation and safe links while exact recipes stay lazy
+VIEW nodes
+✓ Actual component job renders visual operations, losses, generation and safe links while exact recipes stay lazy
+RUN Custom node wizard creates a persistent manifest draft; plugin install and palette refresh are explicit
+VIEW plugins
+VIEW nodes
+✓ Custom node wizard creates a persistent manifest draft; plugin install and palette refresh are explicit
+RUN Declarative panels and plugin literals support semantic tensor JSON, preserve defaults/options and retain invalid drafts
+VIEW plugins
+✓ Declarative panels and plugin literals support semantic tensor JSON, preserve defaults/options and retain invalid drafts
+RUN Plugin enable, disable, version update, download and removal controls change actual registry requests
+VIEW plugins
+✓ Plugin enable, disable, version update, download and removal controls change actual registry requests
+RUN Another tab changing plugin availability refreshes the node catalog without reloading the page
+VIEW nodes
+✓ Another tab changing plugin availability refreshes the node catalog without reloading the page
+RUN Older in-flight graph polls cannot regress the accepted workflow revision or saved name
+VIEW nodes
+✓ Older in-flight graph polls cannot regress the accepted workflow revision or saved name
+RUN Keeping a conflicted graph as a new workflow preserves invalid raw node fields
+VIEW nodes
+✓ Keeping a conflicted graph as a new workflow preserves invalid raw node fields
+RUN Draft CAS conflict preserves local edits; explicit Keep saves with a fresh revision
+VIEW journal
+✓ Draft CAS conflict preserves local edits; explicit Keep saves with a fresh revision
+RUN Draft CAS explicit Load replaces local buffers with the saved drafts
+✓ Draft CAS explicit Load replaces local buffers with the saved drafts
+RUN Project Open quiesces graph autosave before commit and ignores old delayed work while draft loading waits
+VIEW nodes
+✓ Project Open quiesces graph autosave before commit and ignores old delayed work while draft loading waits
+RUN Cross-tab project replacement blocks stale mutations and downloads, retains local recovery and explicitly reloads
+VIEW journal
+✓ Cross-tab project replacement blocks stale mutations and downloads, retains local recovery and explicitly reloads
+RUN Guarded API requests carry captured workspace identity and unexpected controller errors are absent
+✓ Guarded API requests carry captured workspace identity and unexpected controller errors are absent
+Offline checks: 50 passed, 0 failed.

@@ -1,0 +1,97 @@
+{
+  "scope": "Static assertion replay against thirteen prior actual source-runtime records plus authored ZIP containers; no installed runtime execution",
+  "qualifier_sha256": "a770ef3f9d8ce8d04270e53a48ec846296306330860c3a5740e6e27ff859fdce",
+  "workflow_records": [
+    {
+      "file": "examples\\transformers\\cached-pretrained.workflow.json",
+      "source_sha256": "6e77169df2caacd1a84e1d3399c109511a2bb66863e4f0c8be6848263fb240eb",
+      "observed_training_assertions": 2,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\checkpoint-roundtrip.workflow.json",
+      "source_sha256": "063f7e5c506173d8dc7a962a0a50a813fc6b161580c394f4ed9d89120b057fc9",
+      "observed_training_assertions": 2,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\custom-attention.workflow.json",
+      "source_sha256": "4dce6e05ec7980108e836e367054baf64d94ba646e4d6aef846461a073a6c3cf",
+      "observed_training_assertions": 1,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\custom-forward.workflow.json",
+      "source_sha256": "29313c14adf4a84f11be45f4f567a345293b5c0614cff79f02b07812551c0ff0",
+      "observed_training_assertions": 1,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\distilbert-classification.workflow.json",
+      "source_sha256": "07edf793d3f7acf9949abc7fa7aa49bdb42fac0e93c6eed5f3f4d1f09a4011e6",
+      "observed_training_assertions": 1,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\feature-extraction.workflow.json",
+      "source_sha256": "3527ad96fa5c91c525920ad8eaa3cd4da6c27d52a072f1ab26fd7a137ccb552a",
+      "observed_training_assertions": 0,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\fill-mask.workflow.json",
+      "source_sha256": "c75af36d41619bcf848d08bb899f944ad8795fb079cd7519e6886641a7760667",
+      "observed_training_assertions": 0,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\plugin-architecture.workflow.json",
+      "source_sha256": "0bb3a5df68e9d1d18697338186fb6d18dfd64207efed97133e28be24f5ada4b3",
+      "observed_training_assertions": 1,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\rmsnorm-adamw.workflow.json",
+      "source_sha256": "71f09a5b053db4318ec8143ccf8eca8126f44e3ac4aedae83e7433d99c2f8abb",
+      "observed_training_assertions": 1,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\text-pipeline.workflow.json",
+      "source_sha256": "287db142aee060491bceb7ce6b0c7f71927ddfa0974dcdaf14f76c046369387c",
+      "observed_training_assertions": 0,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\tiny-gpt2.workflow.json",
+      "source_sha256": "5f9cfda7180d5c1ae4247c4b10feb3ae89f4a28b5cf49d108af5a370c16e695f",
+      "observed_training_assertions": 1,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\token-classification.workflow.json",
+      "source_sha256": "89cb1c8c55f2d7ced3e9e051466f649d6d8fc6a2c36996207a4102c70a895ab1",
+      "observed_training_assertions": 0,
+      "status": "assertions_passed"
+    },
+    {
+      "file": "examples\\transformers\\tokenize-train-generate.workflow.json",
+      "source_sha256": "8a1754a7444088582a6d1a2d0a7c86f0a803a0388151e9ab10089cfe3d7a7acb",
+      "observed_training_assertions": 1,
+      "status": "assertions_passed"
+    }
+  ],
+  "zip_assertion_checks": [
+    {
+      "kind": "safe_model",
+      "valid_container_accepted": true,
+      "bad_hash_rejected": true
+    },
+    {
+      "kind": "scalar_evidence",
+      "valid_container_accepted": true,
+      "bad_hash_rejected": true
+    }
+  ],
+  "status": "passed"
+}

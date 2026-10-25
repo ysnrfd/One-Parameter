@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: Top-left (causal chain) and top-right (recorded series) panels are present. Bottom-left (bit-pattern strip) and bottom-right (state card HUD) are missing, replaced by placeholder text.\nSERIES: The line plot shows zero series; it is empty except for a flat orange baseline at y=0. No data points or lines exist. The purple marker is not visible.\nTEXT: Step: \"no step executed yet\". FPS: \"10 FPS drawn\". Bit count/Hex/Loss/W: Not available (N/A).\nBITS: Zero bit squares are drawn; the bit-pattern panel is missing.\nDEFECTS: Missing two required panels (bit strip and state card). The causal chain lacks the orange highlight for the \"UPDATE\" phase (it says \"active phase: none\"). No data series are plotted in the live view.\nVERDICT: FAIL - The dashboard is in an uninitialized state with missing UI components (bottom panels) and no data rendered.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790853217,
+  "id": "2026100119133153e7b88952334416",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "2026100119133153e7b88952334416",
+  "usage": {
+    "completion_tokens": 203,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1697,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1900
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: Top-left (causal chain) and top-right (recorded series) panels are present. Bottom-left (bit-pattern strip) and bottom-right (state card HUD) are missing, replaced by placeholder text.\nSERIES: The line plot shows zero series; no data points or lines are drawn. The purple marker is not visible. The panel contains only a central status message.\nTEXT: Step: \"no step executed yet\". w value: not available. Loss: not available. FPS readout: \"114 FPS drawn | step rate 30/s\". Bit count: not available.\nBITS: Zero bit squares are drawn. No hex word is readable.\nDEFECTS: Missing bottom-left and bottom-right panels (bit strip and state card). Missing data series and purple marker in the line plot. The \"UPDATE\" box in the causal chain is not highlighted orange as specified. The active phase label reads \"(active phase: none)\" instead of indicating the UPDATE phase.\nVERDICT: FAIL - The frame is an uninitialized/placeholder state missing two required panels, all data series, and specific styling highlights.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790853146,
+  "id": "20261001191220cebf5a8196c84988",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20261001191220cebf5a8196c84988",
+  "usage": {
+    "completion_tokens": 227,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1697,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1924
+  }
+}

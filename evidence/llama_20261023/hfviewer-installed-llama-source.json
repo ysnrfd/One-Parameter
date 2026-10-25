@@ -1,0 +1,15 @@
+{
+  "transformers_version": "5.20.2",
+  "files": [
+    {
+      "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\.venv\\Lib\\site-packages\\transformers\\models\\llama\\configuration_llama.py",
+      "bytes": 3896,
+      "sha256": "5e2e803d15956cdc402ab1c4a5151a899bd39ddfbecbb81181733657817aaeda"
+    },
+    {
+      "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\.venv\\Lib\\site-packages\\transformers\\models\\llama\\modeling_llama.py",
+      "bytes": 20255,
+      "sha256": "affc6a4ab36b562a6b4c90b84c4e7939c5417a69ad7bd37e858be5583f189830"
+    }
+  ]
+}

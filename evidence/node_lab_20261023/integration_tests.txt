@@ -1,0 +1,27 @@
+test_active_script_blocks_project_replace_until_cancel_is_acknowledged (single_parameter_observatory.tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_active_script_blocks_project_replace_until_cancel_is_acknowledged) ... ok
+test_graph_routes_execute_real_training_and_roundtrip_project (single_parameter_observatory.tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_graph_routes_execute_real_training_and_roundtrip_project) ... FAIL
+test_plugin_install_disable_enable_update_and_actual_execution (single_parameter_observatory.tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_plugin_install_disable_enable_update_and_actual_execution) ... ok
+test_stale_graph_edit_returns_conflict_and_retains_current_graph (single_parameter_observatory.tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_stale_graph_edit_returns_conflict_and_retains_current_graph) ... ok
+test_atomic_custom_data_creation_does_not_publish_on_invalid_data (single_parameter_observatory.tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_atomic_custom_data_creation_does_not_publish_on_invalid_data) ... ok
+test_atomic_custom_data_creation_trains_the_supplied_actual_samples (single_parameter_observatory.tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_atomic_custom_data_creation_trains_the_supplied_actual_samples) ... ok
+test_automatic_branch_positions_do_not_stack_siblings (single_parameter_observatory.tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_automatic_branch_positions_do_not_stack_siblings) ... ok
+test_corrupt_autosave_is_preserved_before_recovery_is_saved (single_parameter_observatory.tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_corrupt_autosave_is_preserved_before_recovery_is_saved) ... ok
+test_invalid_extension_project_leaves_real_runs_and_graphs_unchanged (single_parameter_observatory.tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_invalid_extension_project_leaves_real_runs_and_graphs_unchanged) ... ok
+test_legacy_project_adds_a_nonexecuting_node_workspace (single_parameter_observatory.tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_legacy_project_adds_a_nonexecuting_node_workspace) ... ok
+test_reset_clears_live_intervention_indicator_but_preserves_evidence (single_parameter_observatory.tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_reset_clears_live_intervention_indicator_but_preserves_evidence) ... ok
+
+======================================================================
+FAIL: test_graph_routes_execute_real_training_and_roundtrip_project (single_parameter_observatory.tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_graph_routes_execute_real_training_and_roundtrip_project)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Atieh\Documents\ChatGPT\One Parameter\single_parameter_observatory\tests\test_studio_extensions_integration.py", line 178, in test_graph_routes_execute_real_training_and_roundtrip_project
+    self.assertEqual(job["status"], "succeeded", job["error"])
+AssertionError: 'failed' != 'succeeded'
+- failed
++ succeeded
+ : values must be strict JSON with string object keys
+
+----------------------------------------------------------------------
+Ran 11 tests in 3.021s
+
+FAILED (failures=1)

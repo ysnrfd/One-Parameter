@@ -1,0 +1,850 @@
+SINGLE PARAMETER OBSERVATORY - EXECUTION CHECKS
+python: 3.12.15  (C:\Users\Atieh\Documents\ChatGPT\One Parameter\.venv\Scripts\python.exe)
+started: 2026-10-23 22:35:27
+
+==============================================================================
+CHECK 1/11  module imports
+==============================================================================
+  ok  single_parameter_observatory.config
+  ok  single_parameter_observatory.errors
+  ok  single_parameter_observatory.fp32_inspector
+  ok  single_parameter_observatory.numerical_analysis
+  ok  single_parameter_observatory.model
+  ok  single_parameter_observatory.optimizer_inspector
+  ok  single_parameter_observatory.tracker
+  ok  single_parameter_observatory.validation
+  ok  single_parameter_observatory.recorder
+  ok  single_parameter_observatory.convergence
+  ok  single_parameter_observatory.exporters
+  ok  single_parameter_observatory.training_engine
+  ok  single_parameter_observatory.visualization
+  ok  single_parameter_observatory.dashboard
+  ok  single_parameter_observatory.main
+
+==============================================================================
+CHECK 2/11  environment audit
+==============================================================================
+  Python             : 3.12.15 (C:\Users\Atieh\Documents\ChatGPT\One Parameter\.venv\Scripts\python.exe)
+  PyTorch            : 2.14.1+cpu
+  PyTorch file       : C:\Users\Atieh\Documents\ChatGPT\One Parameter\.venv\Lib\site-packages\torch\__init__.py
+  Platform           : Windows-11-10.0.26200-SP0
+  Machine            : AMD64
+  Processor          : Intel64 Family 6 Model 186 Stepping 3, GenuineIntel
+  OS                 : Windows 11
+  Device             : cpu
+  Default dtype      : torch.float32
+  Torch threads      : 6
+  NumPy              : 2.5.4
+  Matplotlib         : 3.11.2
+  Matplotlib backend : tkagg
+
+==============================================================================
+CHECK 3/11  automated test suite
+==============================================================================
+  test_full_gradient_validation (tests.test_autograd.TestAutograd.test_full_gradient_validation) ... ok
+  test_gradient_accumulation (tests.test_autograd.TestAutograd.test_gradient_accumulation)
+  With ``set_to_none=False`` a second backward sums into the same grad. ... ok
+  test_gradient_analytical (tests.test_autograd.TestAutograd.test_gradient_analytical) ... ok
+  test_gradient_autograd (tests.test_autograd.TestAutograd.test_gradient_autograd) ... ok
+  test_gradient_finite_difference (tests.test_autograd.TestAutograd.test_gradient_finite_difference) ... ok
+  test_gradient_is_not_fabricated (tests.test_autograd.TestAutograd.test_gradient_is_not_fabricated)
+  A gradient that is written by hand must not be what the run uses. ... ok
+  test_gradient_lifecycle_is_measured (tests.test_autograd.TestAutograd.test_gradient_lifecycle_is_measured)
+  The states before/after zero_grad and before/after backward, in order. ... ok
+  test_ulp_validation (tests.test_autograd.TestAutograd.test_ulp_validation) ... ok
+  test_caller_lists_cannot_change_an_existing_run_configuration (tests.test_config_integrity.TestConfigurationIntegrity.test_caller_lists_cannot_change_an_existing_run_configuration) ... ok
+  test_cosine_can_decay_to_zero_and_torch_seed_boundaries_are_accepted (tests.test_config_integrity.TestConfigurationIntegrity.test_cosine_can_decay_to_zero_and_torch_seed_boundaries_are_accepted) ... ok
+  test_malformed_configuration_raises_named_error_before_execution (tests.test_config_integrity.TestConfigurationIntegrity.test_malformed_configuration_raises_named_error_before_execution) ... ok
+  test_accumulated_objective_is_validated_and_reference_uses_same_steps (tests.test_core_correctness_repairs.TestAccumulationAndReference.test_accumulated_objective_is_validated_and_reference_uses_same_steps) ... ok
+  test_building_an_observatory_preserves_the_host_rng (tests.test_core_correctness_repairs.TestAccumulationAndReference.test_building_an_observatory_preserves_the_host_rng) ... ok
+  test_provenance_callers_cannot_rewrite_cached_evidence (tests.test_core_correctness_repairs.TestAccumulationAndReference.test_provenance_callers_cannot_rewrite_cached_evidence) ... ok
+  test_reset_restarts_schedule_dataset_and_reference_state (tests.test_core_correctness_repairs.TestAccumulationAndReference.test_reset_restarts_schedule_dataset_and_reference_state) ... ok
+  test_restart_discards_the_previous_reconstruction_lock (tests.test_core_correctness_repairs.TestAccumulationAndReference.test_restart_discards_the_previous_reconstruction_lock) ... ok
+  test_schedule_provenance_and_restart_initialization_are_truthful (tests.test_core_correctness_repairs.TestAccumulationAndReference.test_schedule_provenance_and_restart_initialization_are_truthful) ... ok
+  test_cli_malformed_speed_commands_return_one_without_tracebacks (tests.test_core_correctness_repairs.TestControllerLifecycle.test_cli_malformed_speed_commands_return_one_without_tracebacks) ... ok
+  test_failure_poll_does_not_wait_for_an_inflight_training_step (tests.test_core_correctness_repairs.TestControllerLifecycle.test_failure_poll_does_not_wait_for_an_inflight_training_step) ... ok
+  test_malformed_speed_commands_raise_domain_errors_before_training (tests.test_core_correctness_repairs.TestControllerLifecycle.test_malformed_speed_commands_raise_domain_errors_before_training) ... ok
+  test_pause_waits_for_inflight_step_and_callback (tests.test_core_correctness_repairs.TestControllerLifecycle.test_pause_waits_for_inflight_step_and_callback) ... ok
+  test_restart_after_finish_reuses_the_live_worker (tests.test_core_correctness_repairs.TestControllerLifecycle.test_restart_after_finish_reuses_the_live_worker) ... ok
+  test_speed_rejects_nonfinite_values (tests.test_core_correctness_repairs.TestControllerLifecycle.test_speed_rejects_nonfinite_values) ... ok
+  test_unexpected_worker_error_is_raised_on_the_calling_thread (tests.test_core_correctness_repairs.TestControllerLifecycle.test_unexpected_worker_error_is_raised_on_the_calling_thread) ... ok
+  test_worker_preserves_every_queued_single_step (tests.test_core_correctness_repairs.TestControllerLifecycle.test_worker_preserves_every_queued_single_step) ... ok
+  test_worker_runs_exactly_n_then_parks (tests.test_core_correctness_repairs.TestControllerLifecycle.test_worker_runs_exactly_n_then_parks) ... ok
+  test_alternating_stream_reaches_the_negative_rows (tests.test_core_correctness_repairs.TestDatasetBatchCoverage.test_alternating_stream_reaches_the_negative_rows) ... ok
+  test_configured_batches_cover_remainder_once_per_epoch (tests.test_core_correctness_repairs.TestDatasetBatchCoverage.test_configured_batches_cover_remainder_once_per_epoch) ... ok
+  test_analytical_diagnostics_use_observed_buffer_values (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_analytical_diagnostics_use_observed_buffer_values) ... ok
+  test_disabling_nonfinite_stop_continues_and_keeps_observations (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_disabling_nonfinite_stop_continues_and_keeps_observations) ... ok
+  test_divergence_can_continue_through_infinite_parameter_values (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_divergence_can_continue_through_infinite_parameter_values) ... ok
+  test_float64_candidate_respects_maximize_and_amsgrad_history (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_float64_candidate_respects_maximize_and_amsgrad_history) ... ok
+  test_minimum_normal_and_maximum_finite_bit_spacing (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_minimum_normal_and_maximum_finite_bit_spacing) ... ok
+  test_optimizer_state_overflow_is_detected_with_finite_loss_and_parameter (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_optimizer_state_overflow_is_detected_with_finite_loss_and_parameter) ... ok
+  test_rounding_candidate_overflow_has_no_fraction_exception (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_rounding_candidate_overflow_has_no_fraction_exception) ... ok
+  test_runtime_limits_reject_invalid_values_before_any_step (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_runtime_limits_reject_invalid_values_before_any_step) ... ok
+  test_tracked_parameter_replacement_is_rejected (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_tracked_parameter_replacement_is_rejected) ... ok
+  test_zero_gradient_zero_epsilon_records_nan_and_aborts (tests.test_core_correctness_repairs.TestNumericalEdgeCases.test_zero_gradient_zero_epsilon_records_nan_and_aborts) ... ok
+  test_cached_data_and_hud_updates_do_not_redraw_the_full_canvas (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_cached_data_and_hud_updates_do_not_redraw_the_full_canvas) ... ok
+  test_close_allows_a_fresh_figure_with_new_artists (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_close_allows_a_fresh_figure_with_new_artists) ... ok
+  test_close_event_pauses_and_ends_loop (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_close_event_pauses_and_ends_loop) ... ok
+  test_dashboard_keys_replace_matplotlib_save_and_home_shortcuts (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_dashboard_keys_replace_matplotlib_save_and_home_shortcuts) ... ok
+  test_frame_export_keeps_animated_series_and_invalidates_renderer_cache (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_frame_export_keeps_animated_series_and_invalidates_renderer_cache) ... ok
+  test_hud_card_updates_independently_from_static_layer (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_hud_card_updates_independently_from_static_layer) ... ok
+  test_interactive_blits_pump_events (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_interactive_blits_pump_events) ... ok
+  test_motion_frame_draws_only_marker_and_trail (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_motion_frame_draws_only_marker_and_trail) ... ok
+  test_new_data_rescales_before_the_next_static_clock_tick (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_new_data_rescales_before_the_next_static_clock_tick) ... ok
+  test_no_animation_marker_is_the_latest_recorded_endpoint (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_no_animation_marker_is_the_latest_recorded_endpoint) ... ok
+  test_recorded_lines_persist_on_motion_only_frames (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_recorded_lines_persist_on_motion_only_frames) ... ok
+  test_render_failure_stops_background_writer (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_render_failure_stops_background_writer) ... ok
+  test_repeated_static_refresh_preserves_one_copy_of_each_artist (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_repeated_static_refresh_preserves_one_copy_of_each_artist) ... ok
+  test_resize_invalidates_both_cached_layers (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_resize_invalidates_both_cached_layers) ... ok
+  test_restart_discards_old_segment_and_nonfinite_endpoint_is_hidden (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_restart_discards_old_segment_and_nonfinite_endpoint_is_hidden) ... ok
+  test_static_layer_is_rasterized_before_it_is_cached (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_static_layer_is_rasterized_before_it_is_cached) ... ok
+  test_zero_deadline_renders_initial_state_without_a_step (tests.test_dashboard_cli_regressions.TestCanvasLifecycle.test_zero_deadline_renders_initial_state_without_a_step) ... ok
+  test_cli_seed_controls_the_dataset_generator_as_well_as_experiment_identity (tests.test_dashboard_cli_regressions.TestCliRegressions.test_cli_seed_controls_the_dataset_generator_as_well_as_experiment_identity) ... ok
+  test_default_exports_are_unique_and_direct_exports_remain_explicit (tests.test_dashboard_cli_regressions.TestCliRegressions.test_default_exports_are_unique_and_direct_exports_remain_explicit) ... ok
+  test_explicit_zero_configuration_overrides_are_rejected (tests.test_dashboard_cli_regressions.TestCliRegressions.test_explicit_zero_configuration_overrides_are_rejected) ... ok
+  test_failed_validation_takes_precedence_over_divergence (tests.test_dashboard_cli_regressions.TestCliRegressions.test_failed_validation_takes_precedence_over_divergence) ... ok
+  test_inspect_json_is_machine_parseable_without_banners (tests.test_dashboard_cli_regressions.TestCliRegressions.test_inspect_json_is_machine_parseable_without_banners) ... ok
+  test_interactive_play_returns_to_prompt_so_pause_can_be_read (tests.test_dashboard_cli_regressions.TestCliRegressions.test_interactive_play_returns_to_prompt_so_pause_can_be_read) ... ok
+  test_invalid_dashboard_rates_and_limits_raise_configuration_errors (tests.test_dashboard_cli_regressions.TestCliRegressions.test_invalid_dashboard_rates_and_limits_raise_configuration_errors) ... ok
+  test_invalid_trace_counts_and_ranges_do_not_succeed (tests.test_dashboard_cli_regressions.TestCliRegressions.test_invalid_trace_counts_and_ranges_do_not_succeed) ... ok
+  test_plot_dependency_failure_makes_requested_command_fail (tests.test_dashboard_cli_regressions.TestCliRegressions.test_plot_dependency_failure_makes_requested_command_fail) ... ok
+  test_quitting_before_any_step_is_an_explicit_successful_empty_session (tests.test_dashboard_cli_regressions.TestCliRegressions.test_quitting_before_any_step_is_an_explicit_successful_empty_session) ... ok
+  test_selftest_does_not_succeed_without_discovered_tests (tests.test_dashboard_cli_regressions.TestCliRegressions.test_selftest_does_not_succeed_without_discovered_tests) ... ok
+  test_show_card_uses_the_injected_output_sink (tests.test_dashboard_cli_regressions.TestCliRegressions.test_show_card_uses_the_injected_output_sink) ... ok
+  test_causal_highlight_refresh_does_not_accumulate_labels (tests.test_dashboard_cli_regressions.TestVisualizationHonesty.test_causal_highlight_refresh_does_not_accumulate_labels) ... ok
+  test_diverged_overview_has_separated_rows_and_readable_log_ticks (tests.test_dashboard_cli_regressions.TestVisualizationHonesty.test_diverged_overview_has_separated_rows_and_readable_log_ticks) ... ok
+  test_gui_backend_is_probed_before_it_is_reported_as_available (tests.test_dashboard_cli_regressions.TestVisualizationHonesty.test_gui_backend_is_probed_before_it_is_reported_as_available) ... ok
+  test_missing_observations_break_lines_without_fabricating_points (tests.test_dashboard_cli_regressions.TestVisualizationHonesty.test_missing_observations_break_lines_without_fabricating_points) ... ok
+  test_requested_figure_failure_closes_created_figure (tests.test_dashboard_cli_regressions.TestVisualizationHonesty.test_requested_figure_failure_closes_created_figure) ... ok
+  test_bit_changes (tests.test_fp32.TestBitTransitions.test_bit_changes) ... ok
+  test_positions_count_from_the_sign_bit (tests.test_fp32.TestBitTransitions.test_positions_count_from_the_sign_bit) ... ok
+  test_transition_matches_ulp_distance (tests.test_fp32.TestBitTransitions.test_transition_matches_ulp_distance)
+  A one-ULP move is one ULP, but not necessarily one changed bit. ... ok
+  test_encode_rejects_out_of_range_fields (tests.test_fp32.TestEncoding.test_encode_rejects_out_of_range_fields) ... ok
+  test_python_float_and_tensor_agree (tests.test_fp32.TestEncoding.test_python_float_and_tensor_agree) ... ok
+  test_struct_round_trip (tests.test_fp32.TestEncoding.test_struct_round_trip)
+  A double is not a float32: the round trip must return the rounding. ... ok
+  test_decode_detects_a_bad_word (tests.test_fp32.TestFloat32Bits.test_decode_detects_a_bad_word)
+  A decode that cannot round-trip must raise, not return a plausible value. ... ok
+  test_exact_decimal_is_the_exact_expansion (tests.test_fp32.TestFloat32Bits.test_exact_decimal_is_the_exact_expansion)
+  `decimal_exact` must be the exact rational value, not a short form. ... ok
+  test_exact_decimal_special_values (tests.test_fp32.TestFloat32Bits.test_exact_decimal_special_values) ... ok
+  test_exact_fraction_matches_the_stored_value (tests.test_fp32.TestFloat32Bits.test_exact_fraction_matches_the_stored_value) ... ok
+  test_exact_helpers_agree_on_magnitude_and_sign (tests.test_fp32.TestFloat32Bits.test_exact_helpers_agree_on_magnitude_and_sign)
+  The two exact helpers are distinct in return type but agree in value. ... ok
+  test_exponent_and_fraction_layout (tests.test_fp32.TestFloat32Bits.test_exponent_and_fraction_layout) ... ok
+  test_float32_bits (tests.test_fp32.TestFloat32Bits.test_float32_bits) ... ok
+  test_hex_encoding (tests.test_fp32.TestFloat32Bits.test_hex_encoding) ... ok
+  test_shortest_representation_round_trips (tests.test_fp32.TestFloat32Bits.test_shortest_representation_round_trips) ... ok
+  test_storage_evidence (tests.test_fp32.TestFloat32Bits.test_storage_evidence) ... ok
+  test_subnormal_and_infinity_classification (tests.test_fp32.TestFloat32Bits.test_subnormal_and_infinity_classification) ... ok
+  test_tensor_and_struct_paths_agree (tests.test_fp32.TestFloat32Bits.test_tensor_and_struct_paths_agree) ... ok
+  test_nextafter (tests.test_fp32.TestULP.test_nextafter) ... ok
+  test_ulp (tests.test_fp32.TestULP.test_ulp) ... ok
+  test_ulp_distance_rejects_nan (tests.test_fp32.TestULP.test_ulp_distance_rejects_nan) ... ok
+  test_ulp_distance_signs (tests.test_fp32.TestULP.test_ulp_distance_signs) ... ok
+  test_ulp_matches_the_exponent_field (tests.test_fp32.TestULP.test_ulp_matches_the_exponent_field) ... ok
+  test_ulp_movement_is_zero_when_stored_value_does_not_move (tests.test_fp32.TestULP.test_ulp_movement_is_zero_when_stored_value_does_not_move) ... ok
+  test_ulp_symmetry_at_power_of_two (tests.test_fp32.TestULP.test_ulp_symmetry_at_power_of_two)
+  ULP size must be symmetric under sign at power-of-two boundaries. ... ok
+  test_bit_changes (tests.test_numerics.TestParameterTransition.test_bit_changes) ... ok
+  test_delta (tests.test_numerics.TestParameterTransition.test_delta)
+  The recorded delta is stored-after minus stored-before, by definition. ... ok
+  test_forward_does_not_update_the_parameter (tests.test_numerics.TestParameterTransition.test_forward_does_not_update_the_parameter)
+  The snapshot chain A == B == C is an observed fact, per step. ... ok
+  test_parameter_before_after (tests.test_numerics.TestParameterTransition.test_parameter_before_after)
+  Forward and backward must not move the parameter; the step must. ... ok
+  test_exact_half_ulp_tie_is_detected_in_exact_arithmetic (tests.test_numerics.TestRounding.test_exact_half_ulp_tie_is_detected_in_exact_arithmetic)
+  A real tie must be detected, and a one-ULP near miss must not. ... ok
+  test_optimizer_state_still_moves_when_the_parameter_cannot (tests.test_numerics.TestRounding.test_optimizer_state_still_moves_when_the_parameter_cannot)
+  Optimizer memory keeps evolving even when the stored value cannot. ... ok
+  test_rounding_analysis (tests.test_numerics.TestRounding.test_rounding_analysis)
+  A float64 candidate is rounded to float32 and the residual measured. ... ok
+  test_rounding_residual_of_a_real_step (tests.test_numerics.TestRounding.test_rounding_residual_of_a_real_step) ... ok
+  test_same_binade_metric_matches_the_exact_count_within_a_binade (tests.test_numerics.TestRounding.test_same_binade_metric_matches_the_exact_count_within_a_binade)
+  Away from a boundary the two metrics agree, which is why both exist. ... ok
+  test_ulp_metrics_diverge_at_a_sign_crossing (tests.test_numerics.TestRounding.test_ulp_metrics_diverge_at_a_sign_crossing)
+  The two ULP metrics are different quantities and must be labelled as such. ... ok
+  test_update_below_fp32_resolution_is_reported (tests.test_numerics.TestRounding.test_update_below_fp32_resolution_is_reported)
+  An update too small to represent must be labelled, not hidden. ... ok
+  test_adam (tests.test_optimizer.TestOptimizers.test_adam) ... ok
+  test_adamw (tests.test_optimizer.TestOptimizers.test_adamw) ... ok
+  test_optimizer_reconstruction (tests.test_optimizer.TestOptimizers.test_optimizer_reconstruction)
+  Across optimizers and configurations, the reconstruction is exact. ... ok
+  test_optimizer_state_is_read_not_guessed (tests.test_optimizer.TestOptimizers.test_optimizer_state_is_read_not_guessed) ... ok
+  test_reconstruction_reports_a_mismatch (tests.test_optimizer.TestOptimizers.test_reconstruction_reports_a_mismatch)
+  A deliberately wrong 'actual' value must be reported, not accepted. ... ok
+  test_semantics_probe_measures_an_exact_variant (tests.test_optimizer.TestOptimizers.test_semantics_probe_measures_an_exact_variant)
+  The probe must find a variant that reproduces the real update exactly. ... ok
+  test_sgd (tests.test_optimizer.TestOptimizers.test_sgd) ... ok
+  test_sgd_momentum_and_nesterov (tests.test_optimizer.TestOptimizers.test_sgd_momentum_and_nesterov) ... ok
+  test_sgd_without_momentum_keeps_no_state (tests.test_optimizer.TestOptimizers.test_sgd_without_momentum_keeps_no_state)
+  Observed behaviour: no state entry is created at all, not an empty one. ... ok
+  test_source_audit_records_the_installed_implementation (tests.test_optimizer.TestOptimizers.test_source_audit_records_the_installed_implementation) ... ok
+  test_source_audit_sgd (tests.test_optimizer.TestOptimizers.test_source_audit_sgd) ... ok
+  test_unknown_optimizer_is_rejected (tests.test_optimizer.TestOptimizers.test_unknown_optimizer_is_rejected) ... ok
+  test_weight_decay (tests.test_optimizer.TestOptimizers.test_weight_decay)
+  With the gradient suppressed, AdamW's decay must still move w. ... ok
+  test_weight_decay_is_not_merged_into_the_gradient_for_adamw (tests.test_optimizer.TestOptimizers.test_weight_decay_is_not_merged_into_the_gradient_for_adamw)
+  AdamW decays the parameter; the recorded gradient must be unchanged. ... ok
+  test_exactly_one_parameter (tests.test_parameter.TestTrackedParameterIdentity.test_exactly_one_parameter)
+  The module holds exactly one trainable tensor, and it is a scalar. ... ok
+  test_initialization (tests.test_parameter.TestTrackedParameterIdentity.test_initialization) ... ok
+  test_parameter_is_float32 (tests.test_parameter.TestTrackedParameterIdentity.test_parameter_is_float32) ... ok
+  test_parameter_requires_grad (tests.test_parameter.TestTrackedParameterIdentity.test_parameter_requires_grad) ... ok
+  test_parameter_shape (tests.test_parameter.TestTrackedParameterIdentity.test_parameter_shape) ... ok
+  test_forward_uses_the_parameter (tests.test_parameter.TestTrackingInvariants.test_forward_uses_the_parameter)
+  Changing the parameter must change the prediction: it is really in the graph. ... ok
+  test_model_rejects_non_float32_construction (tests.test_parameter.TestTrackingInvariants.test_model_rejects_non_float32_construction) ... ok
+  test_tracker_detects_a_frozen_parameter (tests.test_parameter.TestTrackingInvariants.test_tracker_detects_a_frozen_parameter) ... ok
+  test_tracker_reports_identity_card (tests.test_parameter.TestTrackingInvariants.test_tracker_reports_identity_card) ... ok
+  test_verifier_rejects_a_float64_parameter (tests.test_parameter.TestTrackingInvariants.test_verifier_rejects_a_float64_parameter)
+  A tracked object that stops being float32 must be rejected loudly. ... ok
+  test_verifier_rejects_a_non_scalar_parameter (tests.test_parameter.TestTrackingInvariants.test_verifier_rejects_a_non_scalar_parameter) ... ok
+  test_export (tests.test_recording.TestExport.test_export) ... ok
+  test_export_of_an_empty_run_is_explicit (tests.test_recording.TestExport.test_export_of_an_empty_run_is_explicit)
+  A run with no steps exports an explicit reason, not a silent empty file. ... ok
+  test_event_log_records_real_events (tests.test_recording.TestRecording.test_event_log_records_real_events) ... ok
+  test_final_report_contains_measured_values (tests.test_recording.TestRecording.test_final_report_contains_measured_values) ... ok
+  test_gradient_lifecycle_is_recorded (tests.test_recording.TestRecording.test_gradient_lifecycle_is_recorded) ... ok
+  test_history_hash_chain_detects_tampering (tests.test_recording.TestRecording.test_history_hash_chain_detects_tampering) ... ok
+  test_history_length (tests.test_recording.TestRecording.test_history_length) ... ok
+  test_nonfinite_detection (tests.test_recording.TestRecording.test_nonfinite_detection)
+  A diverging real run must be detected and stopped, not carried on. ... ok
+  test_records_are_immutable (tests.test_recording.TestRecording.test_records_are_immutable) ... ok
+  test_report_exposes_both_ulp_metrics (tests.test_recording.TestRecording.test_report_exposes_both_ulp_metrics)
+  The run aggregate must not be the sign-crossing-dominated count. ... ok
+  test_tanh_saturation_prevents_divergence (tests.test_recording.TestRecording.test_tanh_saturation_prevents_divergence)
+  A saturated tanh kills the gradient, so a huge lr does not diverge. ... ok
+  test_canonical_json_is_deterministic (tests.test_recording.TestReplay.test_canonical_json_is_deterministic) ... ok
+  test_replay_survives_a_finished_run (tests.test_recording.TestReplay.test_replay_survives_a_finished_run) ... ok
+  test_replay_uses_recorded_states (tests.test_recording.TestReplay.test_replay_uses_recorded_states)
+  Replay must return exactly the recorded values, in recorded order. ... ok
+  test_infinite_observations_are_included_in_extrema (tests.test_recording_integrity_exports.TestDivergedReportExtrema.test_infinite_observations_are_included_in_extrema) ... ok
+  test_corrupt_history_is_rejected_before_export_writes (tests.test_recording_integrity_exports.TestExactArchiveExports.test_corrupt_history_is_rejected_before_export_writes) ... ok
+  test_empty_report_is_preserved_and_not_described_as_an_empty_run (tests.test_recording_integrity_exports.TestExactArchiveExports.test_empty_report_is_preserved_and_not_described_as_an_empty_run) ... ok
+  test_failed_json_write_preserves_preexisting_file (tests.test_recording_integrity_exports.TestExactArchiveExports.test_failed_json_write_preserves_preexisting_file) ... ok
+  test_npz_preserves_integer_counts_larger_than_int64 (tests.test_recording_integrity_exports.TestExactArchiveExports.test_npz_preserves_integer_counts_larger_than_int64) ... ok
+  test_npz_preserves_observed_nan_distinct_from_missing (tests.test_recording_integrity_exports.TestExactArchiveExports.test_npz_preserves_observed_nan_distinct_from_missing) ... ok
+  test_npz_preserves_optional_observations_with_presence_masks (tests.test_recording_integrity_exports.TestExactArchiveExports.test_npz_preserves_optional_observations_with_presence_masks) ... ok
+  test_optional_parquet_engine_absence_preserves_existing_artifact (tests.test_recording_integrity_exports.TestExactArchiveExports.test_optional_parquet_engine_absence_preserves_existing_artifact) ... ok
+  test_parquet_does_not_swallow_disk_errors (tests.test_recording_integrity_exports.TestExactArchiveExports.test_parquet_does_not_swallow_disk_errors) ... ok
+  test_parquet_preserves_arbitrary_precision_integer_counts (tests.test_recording_integrity_exports.TestExactArchiveExports.test_parquet_preserves_arbitrary_precision_integer_counts) ... ok
+  test_required_npz_export_errors_propagate (tests.test_recording_integrity_exports.TestExactArchiveExports.test_required_npz_export_errors_propagate) ... ok
+  test_reusing_export_directory_does_not_leave_old_run_files (tests.test_recording_integrity_exports.TestExactArchiveExports.test_reusing_export_directory_does_not_leave_old_run_files) ... ok
+  test_appending_cannot_silently_reseal_an_altered_record (tests.test_recording_integrity_exports.TestRecordPrefixIntegrity.test_appending_cannot_silently_reseal_an_altered_record) ... ok
+  test_changing_a_predecessor_requires_rehashing_the_suffix (tests.test_recording_integrity_exports.TestRecordPrefixIntegrity.test_changing_a_predecessor_requires_rehashing_the_suffix) ... ok
+  test_duplicate_and_skipped_steps_are_rejected (tests.test_recording_integrity_exports.TestRecordPrefixIntegrity.test_duplicate_and_skipped_steps_are_rejected) ... ok
+  test_frozen_records_detach_caller_owned_lists_and_snapshot_shapes (tests.test_recording_integrity_exports.TestRecordPrefixIntegrity.test_frozen_records_detach_caller_owned_lists_and_snapshot_shapes) ... ok
+  test_hash_verification_detects_type_tampering_that_has_identical_json (tests.test_recording_integrity_exports.TestRecordPrefixIntegrity.test_hash_verification_detects_type_tampering_that_has_identical_json) ... ok
+  test_landscapes_are_detached_on_ingestion_and_access (tests.test_recording_integrity_exports.TestRecordPrefixIntegrity.test_landscapes_are_detached_on_ingestion_and_access) ... ok
+  test_live_tensors_cannot_be_retained_in_a_record (tests.test_recording_integrity_exports.TestRecordPrefixIntegrity.test_live_tensors_cannot_be_retained_in_a_record) ... ok
+  test_nonfinite_float_cannot_be_substituted_with_its_json_string (tests.test_recording_integrity_exports.TestRecordPrefixIntegrity.test_nonfinite_float_cannot_be_substituted_with_its_json_string) ... ok
+  test_hud_interval_follows_configuration (tests.test_regressions.TestDashboardSeriesPanel.test_hud_interval_follows_configuration)
+  F-05: ``hud_hz`` must actually drive the HUD refresh cadence. ... ok
+  test_refresh_restores_autoscaled_view_limits (tests.test_regressions.TestDashboardSeriesPanel.test_refresh_restores_autoscaled_view_limits) ... ok
+  test_saved_frames_contain_series_ink (tests.test_regressions.TestDashboardSeriesPanel.test_saved_frames_contain_series_ink)
+  Every saved frame must contain visible data pixels in the series panel. ... ok
+  test_diverged_run_exports_strict_json (tests.test_regressions.TestNonFiniteExport.test_diverged_run_exports_strict_json) ... ok
+  test_json_safe_stringifies_non_finite_floats (tests.test_regressions.TestNonFiniteExport.test_json_safe_stringifies_non_finite_floats) ... ok
+  test_sgd_reconstruction_reports_no_fake_step (tests.test_regressions.TestSgdReconstructionHonesty.test_sgd_reconstruction_reports_no_fake_step) ... ok
+  test_an_incomplete_export_inventory_cannot_pass (tests.test_release_checks.TestReleaseChecks.test_an_incomplete_export_inventory_cannot_pass) ... ok
+  test_empty_discovery_cannot_pass (tests.test_release_checks.TestReleaseChecks.test_empty_discovery_cannot_pass) ... ok
+  test_environment_reports_available_mps_hardware_instead_of_namespace (tests.test_release_checks.TestReleaseChecks.test_environment_reports_available_mps_hardware_instead_of_namespace) ... ok
+  test_invalid_measurement_arguments_fail_before_running_checks (tests.test_release_checks.TestReleaseChecks.test_invalid_measurement_arguments_fail_before_running_checks) ... ok
+  test_missing_or_dataless_final_frame_still_fails_the_pixel_check (tests.test_release_checks.TestReleaseChecks.test_missing_or_dataless_final_frame_still_fails_the_pixel_check) ... ok
+  test_missing_required_export_is_a_check_failure (tests.test_release_checks.TestReleaseChecks.test_missing_required_export_is_a_check_failure) ... ok
+  test_single_healthy_final_frame_passes_independently_of_render_cadence (tests.test_release_checks.TestReleaseChecks.test_single_healthy_final_frame_passes_independently_of_render_cadence) ... ok
+  test_skipped_tests_are_excluded_from_pass_count (tests.test_release_checks.TestReleaseChecks.test_skipped_tests_are_excluded_from_pass_count) ... ok
+  test_embedded_project_hash_is_checked_before_project_use (tests.test_studio_codegen.TestStudioPythonCodegen.test_embedded_project_hash_is_checked_before_project_use) ... ok
+  test_explicit_script_executes_real_graph_with_portable_plugin_checkpoint_and_artifact (tests.test_studio_codegen.TestStudioPythonCodegen.test_explicit_script_executes_real_graph_with_portable_plugin_checkpoint_and_artifact) ... ok
+  test_import_is_inert_and_exact_data_cannot_become_python_source (tests.test_studio_codegen.TestStudioPythonCodegen.test_import_is_inert_and_exact_data_cannot_become_python_source) ... ok
+  test_invalid_script_deadlines_reject_before_loading_runtime (tests.test_studio_codegen.TestStudioPythonCodegen.test_invalid_script_deadlines_reject_before_loading_runtime) ... ok
+  test_missing_workflows_active_jobs_and_nonfinite_data_reject_export (tests.test_studio_codegen.TestStudioPythonCodegen.test_missing_workflows_active_jobs_and_nonfinite_data_reject_export) ... ok
+  test_nonexistent_and_active_job_projects_cannot_be_downloaded_as_runnable_source (tests.test_studio_codegen.TestStudioPythonDownload.test_nonexistent_and_active_job_projects_cannot_be_downloaded_as_runnable_source) ... ok
+  test_python_download_is_binary_attachment_of_current_project_and_rejects_stale_epoch (tests.test_studio_codegen.TestStudioPythonDownload.test_python_download_is_binary_attachment_of_current_project_and_rejects_stale_epoch) ... ok
+  test_active_script_blocks_project_replace_until_cancel_is_acknowledged (tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_active_script_blocks_project_replace_until_cancel_is_acknowledged) ... ok
+  test_draft_http_two_writers_receive_conflict_without_overwriting_saved_buffers (tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_draft_http_two_writers_receive_conflict_without_overwriting_saved_buffers) ... ok
+  test_graph_routes_execute_real_training_and_roundtrip_project (tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_graph_routes_execute_real_training_and_roundtrip_project) ... ok
+  test_imported_artifact_identity_charset_routes_exact_saved_bytes (tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_imported_artifact_identity_charset_routes_exact_saved_bytes) ... ok
+  test_job_download_preserves_integers_beyond_browser_precision (tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_job_download_preserves_integers_beyond_browser_precision) ... ok
+  test_plugin_install_disable_enable_update_and_actual_execution (tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_plugin_install_disable_enable_update_and_actual_execution) ... ok
+  test_stale_graph_edit_returns_conflict_and_retains_current_graph (tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_stale_graph_edit_returns_conflict_and_retains_current_graph) ... ok
+  test_stale_workspace_gets_are_rejected_before_identity_lookup_or_download (tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_stale_workspace_gets_are_rejected_before_identity_lookup_or_download) ... ok
+  test_workspace_epoch_blocks_same_graph_identity_and_revision_after_project_replacement (tests.test_studio_extensions_integration.TestGraphHTTPIntegration.test_workspace_epoch_blocks_same_graph_identity_and_revision_after_project_replacement) ... ok
+  test_atomic_custom_data_creation_does_not_publish_on_invalid_data (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_atomic_custom_data_creation_does_not_publish_on_invalid_data) ... ok
+  test_atomic_custom_data_creation_trains_the_supplied_actual_samples (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_atomic_custom_data_creation_trains_the_supplied_actual_samples) ... ok
+  test_automatic_branch_positions_do_not_stack_siblings (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_automatic_branch_positions_do_not_stack_siblings) ... ok
+  test_corrupt_autosave_is_preserved_before_recovery_is_saved (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_corrupt_autosave_is_preserved_before_recovery_is_saved) ... ok
+  test_draft_compare_and_swap_keeps_the_first_writer_and_rejects_invalid_revision_types (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_draft_compare_and_swap_keeps_the_first_writer_and_rejects_invalid_revision_types) ... ok
+  test_final_save_failure_does_not_leave_training_or_autosave_workers_running (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_final_save_failure_does_not_leave_training_or_autosave_workers_running) ... ok
+  test_graph_shutdown_failure_still_stops_autosave_controllers_and_saves (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_graph_shutdown_failure_still_stops_autosave_controllers_and_saves) ... ok
+  test_invalid_draft_replacement_or_import_is_atomic (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_invalid_draft_replacement_or_import_is_atomic) ... ok
+  test_invalid_extension_project_leaves_real_runs_and_graphs_unchanged (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_invalid_extension_project_leaves_real_runs_and_graphs_unchanged) ... ok
+  test_legacy_project_adds_a_nonexecuting_node_workspace (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_legacy_project_adds_a_nonexecuting_node_workspace) ... ok
+  test_live_optimizer_memory_and_effective_rate_follow_manual_edit_step_and_reset (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_live_optimizer_memory_and_effective_rate_follow_manual_edit_step_and_reset) ... ok
+  test_live_parameter_bits_preserve_nonfinite_payloads_and_signed_zero_from_actual_storage (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_live_parameter_bits_preserve_nonfinite_payloads_and_signed_zero_from_actual_storage) ... ok
+  test_reset_clears_live_intervention_indicator_but_preserves_evidence (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_reset_clears_live_intervention_indicator_but_preserves_evidence) ... ok
+  test_server_close_only_marks_workspace_closed_after_successful_cleanup (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_server_close_only_marks_workspace_closed_after_successful_cleanup) ... ok
+  test_shutdown_closes_import_and_action_admission_before_joining_graph_workers (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_shutdown_closes_import_and_action_admission_before_joining_graph_workers) ... ok
+  test_unapplied_invalid_editor_and_panel_drafts_roundtrip_without_numerical_changes (tests.test_studio_extensions_integration.TestWorkspaceExtensionIntegration.test_unapplied_invalid_editor_and_panel_drafts_roundtrip_without_numerical_changes) ... ok
+  test_all_value_and_transform_nodes_execute_exact_outputs (tests.test_studio_graph.TestGraphStudio.test_all_value_and_transform_nodes_execute_exact_outputs) ... ok
+  test_bad_manifest_and_same_version_update_are_atomic (tests.test_studio_graph.TestGraphStudio.test_bad_manifest_and_same_version_update_are_atomic) ... ok
+  test_branch_and_manual_intervention_retain_source_state (tests.test_studio_graph.TestGraphStudio.test_branch_and_manual_intervention_retain_source_state) ... ok
+  test_cancel_actual_infinite_script_terminates_worker_and_queue_recovers (tests.test_studio_graph.TestGraphStudio.test_cancel_actual_infinite_script_terminates_worker_and_queue_recovers) ... ok
+  test_cancel_queued_job_never_performs_host_effect (tests.test_studio_graph.TestGraphStudio.test_cancel_queued_job_never_performs_host_effect) ... ok
+  test_cancel_running_training_stops_between_steps_and_refuses_import_while_busy (tests.test_studio_graph.TestGraphStudio.test_cancel_running_training_stops_between_steps_and_refuses_import_while_busy) ... ok
+  test_control_node_play_pause_reset_restart_are_real_and_keep_dataset (tests.test_studio_graph.TestGraphStudio.test_control_node_play_pause_reset_restart_are_real_and_keep_dataset) ... ok
+  test_custom_dataset_pipeline_uses_actual_arrays_without_extra_base_run (tests.test_studio_graph.TestGraphStudio.test_custom_dataset_pipeline_uses_actual_arrays_without_extra_base_run) ... ok
+  test_duplicate_input_edge_and_edge_id_are_rejected (tests.test_studio_graph.TestGraphStudio.test_duplicate_input_edge_and_edge_id_are_rejected) ... ok
+  test_duplicate_update_select_delete_and_stale_compare_and_swap (tests.test_studio_graph.TestGraphStudio.test_duplicate_update_select_delete_and_stale_compare_and_swap) ... ok
+  test_every_math_operation_and_missing_get_default (tests.test_studio_graph.TestGraphStudio.test_every_math_operation_and_missing_get_default) ... ok
+  test_export_node_retains_exact_zip_across_later_training_and_project_reopen (tests.test_studio_graph.TestGraphStudio.test_export_node_retains_exact_zip_across_later_training_and_project_reopen) ... ok
+  test_failed_node_retains_previous_real_host_effect_and_skips_dependents (tests.test_studio_graph.TestGraphStudio.test_failed_node_retains_previous_real_host_effect_and_skips_dependents) ... ok
+  test_full_typed_validation_detects_cycles_missing_ports_types_and_options (tests.test_studio_graph.TestGraphStudio.test_full_typed_validation_detects_cycles_missing_ports_types_and_options) ... ok
+  test_history_retains_declared_count_and_rejects_boolean_execution_revisions (tests.test_studio_graph.TestGraphStudio.test_history_retains_declared_count_and_rejects_boolean_execution_revisions) ... ok
+  test_idempotent_execute_does_not_duplicate_host_effects (tests.test_studio_graph.TestGraphStudio.test_idempotent_execute_does_not_duplicate_host_effects) ... ok
+  test_incomplete_drafts_save_and_reopen_but_cannot_execute (tests.test_studio_graph.TestGraphStudio.test_incomplete_drafts_save_and_reopen_but_cannot_execute) ... ok
+  test_invalid_project_import_cannot_replace_existing_graphs_plugins_or_jobs (tests.test_studio_graph.TestGraphStudio.test_invalid_project_import_cannot_replace_existing_graphs_plugins_or_jobs) ... ok
+  test_job_clear_keeps_active_jobs_and_removes_replay_keys (tests.test_studio_graph.TestGraphStudio.test_job_clear_keeps_active_jobs_and_removes_replay_keys) ... ok
+  test_job_observation_download_getter_is_an_exact_independent_copy (tests.test_studio_graph.TestGraphStudio.test_job_observation_download_getter_is_an_exact_independent_copy) ... ok
+  test_nonfinite_math_invalid_dataset_and_typed_config_are_explicit_failures (tests.test_studio_graph.TestGraphStudio.test_nonfinite_math_invalid_dataset_and_typed_config_are_explicit_failures) ... ok
+  test_old_project_default_and_closed_studio (tests.test_studio_graph.TestGraphStudio.test_old_project_default_and_closed_studio) ... ok
+  test_parameter_defaults_do_not_duplicate_literal_inputs_into_script_params (tests.test_studio_graph.TestGraphStudio.test_parameter_defaults_do_not_duplicate_literal_inputs_into_script_params) ... ok
+  test_plugin_lifecycle_and_dataset_transform_are_real (tests.test_studio_graph.TestGraphStudio.test_plugin_lifecycle_and_dataset_transform_are_real) ... ok
+  test_plugin_output_types_and_declared_ports_are_enforced (tests.test_studio_graph.TestGraphStudio.test_plugin_output_types_and_declared_ports_are_enforced) ... ok
+  test_plugin_templates_are_available_and_execute_after_install (tests.test_studio_graph.TestGraphStudio.test_plugin_templates_are_available_and_execute_after_install) ... ok
+  test_project_reopens_terminal_jobs_and_never_resumes_queued_work (tests.test_studio_graph.TestGraphStudio.test_project_reopens_terminal_jobs_and_never_resumes_queued_work) ... ok
+  test_queue_snapshots_graph_and_plugin_before_later_edits (tests.test_studio_graph.TestGraphStudio.test_queue_snapshots_graph_and_plugin_before_later_edits) ... ok
+  test_real_training_pipeline_checkpoint_hash_chain_and_history_step_zero (tests.test_studio_graph.TestGraphStudio.test_real_training_pipeline_checkpoint_hash_chain_and_history_step_zero) ... ok
+  test_reserved_dot_path_identities_reject_import_atomically (tests.test_studio_graph.TestGraphStudio.test_reserved_dot_path_identities_reject_import_atomically) ... ok
+  test_resource_budget_fails_explicitly_before_downstream_host_effect (tests.test_studio_graph.TestGraphStudio.test_resource_budget_fails_explicitly_before_downstream_host_effect) ... ok
+  test_runtime_any_output_is_checked_at_typed_destination (tests.test_studio_graph.TestGraphStudio.test_runtime_any_output_is_checked_at_typed_destination) ... ok
+  test_saved_job_status_fields_and_duplicate_replay_keys_cannot_claim_false_success (tests.test_studio_graph.TestGraphStudio.test_saved_job_status_fields_and_duplicate_replay_keys_cannot_claim_false_success) ... ok
+  test_script_node_runs_real_v8_and_records_logs (tests.test_studio_graph.TestGraphStudio.test_script_node_runs_real_v8_and_records_logs) ... ok
+  test_snapshot_and_exports_are_deep_copies (tests.test_studio_graph.TestGraphStudio.test_snapshot_and_exports_are_deep_copies) ... ok
+  test_snapshot_hash_detects_changed_pinned_code_and_incomplete_template_import_is_structural (tests.test_studio_graph.TestGraphStudio.test_snapshot_hash_detects_changed_pinned_code_and_incomplete_template_import_is_structural) ... ok
+  test_starter_is_an_idle_real_training_template (tests.test_studio_graph.TestGraphStudio.test_starter_is_an_idle_real_training_template) ... ok
+  test_structurally_invalid_update_is_atomic (tests.test_studio_graph.TestGraphStudio.test_structurally_invalid_update_is_atomic) ... ok
+  test_all_port_types_and_rich_parameter_constraints (tests.test_studio_plugins.TestPluginManifest.test_all_port_types_and_rich_parameter_constraints) ... ok
+  test_bad_defaults_bounds_and_options_rejected (tests.test_studio_plugins.TestPluginManifest.test_bad_defaults_bounds_and_options_rejected) ... ok
+  test_declarative_template_and_panel_are_independent (tests.test_studio_plugins.TestPluginManifest.test_declarative_template_and_panel_are_independent) ... ok
+  test_delivered_example_template_executes_actual_custom_node (tests.test_studio_plugins.TestPluginManifest.test_delivered_example_template_executes_actual_custom_node) ... ok
+  test_example_and_namespaced_independent_catalog (tests.test_studio_plugins.TestPluginManifest.test_example_and_namespaced_independent_catalog) ... ok
+  test_invalid_schema_identifiers_and_duplicates (tests.test_studio_plugins.TestPluginManifest.test_invalid_schema_identifiers_and_duplicates) ... ok
+  test_unknown_code_capabilities_rejected (tests.test_studio_plugins.TestPluginManifest.test_unknown_code_capabilities_rejected) ... ok
+  test_actual_example_plugin_node_runs (tests.test_studio_plugins.TestScriptSandbox.test_actual_example_plugin_node_runs) ... ok
+  test_binary64_math_unicode_and_null_prototype_values (tests.test_studio_plugins.TestScriptSandbox.test_binary64_math_unicode_and_null_prototype_values) ... ok
+  test_cancel_before_execution_starts_no_process (tests.test_studio_plugins.TestScriptSandbox.test_cancel_before_execution_starts_no_process) ... ok
+  test_cancel_during_blocked_large_stdin_write_kills_and_reaps_worker (tests.test_studio_plugins.TestScriptSandbox.test_cancel_during_blocked_large_stdin_write_kills_and_reaps_worker) ... ok
+  test_cancel_mid_execution_kills_and_reaps_actual_worker (tests.test_studio_plugins.TestScriptSandbox.test_cancel_mid_execution_kills_and_reaps_actual_worker) ... ok
+  test_capabilities_report_enforced_limits_and_boundaries (tests.test_studio_plugins.TestScriptSandbox.test_capabilities_report_enforced_limits_and_boundaries) ... ok
+  test_cpu_exhaustion_is_bounded_and_healthy_worker_recovers (tests.test_studio_plugins.TestScriptSandbox.test_cpu_exhaustion_is_bounded_and_healthy_worker_recovers) ... ok
+  test_each_execution_has_fresh_global_state (tests.test_studio_plugins.TestScriptSandbox.test_each_execution_has_fresh_global_state) ... ok
+  test_function_body_cannot_escape_into_trusted_wrapper (tests.test_studio_plugins.TestScriptSandbox.test_function_body_cannot_escape_into_trusted_wrapper) ... ok
+  test_input_mutations_cannot_modify_parent_and_prototype_pollution_fails (tests.test_studio_plugins.TestScriptSandbox.test_input_mutations_cannot_modify_parent_and_prototype_pollution_fails) ... ok
+  test_invalid_input_limits_rejected_before_worker_launch (tests.test_studio_plugins.TestScriptSandbox.test_invalid_input_limits_rejected_before_worker_launch) ... ok
+  test_large_dataset_within_json_budget_can_be_transformed (tests.test_studio_plugins.TestScriptSandbox.test_large_dataset_within_json_budget_can_be_transformed) ... ok
+  test_logs_and_result_sizes_are_bounded (tests.test_studio_plugins.TestScriptSandbox.test_logs_and_result_sizes_are_bounded) ... ok
+  test_memory_exhaustion_is_bounded_and_healthy_worker_recovers (tests.test_studio_plugins.TestScriptSandbox.test_memory_exhaustion_is_bounded_and_healthy_worker_recovers) ... ok
+  test_negative_zero_input_and_computation_keep_their_sign (tests.test_studio_plugins.TestScriptSandbox.test_negative_zero_input_and_computation_keep_their_sign) ... ok
+  test_no_host_io_or_callbacks_are_exposed (tests.test_studio_plugins.TestScriptSandbox.test_no_host_io_or_callbacks_are_exposed) ... ok
+  test_nonexact_integer_inputs_rejected_and_decimal_bigints_preserved (tests.test_studio_plugins.TestScriptSandbox.test_nonexact_integer_inputs_rejected_and_decimal_bigints_preserved) ... ok
+  test_output_must_be_strict_finite_plain_json_object (tests.test_studio_plugins.TestScriptSandbox.test_output_must_be_strict_finite_plain_json_object) ... ok
+  test_real_javascript_transform_named_outputs_and_logs (tests.test_studio_plugins.TestScriptSandbox.test_real_javascript_transform_named_outputs_and_logs) ... ok
+  test_resource_job_failure_kills_reaps_process_and_is_visible (tests.test_studio_plugins.TestScriptSandbox.test_resource_job_failure_kills_reaps_process_and_is_visible) ... ok
+  test_startup_stderr_is_drained_before_ready_and_diagnostics_are_bounded (tests.test_studio_plugins.TestScriptSandbox.test_startup_stderr_is_drained_before_ready_and_diagnostics_are_bounded) ... ok
+  test_syntax_error_and_script_error_surface (tests.test_studio_plugins.TestScriptSandbox.test_syntax_error_and_script_error_surface) ... ok
+  test_untrusted_environment_and_current_directory_are_not_inherited (tests.test_studio_plugins.TestScriptSandbox.test_untrusted_environment_and_current_directory_are_not_inherited) ... ok
+  test_disallowed_methods_return_json (tests.test_studio_server.TestStudioServer.test_disallowed_methods_return_json) ... ok
+  test_fixed_routes_block_filesystem_traversal (tests.test_studio_server.TestStudioServer.test_fixed_routes_block_filesystem_traversal) ... ok
+  test_missing_record_validation_and_real_errors_are_visible (tests.test_studio_server.TestStudioServer.test_missing_record_validation_and_real_errors_are_visible) ... ok
+  test_nonfinite_run_still_observes_downloads_and_restores_as_strict_json (tests.test_studio_server.TestStudioServer.test_nonfinite_run_still_observes_downloads_and_restores_as_strict_json) ... ok
+  test_real_training_project_roundtrip_and_verified_zip (tests.test_studio_server.TestStudioServer.test_real_training_project_roundtrip_and_verified_zip) ... ok
+  test_rejects_host_rebinding_cross_origin_and_cross_site_changes (tests.test_studio_server.TestStudioServer.test_rejects_host_rebinding_cross_origin_and_cross_site_changes) ... ok
+  test_rejects_malformed_and_oversized_json_before_mutation (tests.test_studio_server.TestStudioServer.test_rejects_malformed_and_oversized_json_before_mutation) ... ok
+  test_server_close_closes_owned_workspace_once (tests.test_studio_server.TestStudioServer.test_server_close_closes_owned_workspace_once) ... ok
+  test_server_close_stops_real_training_and_autosave_workers (tests.test_studio_server.TestStudioServer.test_server_close_stops_real_training_and_autosave_workers) ... ok
+  test_static_assets_health_and_capabilities (tests.test_studio_server.TestStudioServer.test_static_assets_health_and_capabilities) ... ok
+  test_workspace_lifecycle_failure_is_a_conflict (tests.test_studio_server.TestStudioServer.test_workspace_lifecycle_failure_is_a_conflict) ... ok
+  test_browser_disconnect_during_response_write_is_not_a_backend_failure (tests.test_studio_server.TestStudioServerLifecycle.test_browser_disconnect_during_response_write_is_not_a_backend_failure) ... ok
+  test_busy_port_fails_cleanly (tests.test_studio_server.TestStudioServerLifecycle.test_busy_port_fails_cleanly) ... ok
+  test_host_and_port_validation (tests.test_studio_server.TestStudioServerLifecycle.test_host_and_port_validation) ... ok
+  test_interrupt_closes_workspace_and_server (tests.test_studio_server.TestStudioServerLifecycle.test_interrupt_closes_workspace_and_server) ... ok
+  test_module_cli_persists_projects_by_default (tests.test_studio_server.TestStudioServerLifecycle.test_module_cli_persists_projects_by_default) ... ok
+  test_second_studio_cannot_claim_a_live_studio_port (tests.test_studio_server.TestStudioServerLifecycle.test_second_studio_cannot_claim_a_live_studio_port) ... ok
+  test_autosave_reopens_exact_state_and_continues (tests.test_studio_session.TestStudioWorkspace.test_autosave_reopens_exact_state_and_continues) ... ok
+  test_background_failure_is_visible_and_restart_clears_it (tests.test_studio_session.TestStudioWorkspace.test_background_failure_is_visible_and_restart_clears_it) ... ok
+  test_browser_config_preserves_uint64_seeds_for_full_and_partial_edits (tests.test_studio_session.TestStudioWorkspace.test_browser_config_preserves_uint64_seeds_for_full_and_partial_edits) ... ok
+  test_browser_seed_parser_rejects_lossy_or_noninteger_strings (tests.test_studio_session.TestStudioWorkspace.test_browser_seed_parser_rejects_lossy_or_noninteger_strings) ... ok
+  test_changed_bits_and_optimizer_state_are_real_explicit_interventions (tests.test_studio_session.TestStudioWorkspace.test_changed_bits_and_optimizer_state_are_real_explicit_interventions) ... ok
+  test_checkpoint_corruption_rejects_whole_import (tests.test_studio_session.TestStudioWorkspace.test_checkpoint_corruption_rejects_whole_import) ... ok
+  test_checkpoint_restore_and_fork_continue_actual_optimizer_memory (tests.test_studio_session.TestStudioWorkspace.test_checkpoint_restore_and_fork_continue_actual_optimizer_memory) ... ok
+  test_configuration_edit_branches_recorded_history (tests.test_studio_session.TestStudioWorkspace.test_configuration_edit_branches_recorded_history) ... ok
+  test_configuring_custom_data_retains_actual_rows_and_rebatches_new_optimizer (tests.test_studio_session.TestStudioWorkspace.test_configuring_custom_data_retains_actual_rows_and_rebatches_new_optimizer) ... ok
+  test_corrupt_engine_digest_or_chain_rejects_without_replacing_workspace (tests.test_studio_session.TestStudioWorkspace.test_corrupt_engine_digest_or_chain_rejects_without_replacing_workspace) ... ok
+  test_custom_csv_values_are_used_and_survive_restart_and_save_open (tests.test_studio_session.TestStudioWorkspace.test_custom_csv_values_are_used_and_survive_restart_and_save_open) ... ok
+  test_dataset_change_after_training_preserves_original_run_as_parent (tests.test_studio_session.TestStudioWorkspace.test_dataset_change_after_training_preserves_original_run_as_parent) ... ok
+  test_empty_world_remains_empty_after_autosave_reopen (tests.test_studio_session.TestStudioWorkspace.test_empty_world_remains_empty_after_autosave_reopen) ... ok
+  test_explicit_generation_change_creates_generated_data_child (tests.test_studio_session.TestStudioWorkspace.test_explicit_generation_change_creates_generated_data_child) ... ok
+  test_imported_route_ids_are_validated_without_replacing_workspace (tests.test_studio_session.TestStudioWorkspace.test_imported_route_ids_are_validated_without_replacing_workspace) ... ok
+  test_invalid_inputs_leave_config_and_history_unchanged (tests.test_studio_session.TestStudioWorkspace.test_invalid_inputs_leave_config_and_history_unchanged) ... ok
+  test_json_roundtrip_continues_every_optimizer_and_schedules_exactly (tests.test_studio_session.TestStudioWorkspace.test_json_roundtrip_continues_every_optimizer_and_schedules_exactly) ... ok
+  test_live_reset_segment_analysis_and_schedule_survive_save_open (tests.test_studio_session.TestStudioWorkspace.test_live_reset_segment_analysis_and_schedule_survive_save_open) ... ok
+  test_manual_lr_applies_to_next_exponential_and_cosine_schedule (tests.test_studio_session.TestStudioWorkspace.test_manual_lr_applies_to_next_exponential_and_cosine_schedule) ... ok
+  test_multiple_live_runs_pause_independently_and_delete_stops_worker (tests.test_studio_session.TestStudioWorkspace.test_multiple_live_runs_pause_independently_and_delete_stops_worker) ... ok
+  test_project_decoder_rejects_arbitrary_types_and_tensor_length (tests.test_studio_session.TestStudioWorkspace.test_project_decoder_rejects_arbitrary_types_and_tensor_length) ... ok
+  test_run_export_contains_actual_portable_evidence_and_dataset (tests.test_studio_session.TestStudioWorkspace.test_run_export_contains_actual_portable_evidence_and_dataset) ... ok
+  test_signed_zero_bits_and_wide_seed_survive_json_roundtrip (tests.test_studio_session.TestStudioWorkspace.test_signed_zero_bits_and_wide_seed_survive_json_roundtrip) ... ok
+  test_starts_idle_and_nested_config_reaches_real_engine (tests.test_studio_session.TestStudioWorkspace.test_starts_idle_and_nested_config_reaches_real_engine) ... ok
+  test_verify_status_and_close_lifecycle (tests.test_studio_session.TestStudioWorkspace.test_verify_status_and_close_lifecycle) ... ok
+  test_actual_hf_causal_lm_training_generation_and_tied_checkpoint (tests.test_studio_transformers.TestTensorRuntime.test_actual_hf_causal_lm_training_generation_and_tied_checkpoint) ... ok
+  test_actual_hf_fast_tokenizer_padding_mask_and_causal_labels (tests.test_studio_transformers.TestTensorRuntime.test_actual_hf_fast_tokenizer_padding_mask_and_causal_labels) ... ok
+  test_actual_hf_text_generation_pipeline (tests.test_studio_transformers.TestTensorRuntime.test_actual_hf_text_generation_pipeline) ... ok
+  test_actual_multiple_parameters_and_adamw_updates (tests.test_studio_transformers.TestTensorRuntime.test_actual_multiple_parameters_and_adamw_updates) ... ok
+  test_all_optimizer_choices_execute_real_updates (tests.test_studio_transformers.TestTensorRuntime.test_all_optimizer_choices_execute_real_updates) ... ok
+  test_cached_pretrained_real_weights_training_and_portable_checkpoint_without_network (tests.test_studio_transformers.TestTensorRuntime.test_cached_pretrained_real_weights_training_and_portable_checkpoint_without_network) ... ok
+  test_checkpoint_rejects_zip_traversal_duplicate_members_and_hash_tamper (tests.test_studio_transformers.TestTensorRuntime.test_checkpoint_rejects_zip_traversal_duplicate_members_and_hash_tamper) ... ok
+  test_cross_entropy_classification_and_accuracy (tests.test_studio_transformers.TestTensorRuntime.test_cross_entropy_classification_and_accuracy) ... ok
+  test_custom_ast_rejects_code_execution_reflection_and_mutation (tests.test_studio_transformers.TestTensorRuntime.test_custom_ast_rejects_code_execution_reflection_and_mutation) ... ok
+  test_custom_forward_residual_architecture_updates_all_layers (tests.test_studio_transformers.TestTensorRuntime.test_custom_forward_residual_architecture_updates_all_layers) ... ok
+  test_custom_functional_dropout_respects_eval_mode (tests.test_studio_transformers.TestTensorRuntime.test_custom_functional_dropout_respects_eval_mode) ... ok
+  test_dataset_finite_shape_and_element_budgets (tests.test_studio_transformers.TestTensorRuntime.test_dataset_finite_shape_and_element_budgets) ... ok
+  test_embedding_causal_attention_and_custom_matmul (tests.test_studio_transformers.TestTensorRuntime.test_embedding_causal_attention_and_custom_matmul) ... ok
+  test_evaluation_preserves_weights_and_forward_exposes_actual_shape (tests.test_studio_transformers.TestTensorRuntime.test_evaluation_preserves_weights_and_forward_exposes_actual_shape) ... ok
+  test_fill_mask_uses_real_mask_token (tests.test_studio_transformers.TestTensorRuntime.test_fill_mask_uses_real_mask_token) ... ok
+  test_generation_normalizes_manual_right_padding_and_checks_context (tests.test_studio_transformers.TestTensorRuntime.test_generation_normalizes_manual_right_padding_and_checks_context) ... ok
+  test_handles_cannot_cross_worker_or_be_forged (tests.test_studio_transformers.TestTensorRuntime.test_handles_cannot_cross_worker_or_be_forged) ... ok
+  test_hash_supports_scalar_tensor_state (tests.test_studio_transformers.TestTensorRuntime.test_hash_supports_scalar_tensor_state) ... ok
+  test_hf_config_remote_code_fields_rejected (tests.test_studio_transformers.TestTensorRuntime.test_hf_config_remote_code_fields_rejected) ... ok
+  test_invalid_training_budgets_and_optimizer_values_are_explicit (tests.test_studio_transformers.TestTensorRuntime.test_invalid_training_budgets_and_optimizer_values_are_explicit) ... ok
+  test_layer_blocks_and_composition_have_real_matching_shapes (tests.test_studio_transformers.TestTensorRuntime.test_layer_blocks_and_composition_have_real_matching_shapes) ... ok
+  test_llama_rejects_invalid_gqa_and_rotary_geometry_before_model_allocation (tests.test_studio_transformers.TestTensorRuntime.test_llama_rejects_invalid_gqa_and_rotary_geometry_before_model_allocation) ... ok
+  test_local_wordlevel_generation_decodes_full_token_sequence_without_merging_prompt_words (tests.test_studio_transformers.TestTensorRuntime.test_local_wordlevel_generation_decodes_full_token_sequence_without_merging_prompt_words) ... ok
+  test_loss_rejects_implicit_broadcasting_and_fractional_classes (tests.test_studio_transformers.TestTensorRuntime.test_loss_rejects_implicit_broadcasting_and_fractional_classes) ... ok
+  test_module_inspection_bounds_output_and_reports_exact_total_without_changing_weights (tests.test_studio_transformers.TestTensorRuntime.test_module_inspection_bounds_output_and_reports_exact_total_without_changing_weights) ... ok
+  test_native_llama_architecture_has_gqa_rope_swiglu_rmsnorm_and_causal_logits (tests.test_studio_transformers.TestTensorRuntime.test_native_llama_architecture_has_gqa_rope_swiglu_rmsnorm_and_causal_logits) ... ok
+  test_optimizer_moments_continue_between_train_nodes (tests.test_studio_transformers.TestTensorRuntime.test_optimizer_moments_continue_between_train_nodes) ... ok
+  test_parameter_budget_checked_on_meta_before_cpu_allocation (tests.test_studio_transformers.TestTensorRuntime.test_parameter_budget_checked_on_meta_before_cpu_allocation) ... ok
+  test_pipeline_eval_is_repeatable_after_model_training (tests.test_studio_transformers.TestTensorRuntime.test_pipeline_eval_is_repeatable_after_model_training) ... ok
+  test_pretrained_rejects_paths_and_floating_revision (tests.test_studio_transformers.TestTensorRuntime.test_pretrained_rejects_paths_and_floating_revision) ... ok
+  test_safe_checkpoint_roundtrip_preserves_exact_tensor_bytes (tests.test_studio_transformers.TestTensorRuntime.test_safe_checkpoint_roundtrip_preserves_exact_tensor_bytes) ... ok
+  test_sequential_embedding_accepts_integral_x_and_rejects_fractional_ids (tests.test_studio_transformers.TestTensorRuntime.test_sequential_embedding_accepts_integral_x_and_rejects_fractional_ids) ... ok
+  test_token_classification_pipeline_normalizes_numpy_scores_to_json (tests.test_studio_transformers.TestTensorRuntime.test_token_classification_pipeline_normalizes_numpy_scores_to_json) ... ok
+  test_token_fields_reject_fractional_ids_nonbinary_and_empty_masks (tests.test_studio_transformers.TestTensorRuntime.test_token_fields_reject_fractional_ids_nonbinary_and_empty_masks) ... ok
+  test_catalog_templates_and_examples_validate_without_execution (tests.test_studio_transformers.TestTransformersIntegration.test_catalog_templates_and_examples_validate_without_execution) ... ok
+  test_real_graph_training_artifact_reload_and_no_scalar_workspace_effect (tests.test_studio_transformers.TestTransformersIntegration.test_real_graph_training_artifact_reload_and_no_scalar_workspace_effect) ... ok
+  test_real_llama_graph_trains_generates_and_reloads_identical_safe_weights (tests.test_studio_transformers.TestTransformersIntegration.test_real_llama_graph_trains_generates_and_reloads_identical_safe_weights) ... ok
+  test_worker_cancellation_kills_and_reaps_actual_native_training (tests.test_studio_transformers.TestTransformersIntegration.test_worker_cancellation_kills_and_reaps_actual_native_training) ... ok
+  test_worker_streams_actual_training_progress_before_final_metrics (tests.test_studio_transformers.TestTransformersIntegration.test_worker_streams_actual_training_progress_before_final_metrics) ... ok
+  test_pause_really_stops_the_engine (tests.test_training.TestControls.test_pause_really_stops_the_engine)
+  A pause must stop real steps, not merely stop drawing. ... ok
+  test_reset_restores_the_live_state (tests.test_training.TestControls.test_reset_restores_the_live_state) ... ok
+  test_restart_discards_the_history (tests.test_training.TestControls.test_restart_discards_the_history) ... ok
+  test_run_n_runs_exactly_n_steps (tests.test_training.TestControls.test_run_n_runs_exactly_n_steps) ... ok
+  test_run_n_without_space (tests.test_training.TestControls.test_run_n_without_space)
+  Verify command like 'n2' runs 2 steps. ... ok
+  test_single_step_advances_exactly_one_step (tests.test_training.TestControls.test_single_step_advances_exactly_one_step) ... ok
+  test_speed_control_changes_the_step_rate (tests.test_training.TestControls.test_speed_control_changes_the_step_rate) ... ok
+  test_tracking_failure_stops_the_run (tests.test_training.TestSafety.test_tracking_failure_stops_the_run) ... ok
+  test_a_flat_gradient_regime_is_not_inferred_from_label (tests.test_training.TestStability.test_a_flat_gradient_regime_is_not_inferred_from_label)
+  No regime is ever reported as 'converged'. ... ok
+  test_analyzer_reports_no_data_honestly (tests.test_training.TestStability.test_analyzer_reports_no_data_honestly) ... ok
+  test_stability_analysis (tests.test_training.TestStability.test_stability_analysis) ... ok
+  test_stability_reports_a_stationary_run (tests.test_training.TestStability.test_stability_reports_a_stationary_run)
+  A near-zero gradient does not imply a small update. ... ok
+  test_stability_reports_oscillation_for_an_oscillatory_run (tests.test_training.TestStability.test_stability_reports_oscillation_for_an_oscillatory_run) ... ok
+  test_gradient_is_never_fabricated (tests.test_training.TestTraining.test_gradient_is_never_fabricated)
+  The training step must obtain its gradient only from autograd. ... ok
+  test_landscape_probe_restores_the_parameter (tests.test_training.TestTraining.test_landscape_probe_restores_the_parameter) ... ok
+  test_provenance_records_the_installed_implementation (tests.test_training.TestTraining.test_provenance_records_the_installed_implementation) ... ok
+  test_real_training_changes_the_parameter (tests.test_training.TestTraining.test_real_training_changes_the_parameter) ... ok
+  test_reconstruction_passes_for_a_real_run (tests.test_training.TestTraining.test_reconstruction_passes_for_a_real_run) ... ok
+  test_validation_ledger_has_no_failures (tests.test_training.TestTraining.test_validation_ledger_has_no_failures) ... ok
+  test_every_required_subcommand_exists (tests.test_views.TestCliSurface.test_every_required_subcommand_exists) ... ok
+  test_presets_all_build_valid_configurations (tests.test_views.TestCliSurface.test_presets_all_build_valid_configurations) ... ok
+  test_unknown_preset_is_rejected (tests.test_views.TestCliSurface.test_unknown_preset_is_rejected) ... ok
+  test_bit_figure_renders (tests.test_views.TestFigures.test_bit_figure_renders) ... ok
+  test_broken_chain_notice_is_printed_once (tests.test_views.TestFigures.test_broken_chain_notice_is_printed_once)
+  The chain is checked once, and its notice is printed once. ... ok
+  test_draw_bit_pattern_takes_no_previous_argument (tests.test_views.TestFigures.test_draw_bit_pattern_takes_no_previous_argument)
+  The parameter that was passed but never read is gone. ... ok
+  test_empty_run_figure_says_so (tests.test_views.TestFigures.test_empty_run_figure_says_so) ... ok
+  test_exit_status_ordering_is_what_the_comment_claims (tests.test_views.TestFigures.test_exit_status_ordering_is_what_the_comment_claims)
+  All four exit statuses, for both a view and a run. ... ok
+  test_headless_dashboard_always_writes_a_frame (tests.test_views.TestFigures.test_headless_dashboard_always_writes_a_frame)
+  A run that finishes before the first redraw must still leave a frame. ... ok
+  test_idle_run_shows_the_message_and_plots_nothing (tests.test_views.TestFigures.test_idle_run_shows_the_message_and_plots_nothing) ... ok
+  test_live_dashboard_key_controls_restart_vs_reset (tests.test_views.TestFigures.test_live_dashboard_key_controls_restart_vs_reset)
+  'R' and 'shift+r' must restart the experiment, while 'r' resets. ... ok
+  test_live_exit_status_separates_the_view_from_the_run (tests.test_views.TestFigures.test_live_exit_status_separates_the_view_from_the_run)
+  `live` must exit 0 on a diverged run; `run` must not. ... ok
+  test_live_series_table_is_the_only_live_catalogue (tests.test_views.TestFigures.test_live_series_table_is_the_only_live_catalogue)
+  The dead third catalogue is gone; the two live ones name each other. ... ok
+  test_nonfinite_values_do_not_corrupt_the_axis_limits (tests.test_views.TestFigures.test_nonfinite_values_do_not_corrupt_the_axis_limits)
+  A diverged run must still show the steps that were finite. ... ok
+  test_overview_figure_renders (tests.test_views.TestFigures.test_overview_figure_renders) ... ok
+  test_render_figures_writes_every_file (tests.test_views.TestFigures.test_render_figures_writes_every_file) ... ok
+  test_single_step_run_leaves_a_visible_mark_in_both_views (tests.test_views.TestFigures.test_single_step_run_leaves_a_visible_mark_in_both_views)
+  One recorded step must be visible in the live and static panels. ... ok
+  test_state_card_title_before_and_after_the_first_step (tests.test_views.TestFigures.test_state_card_title_before_and_after_the_first_step)
+  The title must not read 'step -1' before anything has run. ... ok
+  test_state_card_contains_the_required_fields (tests.test_views.TestStateCard.test_state_card_contains_the_required_fields) ... ok
+  test_state_card_on_an_empty_engine (tests.test_views.TestStateCard.test_state_card_on_an_empty_engine) ... ok
+  
+  ----------------------------------------------------------------------
+  Ran 401 tests in 80.370s
+  
+  OK
+  TESTS: ran 401, 401 passed, 0 failed, 0 errors, 0 skipped
+  TESTS WALL CLOCK: 80.373s
+
+==============================================================================
+CHECK 4/11  real training run (12 steps, AdamW)
+==============================================================================
+name                          : w
+class                         : Parameter
+shape                         : ()
+numel                         : 1
+dtype                         : float32
+requires_grad                 : True
+device                        : cpu
+element_size                  : 4 bytes
+is_leaf                       : True
+raw storage bytes             : 00 00 00 C0
+storage nbytes                : 4 (UntypedStorage.nbytes())
+tensor bytes                  : 4
+initial value                 : -2.0
+hex                           : 0xC0000000
+bits                          : 11000000000000000000000000000000
+exponent (biased)             : 128
+fraction (23 bits)            : 0
+sign bit                      : 1
+trainable parameters in model : 1
+invariants checked      :
+    [ok] the tracked object is a Parameter
+    [ok] exactly one scalar, not a vector or a view of one
+    [ok] a true scalar, not shape (1,)
+    [ok] the subject of the investigation is binary32
+    [ok] autograd must be able to reach it
+    [ok] four bytes of storage, proven not asserted
+    [ok] the optimizer must write to it directly
+    [ok] no second trainable tensor to confuse the analysis
+  step    0/11 | w = -1.8980001211166382 (0xBFF2F1AB) | loss = 3.977567672729492 | g = -0.010696807876229286 | delta = 0.10199987888336182 (+855637 ULP) | lr = 0.1 | recon PASS
+  step    1/11 | w = -1.7972145080566406 (0xBFE60B20) | loss = 3.9756317138671875 | g = -0.016497502103447914 | delta = 0.10078561305999756 (+845451 ULP) | lr = 0.1 | recon PASS
+  step    2/11 | w = -1.6980493068695068 (0xBFD959AE) | loss = 3.9729321002960205 | g = -0.025230495259165764 | delta = 0.09916520118713379 (+831858 ULP) | lr = 0.1 | recon PASS
+  step    3/11 | w = -1.600601077079773 (0xBFCCE07F) | loss = 3.969125509262085 | g = -0.03820342943072319 | delta = 0.09744822978973389 (+817455 ULP) | lr = 0.1 | recon PASS
+  step    4/11 | w = -1.5047303438186646 (0xBFC09B01) | loss = 3.9637269973754883 | g = -0.05724424868822098 | delta = 0.0958707332611084 (+804222 ULP) | lr = 0.1 | recon PASS
+  step    5/11 | w = -1.4101637601852417 (0xBFB4803F) | loss = 3.95605206489563 | g = -0.08491116017103195 | delta = 0.09456658363342285 (+793282 ULP) | lr = 0.1 | recon PASS
+  step    6/11 | w = -1.3165758848190308 (0xBFA8858F) | loss = 3.945127248764038 | g = -0.12477778643369675 | delta = 0.09358787536621094 (+785072 ULP) | lr = 0.1 | recon PASS
+  step    7/11 | w = -1.223639726638794 (0xBF9CA03A) | loss = 3.9295787811279297 | g = -0.18180187046527863 | delta = 0.09293615818023682 (+779605 ULP) | lr = 0.1 | recon PASS
+  step    8/11 | w = -1.1310487985610962 (0xBF90C635) | loss = 3.907470464706421 | g = -0.2627744972705841 | delta = 0.09259092807769775 (+776709 ULP) | lr = 0.1 | recon PASS
+  step    9/11 | w = -1.0385233163833618 (0xBF84EE55) | loss = 3.876095771789551 | g = -0.37682974338531494 | delta = 0.09252548217773438 (+776160 ULP) | lr = 0.1 | recon PASS
+  step   10/11 | w = -0.9458054304122925 (0xBF72204E) | loss = 3.8317127227783203 | g = -0.5359070301055908 | delta = 0.09271788597106934 (+1232391 ULP) | lr = 0.1 | recon PASS
+  step   11/11 | w = -0.8526496291160583 (0xBF5A473F) | loss = 3.7692322731018066 | g = -0.7549011707305908 | delta = 0.09315580129623413 (+1562895 ULP) | lr = 0.1 | recon PASS
+  executed 12 real steps in 0.06s
+==============================================================================
+COMPLETE NUMERICAL REPORT (all values measured from this run)
+==============================================================================
+INITIAL PARAMETER                                 : -2.0
+FINAL PARAMETER                                   : -0.8526496291160583
+TOTAL PARAMETER CHANGE                            : 1.1473503708839417
+NUMBER OF STEPS                                   : 12
+INITIAL LOSS                                      : 3.977567672729492
+FINAL LOSS                                        : 3.7692322731018066
+MINIMUM LOSS                                      : 3.7692322731018066
+INITIAL GRADIENT                                  : -0.010696807876229286
+FINAL GRADIENT                                    : -0.7549011707305908
+MAX ABS GRADIENT                                  : 0.7549011707305908
+MAX ABS UPDATE                                    : 0.10199987888336182
+MEAN ABS UPDATE                                   : 0.09561253090699515
+STD PARAMETER OVER FINAL WINDOW                   : 0.34120818207891485
+GRADIENT SIGN CHANGES                             : 0
+UPDATE SIGN CHANGES                               : 0
+UNCHANGED FP32 STEPS                              : 0
+TOTAL ULP MOVEMENT (in ULPs of each step's start) : 9978301
+  ... contributed by this many steps              : 12
+TOTAL REPRESENTABLE VALUES TRAVELLED              : 10860737
+  ... steps that crossed zero                     : []
+MAX ROUNDING RESIDUAL                             : 1.2885659006478534e-07
+MAX RECONSTRUCTION ERROR (ULP)                    : 0
+RECONSTRUCTION FAILURES                           : 0
+MAX GRADIENT VALIDATION RELATIVE ERROR            : 6.309028579778069e-05
+MAX GRADIENT VALIDATION ABSOLUTE ERROR            : 6.749072461263023e-07
+TIGHTEST GRADIENT TOLERANCE (absolute)            : 3.8040017957261586e-06
+MAX FINITE-DIFFERENCE RELATIVE ERROR              : 6.309075357954876e-05
+MAX FINITE-DIFFERENCE ABSOLUTE ERROR              : 6.749122505294441e-07
+TIGHTEST FINITE-DIFF TOLERANCE (absolute)         : 4.3281784523666735e-06
+MAX FP32 vs FP64 REFERENCE DIFFERENCE             : 1.5469246008592563e-06
+NON-FINITE DETECTED                               : False
+HISTORY HASH CHAIN VERIFIED                       : True
+
+  Sum of |movement| over steps, measured in ULPs of each step's starting value. This is the per-step movement metric and does not blow up when a step crosses a binade boundary or zero.
+
+  Sum of the exact count of representable float32 values between before and after each step. Correct, but at a sign crossing a single step contributes roughly 2.1 billion, so it is not a summary of how far the parameter travelled; see 'total_ulp_movement' for that.
+------------------------------------------------------------------------------
+STABILITY / REGIME (observed behaviour, not a convergence claim)
+regime                                            : 'still moving'
+rationale                                         : ['mean |update| over the final window = 0.0956 (threshold 1e-12)', 'mean |gradient| over the final window = 0.206 (threshold 1e-12)', 'update sign changes in window = 0 (oscillation threshold 3)', 'fraction of window steps whose stored float32 bits did not change = 0 (stagnation threshold 0.5)']
+final_window                                      : 12
+mean_update_magnitude                             : 0.09561253090699515
+std_update_magnitude                              : 0.003425141908497734
+mean_gradient_magnitude                           : 0.20581464515998962
+gradient_sign_changes_in_window                   : 0
+update_sign_changes_in_window                     : 0
+unchanged_fraction_in_window                      : 0.0
+total_ulp_movement_in_window                      : 9978301
+------------------------------------------------------------------------------
+VALIDATION LEDGER
+gradient_checks                                   : 12
+gradient_failures                                 : 0
+finite_difference_failures                        : 0
+reconstruction_checks                             : 12
+reconstruction_failures                           : 0
+bit_checks                                        : 1
+bit_failures                                      : 0
+ulp_checks                                        : 1
+ulp_failures                                      : 0
+total_failures                                    : 0
+==============================================================================
+
+  gradient checks                      : 12/12 passed
+  finite-difference checks             : 12/12 passed
+  optimizer reconstructions            : 12/12 passed
+  float32 bit checks                   : 1/1 passed
+  ULP checks                           : 1/1 passed
+  max gradient RELATIVE error          : 6.309028579778069e-05
+  max gradient ABSOLUTE error          : 6.749072461263023e-07
+  max finite-difference RELATIVE error : 6.309075357954876e-05
+  max finite-difference ABSOLUTE error : 6.749122505294441e-07
+  max reconstruction error (ULP)       : 0
+  total failures                       : 0
+  ok  real training run completed
+
+  measured optimizer semantics (throwaway parameters, isolated):
+  measured variant for AdamW: 'adamw[lerp,before,outside]', bit-exact reproduction True, torch 2.14.1+cpu
+    12 candidate variants tried; best ULP error 0
+  measured variant for SGD + Nesterov: 'sgd[clone_grad,coupled_into_grad]', bit-exact reproduction True, torch 2.14.1+cpu
+    4 candidate variants tried; best ULP error 0
+
+==============================================================================
+CHECK 5/11  export
+==============================================================================
+  ok  bit_history.csv: evidence\llama_20261023\run_checks_export\bit_history.csv (3430 bytes)
+  ok  events.csv: evidence\llama_20261023\run_checks_export\events.csv (8563 bytes)
+  ok  landscape.json: evidence\llama_20261023\run_checks_export\landscape.json (4467 bytes)
+  ok  optimizer_state_history.csv: evidence\llama_20261023\run_checks_export\optimizer_state_history.csv (5077 bytes)
+  ok  provenance.json: evidence\llama_20261023\run_checks_export\provenance.json (15032 bytes)
+  ok  stability.csv: evidence\llama_20261023\run_checks_export\stability.csv (2822 bytes)
+  ok  summary.json: evidence\llama_20261023\run_checks_export\summary.json (7519 bytes)
+  ok  trajectory.csv: evidence\llama_20261023\run_checks_export\trajectory.csv (52942 bytes)
+  ok  trajectory.json: evidence\llama_20261023\run_checks_export\trajectory.json (141640 bytes)
+  ok  trajectory.npz: evidence\llama_20261023\run_checks_export\trajectory.npz (28509 bytes)
+  ok  trajectory.parquet: evidence\llama_20261023\run_checks_export\trajectory.parquet (105335 bytes)
+  ok  validation.json: evidence\llama_20261023\run_checks_export\validation.json (6849 bytes)
+  ok  export wrote every artefact
+
+==============================================================================
+CHECK 6/11  per-step forensic trace (1 steps)
+==============================================================================
+==============================================================================
+SINGLE PARAMETER FORENSIC TRACE
+==============================================================================
+STEP: 0   (epoch 0, batch 0)
+
+PARAMETER
+------------------------------------------------------------------------------
+dtype: float32
+shape: ()
+before: -1.25  (0xBFA00000)
+after:  -1.149999976158142  (0xBF933333)
+delta (observed, after - before): 0.10000002384185791
+  movement, in ULPs of w_before : +838861
+  displacement / ULP(w_before)  : 838861.0
+  representable float32 values between before and after: 838861
+stored FP32 unchanged this step: False
+attempted displacement (float64 candidate): 0.09999999552148298; one ULP of w_before is 1.1920928955078125e-07
+reconstructed float32 update (derived, not observed): 0.10000002384185791
+  the observed float32 displacement is the 'delta' line in the PARAMETER block above; the two differ whenever the float32 rounding of the candidate does not reproduce the stored word
+
+SNAPSHOT CHAIN (parameter bit pattern at each labelled instant)
+------------------------------------------------------------------------------
+  A before forward           0xBFA00000
+  B after forward            0xBFA00000
+  C after backward           0xBFA00000
+  D before optimizer.step    0xBFA00000
+  E after optimizer.step     0xBF933333
+  F after schedule step      (no operation after the step)
+  A == B == C holds by construction of the run, and the engine raises if the parameter moves during forward or backward.
+
+FORWARD
+------------------------------------------------------------------------------
+input:        -2.0
+target:       -0.9950547814369202
+z             2.5  dtype=torch.float32 shape=[1, 1] grad_fn=MulBackward0
+activation    0.9866142868995667  dtype=torch.float32 shape=[1, 1] grad_fn=TanhBackward0
+prediction:   0.9866142868995667
+loss:         3.9270122051239014  (grad_fn=MeanBackward0)
+
+BACKWARD
+------------------------------------------------------------------------------
+gradient before zero_grad: None
+gradient after zero_grad (set_to_none=True): None
+gradient before backward:  None
+gradient after backward:   -0.21078819036483765
+gradient dtype/shape: torch.float32 []  raw 0xBE57D8DC
+gradient sign: -1   magnitude: 0.21078819036483765   square: 0.044431661197283034
+gradient finite: True
+
+OPTIMIZER
+------------------------------------------------------------------------------
+optimizer: adam
+step: None -> 1
+state keys after step: exp_avg, exp_avg_sq, step
+exp_avg before/after: None -> -0.022328820079565048
+exp_avg_sq before/after: None -> 4.985762279829942e-05
+bias-corrected exp_avg: -0.22328820079565054
+bias-corrected exp_avg_sq: 0.049857622798299375
+learning rate: 0.1
+weight decay contribution (reconstructed, float32): 0.0
+adaptive contribution (reconstructed, float32): 0.10000002384185791
+total reconstructed float32 update (derived, not observed): 0.10000002384185791
+  the decay and adaptive contributions above are each measured as the difference between the reconstruction with weight decay enabled and the same reconstruction with it disabled, so they include float32 rounding; the observed result is the 'delta' line in the PARAMETER block
+
+NUMERICAL
+------------------------------------------------------------------------------
+fp64 reference candidate: -1.150000004478517
+  (reference numerical experiment, not ground truth)
+actual FP32 stored:       -1.149999976158142
+rounding residual: 2.832037493405437e-08 (0.23756852373480797 ULP, sign +1)
+candidate rounds to stored value: True
+ULP at w_before: 1.1920928955078125e-07
+movement metrics are in the PARAMETER block above; they are not repeated here
+
+BITS
+------------------------------------------------------------------------------
+before: 0xBFA00000  10111111101000000000000000000000
+after:  0xBF933333  10111111100100110011001100110011
+xor mask: 0x00333333  changed bits: 12 at positions [10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31] (0 = sign, 31 = fraction LSB)
+sign changed: False   exponent changed: False   fraction changed: True
+after fields: sign=1 exponent=127 fraction=1258291
+
+LOCAL LOSS LANDSCAPE (diagnostic slice)
+------------------------------------------------------------------------------
+centre: -1.149999976158142  loss: 3.9270123409965403
+first derivative: -0.21130440872234146   second derivative: -0.8271557322987064
+parameter restored after the probe: True
+This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.
+
+VALIDATION
+------------------------------------------------------------------------------
+gradient check (autograd vs closed form): PASS
+  autograd:            -0.21078819036483765
+  analytical:          -0.21078797350169395
+  relative difference: 1.028821237237205e-06
+  finite difference:   -0.21078797356466336  (h = 1.25e-06)
+  relative difference: 1.0285225035324995e-06
+  fp64 autograd:       -0.21078797350169395
+optimizer reconstruction: PASS  (variant adam[lerp,coupled,outside], 0 ULP, bit-exact=True)
+finite: YES
+events (up to the moment this record was sealed): INITIALIZED, FORWARD_COMPLETE, LOSS_COMPUTED, BACKWARD_STARTED, GRADIENT_AVAILABLE, LANDSCAPE_PROBED, OPTIMIZER_STATE_READ, OPTIMIZER_STEP_STARTED, OPTIMIZER_STEP_COMPLETED, OPTIMIZER_STATE_READ, BIT_PATTERN_CHANGED, PARAMETER_CHANGED, FP32_ROUNDING_OBSERVED
+  this list is deliberately partial: events that can only be decided after the record exists (STABILITY_METRIC_UPDATED, RUN_COMPLETE and, for a terminal step, RUN_ABORTED) are appended to the event log but cannot appear in the record. The event log is the complete sequence.
+  ok  trace rendered
+
+==============================================================================
+CHECK 7/11  control session (play / pause / step / run-N / reset / restart)
+==============================================================================
+  step count after the command script: 1
+  final parameter: -1.8980001211166382
+  control lines printed: 11
+  ok  control script executed against the real engine
+
+==============================================================================
+CHECK 8/11  FP32-resolution preset (attempted update, no stored change)
+==============================================================================
+  step   59/59 | w = 1.500100016593933 (0x3FC00347) | loss = 3.552713678800501e-11 | g = 7.122517899915692e-07 | delta = 0.0 (+0 ULP) | lr = 1e-09 | recon PASS
+  steps: 60
+  steps whose stored float32 did not change: 60
+  steps where an update was attempted below one ULP: 60
+    step 0: attempted (fp64) -8.858354050289563e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+    step 1: attempted (fp64) -8.892375724656176e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+    step 2: attempted (fp64) -8.931684281066055e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+    step 3: attempted (fp64) -8.96214658041572e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+    step 4: attempted (fp64) -8.990466149327858e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+  ok  FP32-resolution preset produced sub-ULP attempted updates
+
+==============================================================================
+CHECK 9/11  documented CLI surfaces and remaining behaviour-sensitive presets
+==============================================================================
+  fresh frame directory for this invocation: C:\Users\Atieh\Documents\ChatGPT\One Parameter\evidence\llama_20261023\run_checks_frames\session-fau4trs_
+  $ python main.py inspect --steps 1
+    exit status: 0
+    output contained all of: ['ENVIRONMENT AUDIT', 'OPTIMIZER IMPLEMENTATION AUDIT', 'Matplotlib']
+  ok  CLI inspect
+  $ python main.py presets
+    exit status: 0
+    output contained all of: ['EXPERIMENT PRESETS', 'adamw']
+  ok  CLI presets
+    every preset in config.PRESETS is listed (11)
+  $ python main.py controls --steps 6 --commands step step n2
+    exit status: 0
+    output contained all of: ['CONTROL SESSION']
+  ok  CLI controls
+  $ python main.py live --headless --steps 2 --speed 100 --save-frames C:\Users\Atieh\Documents\ChatGPT\One Parameter\evidence\llama_20261023\run_checks_frames\session-fau4trs_
+    exit status: 0
+    output contained all of: ['LIVE DASHBOARD']
+  ok  CLI live --headless
+  frames rendered by the headless dashboard: 1
+  ok  headless dashboard rendered a frame
+  $ python main.py live --headless --steps 10 --speed 20 --fps 60 --static-hz 4 --frame-every 2 --save-frames C:\Users\Atieh\Documents\ChatGPT\One Parameter\evidence\llama_20261023\run_checks_frames\session-fau4trs__ink
+    exit status: 0
+    output contained all of: ['LIVE DASHBOARD']
+  ok  CLI live --headless (final-frame ink)
+  observed frame count for the final-frame ink assertion: 2
+  lowest series-panel data-ink fraction across frames: 0.00573
+  final frame data-ink fraction: 0.02756
+  ok  the final frame's series panel contains visible data
+  diverging preset: aborted=True, steps recorded=3, reason='non-finite state at step 2: the run was stopped rather than continuing with meaningless values'
+  ok  diverging preset produced a detected non-finite state
+  near_stationary preset: regime='oscillating', mean |gradient|=2.3661613874992325e-05, mean |update|=0.023431450128555298
+  ok  near_stationary preset reported its regime
+
+==============================================================================
+CHECK 10/11  near-zero-loss divergence guard (default preset, 103 steps)
+==============================================================================
+  This check records what the classifier did. It does not require any
+  particular regime: a run that ended differently would still be a
+  legitimate run, and the log would say so.
+  steps executed                   : 103
+  minimum loss                     : 3.460943531763405e-09 at step 95
+  final loss                       : 1.3815736110700527e-06
+  loss ratio over the final window : 3.1912024600129723
+  observed regime                  : 'still moving'
+  classifier rationale, verbatim:
+    - the loss ratio rose to 3.19 but the absolute increase is only 9.486416274739895e-07, below the divergence threshold 0.001: a near-zero loss changes by a large factor without anything diverging
+    - mean |update| over the final window = 0.00147 (threshold 1e-12)
+    - mean |gradient| over the final window = 0.000172 (threshold 1e-12)
+    - update sign changes in window = 1 (oscillation threshold 3)
+    - fraction of window steps whose stored float32 bits did not change = 0 (stagnation threshold 0.5)
+  the guard fired: the loss ratio rose but the absolute increase stayed below the threshold,
+  so a large factor at a near-zero loss was not reported as divergence.
+  ok  near-zero-loss guard recorded over 103 steps
+
+==============================================================================
+CHECK 11/11  live view frame rate (measured over 4 s)
+==============================================================================
+  Recorded, not asserted: the rate depends on the machine.
+  Frame content and cache lifecycle are enforced separately by regression tests.
+  target frame rate                   : 120 FPS
+  frames drawn                        : 128
+  wall clock                          : 4.17 s
+  achieved frame rate                 : 30.7 FPS
+  real steps recorded during the view: 65
+  background caching in use           : True
+  ok  live view reached 30.7 FPS against a 120 FPS target
+
+==============================================================================
+SUMMARY
+==============================================================================
+  all 11 checks completed without an error
+  total elapsed: 92.3s

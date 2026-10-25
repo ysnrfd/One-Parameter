@@ -12,3 +12,26 @@ evidence/bundle/
 .spobs-studio/
 .studio-preview/
 .studio-preview-*/
+
+# Local credentials and private studio recovery snapshots.
+.env
+.env.*
+!.env.example
+evidence/*/before_project.json
+evidence/*/pre_upgrade_project.json
+evidence/*/post_upgrade_project.json
+evidence/*/latest_project.json
+evidence/*/pre_final_restart_project.json
+evidence/*/final-user-project.json
+evidence/*/user-project-before-upgrade.json
+evidence/*/project-with-llama.json
+evidence/*/browser_project.json
+evidence/*/user-tab-*.json
+
+# Reference-only third-party frontend, excluded from the qualified release.
+evidence/llama_20261023/hfviewer-source/
+
+# Raw upstream audit copies stay local; findings and source inventories are public.
+# GitHub push protection also misidentifies a model class in this generated catalog.
+evidence/transformers_20261023/hf_source/
+evidence/transformers_20261023/hf_audit_catalogs.json

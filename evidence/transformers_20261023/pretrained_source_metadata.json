@@ -1,0 +1,17 @@
+{
+  "repo_id": "hf-internal-testing/tiny-random-gpt2",
+  "sha": "71034c5d8bde858ff824298bdedc65515b97d2b9",
+  "files": [
+    ".gitattributes",
+    "config.json",
+    "merges.txt",
+    "model.safetensors",
+    "pytorch_model.bin",
+    "special_tokens_map.json",
+    "tf_model.h5",
+    "tokenizer.json",
+    "tokenizer_config.json",
+    "vocab.json"
+  ],
+  "cardData": {}
+}

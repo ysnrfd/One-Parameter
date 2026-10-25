@@ -1,0 +1,152 @@
+{
+  "name": "Custom plugin architecture to real training",
+  "description": "A sandboxed JavaScript extension produces architecture recipes, then real PyTorch modules train and export their weights.",
+  "nodes": [
+    {
+      "id": "recipes",
+      "type": "local.transformer.recipes/mlp_layers",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {
+        "width": 8
+      }
+    },
+    {
+      "id": "model",
+      "type": "hf.sequential",
+      "position": {
+        "x": 350,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "data",
+      "type": "hf.data",
+      "position": {
+        "x": 350,
+        "y": 350
+      },
+      "params": {
+        "fields": {
+          "x": [
+            [
+              -1
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "labels": [
+            [
+              -2
+            ],
+            [
+              0
+            ],
+            [
+              2
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 680,
+        "y": 350
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.01
+      }
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "position": {
+        "x": 1010,
+        "y": 20
+      },
+      "params": {
+        "steps": 4,
+        "batch_size": 3,
+        "loss": "mse"
+      }
+    },
+    {
+      "id": "inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1340,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1670,
+        "y": 20
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "recipes:layers-model:layers",
+      "source": "recipes",
+      "source_port": "layers",
+      "target": "model",
+      "target_port": "layers"
+    },
+    {
+      "id": "model:model-train:model",
+      "source": "model",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-train:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer:optimizer-train:optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train:model-inspect:model",
+      "source": "train",
+      "source_port": "model",
+      "target": "inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "inspect:model-checkpoint:model",
+      "source": "inspect",
+      "source_port": "model",
+      "target": "checkpoint",
+      "target_port": "model"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.6
+  }
+}

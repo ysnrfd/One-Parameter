@@ -1,0 +1,156 @@
+{
+  "schema_version": "spobs-plugin/1",
+  "id": "local.examples",
+  "name": "Example transformations",
+  "version": "1.0.0",
+  "description": "Copy this manifest to create your own isolated JavaScript nodes.",
+  "nodes": [
+    {
+      "id": "scale",
+      "title": "Scale a number",
+      "category": "Examples",
+      "description": "Multiply a value by a factor.",
+      "inputs": [
+        {
+          "name": "value",
+          "type": "number",
+          "description": "",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "number",
+          "description": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "factor",
+          "type": "number",
+          "description": "",
+          "default": 2
+        }
+      ],
+      "code": "console.log('Scaling by', params.factor); return {value: inputs.value * params.factor};"
+    },
+    {
+      "id": "scale_targets",
+      "title": "Scale dataset targets",
+      "category": "Examples",
+      "description": "Transform target values without changing input samples.",
+      "inputs": [
+        {
+          "name": "data",
+          "type": "dataset",
+          "description": "",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "type": "dataset",
+          "description": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "factor",
+          "type": "number",
+          "description": "",
+          "default": 2
+        }
+      ],
+      "code": "return {data: {...inputs.data, targets: inputs.data.targets.map(v => v * params.factor), provenance: {...inputs.data.provenance, transform: 'scale_targets', factor: params.factor}}};"
+    }
+  ],
+  "templates": [
+    {
+      "id": "scale_workflow",
+      "name": "Example plugin: scale and observe",
+      "graph": {
+        "name": "Plugin scale playground",
+        "description": "A real custom node transforms a typed number and previews the result.",
+        "nodes": [
+          {
+            "id": "number",
+            "type": "core.number",
+            "position": {
+              "x": 40,
+              "y": 100
+            },
+            "params": {
+              "value": 21
+            }
+          },
+          {
+            "id": "scale",
+            "type": "local.examples/scale",
+            "position": {
+              "x": 370,
+              "y": 100
+            },
+            "params": {
+              "factor": 2
+            }
+          },
+          {
+            "id": "preview",
+            "type": "core.preview",
+            "position": {
+              "x": 700,
+              "y": 100
+            },
+            "params": {}
+          }
+        ],
+        "edges": [
+          {
+            "id": "number-scale",
+            "source": "number",
+            "source_port": "value",
+            "target": "scale",
+            "target_port": "value"
+          },
+          {
+            "id": "scale-preview",
+            "source": "scale",
+            "source_port": "value",
+            "target": "preview",
+            "target_port": "value"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1
+        }
+      }
+    }
+  ],
+  "panels": [
+    {
+      "id": "example_controls",
+      "title": "Example reusable controls",
+      "description": "Adjust these values and insert them as an Object node for use in your graph.",
+      "fields": [
+        {
+          "name": "value",
+          "type": "number",
+          "description": "",
+          "default": 21
+        },
+        {
+          "name": "factor",
+          "type": "number",
+          "description": "",
+          "default": 2,
+          "min": -100,
+          "max": 100
+        }
+      ]
+    }
+  ]
+}

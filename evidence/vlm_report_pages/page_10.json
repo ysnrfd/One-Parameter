@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: Body page containing a code snippet, section heading \"5. Findings Matrix\", introductory text, and a multi-column findings table (Table 5).\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: Table is horizontally centered with a dark blue header (white text) and light blue body; all columns are contained within the page width without overflow.\nFIGURES: N/A\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857798,
+  "id": "2026100120295548364f4913254c86",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "2026100120295548364f4913254c86",
+  "usage": {
+    "completion_tokens": 94,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2240
+  }
+}

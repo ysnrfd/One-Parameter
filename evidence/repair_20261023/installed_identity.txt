@@ -1,0 +1,4 @@
+installed_package: C:\Users\Atieh\Documents\ChatGPT\One Parameter\download\.venv\Lib\site-packages\single_parameter_observatory\__init__.py
+version: 1.1.1
+metadata_version: 1.1.1
+dependency_torch: 2.14.1+cpu

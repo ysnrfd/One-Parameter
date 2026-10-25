@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: A body page of an engineering audit report containing a comparison table, a section on non-goals, and a numbered list of residual risks and recommendations.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: Table 6 is horizontally centered with a readable dark blue header row (white text) and no column overflow or cell boundary clipping.\nFIGURES: N/A\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857807,
+  "id": "20261001203003875876bd74d942ad",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20261001203003875876bd74d942ad",
+  "usage": {
+    "completion_tokens": 91,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2237
+  }
+}

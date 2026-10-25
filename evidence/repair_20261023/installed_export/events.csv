@@ -1,0 +1,61 @@
+step,code,detail
+0,INITIALIZED,"w = -2.0 (0xC0000000, exponent 128, fraction 0)"
+0,FORWARD_COMPLETE,prediction and intermediates recorded
+0,LOSS_COMPUTED,loss = 3.977567672729492
+0,BACKWARD_STARTED,loss.backward()
+0,GRADIENT_AVAILABLE,parameter.grad written by autograd
+0,LANDSCAPE_PROBED,one-dimensional slice over +/-0.25 in float64
+0,OPTIMIZER_STATE_READ,lr in force = 0.1; optimizer state before the step is not yet initialised for this parameter
+0,OPTIMIZER_STEP_STARTED,adamw.step()
+0,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+0,OPTIMIZER_STATE_READ,"adopted update variant 'adamw[lerp,before,outside]', measured from this run's own transition (0 ULP error)"
+0,BIT_PATTERN_CHANGED,22 bits changed (855637 ULP)
+0,PARAMETER_CHANGED,delta = 0.10199987888336182
+0,FP32_ROUNDING_OBSERVED,rounding residual -2.7630892018848385e-08 (-0.23178472183644772 ULP)
+0,STABILITY_METRIC_UPDATED,mean |update| over window = 0.10199987888336182
+1,FORWARD_COMPLETE,prediction and intermediates recorded
+1,LOSS_COMPUTED,loss = 3.9756317138671875
+1,BACKWARD_STARTED,loss.backward()
+1,GRADIENT_AVAILABLE,parameter.grad written by autograd
+1,OPTIMIZER_STATE_READ,"lr in force = 0.1; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+1,OPTIMIZER_STEP_STARTED,adamw.step()
+1,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+1,BIT_PATTERN_CHANGED,12 bits changed (845451 ULP)
+1,PARAMETER_CHANGED,delta = 0.10078561305999756
+1,FP32_ROUNDING_OBSERVED,rounding residual -2.3437020324479363e-08 (-0.19660397619009018 ULP)
+1,STABILITY_METRIC_UPDATED,mean |update| over window = 0.10139274597167969
+2,FORWARD_COMPLETE,prediction and intermediates recorded
+2,LOSS_COMPUTED,loss = 3.9729321002960205
+2,BACKWARD_STARTED,loss.backward()
+2,GRADIENT_AVAILABLE,parameter.grad written by autograd
+2,OPTIMIZER_STATE_READ,"lr in force = 0.1; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+2,OPTIMIZER_STEP_STARTED,adamw.step()
+2,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+2,BIT_PATTERN_CHANGED,13 bits changed (831858 ULP)
+2,PARAMETER_CHANGED,delta = 0.09916520118713379
+2,FP32_ROUNDING_OBSERVED,rounding residual 9.711076387475259e-11 (0.0008146241307258606 ULP)
+2,STABILITY_METRIC_UPDATED,mean |update| over window = 0.10065023104349773
+3,FORWARD_COMPLETE,prediction and intermediates recorded
+3,LOSS_COMPUTED,loss = 3.969125509262085
+3,BACKWARD_STARTED,loss.backward()
+3,GRADIENT_AVAILABLE,parameter.grad written by autograd
+3,OPTIMIZER_STATE_READ,"lr in force = 0.1; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+3,OPTIMIZER_STEP_STARTED,adamw.step()
+3,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+3,BIT_PATTERN_CHANGED,12 bits changed (817455 ULP)
+3,PARAMETER_CHANGED,delta = 0.09744822978973389
+3,FP32_ROUNDING_OBSERVED,rounding residual -5.6947790927353026e-08 (-0.477712694555521 ULP)
+3,STABILITY_METRIC_UPDATED,mean |update| over window = 0.09984973073005676
+4,FORWARD_COMPLETE,prediction and intermediates recorded
+4,LOSS_COMPUTED,loss = 3.9637269973754883
+4,BACKWARD_STARTED,loss.backward()
+4,GRADIENT_AVAILABLE,parameter.grad written by autograd
+4,LANDSCAPE_PROBED,one-dimensional slice over +/-0.25 in float64
+4,OPTIMIZER_STATE_READ,"lr in force = 0.1; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+4,OPTIMIZER_STEP_STARTED,adamw.step()
+4,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+4,BIT_PATTERN_CHANGED,14 bits changed (804222 ULP)
+4,PARAMETER_CHANGED,delta = 0.0958707332611084
+4,FP32_ROUNDING_OBSERVED,rounding residual 4.415483978448265e-09 (0.03703976422548294 ULP)
+4,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0990539312362671
+5,RUN_COMPLETE,5 real steps executed

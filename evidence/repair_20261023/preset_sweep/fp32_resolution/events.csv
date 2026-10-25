@@ -1,0 +1,668 @@
+step,code,detail
+0,INITIALIZED,"w = 1.500100016593933 (0x3FC00347, exponent 127, fraction 4195143)"
+0,FORWARD_COMPLETE,prediction and intermediates recorded
+0,LOSS_COMPUTED,loss = 3.8689051962137455e-12
+0,BACKWARD_STARTED,loss.backward()
+0,GRADIENT_AVAILABLE,parameter.grad written by autograd
+0,LANDSCAPE_PROBED,one-dimensional slice over +/-0.25 in float64
+0,OPTIMIZER_STATE_READ,lr in force = 1e-09; optimizer state before the step is not yet initialised for this parameter
+0,OPTIMIZER_STEP_STARTED,adamw.step()
+0,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+0,OPTIMIZER_STATE_READ,"adopted update variant 'adamw[lerp,before,outside]', measured from this run's own transition (0 ULP error)"
+0,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+0,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -8.858354050289563e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+0,FP32_ROUNDING_OBSERVED,rounding residual 8.858354050289563e-10 (0.007430925965309143 ULP)
+0,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+1,FORWARD_COMPLETE,prediction and intermediates recorded
+1,LOSS_COMPUTED,loss = 4.106937012693379e-12
+1,BACKWARD_STARTED,loss.backward()
+1,GRADIENT_AVAILABLE,parameter.grad written by autograd
+1,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+1,OPTIMIZER_STEP_STARTED,adamw.step()
+1,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+1,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+1,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -8.892375724656176e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+1,FP32_ROUNDING_OBSERVED,rounding residual 8.892375724656176e-10 (0.00745946541428566 ULP)
+1,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+2,FORWARD_COMPLETE,prediction and intermediates recorded
+2,LOSS_COMPUTED,loss = 4.352074256530614e-12
+2,BACKWARD_STARTED,loss.backward()
+2,GRADIENT_AVAILABLE,parameter.grad written by autograd
+2,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+2,OPTIMIZER_STEP_STARTED,adamw.step()
+2,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+2,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+2,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -8.931684281066055e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+2,FP32_ROUNDING_OBSERVED,rounding residual 8.931684281066055e-10 (0.007492439821362495 ULP)
+2,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+3,FORWARD_COMPLETE,prediction and intermediates recorded
+3,LOSS_COMPUTED,loss = 4.352074256530614e-12
+3,BACKWARD_STARTED,loss.backward()
+3,GRADIENT_AVAILABLE,parameter.grad written by autograd
+3,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+3,OPTIMIZER_STEP_STARTED,adamw.step()
+3,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+3,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+3,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -8.96214658041572e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+3,FP32_ROUNDING_OBSERVED,rounding residual 8.96214658041572e-10 (0.007517993450164795 ULP)
+3,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+4,FORWARD_COMPLETE,prediction and intermediates recorded
+4,LOSS_COMPUTED,loss = 4.352074256530614e-12
+4,BACKWARD_STARTED,loss.backward()
+4,GRADIENT_AVAILABLE,parameter.grad written by autograd
+4,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+4,OPTIMIZER_STEP_STARTED,adamw.step()
+4,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+4,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+4,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -8.990466149327858e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+4,FP32_ROUNDING_OBSERVED,rounding residual 8.990466149327858e-10 (0.0075417496263980865 ULP)
+4,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+5,FORWARD_COMPLETE,prediction and intermediates recorded
+5,LOSS_COMPUTED,loss = 4.604316927725449e-12
+5,BACKWARD_STARTED,loss.backward()
+5,GRADIENT_AVAILABLE,parameter.grad written by autograd
+5,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+5,OPTIMIZER_STEP_STARTED,adamw.step()
+5,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+5,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+5,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.03290331422113e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+5,FP32_ROUNDING_OBSERVED,rounding residual 9.03290331422113e-10 (0.007577348500490189 ULP)
+5,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+6,FORWARD_COMPLETE,prediction and intermediates recorded
+6,LOSS_COMPUTED,loss = 5.130118552187923e-12
+6,BACKWARD_STARTED,loss.backward()
+6,GRADIENT_AVAILABLE,parameter.grad written by autograd
+6,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+6,OPTIMIZER_STEP_STARTED,adamw.step()
+6,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+6,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+6,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.097305131433586e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+6,FP32_ROUNDING_OBSERVED,rounding residual 9.097305131433586e-10 (0.007631372660398483 ULP)
+6,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+7,FORWARD_COMPLETE,prediction and intermediates recorded
+7,LOSS_COMPUTED,loss = 5.130118552187923e-12
+7,BACKWARD_STARTED,loss.backward()
+7,GRADIENT_AVAILABLE,parameter.grad written by autograd
+7,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+7,OPTIMIZER_STEP_STARTED,adamw.step()
+7,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+7,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+7,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.15356901387554e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+7,FP32_ROUNDING_OBSERVED,rounding residual 9.15356901387554e-10 (0.0076785702258348465 ULP)
+7,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+8,FORWARD_COMPLETE,prediction and intermediates recorded
+8,LOSS_COMPUTED,loss = 5.130118552187923e-12
+8,BACKWARD_STARTED,loss.backward()
+8,GRADIENT_AVAILABLE,parameter.grad written by autograd
+8,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+8,OPTIMIZER_STEP_STARTED,adamw.step()
+8,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+8,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+8,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.205125550693083e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+8,FP32_ROUNDING_OBSERVED,rounding residual 9.205125550693083e-10 (0.00772181898355484 ULP)
+8,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+9,FORWARD_COMPLETE,prediction and intermediates recorded
+9,LOSS_COMPUTED,loss = 5.6843418860808015e-12
+9,BACKWARD_STARTED,loss.backward()
+9,GRADIENT_AVAILABLE,parameter.grad written by autograd
+9,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+9,OPTIMIZER_STEP_STARTED,adamw.step()
+9,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+9,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+9,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.2783802863039e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+9,FP32_ROUNDING_OBSERVED,rounding residual 9.2783802863039e-10 (0.007783269509673119 ULP)
+9,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+10,FORWARD_COMPLETE,prediction and intermediates recorded
+10,LOSS_COMPUTED,loss = 5.6843418860808015e-12
+10,BACKWARD_STARTED,loss.backward()
+10,GRADIENT_AVAILABLE,parameter.grad written by autograd
+10,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+10,OPTIMIZER_STEP_STARTED,adamw.step()
+10,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+10,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+10,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.344793827636977e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+10,FP32_ROUNDING_OBSERVED,rounding residual 9.344793827636977e-10 (0.007838981226086617 ULP)
+10,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+11,FORWARD_COMPLETE,prediction and intermediates recorded
+11,LOSS_COMPUTED,loss = 5.972111694063642e-12
+11,BACKWARD_STARTED,loss.backward()
+11,GRADIENT_AVAILABLE,parameter.grad written by autograd
+11,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+11,OPTIMIZER_STEP_STARTED,adamw.step()
+11,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+11,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+11,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.41865030412714e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+11,FP32_ROUNDING_OBSERVED,rounding residual 9.41865030412714e-10 (0.007900936529040337 ULP)
+11,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+12,FORWARD_COMPLETE,prediction and intermediates recorded
+12,LOSS_COMPUTED,loss = 6.266986929404084e-12
+12,BACKWARD_STARTED,loss.backward()
+12,GRADIENT_AVAILABLE,parameter.grad written by autograd
+12,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+12,OPTIMIZER_STEP_STARTED,adamw.step()
+12,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+12,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+12,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.498823949627422e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+12,FP32_ROUNDING_OBSERVED,rounding residual 9.498823949627422e-10 (0.007968191057443619 ULP)
+12,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+13,FORWARD_COMPLETE,prediction and intermediates recorded
+13,LOSS_COMPUTED,loss = 6.266986929404084e-12
+13,BACKWARD_STARTED,loss.backward()
+13,GRADIENT_AVAILABLE,parameter.grad written by autograd
+13,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+13,OPTIMIZER_STEP_STARTED,adamw.step()
+13,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+13,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+13,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.5727847870819e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+13,FP32_ROUNDING_OBSERVED,rounding residual 9.5727847870819e-10 (0.008030233904719353 ULP)
+13,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+14,FORWARD_COMPLETE,prediction and intermediates recorded
+14,LOSS_COMPUTED,loss = 6.568967592102126e-12
+14,BACKWARD_STARTED,loss.backward()
+14,GRADIENT_AVAILABLE,parameter.grad written by autograd
+14,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+14,OPTIMIZER_STEP_STARTED,adamw.step()
+14,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+14,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+14,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.654339550024815e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+14,FP32_ROUNDING_OBSERVED,rounding residual 9.654339550024815e-10 (0.008098646998405457 ULP)
+14,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+15,FORWARD_COMPLETE,prediction and intermediates recorded
+15,LOSS_COMPUTED,loss = 7.194245199571014e-12
+15,BACKWARD_STARTED,loss.backward()
+15,GRADIENT_AVAILABLE,parameter.grad written by autograd
+15,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+15,OPTIMIZER_STEP_STARTED,adamw.step()
+15,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+15,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+15,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.75378444678654e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+15,FP32_ROUNDING_OBSERVED,rounding residual 9.75378444678654e-10 (0.008182067424058914 ULP)
+15,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+16,FORWARD_COMPLETE,prediction and intermediates recorded
+16,LOSS_COMPUTED,loss = 7.194245199571014e-12
+16,BACKWARD_STARTED,loss.backward()
+16,GRADIENT_AVAILABLE,parameter.grad written by autograd
+16,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+16,OPTIMIZER_STEP_STARTED,adamw.step()
+16,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+16,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+16,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.844669524028404e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+16,FP32_ROUNDING_OBSERVED,rounding residual 9.844669524028404e-10 (0.008258307352662086 ULP)
+16,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+17,FORWARD_COMPLETE,prediction and intermediates recorded
+17,LOSS_COMPUTED,loss = 7.51754214434186e-12
+17,BACKWARD_STARTED,loss.backward()
+17,GRADIENT_AVAILABLE,parameter.grad written by autograd
+17,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+17,OPTIMIZER_STEP_STARTED,adamw.step()
+17,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+17,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+17,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -9.940728240565022e-10 while one ULP at this magnitude is 1.1920928955078125e-07
+17,FP32_ROUNDING_OBSERVED,rounding residual 9.940728240565022e-10 (0.008338887244462967 ULP)
+17,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+18,FORWARD_COMPLETE,prediction and intermediates recorded
+18,LOSS_COMPUTED,loss = 7.847944516470307e-12
+18,BACKWARD_STARTED,loss.backward()
+18,GRADIENT_AVAILABLE,parameter.grad written by autograd
+18,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+18,OPTIMIZER_STEP_STARTED,adamw.step()
+18,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+18,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+18,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.004122784920014e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+18,FP32_ROUNDING_OBSERVED,rounding residual 1.004122784920014e-09 (0.00842319242656231 ULP)
+18,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+19,FORWARD_COMPLETE,prediction and intermediates recorded
+19,LOSS_COMPUTED,loss = 7.847944516470307e-12
+19,BACKWARD_STARTED,loss.backward()
+19,GRADIENT_AVAILABLE,parameter.grad written by autograd
+19,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+19,OPTIMIZER_STEP_STARTED,adamw.step()
+19,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+19,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+19,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.0133900385511652e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+19,FP32_ROUNDING_OBSERVED,rounding residual 1.0133900385511652e-09 (0.008500931784510612 ULP)
+19,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+20,FORWARD_COMPLETE,prediction and intermediates recorded
+20,LOSS_COMPUTED,loss = 8.530065542800003e-12
+20,BACKWARD_STARTED,loss.backward()
+20,GRADIENT_AVAILABLE,parameter.grad written by autograd
+20,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+20,OPTIMIZER_STEP_STARTED,adamw.step()
+20,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+20,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+20,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.0243978998403236e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+20,FP32_ROUNDING_OBSERVED,rounding residual 1.0243978998403236e-09 (0.008593272417783737 ULP)
+20,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+21,FORWARD_COMPLETE,prediction and intermediates recorded
+21,LOSS_COMPUTED,loss = 8.881784197001252e-12
+21,BACKWARD_STARTED,loss.backward()
+21,GRADIENT_AVAILABLE,parameter.grad written by autograd
+21,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+21,OPTIMIZER_STEP_STARTED,adamw.step()
+21,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+21,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+21,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.0356493440610848e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+21,FP32_ROUNDING_OBSERVED,rounding residual 1.0356493440610848e-09 (0.008687656372785568 ULP)
+21,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+22,FORWARD_COMPLETE,prediction and intermediates recorded
+22,LOSS_COMPUTED,loss = 8.881784197001252e-12
+22,BACKWARD_STARTED,loss.backward()
+22,GRADIENT_AVAILABLE,parameter.grad written by autograd
+22,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+22,OPTIMIZER_STEP_STARTED,adamw.step()
+22,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+22,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+22,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.0459551003094703e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+22,FP32_ROUNDING_OBSERVED,rounding residual 1.0459551003094703e-09 (0.008774107322096825 ULP)
+22,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+23,FORWARD_COMPLETE,prediction and intermediates recorded
+23,LOSS_COMPUTED,loss = 9.606537787476555e-12
+23,BACKWARD_STARTED,loss.backward()
+23,GRADIENT_AVAILABLE,parameter.grad written by autograd
+23,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+23,OPTIMIZER_STEP_STARTED,adamw.step()
+23,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+23,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+23,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.05783271031612e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+23,FP32_ROUNDING_OBSERVED,rounding residual 1.05783271031612e-09 (0.008873743936419487 ULP)
+23,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+24,FORWARD_COMPLETE,prediction and intermediates recorded
+24,LOSS_COMPUTED,loss = 9.606537787476555e-12
+24,BACKWARD_STARTED,loss.backward()
+24,GRADIENT_AVAILABLE,parameter.grad written by autograd
+24,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+24,OPTIMIZER_STEP_STARTED,adamw.step()
+24,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+24,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+24,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.0686735940623748e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+24,FP32_ROUNDING_OBSERVED,rounding residual 1.0686735940623748e-09 (0.00896468386054039 ULP)
+24,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+25,FORWARD_COMPLETE,prediction and intermediates recorded
+25,LOSS_COMPUTED,loss = 9.979572723750607e-12
+25,BACKWARD_STARTED,loss.backward()
+25,GRADIENT_AVAILABLE,parameter.grad written by autograd
+25,LANDSCAPE_PROBED,one-dimensional slice over +/-0.25 in float64
+25,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+25,OPTIMIZER_STEP_STARTED,adamw.step()
+25,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+25,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+25,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.079844880180758e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+25,FP32_ROUNDING_OBSERVED,rounding residual 1.079844880180758e-09 (0.009058395400643349 ULP)
+25,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+26,FORWARD_COMPLETE,prediction and intermediates recorded
+26,LOSS_COMPUTED,loss = 1.035971308738226e-11
+26,BACKWARD_STARTED,loss.backward()
+26,GRADIENT_AVAILABLE,parameter.grad written by autograd
+26,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+26,OPTIMIZER_STEP_STARTED,adamw.step()
+26,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+26,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+26,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.0912906134308287e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+26,FP32_ROUNDING_OBSERVED,rounding residual 1.0912906134308287e-09 (0.009154409170150757 ULP)
+26,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+27,FORWARD_COMPLETE,prediction and intermediates recorded
+27,LOSS_COMPUTED,loss = 1.0746958878371515e-11
+27,BACKWARD_STARTED,loss.backward()
+27,GRADIENT_AVAILABLE,parameter.grad written by autograd
+27,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+27,OPTIMIZER_STEP_STARTED,adamw.step()
+27,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+27,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+27,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.102962388088713e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+27,FP32_ROUNDING_OBSERVED,rounding residual 1.102962388088713e-09 (0.009252319112420082 ULP)
+27,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+28,FORWARD_COMPLETE,prediction and intermediates recorded
+28,LOSS_COMPUTED,loss = 1.1542766742422828e-11
+28,BACKWARD_STARTED,loss.backward()
+28,GRADIENT_AVAILABLE,parameter.grad written by autograd
+28,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+28,OPTIMIZER_STEP_STARTED,adamw.step()
+28,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+28,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+28,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.1159624335732587e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+28,FP32_ROUNDING_OBSERVED,rounding residual 1.1159624335732587e-09 (0.009361371397972107 ULP)
+28,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+29,FORWARD_COMPLETE,prediction and intermediates recorded
+29,LOSS_COMPUTED,loss = 1.1951328815484885e-11
+29,BACKWARD_STARTED,loss.backward()
+29,GRADIENT_AVAILABLE,parameter.grad written by autograd
+29,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+29,OPTIMIZER_STEP_STARTED,adamw.step()
+29,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+29,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+29,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.1288785461971429e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+29,FP32_ROUNDING_OBSERVED,rounding residual 1.1288785461971429e-09 (0.009469719603657722 ULP)
+29,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+30,FORWARD_COMPLETE,prediction and intermediates recorded
+30,LOSS_COMPUTED,loss = 1.1951328815484885e-11
+30,BACKWARD_STARTED,loss.backward()
+30,GRADIENT_AVAILABLE,parameter.grad written by autograd
+30,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+30,OPTIMIZER_STEP_STARTED,adamw.step()
+30,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+30,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+30,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.1405723032709147e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+30,FP32_ROUNDING_OBSERVED,rounding residual 1.1405723032709147e-09 (0.009567813947796822 ULP)
+30,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+31,FORWARD_COMPLETE,prediction and intermediates recorded
+31,LOSS_COMPUTED,loss = 1.2789769243681803e-11
+31,BACKWARD_STARTED,loss.backward()
+31,GRADIENT_AVAILABLE,parameter.grad written by autograd
+31,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+31,OPTIMIZER_STEP_STARTED,adamw.step()
+31,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+31,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+31,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.1535550292762764e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+31,FP32_ROUNDING_OBSERVED,rounding residual 1.1535550292762764e-09 (0.009676720947027206 ULP)
+31,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+32,FORWARD_COMPLETE,prediction and intermediates recorded
+32,LOSS_COMPUTED,loss = 1.3219647598816664e-11
+32,BACKWARD_STARTED,loss.backward()
+32,GRADIENT_AVAILABLE,parameter.grad written by autograd
+32,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+32,OPTIMIZER_STEP_STARTED,adamw.step()
+32,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+32,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+32,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.1664249566223361e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+32,FP32_ROUNDING_OBSERVED,rounding residual 1.1664249566223361e-09 (0.009784681722521782 ULP)
+32,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+33,FORWARD_COMPLETE,prediction and intermediates recorded
+33,LOSS_COMPUTED,loss = 1.3656631381309126e-11
+33,BACKWARD_STARTED,loss.backward()
+33,GRADIENT_AVAILABLE,parameter.grad written by autograd
+33,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+33,OPTIMIZER_STEP_STARTED,adamw.step()
+33,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+33,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+33,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.179187636424217e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+33,FP32_ROUNDING_OBSERVED,rounding residual 1.179187636424217e-09 (0.009891742840409279 ULP)
+33,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+34,FORWARD_COMPLETE,prediction and intermediates recorded
+34,LOSS_COMPUTED,loss = 1.4100720591159188e-11
+34,BACKWARD_STARTED,loss.backward()
+34,GRADIENT_AVAILABLE,parameter.grad written by autograd
+34,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+34,OPTIMIZER_STEP_STARTED,adamw.step()
+34,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+34,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+34,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.1918459552617833e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+34,FP32_ROUNDING_OBSERVED,rounding residual 1.1918459552617833e-09 (0.009997928515076637 ULP)
+34,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+35,FORWARD_COMPLETE,prediction and intermediates recorded
+35,LOSS_COMPUTED,loss = 1.4551915228366852e-11
+35,BACKWARD_STARTED,loss.backward()
+35,GRADIENT_AVAILABLE,parameter.grad written by autograd
+35,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+35,OPTIMIZER_STEP_STARTED,adamw.step()
+35,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+35,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+35,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.204401689491874e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+35,FP32_ROUNDING_OBSERVED,rounding residual 1.204401689491874e-09 (0.010103253647685051 ULP)
+35,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+36,FORWARD_COMPLETE,prediction and intermediates recorded
+36,LOSS_COMPUTED,loss = 1.5475620784854982e-11
+36,BACKWARD_STARTED,loss.backward()
+36,GRADIENT_AVAILABLE,parameter.grad written by autograd
+36,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+36,OPTIMIZER_STEP_STARTED,adamw.step()
+36,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+36,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+36,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.2179692809866083e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+36,FP32_ROUNDING_OBSERVED,rounding residual 1.2179692809866083e-09 (0.01021706685423851 ULP)
+36,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+37,FORWARD_COMPLETE,prediction and intermediates recorded
+37,LOSS_COMPUTED,loss = 1.594813170413545e-11
+37,BACKWARD_STARTED,loss.backward()
+37,GRADIENT_AVAILABLE,parameter.grad written by autograd
+37,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+37,OPTIMIZER_STEP_STARTED,adamw.step()
+37,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+37,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+37,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.2312177943840652e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+37,FP32_ROUNDING_OBSERVED,rounding residual 1.2312177943840652e-09 (0.010328203439712524 ULP)
+37,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+38,FORWARD_COMPLETE,prediction and intermediates recorded
+38,LOSS_COMPUTED,loss = 1.6914469824769185e-11
+38,BACKWARD_STARTED,loss.backward()
+38,GRADIENT_AVAILABLE,parameter.grad written by autograd
+38,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+38,OPTIMIZER_STEP_STARTED,adamw.step()
+38,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+38,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+38,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.2452707753851655e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+38,FP32_ROUNDING_OBSERVED,rounding residual 1.2452707753851655e-09 (0.010446088388562202 ULP)
+38,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+39,FORWARD_COMPLETE,prediction and intermediates recorded
+39,LOSS_COMPUTED,loss = 1.7408297026122455e-11
+39,BACKWARD_STARTED,loss.backward()
+39,GRADIENT_AVAILABLE,parameter.grad written by autograd
+39,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+39,OPTIMIZER_STEP_STARTED,adamw.step()
+39,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+39,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+39,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.2588519116008001e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+39,FP32_ROUNDING_OBSERVED,rounding residual 1.2588519116008001e-09 (0.010560015216469765 ULP)
+39,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+40,FORWARD_COMPLETE,prediction and intermediates recorded
+40,LOSS_COMPUTED,loss = 1.7909229654833325e-11
+40,BACKWARD_STARTED,loss.backward()
+40,GRADIENT_AVAILABLE,parameter.grad written by autograd
+40,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+40,OPTIMIZER_STEP_STARTED,adamw.step()
+40,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+40,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+40,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.2720180464498299e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+40,FP32_ROUNDING_OBSERVED,rounding residual 1.2720180464498299e-09 (0.010670460760593414 ULP)
+40,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+41,FORWARD_COMPLETE,prediction and intermediates recorded
+41,LOSS_COMPUTED,loss = 1.8417267710901797e-11
+41,BACKWARD_STARTED,loss.backward()
+41,GRADIENT_AVAILABLE,parameter.grad written by autograd
+41,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+41,OPTIMIZER_STEP_STARTED,adamw.step()
+41,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+41,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+41,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.284818473834548e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+41,FP32_ROUNDING_OBSERVED,rounding residual 1.284818473834548e-09 (0.01077783852815628 ULP)
+41,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+42,FORWARD_COMPLETE,prediction and intermediates recorded
+42,LOSS_COMPUTED,loss = 1.9454660105111543e-11
+42,BACKWARD_STARTED,loss.backward()
+42,GRADIENT_AVAILABLE,parameter.grad written by autograd
+42,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+42,OPTIMIZER_STEP_STARTED,adamw.step()
+42,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+42,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+42,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.2983623065565553e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+42,FP32_ROUNDING_OBSERVED,rounding residual 1.2983623065565553e-09 (0.010891452431678772 ULP)
+42,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+43,FORWARD_COMPLETE,prediction and intermediates recorded
+43,LOSS_COMPUTED,loss = 1.9984014443252818e-11
+43,BACKWARD_STARTED,loss.backward()
+43,GRADIENT_AVAILABLE,parameter.grad written by autograd
+43,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+43,OPTIMIZER_STEP_STARTED,adamw.step()
+43,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+43,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+43,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.311407205051296e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+43,FP32_ROUNDING_OBSERVED,rounding residual 1.311407205051296e-09 (0.011000880971550941 ULP)
+43,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+44,FORWARD_COMPLETE,prediction and intermediates recorded
+44,LOSS_COMPUTED,loss = 2.0520474208751693e-11
+44,BACKWARD_STARTED,loss.backward()
+44,GRADIENT_AVAILABLE,parameter.grad written by autograd
+44,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+44,OPTIMIZER_STEP_STARTED,adamw.step()
+44,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+44,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+44,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.324015563852754e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+44,FP32_ROUNDING_OBSERVED,rounding residual 1.324015563852754e-09 (0.011106647551059723 ULP)
+44,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+45,FORWARD_COMPLETE,prediction and intermediates recorded
+45,LOSS_COMPUTED,loss = 2.106403940160817e-11
+45,BACKWARD_STARTED,loss.backward()
+45,GRADIENT_AVAILABLE,parameter.grad written by autograd
+45,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+45,OPTIMIZER_STEP_STARTED,adamw.step()
+45,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+45,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+45,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.3362397854876917e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+45,FP32_ROUNDING_OBSERVED,rounding residual 1.3362397854876917e-09 (0.011209191754460335 ULP)
+45,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+46,FORWARD_COMPLETE,prediction and intermediates recorded
+46,LOSS_COMPUTED,loss = 2.2172486069393926e-11
+46,BACKWARD_STARTED,loss.backward()
+46,GRADIENT_AVAILABLE,parameter.grad written by autograd
+46,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+46,OPTIMIZER_STEP_STARTED,adamw.step()
+46,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+46,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+46,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.3491754380368093e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+46,FP32_ROUNDING_OBSERVED,rounding residual 1.3491754380368093e-09 (0.011317703872919083 ULP)
+46,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+47,FORWARD_COMPLETE,prediction and intermediates recorded
+47,LOSS_COMPUTED,loss = 2.3309354446610087e-11
+47,BACKWARD_STARTED,loss.backward()
+47,GRADIENT_AVAILABLE,parameter.grad written by autograd
+47,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+47,OPTIMIZER_STEP_STARTED,adamw.step()
+47,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+47,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+47,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.362640889013278e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+47,FP32_ROUNDING_OBSERVED,rounding residual 1.362640889013278e-09 (0.011430660262703896 ULP)
+47,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+48,FORWARD_COMPLETE,prediction and intermediates recorded
+48,LOSS_COMPUTED,loss = 2.3888446776254568e-11
+48,BACKWARD_STARTED,loss.backward()
+48,GRADIENT_AVAILABLE,parameter.grad written by autograd
+48,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+48,OPTIMIZER_STEP_STARTED,adamw.step()
+48,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+48,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+48,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.3754646310815133e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+48,FP32_ROUNDING_OBSERVED,rounding residual 1.3754646310815133e-09 (0.011538233608007431 ULP)
+48,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+49,FORWARD_COMPLETE,prediction and intermediates recorded
+49,LOSS_COMPUTED,loss = 2.5067947717616335e-11
+49,BACKWARD_STARTED,loss.backward()
+49,GRADIENT_AVAILABLE,parameter.grad written by autograd
+49,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+49,OPTIMIZER_STEP_STARTED,adamw.step()
+49,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+49,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+49,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.3887500038833878e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+49,FP32_ROUNDING_OBSERVED,rounding residual 1.3887500038833878e-09 (0.011649679392576218 ULP)
+49,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+50,FORWARD_COMPLETE,prediction and intermediates recorded
+50,LOSS_COMPUTED,loss = 2.566835632933362e-11
+50,BACKWARD_STARTED,loss.backward()
+50,GRADIENT_AVAILABLE,parameter.grad written by autograd
+50,LANDSCAPE_PROBED,one-dimensional slice over +/-0.25 in float64
+50,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+50,OPTIMIZER_STEP_STARTED,adamw.step()
+50,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+50,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+50,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.4013532556589325e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+50,FP32_ROUNDING_OBSERVED,rounding residual 1.4013532556589325e-09 (0.011755403131246567 ULP)
+50,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+51,FORWARD_COMPLETE,prediction and intermediates recorded
+51,LOSS_COMPUTED,loss = 2.689048983484099e-11
+51,BACKWARD_STARTED,loss.backward()
+51,GRADIENT_AVAILABLE,parameter.grad written by autograd
+51,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+51,OPTIMIZER_STEP_STARTED,adamw.step()
+51,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+51,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+51,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.4143708426672674e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+51,FP32_ROUNDING_OBSERVED,rounding residual 1.4143708426672674e-09 (0.01186460256576538 ULP)
+51,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+52,FORWARD_COMPLETE,prediction and intermediates recorded
+52,LOSS_COMPUTED,loss = 2.751221472863108e-11
+52,BACKWARD_STARTED,loss.backward()
+52,GRADIENT_AVAILABLE,parameter.grad written by autograd
+52,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+52,OPTIMIZER_STEP_STARTED,adamw.step()
+52,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+52,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+52,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.4266841041887801e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+52,FP32_ROUNDING_OBSERVED,rounding residual 1.4266841041887801e-09 (0.011967893689870834 ULP)
+52,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+53,FORWARD_COMPLETE,prediction and intermediates recorded
+53,LOSS_COMPUTED,loss = 2.8776980798284058e-11
+53,BACKWARD_STARTED,loss.backward()
+53,GRADIENT_AVAILABLE,parameter.grad written by autograd
+53,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+53,OPTIMIZER_STEP_STARTED,adamw.step()
+53,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+53,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+53,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.4393795044753688e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+53,FP32_ROUNDING_OBSERVED,rounding residual 1.4393795044753688e-09 (0.012074390426278114 ULP)
+53,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+54,FORWARD_COMPLETE,prediction and intermediates recorded
+54,LOSS_COMPUTED,loss = 2.942002197414695e-11
+54,BACKWARD_STARTED,loss.backward()
+54,GRADIENT_AVAILABLE,parameter.grad written by autograd
+54,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+54,OPTIMIZER_STEP_STARTED,adamw.step()
+54,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+54,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+54,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.451359699089494e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+54,FP32_ROUNDING_OBSERVED,rounding residual 1.451359699089494e-09 (0.012174887582659721 ULP)
+54,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+55,FORWARD_COMPLETE,prediction and intermediates recorded
+55,LOSS_COMPUTED,loss = 3.072742060794553e-11
+55,BACKWARD_STARTED,loss.backward()
+55,GRADIENT_AVAILABLE,parameter.grad written by autograd
+55,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+55,OPTIMIZER_STEP_STARTED,adamw.step()
+55,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+55,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+55,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.463701382320437e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+55,FP32_ROUNDING_OBSERVED,rounding residual 1.463701382320437e-09 (0.012278417125344276 ULP)
+55,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+56,FORWARD_COMPLETE,prediction and intermediates recorded
+56,LOSS_COMPUTED,loss = 3.206324095117452e-11
+56,BACKWARD_STARTED,loss.backward()
+56,GRADIENT_AVAILABLE,parameter.grad written by autograd
+56,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+56,OPTIMIZER_STEP_STARTED,adamw.step()
+56,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+56,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+56,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.476289313018242e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+56,FP32_ROUNDING_OBSERVED,rounding residual 1.476289313018242e-09 (0.012384012341499329 ULP)
+56,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+57,FORWARD_COMPLETE,prediction and intermediates recorded
+57,LOSS_COMPUTED,loss = 3.3427483003833913e-11
+57,BACKWARD_STARTED,loss.backward()
+57,GRADIENT_AVAILABLE,parameter.grad written by autograd
+57,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+57,OPTIMIZER_STEP_STARTED,adamw.step()
+57,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+57,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+57,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.4890273458689762e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+57,FP32_ROUNDING_OBSERVED,rounding residual 1.4890273458689762e-09 (0.012490866705775261 ULP)
+57,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+58,FORWARD_COMPLETE,prediction and intermediates recorded
+58,LOSS_COMPUTED,loss = 3.412026217120001e-11
+58,BACKWARD_STARTED,loss.backward()
+58,GRADIENT_AVAILABLE,parameter.grad written by autograd
+58,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+58,OPTIMIZER_STEP_STARTED,adamw.step()
+58,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+58,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+58,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.5008940756899847e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+58,FP32_ROUNDING_OBSERVED,rounding residual 1.5008940756899847e-09 (0.012590412050485611 ULP)
+58,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+59,FORWARD_COMPLETE,prediction and intermediates recorded
+59,LOSS_COMPUTED,loss = 3.552713678800501e-11
+59,BACKWARD_STARTED,loss.backward()
+59,GRADIENT_AVAILABLE,parameter.grad written by autograd
+59,LANDSCAPE_PROBED,one-dimensional slice over +/-0.25 in float64
+59,OPTIMIZER_STATE_READ,"lr in force = 1e-09; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+59,OPTIMIZER_STEP_STARTED,adamw.step()
+59,OPTIMIZER_STEP_COMPLETED,optimizer.step() returned
+59,BIT_PATTERN_UNCHANGED,the stored float32 value is identical before and after the step
+59,UPDATE_ATTEMPTED_BELOW_FP32_RESOLUTION,the optimizer attempted a displacement of -1.5129579811201666e-09 while one ULP at this magnitude is 1.1920928955078125e-07
+59,FP32_ROUNDING_OBSERVED,rounding residual 1.5129579811201666e-09 (0.012691611424088478 ULP)
+59,STABILITY_METRIC_UPDATED,mean |update| over window = 0.0
+60,RUN_COMPLETE,60 real steps executed

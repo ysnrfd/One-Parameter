@@ -1,0 +1,8 @@
+test_startup_stderr_is_drained_before_ready_and_diagnostics_are_bounded (single_parameter_observatory.tests.test_studio_plugins.TestScriptSandbox.test_startup_stderr_is_drained_before_ready_and_diagnostics_are_bounded) ... ok
+test_large_dataset_within_json_budget_can_be_transformed (single_parameter_observatory.tests.test_studio_plugins.TestScriptSandbox.test_large_dataset_within_json_budget_can_be_transformed) ... ok
+test_negative_zero_input_and_computation_keep_their_sign (single_parameter_observatory.tests.test_studio_plugins.TestScriptSandbox.test_negative_zero_input_and_computation_keep_their_sign) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 70.548s
+
+OK

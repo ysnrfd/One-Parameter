@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: Body page containing sections 5.3 and 6, a data table, and standard header/footer.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: Table is horizontally centered with a readable dark blue header row (white text) and no column overflow.\nFIGURES: N/A\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857803,
+  "id": "20261001203001d5895be3eafb4cd3",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20261001203001d5895be3eafb4cd3",
+  "usage": {
+    "completion_tokens": 76,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2222
+  }
+}

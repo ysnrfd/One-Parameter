@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: Appendix A (Environment and Evidence Index) containing introductory text, Table 7, a code block for reproduction commands, and a concluding paragraph.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: Table 7 is horizontally centered with a dark blue header row containing white text; all text fits within cell boundaries without column overflow.\nFIGURES: N/A\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857809,
+  "id": "202610012030078ebb2f796f6f4c88",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "202610012030078ebb2f796f6f4c88",
+  "usage": {
+    "completion_tokens": 89,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2235
+  }
+}

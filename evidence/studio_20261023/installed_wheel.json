@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "version": "1.2.0",
+  "python": "3.12.15",
+  "torch": "2.14.1+cpu",
+  "module_path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\download\\.venv\\Lib\\site-packages\\single_parameter_observatory\\__init__.py",
+  "sys_prefix": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\download\\.venv",
+  "assets": {
+    "index.html": {
+      "bytes": 19061,
+      "sha256": "4e60d5409c6732500cc62f7fff3e0cb6e7522078c9328bb614b85542f6047d39"
+    },
+    "studio.css": {
+      "bytes": 40481,
+      "sha256": "6a5b06979735f90ffde38c467ae6b10e3101b59711593c50926ac0fd4cc8ce21"
+    },
+    "studio.js": {
+      "bytes": 70109,
+      "sha256": "f289f44580a438e85b80b5df2417ee1ac7add50fb529316cc59b10ea04b4b8f1"
+    }
+  },
+  "real_root_steps": 4,
+  "real_custom_steps": 2,
+  "custom_data_retained_after_configure": true,
+  "project_record_round_trip_equal": true,
+  "project_bytes": 122974,
+  "project_sha256": "3871ef290c338aca306f474e621fce5a28ef8bf776142616306300902290a42e",
+  "zip_bytes": 49061,
+  "zip_sha256": "41e77be738d47b85101eb92083d98fd50dfa04dd01f0a0462434c4226bd43b18",
+  "zip_members": [
+    "bit_history.csv",
+    "checkpoint.json",
+    "dataset.json",
+    "events.csv",
+    "landscape.json",
+    "optimizer_state_history.csv",
+    "provenance.json",
+    "stability.csv",
+    "summary.json",
+    "trajectory.csv",
+    "trajectory.json",
+    "trajectory.npz",
+    "trajectory.parquet",
+    "validation.json"
+  ],
+  "wheel_source_files_equal": 54,
+  "sdist_source_files_equal": 62,
+  "distributions": [
+    {
+      "name": "single_parameter_observatory-1.2.0-py3-none-any.whl",
+      "bytes": 323842,
+      "sha256": "d659b76965d555a8432ac29cbd49732c44b0c5938291ab03a0d094ff076c9d6b"
+    },
+    {
+      "name": "single_parameter_observatory-1.2.0.tar.gz",
+      "bytes": 322162,
+      "sha256": "f43d2446ed73ad3db520c5831c4c1e796dfa0fde9aecb761dc2a7a6e19b413e9"
+    }
+  ]
+}

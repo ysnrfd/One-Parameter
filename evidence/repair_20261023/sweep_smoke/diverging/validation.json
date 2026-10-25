@@ -1,0 +1,61 @@
+{
+  "ledger": {
+    "gradient_checks": 3,
+    "gradient_failures": 0,
+    "finite_difference_failures": 0,
+    "reconstruction_checks": 3,
+    "reconstruction_failures": 0,
+    "bit_checks": 1,
+    "bit_failures": 0,
+    "ulp_checks": 1,
+    "ulp_failures": 0,
+    "max_gradient_relative_error": 2.9182309594834865e-08,
+    "max_gradient_absolute_error": 2.873103125525299e+16,
+    "max_finite_difference_relative_error": 2.9159022482897964e-08,
+    "max_finite_difference_absolute_error": 2.855030976885555e+16,
+    "max_reconstruction_ulp_error": 0,
+    "total_failures": 0,
+    "failure_notes": []
+  },
+  "per_step": [
+    {
+      "step": 0,
+      "gradient_analytical": -832.0,
+      "gradient_finite_difference": -831.9999999457649,
+      "gradient_finite_difference_h": 5e-06,
+      "gradient_fp64_autograd": -832.0,
+      "gradient_vs_analytical_rel": 0.0,
+      "gradient_vs_finite_difference_rel": 6.518642036838506e-11,
+      "status": "PASS",
+      "reconstruction_status": "PASS",
+      "reconstruction_ulp_error": 0,
+      "reconstruction_bit_exact": true
+    },
+    {
+      "step": 1,
+      "gradient_analytical": 105664002192128.38,
+      "gradient_finite_difference": 105664002194588.98,
+      "gradient_finite_difference_h": 831999.9672320001,
+      "gradient_fp64_autograd": 105664002192128.38,
+      "gradient_vs_analytical_rel": 2.9182309594834865e-08,
+      "gradient_vs_finite_difference_rel": 2.9159022482897964e-08,
+      "status": "PASS",
+      "reconstruction_status": "PASS",
+      "reconstruction_ulp_error": 0,
+      "reconstruction_bit_exact": true
+    },
+    {
+      "step": 2,
+      "gradient_analytical": -1.3314080468735409e+25,
+      "gradient_finite_difference": -1.331408046891613e+25,
+      "gradient_finite_difference_h": 1.0566400389652112e+17,
+      "gradient_fp64_autograd": -1.3314080468735409e+25,
+      "gradient_vs_analytical_rel": 2.1579433384618792e-09,
+      "gradient_vs_finite_difference_rel": 2.144369626990828e-09,
+      "status": "PASS",
+      "reconstruction_status": "PASS",
+      "reconstruction_ulp_error": 0,
+      "reconstruction_bit_exact": true
+    }
+  ]
+}

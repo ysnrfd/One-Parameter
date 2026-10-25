@@ -1,0 +1,1086 @@
+{
+  "id": "505788f57cd243b7b356c005398c2bae",
+  "graph_id": "9311b655e0a74b76adecdb116a97129e",
+  "graph_revision": 2,
+  "graph_name": "Browser architecture wizard RMSprop",
+  "status": "succeeded",
+  "created_at": "2026-10-23T18:25:10.689408+00:00",
+  "started_at": "2026-10-23T18:25:10.702462+00:00",
+  "finished_at": "2026-10-23T18:25:14.200824+00:00",
+  "graph": {
+    "name": "Browser architecture wizard RMSprop",
+    "description": "Editable dense PyTorch architecture, training data, optimizer, actual metrics, tensor inspection, and a portable checkpoint. Execution starts only when explicitly queued.",
+    "nodes": [
+      {
+        "id": "architecture",
+        "type": "hf.sequential",
+        "params": {
+          "layers": [
+            {
+              "type": "Linear",
+              "in_features": 1,
+              "out_features": 8,
+              "bias": true
+            },
+            {
+              "type": "LayerNorm",
+              "normalized_shape": 8,
+              "eps": 1e-06
+            },
+            {
+              "type": "SiLU"
+            },
+            {
+              "type": "Linear",
+              "in_features": 8,
+              "out_features": 4,
+              "bias": true
+            },
+            {
+              "type": "LayerNorm",
+              "normalized_shape": 4,
+              "eps": 1e-06
+            },
+            {
+              "type": "SiLU"
+            },
+            {
+              "type": "Linear",
+              "in_features": 4,
+              "out_features": 1,
+              "bias": true
+            }
+          ],
+          "seed": 42
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": "data",
+        "type": "hf.data",
+        "params": {
+          "fields": {
+            "x": [
+              [
+                -1
+              ],
+              [
+                -0.5
+              ],
+              [
+                0
+              ],
+              [
+                0.5
+              ],
+              [
+                1
+              ]
+            ],
+            "labels": [
+              [
+                -2
+              ],
+              [
+                -1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                2
+              ]
+            ]
+          }
+        },
+        "position": {
+          "x": 0,
+          "y": 300
+        }
+      },
+      {
+        "id": "optimizer",
+        "type": "hf.optimizer",
+        "params": {
+          "name": "RMSprop",
+          "lr": 0.01,
+          "weight_decay": 0,
+          "momentum": 0
+        },
+        "position": {
+          "x": 0,
+          "y": 560
+        }
+      },
+      {
+        "id": "train",
+        "type": "hf.train",
+        "params": {
+          "steps": 4,
+          "batch_size": 5,
+          "loss": "mse",
+          "clip_grad_norm": 1
+        },
+        "position": {
+          "x": 360,
+          "y": 170
+        }
+      },
+      {
+        "id": "inspect",
+        "type": "hf.inspect",
+        "params": {},
+        "position": {
+          "x": 720,
+          "y": 0
+        }
+      },
+      {
+        "id": "checkpoint",
+        "type": "hf.checkpoint",
+        "params": {},
+        "position": {
+          "x": 720,
+          "y": 340
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "architecture-model-train-model",
+        "source": "architecture",
+        "source_port": "model",
+        "target": "train",
+        "target_port": "model"
+      },
+      {
+        "id": "data-data-train-data",
+        "source": "data",
+        "source_port": "data",
+        "target": "train",
+        "target_port": "data"
+      },
+      {
+        "id": "optimizer-optimizer-train-optimizer",
+        "source": "optimizer",
+        "source_port": "optimizer",
+        "target": "train",
+        "target_port": "optimizer"
+      },
+      {
+        "id": "train-model-inspect-model",
+        "source": "train",
+        "source_port": "model",
+        "target": "inspect",
+        "target_port": "model"
+      },
+      {
+        "id": "train-model-checkpoint-model",
+        "source": "train",
+        "source_port": "model",
+        "target": "checkpoint",
+        "target_port": "model"
+      }
+    ],
+    "view": {
+      "x": 40.00000000000003,
+      "y": 47.78067484662577,
+      "zoom": 0.5061349693251533
+    },
+    "id": "9311b655e0a74b76adecdb116a97129e",
+    "revision": 2,
+    "created_at": "2026-10-23T18:23:38.183234+00:00",
+    "updated_at": "2026-10-23T18:23:38.354576+00:00"
+  },
+  "definitions": {
+    "hf.data": {
+      "id": "hf.data",
+      "title": "Tensor dataset",
+      "category": "Transformers \u00b7 Data",
+      "description": "Finite named tensor batches: x/labels for custom models or input_ids/attention_mask/labels for HF.",
+      "inputs": [
+        {
+          "name": "fields",
+          "type": "object",
+          "required": true,
+          "default": {
+            "x": [
+              [
+                -1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "labels": [
+              [
+                -2
+              ],
+              [
+                0
+              ],
+              [
+                2
+              ]
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    "hf.sequential": {
+      "id": "hf.sequential",
+      "title": "Sequential model",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Instantiate a real multi-parameter PyTorch architecture from ordered layer recipes.",
+      "inputs": [
+        {
+          "name": "layers",
+          "type": "array",
+          "required": true,
+          "default": [
+            {
+              "type": "Linear",
+              "in_features": 1,
+              "out_features": 8,
+              "bias": true
+            },
+            {
+              "type": "RMSNorm",
+              "normalized_shape": 8,
+              "eps": 1e-06
+            },
+            {
+              "type": "GELU"
+            },
+            {
+              "type": "Linear",
+              "in_features": 8,
+              "out_features": 1,
+              "bias": true
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "seed",
+          "type": "integer",
+          "default": 42,
+          "min": 0,
+          "max": 2147483647
+        }
+      ]
+    },
+    "hf.optimizer": {
+      "id": "hf.optimizer",
+      "title": "Optimizer",
+      "category": "Transformers \u00b7 Training",
+      "description": "Optimizer recipe. Connect to Train alongside a model; AdamW updates the model's complete parameter set.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "optimizer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "AdamW",
+          "options": [
+            "AdamW",
+            "Adam",
+            "SGD",
+            "RMSprop"
+          ]
+        },
+        {
+          "name": "lr",
+          "type": "number",
+          "default": 0.01
+        },
+        {
+          "name": "weight_decay",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "momentum",
+          "type": "number",
+          "default": 0
+        }
+      ]
+    },
+    "hf.train": {
+      "id": "hf.train",
+      "title": "Train multi-parameter model",
+      "category": "Transformers \u00b7 Training",
+      "description": "Actual autograd/optimizer updates, finite loss checks, gradient clipping, measured parameter hashes and loss history.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "optimizer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "metrics",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "steps",
+          "type": "integer",
+          "default": 20,
+          "min": 1
+        },
+        {
+          "name": "batch_size",
+          "type": "integer",
+          "default": 3,
+          "min": 1,
+          "max": 128
+        },
+        {
+          "name": "loss",
+          "type": "string",
+          "default": "mse",
+          "options": [
+            "mse",
+            "cross_entropy",
+            "model"
+          ]
+        },
+        {
+          "name": "clip_grad_norm",
+          "type": "number",
+          "default": 1
+        }
+      ]
+    },
+    "hf.inspect": {
+      "id": "hf.inspect",
+      "title": "Inspect model",
+      "category": "Transformers \u00b7 Observe",
+      "description": "Real parameter names, shapes, trainable counts, architecture, finite checks and weight hash.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "report",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    "hf.checkpoint": {
+      "id": "hf.checkpoint",
+      "title": "Export safe model",
+      "category": "Transformers \u00b7 Artifacts",
+      "description": "Immutable ZIP with safetensors weights and a declarative architecture recipe. No pickle or executable model code.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "artifact",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    }
+  },
+  "plugin_versions": {},
+  "order": [
+    "architecture",
+    "data",
+    "optimizer",
+    "train",
+    "inspect",
+    "checkpoint"
+  ],
+  "nodes": {
+    "architecture": {
+      "status": "succeeded",
+      "inputs": {
+        "layers": [
+          {
+            "type": "Linear",
+            "in_features": 1,
+            "out_features": 8,
+            "bias": true
+          },
+          {
+            "type": "LayerNorm",
+            "normalized_shape": 8,
+            "eps": 1e-06
+          },
+          {
+            "type": "SiLU"
+          },
+          {
+            "type": "Linear",
+            "in_features": 8,
+            "out_features": 4,
+            "bias": true
+          },
+          {
+            "type": "LayerNorm",
+            "normalized_shape": 4,
+            "eps": 1e-06
+          },
+          {
+            "type": "SiLU"
+          },
+          {
+            "type": "Linear",
+            "in_features": 4,
+            "out_features": 1,
+            "bias": true
+          }
+        ]
+      },
+      "outputs": {
+        "model": {
+          "architecture": "Sequential",
+          "device": "cpu",
+          "family": "sequential",
+          "handle": "3886093a52a24d47a7befc1dfaf71662",
+          "kind": "model",
+          "parameter_count": 81,
+          "parameter_tensors": 10,
+          "trainable_parameters": 81
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 2046.9999999986612,
+      "parameters": {
+        "seed": 42
+      }
+    },
+    "data": {
+      "status": "succeeded",
+      "inputs": {
+        "fields": {
+          "x": [
+            [
+              -1
+            ],
+            [
+              -0.5
+            ],
+            [
+              0
+            ],
+            [
+              0.5
+            ],
+            [
+              1
+            ]
+          ],
+          "labels": [
+            [
+              -2
+            ],
+            [
+              -1
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ],
+            [
+              2
+            ]
+          ]
+        }
+      },
+      "outputs": {
+        "data": {
+          "elements": 10,
+          "fields": {
+            "labels": {
+              "dtype": "torch.int64",
+              "elements": 5,
+              "preview": [
+                -2,
+                -1,
+                0,
+                1,
+                2
+              ],
+              "shape": [
+                5,
+                1
+              ],
+              "truncated": false
+            },
+            "x": {
+              "dtype": "torch.float32",
+              "elements": 5,
+              "preview": [
+                -1.0,
+                -0.5,
+                0.0,
+                0.5,
+                1.0
+              ],
+              "shape": [
+                5,
+                1
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "2f84610a2ed043dea28f1dcfcf52576d",
+          "kind": "data",
+          "samples": 5
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 14.999999999417923,
+      "parameters": {}
+    },
+    "optimizer": {
+      "status": "succeeded",
+      "inputs": {},
+      "outputs": {
+        "optimizer": {
+          "kind": "optimizer",
+          "lr": 0.01,
+          "momentum": 0.0,
+          "name": "RMSprop",
+          "weight_decay": 0.0
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {
+        "name": "RMSprop",
+        "lr": 0.01,
+        "weight_decay": 0,
+        "momentum": 0
+      }
+    },
+    "train": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "Sequential",
+          "device": "cpu",
+          "family": "sequential",
+          "handle": "3886093a52a24d47a7befc1dfaf71662",
+          "kind": "model",
+          "parameter_count": 81,
+          "parameter_tensors": 10,
+          "trainable_parameters": 81
+        },
+        "data": {
+          "elements": 10,
+          "fields": {
+            "labels": {
+              "dtype": "torch.int64",
+              "elements": 5,
+              "preview": [
+                -2,
+                -1,
+                0,
+                1,
+                2
+              ],
+              "shape": [
+                5,
+                1
+              ],
+              "truncated": false
+            },
+            "x": {
+              "dtype": "torch.float32",
+              "elements": 5,
+              "preview": [
+                -1.0,
+                -0.5,
+                0.0,
+                0.5,
+                1.0
+              ],
+              "shape": [
+                5,
+                1
+              ],
+              "truncated": false
+            }
+          },
+          "handle": "2f84610a2ed043dea28f1dcfcf52576d",
+          "kind": "data",
+          "samples": 5
+        },
+        "optimizer": {
+          "kind": "optimizer",
+          "lr": 0.01,
+          "momentum": 0.0,
+          "name": "RMSprop",
+          "weight_decay": 0.0
+        }
+      },
+      "outputs": {
+        "metrics": {
+          "batch_size": 5,
+          "gradient_norms": [
+            4.009857654571533,
+            1.4512912034988403,
+            1.9115434885025024,
+            1.9573217630386353
+          ],
+          "loss": 0.7123419046401978,
+          "loss_history": [
+            3.103952169418335,
+            1.8177118301391602,
+            1.2350213527679443,
+            0.7123419046401978
+          ],
+          "optimizer": {
+            "kind": "optimizer",
+            "lr": 0.01,
+            "momentum": 0.0,
+            "name": "RMSprop",
+            "weight_decay": 0.0
+          },
+          "optimizer_state_tensors": 20,
+          "parameter_changed": true,
+          "parameter_count": 81,
+          "samples": 5,
+          "state_sha256_after": "20323f8fe712e0b2e34ca89797bd3aa7cee97b32157f9f5a3168347a6da61578",
+          "state_sha256_before": "0fb1c3c707051f3d5ce8712cf00e27a25882a7b60750188712daee440dbc4c09",
+          "steps": 4
+        },
+        "model": {
+          "architecture": "Sequential",
+          "device": "cpu",
+          "family": "sequential",
+          "handle": "3886093a52a24d47a7befc1dfaf71662",
+          "kind": "model",
+          "parameter_count": 81,
+          "parameter_tensors": 10,
+          "trainable_parameters": 81
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 1391.0000000032596,
+      "parameters": {
+        "steps": 4,
+        "batch_size": 5,
+        "loss": "mse",
+        "clip_grad_norm": 1
+      }
+    },
+    "inspect": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "Sequential",
+          "device": "cpu",
+          "family": "sequential",
+          "handle": "3886093a52a24d47a7befc1dfaf71662",
+          "kind": "model",
+          "parameter_count": 81,
+          "parameter_tensors": 10,
+          "trainable_parameters": 81
+        }
+      },
+      "outputs": {
+        "model": {
+          "architecture": "Sequential",
+          "device": "cpu",
+          "family": "sequential",
+          "handle": "3886093a52a24d47a7befc1dfaf71662",
+          "kind": "model",
+          "parameter_count": 81,
+          "parameter_tensors": 10,
+          "trainable_parameters": 81
+        },
+        "report": {
+          "architecture": "Sequential",
+          "device": "cpu",
+          "family": "sequential",
+          "handle": "3886093a52a24d47a7befc1dfaf71662",
+          "kind": "model",
+          "parameter_count": 81,
+          "parameter_tensors": 10,
+          "parameters": [
+            {
+              "dtype": "torch.float32",
+              "elements": 8,
+              "finite": true,
+              "name": "0.weight",
+              "shape": [
+                8,
+                1
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8,
+              "finite": true,
+              "name": "0.bias",
+              "shape": [
+                8
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8,
+              "finite": true,
+              "name": "1.weight",
+              "shape": [
+                8
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 8,
+              "finite": true,
+              "name": "1.bias",
+              "shape": [
+                8
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 32,
+              "finite": true,
+              "name": "3.weight",
+              "shape": [
+                4,
+                8
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4,
+              "finite": true,
+              "name": "3.bias",
+              "shape": [
+                4
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4,
+              "finite": true,
+              "name": "4.weight",
+              "shape": [
+                4
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4,
+              "finite": true,
+              "name": "4.bias",
+              "shape": [
+                4
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 4,
+              "finite": true,
+              "name": "6.weight",
+              "shape": [
+                1,
+                4
+              ],
+              "trainable": true
+            },
+            {
+              "dtype": "torch.float32",
+              "elements": 1,
+              "finite": true,
+              "name": "6.bias",
+              "shape": [
+                1
+              ],
+              "trainable": true
+            }
+          ],
+          "recipe": {
+            "family": "sequential",
+            "layers": [
+              {
+                "bias": true,
+                "in_features": 1,
+                "out_features": 8,
+                "type": "Linear"
+              },
+              {
+                "eps": 1e-06,
+                "normalized_shape": 8,
+                "type": "LayerNorm"
+              },
+              {
+                "type": "SiLU"
+              },
+              {
+                "bias": true,
+                "in_features": 8,
+                "out_features": 4,
+                "type": "Linear"
+              },
+              {
+                "eps": 1e-06,
+                "normalized_shape": 4,
+                "type": "LayerNorm"
+              },
+              {
+                "type": "SiLU"
+              },
+              {
+                "bias": true,
+                "in_features": 4,
+                "out_features": 1,
+                "type": "Linear"
+              }
+            ],
+            "seed": 42
+          },
+          "state_sha256": "20323f8fe712e0b2e34ca89797bd3aa7cee97b32157f9f5a3168347a6da61578",
+          "trainable_parameters": 81
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 0.0,
+      "parameters": {}
+    },
+    "checkpoint": {
+      "status": "succeeded",
+      "inputs": {
+        "model": {
+          "architecture": "Sequential",
+          "device": "cpu",
+          "family": "sequential",
+          "handle": "3886093a52a24d47a7befc1dfaf71662",
+          "kind": "model",
+          "parameter_count": 81,
+          "parameter_tensors": 10,
+          "trainable_parameters": 81
+        }
+      },
+      "outputs": {
+        "artifact": {
+          "id": "f4fdf7a911264aeca2977b7a1e0b6951",
+          "job_id": "505788f57cd243b7b356c005398c2bae",
+          "node_id": "checkpoint",
+          "filename": "transformers-model.zip",
+          "mime": "application/zip",
+          "byte_length": 1275,
+          "sha256": "3ca7b84677a712688abc6077c471c567d0990f8d100386404732ecef0efea454",
+          "download_url": "/api/graph/artifacts/f4fdf7a911264aeca2977b7a1e0b6951"
+        },
+        "model": {
+          "architecture": "Sequential",
+          "device": "cpu",
+          "family": "sequential",
+          "handle": "3886093a52a24d47a7befc1dfaf71662",
+          "kind": "model",
+          "parameter_count": 81,
+          "parameter_tensors": 10,
+          "trainable_parameters": 81
+        }
+      },
+      "logs": [
+        "Executed actual CPU tensors in this job's isolated Transformers worker"
+      ],
+      "error": null,
+      "duration_ms": 14.999999999417923,
+      "parameters": {}
+    }
+  },
+  "events": [
+    {
+      "time": "2026-10-23T18:25:10.689408+00:00",
+      "type": "queued",
+      "message": "Captured an immutable workflow and node-definition snapshot",
+      "node_id": null
+    },
+    {
+      "time": "2026-10-23T18:25:10.702462+00:00",
+      "type": "started",
+      "message": "Workflow execution started",
+      "node_id": null
+    },
+    {
+      "time": "2026-10-23T18:25:10.705964+00:00",
+      "type": "node_started",
+      "message": "Sequential model",
+      "node_id": "architecture"
+    },
+    {
+      "time": "2026-10-23T18:25:12.761756+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "architecture"
+    },
+    {
+      "time": "2026-10-23T18:25:12.764944+00:00",
+      "type": "node_started",
+      "message": "Tensor dataset",
+      "node_id": "data"
+    },
+    {
+      "time": "2026-10-23T18:25:12.769093+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "data"
+    },
+    {
+      "time": "2026-10-23T18:25:12.771675+00:00",
+      "type": "node_started",
+      "message": "Optimizer",
+      "node_id": "optimizer"
+    },
+    {
+      "time": "2026-10-23T18:25:12.776416+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "optimizer"
+    },
+    {
+      "time": "2026-10-23T18:25:12.779031+00:00",
+      "type": "node_started",
+      "message": "Train multi-parameter model",
+      "node_id": "train"
+    },
+    {
+      "time": "2026-10-23T18:25:14.171816+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "train"
+    },
+    {
+      "time": "2026-10-23T18:25:14.174432+00:00",
+      "type": "node_started",
+      "message": "Inspect model",
+      "node_id": "inspect"
+    },
+    {
+      "time": "2026-10-23T18:25:14.178992+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "inspect"
+    },
+    {
+      "time": "2026-10-23T18:25:14.181189+00:00",
+      "type": "node_started",
+      "message": "Export safe model",
+      "node_id": "checkpoint"
+    },
+    {
+      "time": "2026-10-23T18:25:14.198686+00:00",
+      "type": "node_succeeded",
+      "message": "Completed with validated typed outputs",
+      "node_id": "checkpoint"
+    },
+    {
+      "time": "2026-10-23T18:25:14.198686+00:00",
+      "type": "succeeded",
+      "message": "All workflow nodes completed",
+      "node_id": null
+    }
+  ],
+  "error": null,
+  "idempotency_key": null,
+  "partial_effects": "Completed experiment actions are retained if a later node fails or execution is cancelled.",
+  "snapshot_sha256": "349d793827a26ec0d688cc858c9263506c5b023de6198d0a08af3e0538786741"
+}

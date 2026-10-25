@@ -1,0 +1,10 @@
+{
+  "observations": {
+    "description": "Editable node. Configure its inputs and parameters below.",
+    "expressionJSON": "{\n  \"kind\": \"tensor-expression\",\n  \"nodes\": [\n    {\n      \"id\": \"op0001\",\n      \"op\": \"hf.tensor_input\",\n      \"inputs\": {},\n      \"params\": {\n        \"field\": \"input_ids\",\n        \"dtype\": \"int64\"\n      }\n    }\n  ],\n  \"output\": \"op0001\"\n}",
+    "grid": "12px 12px",
+    "inputTag": "TEXTAREA",
+    "option": "Tensor expression · 1 operations · op0001"
+  },
+  "consoleErrors": []
+}

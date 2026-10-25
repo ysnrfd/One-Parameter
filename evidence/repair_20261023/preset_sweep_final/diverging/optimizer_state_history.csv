@@ -1,0 +1,4 @@
+step,optimizer,learning_rate,step_before,step_after,state_present_before,keys_before,keys_after,moment1_before,moment1,moment2_before,moment2,bias_corrected_moment1,bias_corrected_moment2,gradient,reconstructed_optimizer_total_update_fp32,optimizer_adaptive_update,optimizer_weight_decay_update,optimizer_attempted_update_fp64,reconstruction_variant,reconstruction_status,reconstruction_ulp_error,fp64_reconstructed_after
+0,sgd,1000000000.0,,,False,[],[],,,,,,,-832.0,831999967237.0,831999967237.0,0.0,832000000000.0,"sgd[clone_grad,coupled_into_grad]",PASS,0,831999999995.0
+1,sgd,1000000000.0,,,False,[],[],,,,,,,105664005275648.0,-1.0566400389735312e+23,-1.0566400389735312e+23,0.0,-1.05664005275648e+23,"sgd[clone_grad,coupled_into_grad]",PASS,0,-1.05664005274816e+23
+2,sgd,1000000000.0,,,False,[],[],,,,,,,-1.331408049746644e+25,1.3314081022881067e+34,1.3314081022881067e+34,0.0,1.331408049746644e+34,"sgd[clone_grad,coupled_into_grad]",PASS,0,1.3314080497360777e+34

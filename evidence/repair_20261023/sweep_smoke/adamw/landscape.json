@@ -1,0 +1,182 @@
+{
+  "slices": [
+    {
+      "step": 0,
+      "center": -2.0,
+      "center_uint32": 3221225472,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.9792589260839044
+        ],
+        [
+          -0.21875,
+          3.9791278483328862
+        ],
+        [
+          -0.1875,
+          3.9789793255965664
+        ],
+        [
+          -0.15625,
+          3.978811037320896
+        ],
+        [
+          -0.125,
+          3.97862035460349
+        ],
+        [
+          -0.09375,
+          3.9784042993162494
+        ],
+        [
+          -0.0625,
+          3.978159497835941
+        ],
+        [
+          -0.03125,
+          3.9778821286791115
+        ],
+        [
+          0.0,
+          3.977567863248187
+        ],
+        [
+          0.03125,
+          3.9772117987951323
+        ],
+        [
+          0.0625,
+          3.976808382596806
+        ],
+        [
+          0.09375,
+          3.9763513262107475
+        ],
+        [
+          0.125,
+          3.9758335085405205
+        ],
+        [
+          0.15625,
+          3.9752468662845737
+        ],
+        [
+          0.1875,
+          3.97458227017074
+        ],
+        [
+          0.21875,
+          3.973829385188831
+        ],
+        [
+          0.25,
+          3.972976512825342
+        ]
+      ],
+      "loss_at_center": 3.977567863248187,
+      "loss_at_center_remeasured": 3.977567863248187,
+      "central_first_difference": -0.010725278143667083,
+      "central_second_difference": -0.04280219866086554,
+      "minimum_loss": 3.972976512825342,
+      "argmin_offset": 0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice through a high-dimensional optimization problem. It is not the loss landscape of the network, and it says nothing about any other direction in weight space.",
+      "parameter_hash_before": "d5f4488360792be0",
+      "parameter_hash_after": "d5f4488360792be0"
+    },
+    {
+      "step": 2,
+      "center": -1.7972145080566406,
+      "center_uint32": 3219524384,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.976935334020112
+        ],
+        [
+          -0.21875,
+          3.976623645706729
+        ],
+        [
+          -0.1875,
+          3.9762708461332563
+        ],
+        [
+          -0.15625,
+          3.975871519375118
+        ],
+        [
+          -0.125,
+          3.975419537878567
+        ],
+        [
+          -0.09375,
+          3.9749079694776603
+        ],
+        [
+          -0.0625,
+          3.9743289724089124
+        ],
+        [
+          -0.03125,
+          3.973673676815854
+        ],
+        [
+          0.0,
+          3.972932051058174
+        ],
+        [
+          0.03125,
+          3.972092750945089
+        ],
+        [
+          0.0625,
+          3.971142949799335
+        ],
+        [
+          0.09375,
+          3.970068147026587
+        ],
+        [
+          0.125,
+          3.968851952615198
+        ],
+        [
+          0.15625,
+          3.967475844724047
+        ],
+        [
+          0.1875,
+          3.9659188972338
+        ],
+        [
+          0.21875,
+          3.964157473842614
+        ],
+        [
+          0.25,
+          3.9621648849862274
+        ]
+      ],
+      "loss_at_center": 3.972932051058174,
+      "loss_at_center_remeasured": 3.972932051058174,
+      "central_first_difference": -0.025294813932234206,
+      "central_second_difference": -0.10001853993435361,
+      "minimum_loss": 3.9621648849862274,
+      "argmin_offset": 0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice through a high-dimensional optimization problem. It is not the loss landscape of the network, and it says nothing about any other direction in weight space.",
+      "parameter_hash_before": "8218c7bb633df032",
+      "parameter_hash_after": "8218c7bb633df032"
+    }
+  ],
+  "disclaimer": "This is a one-dimensional diagnostic slice through a high-dimensional optimization problem. It is not the loss landscape of the network, and it says nothing about any other direction in weight space.",
+  "note": "These probes are diagnostics. They are evaluated through a pure loss function that builds a throwaway tensor, so they cannot perturb the recorded trajectory; each slice records the hash of the parameter before and after to prove it."
+}

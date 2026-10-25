@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: A body page of an engineering audit report containing two data tables and two paragraphs of technical text.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: Both tables are horizontally centered with readable white-on-dark-blue headers and no column overflow.\nFIGURES: N/A\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857785,
+  "id": "20261001202943d6a2a469c7dc44f4",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20261001202943d6a2a469c7dc44f4",
+  "usage": {
+    "completion_tokens": 71,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2217
+  }
+}

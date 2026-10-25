@@ -1,0 +1,87 @@
+{
+  "schema_version": "spobs-plugin/1",
+  "id": "local.tensor_bridge",
+  "name": "Tensor expression bridge",
+  "version": "1.0.0",
+  "description": "",
+  "nodes": [
+    {
+      "id": "pass",
+      "title": "Pass tensor expression",
+      "category": "Custom",
+      "description": "",
+      "inputs": [
+        {
+          "name": "expression",
+          "type": "tensor-expression",
+          "description": "",
+          "required": true,
+          "default": {
+            "kind": "tensor-expression",
+            "nodes": [
+              {
+                "id": "op0001",
+                "op": "hf.tensor_input",
+                "inputs": {},
+                "params": {
+                  "field": "input_ids",
+                  "dtype": "int64"
+                }
+              }
+            ],
+            "output": "op0001"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x",
+          "type": "tensor-expression",
+          "description": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "fallback",
+          "type": "tensor-expression",
+          "description": "",
+          "default": {
+            "kind": "tensor-expression",
+            "nodes": [
+              {
+                "id": "op0001",
+                "op": "hf.tensor_input",
+                "inputs": {},
+                "params": {
+                  "field": "input_ids",
+                  "dtype": "int64"
+                }
+              }
+            ],
+            "output": "op0001"
+          },
+          "options": [
+            {
+              "kind": "tensor-expression",
+              "nodes": [
+                {
+                  "id": "op0001",
+                  "op": "hf.tensor_input",
+                  "inputs": {},
+                  "params": {
+                    "field": "input_ids",
+                    "dtype": "int64"
+                  }
+                }
+              ],
+              "output": "op0001"
+            }
+          ]
+        }
+      ],
+      "code": "return {x: inputs.expression};"
+    }
+  ],
+  "templates": [],
+  "panels": []
+}

@@ -1,0 +1,87 @@
+{
+  "run": {
+    "name": "diverging",
+    "seed": 20260926,
+    "initial_value": -5.0,
+    "optimizer": "sgd",
+    "lr": 1000000000.0,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.0,
+    "momentum": 0.0,
+    "dampening": 0.0,
+    "nesterov": false,
+    "amsgrad": false,
+    "maximize": false,
+    "lr_schedule": "constant",
+    "lr_final_factor": 0.1,
+    "steps": 40,
+    "zero_grad_set_to_none": true,
+    "accumulation_micro_batches": 1,
+    "stop_on_nonfinite": true,
+    "dataset": {
+      "samples": 512,
+      "batch_size": 1,
+      "input_min": -8.0,
+      "input_max": 8.0,
+      "target_true_parameter": 1.5,
+      "noise_std": 0.0,
+      "shuffle_batches": false,
+      "seed": 20260926,
+      "walk": "linear"
+    },
+    "model": {
+      "input_scale": 1.0,
+      "output_scale": 1.0,
+      "use_tanh": false
+    },
+    "landscape": {
+      "enabled": true,
+      "every": 25,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64"
+    },
+    "validation": {
+      "enabled": true,
+      "every": 1,
+      "gradient_rtol": 1e-06,
+      "finite_difference_rtol": 5e-05,
+      "fd_sweep_decades": [
+        -10.0,
+        -8.0,
+        -6.0,
+        -4.0,
+        -2.0
+      ],
+      "reconstruction_ulp_tolerance": 0,
+      "search_update_variants": true
+    },
+    "stability": {
+      "window": 50,
+      "update_eps": 1e-12,
+      "gradient_eps": 1e-12,
+      "stationary_rel": 1e-09,
+      "oscillation_min_sign_changes": 3,
+      "divergence_loss_growth": 1.05,
+      "divergence_absolute": 0.001,
+      "stagnant_fraction": 0.5
+    },
+    "run_fp64_reference_track": true,
+    "record_full_state_snapshots": true,
+    "live_speed_steps_per_second": 30.0
+  },
+  "report": {
+    "run_name": "diverging",
+    "optimizer": "sgd",
+    "steps": 3,
+    "initial_parameter": -5.0,
+    "initial_parameter_hex": "0xC0A00000",
+    "initial_loss": 2704.0,
+    "initial_gradient": -832.0,
+    "final_parameter": 1.3314081022775404e+34,
+    "final_parameter_hex": "0x78241BD5",
+    "final_loss": 

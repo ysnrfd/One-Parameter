@@ -1,0 +1,430 @@
+SINGLE PARAMETER OBSERVATORY - EXECUTION CHECKS
+python: 3.12.15  (C:\Users\Atieh\Documents\ChatGPT\One Parameter\.venv\Scripts\python.exe)
+started: 2026-10-24 00:19:37
+
+==============================================================================
+CHECK 1/11  module imports
+==============================================================================
+  ok  single_parameter_observatory.config
+  ok  single_parameter_observatory.errors
+  ok  single_parameter_observatory.fp32_inspector
+  ok  single_parameter_observatory.numerical_analysis
+  ok  single_parameter_observatory.model
+  ok  single_parameter_observatory.optimizer_inspector
+  ok  single_parameter_observatory.tracker
+  ok  single_parameter_observatory.validation
+  ok  single_parameter_observatory.recorder
+  ok  single_parameter_observatory.convergence
+  ok  single_parameter_observatory.exporters
+  ok  single_parameter_observatory.training_engine
+  ok  single_parameter_observatory.visualization
+  ok  single_parameter_observatory.dashboard
+  ok  single_parameter_observatory.main
+
+==============================================================================
+CHECK 2/11  environment audit
+==============================================================================
+  Python             : 3.12.15 (C:\Users\Atieh\Documents\ChatGPT\One Parameter\.venv\Scripts\python.exe)
+  PyTorch            : 2.14.1+cpu
+  PyTorch file       : C:\Users\Atieh\Documents\ChatGPT\One Parameter\.venv\Lib\site-packages\torch\__init__.py
+  Platform           : Windows-11-10.0.26200-SP0
+  Machine            : AMD64
+  Processor          : Intel64 Family 6 Model 186 Stepping 3, GenuineIntel
+  OS                 : Windows 11
+  Device             : cpu
+  Default dtype      : torch.float32
+  Torch threads      : 6
+  NumPy              : 2.5.4
+  Matplotlib         : 3.11.2
+  Matplotlib backend : tkagg
+
+==============================================================================
+CHECK 3/11  automated test suite
+==============================================================================
+  ..............................................................................................................................................................................................................................................................................................................................................................................................................................
+  ----------------------------------------------------------------------
+  Ran 414 tests in 102.865s
+  
+  OK
+  TESTS: ran 414, 414 passed, 0 failed, 0 errors, 0 skipped
+  TESTS WALL CLOCK: 102.865s
+
+==============================================================================
+CHECK 4/11  real training run (40 steps, AdamW)
+==============================================================================
+name                          : w
+class                         : Parameter
+shape                         : ()
+numel                         : 1
+dtype                         : float32
+requires_grad                 : True
+device                        : cpu
+element_size                  : 4 bytes
+is_leaf                       : True
+raw storage bytes             : 00 00 00 C0
+storage nbytes                : 4 (UntypedStorage.nbytes())
+tensor bytes                  : 4
+initial value                 : -2.0
+hex                           : 0xC0000000
+bits                          : 11000000000000000000000000000000
+exponent (biased)             : 128
+fraction (23 bits)            : 0
+sign bit                      : 1
+trainable parameters in model : 1
+invariants checked      :
+    [ok] the tracked object is a Parameter
+    [ok] exactly one scalar, not a vector or a view of one
+    [ok] a true scalar, not shape (1,)
+    [ok] the subject of the investigation is binary32
+    [ok] autograd must be able to reach it
+    [ok] four bytes of storage, proven not asserted
+    [ok] the optimizer must write to it directly
+    [ok] no second trainable tensor to confuse the analysis
+  step    0/39 | w = -1.8980001211166382 (0xBFF2F1AB) | loss = 3.977567672729492 | g = -0.010696807876229286 | delta = 0.10199987888336182 (+855637 ULP) | lr = 0.1 | recon PASS
+  step    1/39 | w = -1.7972145080566406 (0xBFE60B20) | loss = 3.9756317138671875 | g = -0.016497502103447914 | delta = 0.10078561305999756 (+845451 ULP) | lr = 0.1 | recon PASS
+  step    2/39 | w = -1.6980493068695068 (0xBFD959AE) | loss = 3.9729321002960205 | g = -0.025230495259165764 | delta = 0.09916520118713379 (+831858 ULP) | lr = 0.1 | recon PASS
+  step    3/39 | w = -1.600601077079773 (0xBFCCE07F) | loss = 3.969125509262085 | g = -0.03820342943072319 | delta = 0.09744822978973389 (+817455 ULP) | lr = 0.1 | recon PASS
+  step    4/39 | w = -1.5047303438186646 (0xBFC09B01) | loss = 3.9637269973754883 | g = -0.05724424868822098 | delta = 0.0958707332611084 (+804222 ULP) | lr = 0.1 | recon PASS
+  step    5/39 | w = -1.4101637601852417 (0xBFB4803F) | loss = 3.95605206489563 | g = -0.08491116017103195 | delta = 0.09456658363342285 (+793282 ULP) | lr = 0.1 | recon PASS
+  step    6/39 | w = -1.3165758848190308 (0xBFA8858F) | loss = 3.945127248764038 | g = -0.12477778643369675 | delta = 0.09358787536621094 (+785072 ULP) | lr = 0.1 | recon PASS
+  step    7/39 | w = -1.223639726638794 (0xBF9CA03A) | loss = 3.9295787811279297 | g = -0.18180187046527863 | delta = 0.09293615818023682 (+779605 ULP) | lr = 0.1 | recon PASS
+  step    8/39 | w = -1.1310487985610962 (0xBF90C635) | loss = 3.907470464706421 | g = -0.2627744972705841 | delta = 0.09259092807769775 (+776709 ULP) | lr = 0.1 | recon PASS
+  step    9/39 | w = -1.0385233163833618 (0xBF84EE55) | loss = 3.876095771789551 | g = -0.37682974338531494 | delta = 0.09252548217773438 (+776160 ULP) | lr = 0.1 | recon PASS
+  step   10/39 | w = -0.9458054304122925 (0xBF72204E) | loss = 3.8317127227783203 | g = -0.5359070301055908 | delta = 0.09271788597106934 (+1232391 ULP) | lr = 0.1 | recon PASS
+  step   11/39 | w = -0.8526496291160583 (0xBF5A473F) | loss = 3.7692322731018066 | g = -0.7549011707305908 | delta = 0.09315580129623413 (+1562895 ULP) | lr = 0.1 | recon PASS
+  step   12/39 | w = -0.7588093280792236 (0xBF424154) | loss = 3.681894063949585 | g = -1.0509889125823975 | delta = 0.09384030103683472 (+1574379 ULP) | lr = 0.1 | recon PASS
+  step   13/39 | w = -0.6640216708183289 (0xBF29FD53) | loss = 3.561047315597534 | g = -1.4411572217941284 | delta = 0.09478765726089478 (+1590273 ULP) | lr = 0.1 | recon PASS
+  step   14/39 | w = -0.5679903626441956 (0xBF1167D1) | loss = 3.396251916885376 | g = -1.9364131689071655 | delta = 0.0960313081741333 (+1611138 ULP) | lr = 0.1 | recon PASS
+  step   15/39 | w = -0.4703696668148041 (0xBEF0D44B) | loss = 3.176119565963745 | g = -2.5308966636657715 | delta = 0.09762069582939148 (+2134918 ULP) | lr = 0.1 | recon PASS
+  step   16/39 | w = -0.3707563877105713 (0xBEBDD3C8) | loss = 2.8904809951782227 | g = -3.1853013038635254 | delta = 0.09961327910423279 (+3342467 ULP) | lr = 0.1 | recon PASS
+  step   17/39 | w = -0.26870739459991455 (0xBE899404) | loss = 2.5345115661621094 | g = -3.808823347091675 | delta = 0.10204899311065674 (+3424196 ULP) | lr = 0.1 | recon PASS
+  step   18/39 | w = -0.16381828486919403 (0xBE27BFFB) | loss = 2.1147825717926025 | g = -4.254166126251221 | delta = 0.10488910973072052 (+6411273 ULP) | lr = 0.1 | recon PASS
+  step   19/39 | w = -0.05591970682144165 (0xBD650C10) | loss = 1.6553109884262085 | g = -4.351048469543457 | delta = 0.10789857804775238 (+12760043 ULP) | lr = 0.1 | recon PASS
+  step   20/39 | w = 0.05457915738224983 (0x3D5F8E65) | loss = 1.1986379623413086 | g = -3.993899345397949 | delta = 0.11049886420369148 (+2059704949 ULP) | lr = 0.1 | recon PASS
+  step   21/39 | w = 0.16633880138397217 (0x3E2A54B8) | loss = 0.7957754731178284 | g = -3.2423160076141357 | delta = 0.11175964400172234 (+13289043 ULP) | lr = 0.1 | recon PASS
+  step   22/39 | w = 0.277121365070343 (0x3E8DE2DA) | loss = 0.4854263961315155 | g = -2.325289487838745 | delta = 0.11078256368637085 (+6524450 ULP) | lr = 0.1 | recon PASS
+  step   23/39 | w = 0.3844256103038788 (0x3EC4D36F) | loss = 0.2766723930835724 | g = -1.4996583461761475 | delta = 0.10730424523353577 (+3600533 ULP) | lr = 0.1 | recon PASS
+  step   24/39 | w = 0.48625674843788147 (0x3EF8F6A5) | loss = 0.151401087641716 | g = -0.8987644910812378 | delta = 0.10183113813400269 (+3416886 ULP) | lr = 0.1 | recon PASS
+  step   25/39 | w = 0.5814498662948608 (0x3F14D9E6) | loss = 0.08181332796812057 | g = -0.5190226435661316 | delta = 0.09519311785697937 (+1827649 ULP) | lr = 0.1 | recon PASS
+  step   26/39 | w = 0.6695563793182373 (0x3F2B680C) | loss = 0.044617827981710434 | g = -0.29757505655288696 | delta = 0.08810651302337646 (+1478182 ULP) | lr = 0.1 | recon PASS
+  step   27/39 | w = 0.7505933046340942 (0x3F4026E2) | loss = 0.02489320933818817 | g = -0.1728462129831314 | delta = 0.08103692531585693 (+1359574 ULP) | lr = 0.1 | recon PASS
+  step   28/39 | w = 0.8248339295387268 (0x3F532851) | loss = 0.01430574245750904 | g = -0.10291385650634766 | delta = 0.07424062490463257 (+1245551 ULP) | lr = 0.1 | recon PASS
+  step   29/39 | w = 0.8926749229431152 (0x3F648658) | loss = 0.008487860672175884 | g = -0.06317397207021713 | delta = 0.06784099340438843 (+1138183 ULP) | lr = 0.1 | recon PASS
+  step   30/39 | w = 0.9545606970787048 (0x3F745E17) | loss = 0.005197118502110243 | g = -0.04005991667509079 | delta = 0.0618857741355896 (+1038271 ULP) | lr = 0.1 | recon PASS
+  step   31/39 | w = 1.0109435319900513 (0x3F816699) | loss = 0.0032777152955532074 | g = -0.026234908029437065 | delta = 0.056382834911346436 (+854146 ULP) | lr = 0.1 | recon PASS
+  step   32/39 | w = 1.0622631311416626 (0x3F87F83D) | loss = 0.0021235966123640537 | g = -0.017717361450195312 | delta = 0.05131959915161133 (+430500 ULP) | lr = 0.1 | recon PASS
+  step   33/39 | w = 1.1089364290237427 (0x3F8DF1A1) | loss = 0.0014092216733843088 | g = -0.012312375009059906 | delta = 0.04667329788208008 (+391524 ULP) | lr = 0.1 | recon PASS
+  step   34/39 | w = 1.1513538360595703 (0x3F935F90) | loss = 0.0009549574460834265 | g = -0.00878327526152134 | delta = 0.04241740703582764 (+355823 ULP) | lr = 0.1 | recon PASS
+  step   35/39 | w = 1.1898773908615112 (0x3F984DE7) | loss = 0.000658881152048707 | g = -0.006415851879864931 | delta = 0.03852355480194092 (+323159 ULP) | lr = 0.1 | recon PASS
+  step   36/39 | w = 1.2248414754867554 (0x3F9CC79B) | loss = 0.00046155531890690327 | g = -0.004786924924701452 | delta = 0.03496408462524414 (+293300 ULP) | lr = 0.1 | recon PASS
+  step   37/39 | w = 1.2565536499023438 (0x3FA0D6C0) | loss = 0.00032739294692873955 | g = -0.003639314789324999 | delta = 0.03171217441558838 (+266021 ULP) | lr = 0.1 | recon PASS
+  step   38/39 | w = 1.2852966785430908 (0x3FA4849A) | loss = 0.00023454910842701793 | g = -0.0028128311969339848 | delta = 0.02874302864074707 (+241114 ULP) | lr = 0.1 | recon PASS
+  step   39/39 | w = 1.31132972240448 (0x3FA7D9A7) | loss = 0.00016929797129705548 | g = -0.0022053252905607224 | delta = 0.02603304386138916 (+218381 ULP) | lr = 0.1 | recon PASS
+  executed 40 real steps in 0.25s
+==============================================================================
+COMPLETE NUMERICAL REPORT (all values measured from this run)
+==============================================================================
+INITIAL PARAMETER                                 : -2.0
+FINAL PARAMETER                                   : 1.31132972240448
+TOTAL PARAMETER CHANGE                            : 3.31132972240448
+NUMBER OF STEPS                                   : 40
+INITIAL LOSS                                      : 3.977567672729492
+FINAL LOSS                                        : 0.00016929797129705548
+MINIMUM LOSS                                      : 0.00016929797129705548
+INITIAL GRADIENT                                  : -0.010696807876229286
+FINAL GRADIENT                                    : -0.0022053252905607224
+MAX ABS GRADIENT                                  : 4.351048469543457
+MAX ABS UPDATE                                    : 0.11175964400172234
+MEAN ABS UPDATE                                   : 0.082783243060112
+STD PARAMETER OVER FINAL WINDOW                   : 1.0390280881852811
+GRADIENT SIGN CHANGES                             : 0
+UPDATE SIGN CHANGES                               : 0
+UNCHANGED FP32 STEPS                              : 0
+TOTAL ULP MOVEMENT (in ULPs of each step's start) : 120952658
+  ... contributed by this many steps              : 40
+TOTAL REPRESENTABLE VALUES TRAVELLED              : 2141706663
+  ... steps that crossed zero                     : [20]
+MAX ROUNDING RESIDUAL                             : 1.2885659006478534e-07
+MAX RECONSTRUCTION ERROR (ULP)                    : 0
+RECONSTRUCTION FAILURES                           : 0
+MAX GRADIENT VALIDATION RELATIVE ERROR            : 6.309028579778069e-05
+MAX GRADIENT VALIDATION ABSOLUTE ERROR            : 6.749072461263023e-07
+TIGHTEST GRADIENT TOLERANCE (absolute)            : 9.558796445570145e-07
+MAX FINITE-DIFFERENCE RELATIVE ERROR              : 6.309075357954876e-05
+MAX FINITE-DIFFERENCE ABSOLUTE ERROR              : 6.749122505294441e-07
+TIGHTEST FINITE-DIFF TOLERANCE (absolute)         : 1.063940723977009e-06
+MAX FP32 vs FP64 REFERENCE DIFFERENCE             : 1.5717838130341333e-06
+NON-FINITE DETECTED                               : False
+HISTORY HASH CHAIN VERIFIED                       : True
+
+  Sum of |movement| over steps, measured in ULPs of each step's starting value. This is the per-step movement metric and does not blow up when a step crosses a binade boundary or zero.
+
+  Sum of the exact count of representable float32 values between before and after each step. Correct, but at a sign crossing a single step contributes roughly 2.1 billion, so it is not a summary of how far the parameter travelled; see 'total_ulp_movement' for that.
+  Note: steps [20] crossed zero, which is what inflates TOTAL REPRESENTABLE VALUES TRAVELLED.
+------------------------------------------------------------------------------
+STABILITY / REGIME (observed behaviour, not a convergence claim)
+regime                                            : 'still moving'
+rationale                                         : ['mean |update| over the final window = 0.0828 (threshold 1e-12)', 'mean |gradient| over the final window = 0.957 (threshold 1e-12)', 'update sign changes in window = 0 (oscillation threshold 3)', 'fraction of window steps whose stored float32 bits did not change = 0 (stagnation threshold 0.5)']
+final_window                                      : 40
+mean_update_magnitude                             : 0.082783243060112
+std_update_magnitude                              : 0.0260321650403579
+mean_gradient_magnitude                           : 0.9567249614978208
+gradient_sign_changes_in_window                   : 0
+update_sign_changes_in_window                     : 0
+unchanged_fraction_in_window                      : 0.0
+total_ulp_movement_in_window                      : 120952658
+------------------------------------------------------------------------------
+VALIDATION LEDGER
+gradient_checks                                   : 40
+gradient_failures                                 : 0
+finite_difference_failures                        : 0
+reconstruction_checks                             : 40
+reconstruction_failures                           : 0
+bit_checks                                        : 1
+bit_failures                                      : 0
+ulp_checks                                        : 1
+ulp_failures                                      : 0
+total_failures                                    : 0
+==============================================================================
+
+  gradient checks                      : 40/40 passed
+  finite-difference checks             : 40/40 passed
+  optimizer reconstructions            : 40/40 passed
+  float32 bit checks                   : 1/1 passed
+  ULP checks                           : 1/1 passed
+  max gradient RELATIVE error          : 6.309028579778069e-05
+  max gradient ABSOLUTE error          : 6.749072461263023e-07
+  max finite-difference RELATIVE error : 6.309075357954876e-05
+  max finite-difference ABSOLUTE error : 6.749122505294441e-07
+  max reconstruction error (ULP)       : 0
+  total failures                       : 0
+  ok  real training run completed
+
+  measured optimizer semantics (throwaway parameters, isolated):
+  measured variant for AdamW: 'adamw[lerp,before,outside]', bit-exact reproduction True, torch 2.14.1+cpu
+    12 candidate variants tried; best ULP error 0
+  measured variant for SGD + Nesterov: 'sgd[clone_grad,coupled_into_grad]', bit-exact reproduction True, torch 2.14.1+cpu
+    4 candidate variants tried; best ULP error 0
+
+==============================================================================
+CHECK 5/11  export
+==============================================================================
+  ok  bit_history.csv: evidence\blocks_20261023\export\bit_history.csv (10723 bytes)
+  ok  events.csv: evidence\blocks_20261023\export\events.csv (28052 bytes)
+  ok  landscape.json: evidence\blocks_20261023\export\landscape.json (6572 bytes)
+  ok  optimizer_state_history.csv: evidence\blocks_20261023\export\optimizer_state_history.csv (15879 bytes)
+  ok  provenance.json: evidence\blocks_20261023\export\provenance.json (15032 bytes)
+  ok  stability.csv: evidence\blocks_20261023\export\stability.csv (8765 bytes)
+  ok  summary.json: evidence\blocks_20261023\export\summary.json (7535 bytes)
+  ok  trajectory.csv: evidence\blocks_20261023\export\trajectory.csv (171171 bytes)
+  ok  trajectory.json: evidence\blocks_20261023\export\trajectory.json (446994 bytes)
+  ok  trajectory.npz: evidence\blocks_20261023\export\trajectory.npz (38673 bytes)
+  ok  trajectory.parquet: evidence\blocks_20261023\export\trajectory.parquet (148398 bytes)
+  ok  validation.json: evidence\blocks_20261023\export\validation.json (21401 bytes)
+  ok  export wrote every artefact
+
+==============================================================================
+CHECK 6/11  per-step forensic trace (1 steps)
+==============================================================================
+==============================================================================
+SINGLE PARAMETER FORENSIC TRACE
+==============================================================================
+STEP: 0   (epoch 0, batch 0)
+
+PARAMETER
+------------------------------------------------------------------------------
+dtype: float32
+shape: ()
+before: -1.25  (0xBFA00000)
+after:  -1.149999976158142  (0xBF933333)
+delta (observed, after - before): 0.10000002384185791
+  movement, in ULPs of w_before : +838861
+  displacement / ULP(w_before)  : 838861.0
+  representable float32 values between before and after: 838861
+stored FP32 unchanged this step: False
+attempted displacement (float64 candidate): 0.09999999552148298; one ULP of w_before is 1.1920928955078125e-07
+reconstructed float32 update (derived, not observed): 0.10000002384185791
+  the observed float32 displacement is the 'delta' line in the PARAMETER block above; the two differ whenever the float32 rounding of the candidate does not reproduce the stored word
+
+SNAPSHOT CHAIN (parameter bit pattern at each labelled instant)
+------------------------------------------------------------------------------
+  A before forward           0xBFA00000
+  B after forward            0xBFA00000
+  C after backward           0xBFA00000
+  D before optimizer.step    0xBFA00000
+  E after optimizer.step     0xBF933333
+  F after schedule step      (no operation after the step)
+  A == B == C holds by construction of the run, and the engine raises if the parameter moves during forward or backward.
+
+FORWARD
+------------------------------------------------------------------------------
+input:        -2.0
+target:       -0.9950547814369202
+z             2.5  dtype=torch.float32 shape=[1, 1] grad_fn=MulBackward0
+activation    0.9866142868995667  dtype=torch.float32 shape=[1, 1] grad_fn=TanhBackward0
+prediction:   0.9866142868995667
+loss:         3.9270122051239014  (grad_fn=MeanBackward0)
+
+BACKWARD
+------------------------------------------------------------------------------
+gradient before zero_grad: None
+gradient after zero_grad (set_to_none=True): None
+gradient before backward:  None
+gradient after backward:   -0.21078819036483765
+gradient dtype/shape: torch.float32 []  raw 0xBE57D8DC
+gradient sign: -1   magnitude: 0.21078819036483765   square: 0.044431661197283034
+gradient finite: True
+
+OPTIMIZER
+------------------------------------------------------------------------------
+optimizer: adam
+step: None -> 1
+state keys after step: exp_avg, exp_avg_sq, step
+exp_avg before/after: None -> -0.022328820079565048
+exp_avg_sq before/after: None -> 4.985762279829942e-05
+bias-corrected exp_avg: -0.22328820079565054
+bias-corrected exp_avg_sq: 0.049857622798299375
+learning rate: 0.1
+weight decay contribution (reconstructed, float32): 0.0
+adaptive contribution (reconstructed, float32): 0.10000002384185791
+total reconstructed float32 update (derived, not observed): 0.10000002384185791
+  the decay and adaptive contributions above are each measured as the difference between the reconstruction with weight decay enabled and the same reconstruction with it disabled, so they include float32 rounding; the observed result is the 'delta' line in the PARAMETER block
+
+NUMERICAL
+------------------------------------------------------------------------------
+fp64 reference candidate: -1.150000004478517
+  (reference numerical experiment, not ground truth)
+actual FP32 stored:       -1.149999976158142
+rounding residual: 2.832037493405437e-08 (0.23756852373480797 ULP, sign +1)
+candidate rounds to stored value: True
+ULP at w_before: 1.1920928955078125e-07
+movement metrics are in the PARAMETER block above; they are not repeated here
+
+BITS
+------------------------------------------------------------------------------
+before: 0xBFA00000  10111111101000000000000000000000
+after:  0xBF933333  10111111100100110011001100110011
+xor mask: 0x00333333  changed bits: 12 at positions [10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31] (0 = sign, 31 = fraction LSB)
+sign changed: False   exponent changed: False   fraction changed: True
+after fields: sign=1 exponent=127 fraction=1258291
+
+LOCAL LOSS LANDSCAPE (diagnostic slice)
+------------------------------------------------------------------------------
+centre: -1.149999976158142  loss: 3.9270123409965403
+first derivative: -0.21130440872234146   second derivative: -0.8271557322987064
+parameter restored after the probe: True
+This is a one-dimensional diagnostic slice for the displayed batch objective. This experiment has exactly one trainable scalar; the slice does not describe other data batches or a high-dimensional network.
+
+VALIDATION
+------------------------------------------------------------------------------
+gradient check (autograd vs closed form): PASS
+  autograd:            -0.21078819036483765
+  analytical:          -0.21078797350169395
+  relative difference: 1.028821237237205e-06
+  finite difference:   -0.21078797356466336  (h = 1.25e-06)
+  relative difference: 1.0285225035324995e-06
+  fp64 autograd:       -0.21078797350169395
+optimizer reconstruction: PASS  (variant adam[lerp,coupled,outside], 0 ULP, bit-exact=True)
+finite: YES
+events (up to the moment this record was sealed): INITIALIZED, FORWARD_COMPLETE, LOSS_COMPUTED, BACKWARD_STARTED, GRADIENT_AVAILABLE, LANDSCAPE_PROBED, OPTIMIZER_STATE_READ, OPTIMIZER_STEP_STARTED, OPTIMIZER_STEP_COMPLETED, OPTIMIZER_STATE_READ, BIT_PATTERN_CHANGED, PARAMETER_CHANGED, FP32_ROUNDING_OBSERVED
+  this list is deliberately partial: events that can only be decided after the record exists (STABILITY_METRIC_UPDATED, RUN_COMPLETE and, for a terminal step, RUN_ABORTED) are appended to the event log but cannot appear in the record. The event log is the complete sequence.
+  ok  trace rendered
+
+==============================================================================
+CHECK 7/11  control session (play / pause / step / run-N / reset / restart)
+==============================================================================
+  step count after the command script: 1
+  final parameter: -1.8980001211166382
+  control lines printed: 11
+  ok  control script executed against the real engine
+
+==============================================================================
+CHECK 8/11  FP32-resolution preset (attempted update, no stored change)
+==============================================================================
+  step   59/59 | w = 1.500100016593933 (0x3FC00347) | loss = 3.552713678800501e-11 | g = 7.122517899915692e-07 | delta = 0.0 (+0 ULP) | lr = 1e-09 | recon PASS
+  steps: 60
+  steps whose stored float32 did not change: 60
+  steps where an update was attempted below one ULP: 60
+    step 0: attempted (fp64) -8.858354050289563e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+    step 1: attempted (fp64) -8.892375724656176e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+    step 2: attempted (fp64) -8.931684281066055e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+    step 3: attempted (fp64) -8.96214658041572e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+    step 4: attempted (fp64) -8.990466149327858e-10, reconstructed (fp32) 0.0, observed stored delta 0.0, 1 ULP = 1.1920928955078125e-07, below-resolution=True
+  ok  FP32-resolution preset produced sub-ULP attempted updates
+
+==============================================================================
+CHECK 9/11  documented CLI surfaces and remaining behaviour-sensitive presets
+==============================================================================
+  fresh frame directory for this invocation: C:\Users\Atieh\Documents\ChatGPT\One Parameter\evidence\blocks_20261023\frames\session-7w5llczt
+  $ python main.py inspect --steps 1
+    exit status: 0
+    output contained all of: ['ENVIRONMENT AUDIT', 'OPTIMIZER IMPLEMENTATION AUDIT', 'Matplotlib']
+  ok  CLI inspect
+  $ python main.py presets
+    exit status: 0
+    output contained all of: ['EXPERIMENT PRESETS', 'adamw']
+  ok  CLI presets
+    every preset in config.PRESETS is listed (11)
+  $ python main.py controls --steps 6 --commands step step n2
+    exit status: 0
+    output contained all of: ['CONTROL SESSION']
+  ok  CLI controls
+  $ python main.py live --headless --steps 2 --speed 100 --save-frames C:\Users\Atieh\Documents\ChatGPT\One Parameter\evidence\blocks_20261023\frames\session-7w5llczt
+    exit status: 0
+    output contained all of: ['LIVE DASHBOARD']
+  ok  CLI live --headless
+  frames rendered by the headless dashboard: 1
+  ok  headless dashboard rendered a frame
+  $ python main.py live --headless --steps 10 --speed 20 --fps 60 --static-hz 4 --frame-every 2 --save-frames C:\Users\Atieh\Documents\ChatGPT\One Parameter\evidence\blocks_20261023\frames\session-7w5llczt_ink
+    exit status: 0
+    output contained all of: ['LIVE DASHBOARD']
+  ok  CLI live --headless (final-frame ink)
+  observed frame count for the final-frame ink assertion: 2
+  lowest series-panel data-ink fraction across frames: 0.00683
+  final frame data-ink fraction: 0.02756
+  ok  the final frame's series panel contains visible data
+  diverging preset: aborted=True, steps recorded=3, reason='non-finite state at step 2: the run was stopped rather than continuing with meaningless values'
+  ok  diverging preset produced a detected non-finite state
+  near_stationary preset: regime='oscillating', mean |gradient|=2.3661613874992325e-05, mean |update|=0.023431450128555298
+  ok  near_stationary preset reported its regime
+
+==============================================================================
+CHECK 10/11  near-zero-loss divergence guard (default preset, 103 steps)
+==============================================================================
+  This check records what the classifier did. It does not require any
+  particular regime: a run that ended differently would still be a
+  legitimate run, and the log would say so.
+  steps executed                   : 103
+  minimum loss                     : 3.460943531763405e-09 at step 95
+  final loss                       : 1.3815736110700527e-06
+  loss ratio over the final window : 3.1912024600129723
+  observed regime                  : 'still moving'
+  classifier rationale, verbatim:
+    - the loss ratio rose to 3.19 but the absolute increase is only 9.486416274739895e-07, below the divergence threshold 0.001: a near-zero loss changes by a large factor without anything diverging
+    - mean |update| over the final window = 0.00147 (threshold 1e-12)
+    - mean |gradient| over the final window = 0.000172 (threshold 1e-12)
+    - update sign changes in window = 1 (oscillation threshold 3)
+    - fraction of window steps whose stored float32 bits did not change = 0 (stagnation threshold 0.5)
+  the guard fired: the loss ratio rose but the absolute increase stayed below the threshold,
+  so a large factor at a near-zero loss was not reported as divergence.
+  ok  near-zero-loss guard recorded over 103 steps
+
+==============================================================================
+CHECK 11/11  live view frame rate (measured over 6 s)
+==============================================================================
+  Recorded, not asserted: the rate depends on the machine.
+  Frame content and cache lifecycle are enforced separately by regression tests.
+  target frame rate                   : 120 FPS
+  frames drawn                        : 106
+  wall clock                          : 6.30 s
+  achieved frame rate                 : 16.8 FPS
+  real steps recorded during the view: 79
+  background caching in use           : True
+  performance observation: below 30 FPS on this machine; renderer correctness is checked by the frame-content regressions
+  ok  live view reached 16.8 FPS against a 120 FPS target
+
+==============================================================================
+SUMMARY
+==============================================================================
+  all 11 checks completed without an error
+  total elapsed: 119.8s

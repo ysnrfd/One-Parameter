@@ -1,0 +1,220 @@
+{
+  "schema_version": "spobs-offline-dom-audit/1",
+  "scope": "JSDOM controller behavior with deterministic mocked HTTP mutations and actual backend-generated read fixtures plus an optional source-generated Transformers catalog. Generic model observations are synthetic display fixtures. If llama_job_sha256 is present, the Llama view regression consumes that actual execution receipt; computation is not rerun by this DOM suite. This does not test browser rendering, pointer hit-testing, real training, HTTP server integration, or V8 sandbox execution.",
+  "fixture_sha256": "1b3345f5f4792d5c37411f9f617979d1cdd18590e6035043ce7d5c487055a086",
+  "fixture_version": "1.3.0",
+  "transformers_catalog_sha256": "a0abafbe3c3b1d63569f3cab8cba5762471ba0a19f499af517c14288641f26dc",
+  "llama_job_sha256": "3c9be3f1a8ab82a8c936c74fe5881aba0dd5f477a3a11a774433fb59ef8e2a40",
+  "jsdom_version": "26.1.0",
+  "checks": [
+    {
+      "name": "All nine views navigate, expose active content and preserve the live workspace",
+      "passed": true,
+      "duration_ms": 452
+    },
+    {
+      "name": "Pending experiment selection blocks stale verification, training, configuration and downloads until acknowledged",
+      "passed": true,
+      "duration_ms": 215
+    },
+    {
+      "name": "Transformers workbench uses the actual runtime catalog, templates and searchable block descriptions",
+      "passed": true,
+      "duration_ms": 62
+    },
+    {
+      "name": "Architecture builder retains invalid input, then creates a full editable tensor workflow without execution",
+      "passed": true,
+      "duration_ms": 119
+    },
+    {
+      "name": "Transformers templates open actual catalog graphs and custom forward blocks expose editable multiline code",
+      "passed": true,
+      "duration_ms": 242
+    },
+    {
+      "name": "Transformers observations show actual-shaped model reports, finite loss charts and only registered artifact downloads",
+      "passed": true,
+      "duration_ms": 191
+    },
+    {
+      "name": "Actual executed Llama report drives decoder selection, GQA projection shapes and filtered module inventory",
+      "passed": true,
+      "duration_ms": 202
+    },
+    {
+      "name": "Imported editor drafts preserve wide integer seeds before controls render and save",
+      "passed": true,
+      "duration_ms": 7
+    },
+    {
+      "name": "Actual fixture timeline, complete forensic record, data samples and optimizer fields render",
+      "passed": true,
+      "duration_ms": 255
+    },
+    {
+      "name": "Live nonfinite storage and historical finite storage use authoritative uint32 words",
+      "passed": true,
+      "duration_ms": 50
+    },
+    {
+      "name": "Manual negative zero and bit edits send exact float32 words; optimizer JSON intervenes explicitly",
+      "passed": true,
+      "duration_ms": 96
+    },
+    {
+      "name": "Historical pinning and Follow live preserve unapplied bit edits without reviving applied edits",
+      "passed": true,
+      "duration_ms": 132
+    },
+    {
+      "name": "Main experiment controls create, rename, play, pause, step, set speed and reject invalid step counts",
+      "passed": true,
+      "duration_ms": 230
+    },
+    {
+      "name": "Configuration controls preserve negative zero and complete advanced JSON including 64-bit seeds",
+      "passed": true,
+      "duration_ms": 122
+    },
+    {
+      "name": "CSV import remains unapplied, survives draft persistence and downloads original negative-zero text",
+      "passed": true,
+      "duration_ms": 188
+    },
+    {
+      "name": "Workspace and run notes save explicitly, names and complete project downloads remain functional",
+      "passed": true,
+      "duration_ms": 120
+    },
+    {
+      "name": "Evidence export and integrity validation use real routes; checkpoint create and restore controls are wired",
+      "passed": true,
+      "duration_ms": 187
+    },
+    {
+      "name": "Timeline SVG, checkpoint deletion, fork, reset, restart and experiment deletion remain wired",
+      "passed": true,
+      "duration_ms": 266
+    },
+    {
+      "name": "Commands, help, fullscreen, mobile inspector and world zoom controls have working state changes",
+      "passed": true,
+      "duration_ms": 118
+    },
+    {
+      "name": "Workflow creation, searchable typed palette and literal input inspector accept real editable values",
+      "passed": true,
+      "duration_ms": 194
+    },
+    {
+      "name": "Consecutive palette additions do not overlap, retain existing positions and preserve selection and undo history",
+      "passed": true,
+      "duration_ms": 89
+    },
+    {
+      "name": "Dropdown parameter changes undo and redo in a single history step",
+      "passed": true,
+      "duration_ms": 52
+    },
+    {
+      "name": "Click-to-connect typed ports, connection form and disconnect controls update the graph",
+      "passed": true,
+      "duration_ms": 137
+    },
+    {
+      "name": "Invalid field buffers survive unrelated deletion, undo, redo and project draft serialization",
+      "passed": true,
+      "duration_ms": 223
+    },
+    {
+      "name": "Selection, copy, paste, duplicate, delete, undo and redo preserve model data and wide integers",
+      "passed": true,
+      "duration_ms": 51
+    },
+    {
+      "name": "Full workflow JSON editing and standalone exports/imports preserve integer and signed-zero bytes",
+      "passed": true,
+      "duration_ms": 105
+    },
+    {
+      "name": "Runnable Python download waits for graph draft acknowledgement and rejects unapplied invalid fields without execution",
+      "passed": true,
+      "duration_ms": 160
+    },
+    {
+      "name": "Graph validation, explicit queue, cancellation despite invalid draft and raw results download work",
+      "passed": true,
+      "duration_ms": 132
+    },
+    {
+      "name": "Extreme finite numeric output charts contain finite coordinates and trusted imported artifact IDs download safely",
+      "passed": true,
+      "duration_ms": 80
+    },
+    {
+      "name": "Custom node wizard creates a persistent manifest draft; plugin install and palette refresh are explicit",
+      "passed": true,
+      "duration_ms": 174
+    },
+    {
+      "name": "Declarative panels support config/dataset JSON, preserve -0 numeric defaults and save raw field drafts",
+      "passed": true,
+      "duration_ms": 109
+    },
+    {
+      "name": "Plugin enable, disable, version update, download and removal controls change actual registry requests",
+      "passed": true,
+      "duration_ms": 216
+    },
+    {
+      "name": "Another tab changing plugin availability refreshes the node catalog without reloading the page",
+      "passed": true,
+      "duration_ms": 143
+    },
+    {
+      "name": "Older in-flight graph polls cannot regress the accepted workflow revision or saved name",
+      "passed": true,
+      "duration_ms": 171
+    },
+    {
+      "name": "Keeping a conflicted graph as a new workflow preserves invalid raw node fields",
+      "passed": true,
+      "duration_ms": 200
+    },
+    {
+      "name": "Draft CAS conflict preserves local edits; explicit Keep saves with a fresh revision",
+      "passed": true,
+      "duration_ms": 79
+    },
+    {
+      "name": "Draft CAS explicit Load replaces local buffers with the saved drafts",
+      "passed": true,
+      "duration_ms": 55
+    },
+    {
+      "name": "Project Open quiesces graph autosave before commit and ignores old delayed work while draft loading waits",
+      "passed": true,
+      "duration_ms": 884
+    },
+    {
+      "name": "Cross-tab project replacement blocks stale mutations and downloads, retains local recovery and explicitly reloads",
+      "passed": true,
+      "duration_ms": 70
+    },
+    {
+      "name": "Guarded API requests carry captured workspace identity and unexpected controller errors are absent",
+      "passed": true,
+      "duration_ms": 1
+    }
+  ],
+  "passed": 40,
+  "failed": 0,
+  "total": 40,
+  "complete": true,
+  "error": null,
+  "unexpected_errors": [],
+  "requests": 145,
+  "downloads": 12,
+  "diagnostics": null
+}

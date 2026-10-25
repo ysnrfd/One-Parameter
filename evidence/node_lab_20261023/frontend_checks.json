@@ -1,0 +1,34 @@
+{
+  "schema_version": "spobs-frontend-validation/1",
+  "checked_at": "2026-10-23T17:04:01.326Z",
+  "node_version": "v24.19.0",
+  "assets": [
+    {
+      "path": "single_parameter_observatory/studio_web/graph_core.js",
+      "sha256": "4648652188f39cdafb4c1023331791d7879b8678fef6e935b913f4f5c501b07e",
+      "syntax": "passed"
+    },
+    {
+      "path": "single_parameter_observatory/studio_web/studio.js",
+      "sha256": "ff8340704b5ee145509d6d0aa2a3c1c559daf3af6bdc82eea350ece6153c8dd6",
+      "syntax": "passed"
+    },
+    {
+      "path": "single_parameter_observatory/studio_web/graph.js",
+      "sha256": "b9649097a27c30d8e5036a8f7fa737a68fb04f80a3870c5456c3fe023f97c314",
+      "syntax": "passed"
+    }
+  ],
+  "graph_model_tests": {
+    "passed": 32,
+    "failed": 0
+  },
+  "offline_dom_tests": {
+    "passed": 32,
+    "failed": 0,
+    "unexpected_errors": [],
+    "report_sha256": "af1c23103ab10cc91abf7a8996f8ea080b1d95366682140a0a049b9be353011f",
+    "scope": "JSDOM controller behavior with deterministic mocked HTTP mutations and actual backend-generated read fixtures. This does not test browser rendering, pointer hit-testing, real training, HTTP server integration, or V8 sandbox execution."
+  },
+  "packaged_guide_sync": "passed"
+}

@@ -1,0 +1,22 @@
+{
+  "startup_budget_ms": 30000,
+  "host_total_memory_kib": 8074104,
+  "host_free_memory_kib_before_probe": 451176,
+  "result": {
+    "outputs": {
+      "value": 42
+    },
+    "logs": [],
+    "runtime": "V8 14.4.258.23 / mini-racer",
+    "execution_ms": 78.0,
+    "duration_ms": 9797.0,
+    "initialization_ms": 5969.0,
+    "startup_phases_ms": {
+      "worker bootstrap": 3343.0,
+      "runtime import": 3359.0,
+      "V8 initialization": 8406.0
+    }
+  },
+  "ok": true,
+  "probe_elapsed_ms": 9813.0
+}

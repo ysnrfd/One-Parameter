@@ -1,0 +1,17 @@
+{
+  "source_sha256": {
+    "dashboard.py": "36c0642c44244f2a4edafe30e1d7b0d78b4a002656f7880ff425bda321d5119f",
+    "visualization.py": "3d900b90519cdacb8505162e49e359c365593dfb5a83a132adac56fa00ab5173",
+    "main.py": "62ee15d2b57254eb1b9ecc2639676f1ae04b4b0bc13b7bddb25d1670ae998c68",
+    "training_engine.py": "2c2773deedeb362be26271f9c39d4e644b3fd81a5f5eb7a792c6b6257effd323"
+  },
+  "png_sha256": {
+    "adam_overview.png": "bc46749ecc8c373a5259ee66a81fc926dfebb15c1f5ece993228d0f45fe281c1",
+    "adamw_overview.png": "bdaca7f613a2e244ec19e13bc7c0f933f95adf1ad4cbc38b2353e1c293f9ecca",
+    "cached_01_static.png": "8ee8d47bbbbc093f4880ac15369a282a92fad9a1d0f04108923799a6d63590c0",
+    "cached_02_data_hud.png": "f3e575c5c5b45fa4635e69cc9c9adba3f481a29e9fa0d5218c7c73733791c85f",
+    "cached_03_motion.png": "b991e8446440e7dcff1d3fb9abaeefdce369b090a78bca9edf14de03792b3d5c",
+    "cached_live_final.png": "fbe014a644b9463bd85651109c1c1c369f983b33925b06c254d078d31f12e414",
+    "diverging_overview.png": "3689b88dea674e9dca1e73c5ffae8af238820e50c8483c8b0db88b2a301adacf"
+  }
+}

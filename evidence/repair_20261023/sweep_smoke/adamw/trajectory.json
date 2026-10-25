@@ -1,0 +1,1457 @@
+{
+  "config": {
+    "name": "adamw",
+    "seed": 20260926,
+    "initial_value": -2.0,
+    "optimizer": "adamw",
+    "lr": 0.1,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "momentum": 0.0,
+    "dampening": 0.0,
+    "nesterov": false,
+    "amsgrad": false,
+    "maximize": false,
+    "lr_schedule": "constant",
+    "lr_final_factor": 0.1,
+    "steps": 3,
+    "zero_grad_set_to_none": true,
+    "accumulation_micro_batches": 1,
+    "stop_on_nonfinite": true,
+    "dataset": {
+      "samples": 512,
+      "batch_size": 1,
+      "input_min": -2.0,
+      "input_max": 2.0,
+      "target_true_parameter": 1.5,
+      "noise_std": 0.0,
+      "shuffle_batches": false,
+      "seed": 20260926,
+      "walk": "linear"
+    },
+    "model": {
+      "input_scale": 1.0,
+      "output_scale": 1.0,
+      "use_tanh": true
+    },
+    "landscape": {
+      "enabled": true,
+      "every": 25,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64"
+    },
+    "validation": {
+      "enabled": true,
+      "every": 1,
+      "gradient_rtol": 1e-06,
+      "finite_difference_rtol": 5e-05,
+      "fd_sweep_decades": [
+        -10.0,
+        -8.0,
+        -6.0,
+        -4.0,
+        -2.0
+      ],
+      "reconstruction_ulp_tolerance": 0,
+      "search_update_variants": true
+    },
+    "stability": {
+      "window": 50,
+      "update_eps": 1e-12,
+      "gradient_eps": 1e-12,
+      "stationary_rel": 1e-09,
+      "oscillation_min_sign_changes": 3,
+      "divergence_loss_growth": 1.05,
+      "divergence_absolute": 0.001,
+      "stagnant_fraction": 0.5
+    },
+    "run_fp64_reference_track": true,
+    "record_full_state_snapshots": true,
+    "live_speed_steps_per_second": 30.0
+  },
+  "records": [
+    {
+      "step": 0,
+      "epoch": 0,
+      "batch_index": 0,
+      "global_batch": 0,
+      "input_value": -2.0,
+      "target_value": -0.9950547814369202,
+      "prediction": 0.9993293285369873,
+      "loss": 3.977567672729492,
+      "loss_dtype": "torch.float32",
+      "loss_grad_fn": "MeanBackward0",
+      "stages": [
+        {
+          "name": "parameter",
+          "value": -2.0,
+          "mean": -2.0,
+          "dtype": "torch.float32",
+          "shape": [],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": null,
+          "is_leaf": true,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": 3221225472,
+          "bits": "11000000000000000000000000000000",
+          "hex": "0xC0000000"
+        },
+        {
+          "name": "input",
+          "value": -2.0,
+          "mean": -2.0,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": false,
+          "grad_fn": null,
+          "is_leaf": true,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "z",
+          "value": 4.0,
+          "mean": 4.0,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "MulBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "activation",
+          "value": 0.9993293285369873,
+          "mean": 0.9993293285369873,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "TanhBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "prediction",
+          "value": 0.9993293285369873,
+          "mean": 0.9993293285369873,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "MulBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "target",
+          "value": -0.9950547814369202,
+          "mean": -0.9950547814369202,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": false,
+          "grad_fn": null,
+          "is_leaf": true,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "loss",
+          "value": 3.977567672729492,
+          "mean": 3.977567672729492,
+          "dtype": "torch.float32",
+          "shape": [],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "MeanBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        }
+      ],
+      "zero_grad_set_to_none": true,
+      "accumulation_micro_batches": 1,
+      "accumulated_losses": [
+        3.977567672729492
+      ],
+      "grad_before_zero_grad": null,
+      "grad_after_zero_grad": null,
+      "grad_before_backward": null,
+      "grad_after_backward": -0.010696807876229286,
+      "gradient": -0.010696807876229286,
+      "gradient_uint32": 3157213610,
+      "gradient_dtype": "torch.float32",
+      "gradient_shape": [],
+      "gradient_sign": -1,
+      "gradient_magnitude": 0.010696807876229286,
+      "gradient_square": 0.00011442169874096089,
+      "gradient_finite": true,
+      "parameter_before": -2.0,
+      "parameter_after": -1.8980001211166382,
+      "parameter_before_uint32": 3221225472,
+      "parameter_after_uint32": 3220369835,
+      "parameter_before_hex": "0xC0000000",
+      "parameter_hex": "0xBFF2F1AB",
+      "parameter_bits": "10111111111100101111000110101011",
+      "parameter_exponent_bits": 127,
+      "parameter_fraction_bits": 7532971,
+      "parameter_sign_bit": 1,
+      "actual_delta": 0.10199987888336182,
+      "absolute_delta": 0.10199987888336182,
+      "relative_delta": 0.05099993944168091,
+      "direction": "increased",
+      "xor_mask": 2146628011,
+      "changed_bit_count": 22,
+      "changed_bit_positions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        14,
+        16,
+        17,
+        18,
+        19,
+        23,
+        24,
+        26,
+        28,
+        30,
+        31
+      ],
+      "sign_changed": false,
+      "exponent_changed": true,
+      "fraction_changed": true,
+      "ulp_previous_distance": 2.384185791015625e-07,
+      "ulp_next_distance": 1.1920928955078125e-07,
+      "ulp_size": 2.384185791015625e-07,
+      "ulp_relative_movement": 427818.5,
+      "ulp_distance_count": 855637,
+      "ulp_distance_same_binade": 427818,
+      "stored_fp32_unchanged": false,
+      "update_attempted_but_storage_frozen": false,
+      "snapshot_a_uint32": 3221225472,
+      "snapshot_b_uint32": 3221225472,
+      "snapshot_c_uint32": 3221225472,
+      "snapshot_d_uint32": 3221225472,
+      "snapshot_e_uint32": 3220369835,
+      "snapshot_f_uint32": null,
+      "optimizer_name": "adamw",
+      "learning_rate": 0.1,
+      "optimizer_step_before": null,
+      "optimizer_step_after": 1,
+      "optimizer_state_present_before": false,
+      "optimizer_state_keys_before": [],
+      "optimizer_state_keys_after": [
+        "exp_avg",
+        "exp_avg_sq",
+        "step"
+      ],
+      "moment1_before": null,
+      "moment2_before": null,
+      "moment1": -0.0010696807876229286,
+      "moment2": 1.144217023352212e-07,
+      "bias_corrected_moment1": -0.010696807876229288,
+      "bias_corrected_moment2": 0.0001144217023352211,
+      "optimizer_total_update": 0.10199987888336182,
+      "optimizer_attempted_update": 0.10199990651425384,
+      "optimizer_adaptive_update": 0.09999990463256836,
+      "optimizer_weight_decay_update": 0.001999974250793457,
+      "reconstruction_variant": "adamw[lerp,before,outside]",
+      "reconstruction_status": "PASS",
+      "reconstruction_bit_exact": true,
+      "reconstruction_ulp_error": 0,
+      "reconstruction_absolute_error": 0.0,
+      "reconstruction_relative_error": 0.0,
+      "reconstructed_after": -1.8980001211166382,
+      "reconstructed_uint32": 3220369835,
+      "fp64_reconstructed_after": -1.8980000934857462,
+      "fp32_candidate": -1.8980001211166382,
+      "fp32_rounding_error_abs": -2.7630892018848385e-08,
+      "fp32_rounding_error_rel": 1.4557898133768395e-08,
+      "fp32_rounding_sign": -1,
+      "fp32_rounding_ulp": -0.23178472183644772,
+      "fp32_candidate_rounds_to_stored": true,
+      "fp64_track_value": -1.898000093479848,
+      "fp64_track_loss": 3.977567863248187,
+      "fp64_vs_fp32_abs": 2.763679018968901e-08,
+      "fp64_vs_fp32_ulp": 0.23183419927954674,
+      "gradient_analytical": -0.010697482783475412,
+      "gradient_finite_difference": -0.010697482788479816,
+      "gradient_finite_difference_h": 2.0000000000000003e-06,
+      "gradient_fp64_autograd": -0.010697482783475412,
+      "gradient_vs_analytical_rel": 6.309028579778069e-05,
+      "gradient_vs_analytical_abs": 6.749072461263023e-07,
+      "gradient_vs_finite_difference_rel": 6.309075357954876e-05,
+      "gradient_vs_finite_difference_abs": 6.749122505294441e-07,
+      "gradient_tolerance_abs": 3.8040017957261586e-06,
+      "finite_difference_tolerance_abs": 4.3281784523666735e-06,
+      "gradient_validation_status": "PASS",
+      "landscape_computed": true,
+      "landscape_radius": 0.25,
+      "landscape_points": 17,
+      "landscape_loss_at_centre": 3.977567863248187,
+      "landscape_minimum_loss": 3.972976512825342,
+      "landscape_first_derivative": -0.010725278143667083,
+      "landscape_second_derivative": -0.04280219866086554,
+      "landscape_restoration_verified": true,
+      "finite": true,
+      "nonfinite_detected": false,
+      "parameter_hash_before": "d5f4488360792be0",
+      "parameter_hash_after": "8236d922a4ce4ffc",
+      "events": [
+        "INITIALIZED",
+        "FORWARD_COMPLETE",
+        "LOSS_COMPUTED",
+        "BACKWARD_STARTED",
+        "GRADIENT_AVAILABLE",
+        "LANDSCAPE_PROBED",
+        "OPTIMIZER_STATE_READ",
+        "OPTIMIZER_STEP_STARTED",
+        "OPTIMIZER_STEP_COMPLETED",
+        "OPTIMIZER_STATE_READ",
+        "BIT_PATTERN_CHANGED",
+        "PARAMETER_CHANGED",
+        "FP32_ROUNDING_OBSERVED"
+      ],
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "record_hash": "50281bb3edfe1401d5683c83597ec6015869d1e17ca8060a3154eb48596df31e"
+    },
+    {
+      "step": 1,
+      "epoch": 0,
+      "batch_index": 1,
+      "global_batch": 1,
+      "input_value": -1.9921722412109375,
+      "target_value": -0.994937539100647,
+      "prediction": 0.9989611506462097,
+      "loss": 3.9756317138671875,
+      "loss_dtype": "torch.float32",
+      "loss_grad_fn": "MeanBackward0",
+      "stages": [
+        {
+          "name": "parameter",
+          "value": -1.8980001211166382,
+          "mean": -1.8980001211166382,
+          "dtype": "torch.float32",
+          "shape": [],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": null,
+          "is_leaf": true,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": 3220369835,
+          "bits": "10111111111100101111000110101011",
+          "hex": "0xBFF2F1AB"
+        },
+        {
+          "name": "input",
+          "value": -1.9921722412109375,
+          "mean": -1.9921722412109375,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": false,
+          "grad_fn": null,
+          "is_leaf": true,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "z",
+          "value": 3.7811431884765625,
+          "mean": 3.7811431884765625,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "MulBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "activation",
+          "value": 0.9989611506462097,
+          "mean": 0.9989611506462097,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "TanhBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "prediction",
+          "value": 0.9989611506462097,
+          "mean": 0.9989611506462097,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "MulBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "target",
+          "value": -0.994937539100647,
+          "mean": -0.994937539100647,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": false,
+          "grad_fn": null,
+          "is_leaf": true,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "loss",
+          "value": 3.9756317138671875,
+          "mean": 3.9756317138671875,
+          "dtype": "torch.float32",
+          "shape": [],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "MeanBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        }
+      ],
+      "zero_grad_set_to_none": true,
+      "accumulation_micro_batches": 1,
+      "accumulated_losses": [
+        3.9756317138671875
+      ],
+      "grad_before_zero_grad": -0.010696807876229286,
+      "grad_after_zero_grad": null,
+      "grad_before_backward": null,
+      "grad_after_backward": -0.016497502103447914,
+      "gradient": -0.016497502103447914,
+      "gradient_uint32": 3162973637,
+      "gradient_dtype": "torch.float32",
+      "gradient_shape": [],
+      "gradient_sign": -1,
+      "gradient_magnitude": 0.016497502103447914,
+      "gradient_square": 0.00027216757565326835,
+      "gradient_finite": true,
+      "parameter_before": -1.8980001211166382,
+      "parameter_after": -1.7972145080566406,
+      "parameter_before_uint32": 3220369835,
+      "parameter_after_uint32": 3219524384,
+      "parameter_before_hex": "0xBFF2F1AB",
+      "parameter_hex": "0xBFE60B20",
+      "parameter_bits": "10111111111001100000101100100000",
+      "parameter_exponent_bits": 127,
+      "parameter_fraction_bits": 6687520,
+      "parameter_sign_bit": 1,
+      "actual_delta": 0.10078561305999756,
+      "absolute_delta": 0.10078561305999756,
+      "relative_delta": 0.05310095185910895,
+      "direction": "increased",
+      "xor_mask": 1374859,
+      "changed_bit_count": 12,
+      "changed_bit_positions": [
+        11,
+        13,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        24,
+        28,
+        30,
+        31
+      ],
+      "sign_changed": false,
+      "exponent_changed": false,
+      "fraction_changed": true,
+      "ulp_previous_distance": 1.1920928955078125e-07,
+      "ulp_next_distance": 1.1920928955078125e-07,
+      "ulp_size": 1.1920928955078125e-07,
+      "ulp_relative_movement": 845451.0,
+      "ulp_distance_count": 845451,
+      "ulp_distance_same_binade": 845451,
+      "stored_fp32_unchanged": false,
+      "update_attempted_but_storage_frozen": false,
+      "snapshot_a_uint32": 3220369835,
+      "snapshot_b_uint32": 3220369835,
+      "snapshot_c_uint32": 3220369835,
+      "snapshot_d_uint32": 3220369835,
+      "snapshot_e_uint32": 3219524384,
+      "snapshot_f_uint32": null,
+      "optimizer_name": "adamw",
+      "learning_rate": 0.1,
+      "optimizer_step_before": 1,
+      "optimizer_step_after": 2,
+      "optimizer_state_present_before": true,
+      "optimizer_state_keys_before": [
+        "exp_avg",
+        "exp_avg_sq",
+        "step"
+      ],
+      "optimizer_state_keys_after": [
+        "exp_avg",
+        "exp_avg_sq",
+        "step"
+      ],
+      "moment1_before": -0.0010696807876229286,
+      "moment2_before": 1.144217023352212e-07,
+      "moment1": -0.002612462965771556,
+      "moment2": 3.864748805426643e-07,
+      "bias_corrected_moment1": -0.013749805083008193,
+      "bias_corrected_moment2": 0.00019333410732499728,
+      "optimizer_total_update": 0.10078561305999756,
+      "optimizer_attempted_update": 0.10078563649701788,
+      "optimizer_adaptive_update": 0.09888768196105957,
+      "optimizer_weight_decay_update": 0.0018979310989379883,
+      "reconstruction_variant": "adamw[lerp,before,outside]",
+      "reconstruction_status": "PASS",
+      "reconstruction_bit_exact": true,
+      "reconstruction_ulp_error": 0,
+      "reconstruction_absolute_error": 0.0,
+      "reconstruction_relative_error": 0.0,
+      "reconstructed_after": -1.7972145080566406,
+      "reconstructed_uint32": 3219524384,
+      "fp64_reconstructed_after": -1.7972144846196203,
+      "fp32_candidate": -1.7972145080566406,
+      "fp32_rounding_error_abs": -2.3437020324479363e-08,
+      "fp32_rounding_error_rel": 1.3040747515141354e-08,
+      "fp32_rounding_sign": -1,
+      "fp32_rounding_ulp": -0.19660397619009018,
+      "fp32_candidate_rounds_to_stored": true,
+      "fp64_track_value": -1.7972138591529154,
+      "fp64_track_loss": 3.975632055405706,
+      "fp64_vs_fp32_abs": 6.489037251977692e-07,
+      "fp64_vs_fp32_ulp": 5.443398980423808,
+      "gradient_analytical": -0.0164971708488947,
+      "gradient_finite_difference": -0.01649717068273451,
+      "gradient_finite_difference_h": 1.8980001211166383e-06,
+      "gradient_fp64_autograd": -0.0164971708488947,
+      "gradient_vs_analytical_rel": 2.0079476429545154e-05,
+      "gradient_vs_analytical_abs": 3.3125455321456054e-07,
+      "gradient_vs_finite_difference_rel": 2.008954867340922e-05,
+      "gradient_vs_finite_difference_abs": 3.3142071340433454e-07,
+      "gradient_tolerance_abs": 3.807955354005513e-06,
+      "finite_difference_tolerance_abs": 4.616316717293344e-06,
+      "gradient_validation_status": "PASS",
+      "landscape_computed": false,
+      "landscape_radius": 0.25,
+      "landscape_points": 17,
+      "landscape_loss_at_centre": null,
+      "landscape_minimum_loss": null,
+      "landscape_first_derivative": null,
+      "landscape_second_derivative": null,
+      "landscape_restoration_verified": false,
+      "finite": true,
+      "nonfinite_detected": false,
+      "parameter_hash_before": "8236d922a4ce4ffc",
+      "parameter_hash_after": "8218c7bb633df032",
+      "events": [
+        "FORWARD_COMPLETE",
+        "LOSS_COMPUTED",
+        "BACKWARD_STARTED",
+        "GRADIENT_AVAILABLE",
+        "OPTIMIZER_STATE_READ",
+        "OPTIMIZER_STEP_STARTED",
+        "OPTIMIZER_STEP_COMPLETED",
+        "BIT_PATTERN_CHANGED",
+        "PARAMETER_CHANGED",
+        "FP32_ROUNDING_OBSERVED"
+      ],
+      "previous_hash": "50281bb3edfe1401d5683c83597ec6015869d1e17ca8060a3154eb48596df31e",
+      "record_hash": "27c87d017915b3c01664c1dc99977bca5a9f0a2a03e9c832481478d25bad63f5"
+    },
+    {
+      "step": 2,
+      "epoch": 0,
+      "batch_index": 2,
+      "global_batch": 2,
+      "input_value": -1.984344482421875,
+      "target_value": -0.9948175549507141,
+      "prediction": 0.9984039664268494,
+      "loss": 3.9729321002960205,
+      "loss_dtype": "torch.float32",
+      "loss_grad_fn": "MeanBackward0",
+      "stages": [
+        {
+          "name": "parameter",
+          "value": -1.7972145080566406,
+          "mean": -1.7972145080566406,
+          "dtype": "torch.float32",
+          "shape": [],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": null,
+          "is_leaf": true,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": 3219524384,
+          "bits": "10111111111001100000101100100000",
+          "hex": "0xBFE60B20"
+        },
+        {
+          "name": "input",
+          "value": -1.984344482421875,
+          "mean": -1.984344482421875,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": false,
+          "grad_fn": null,
+          "is_leaf": true,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "z",
+          "value": 3.5662927627563477,
+          "mean": 3.5662927627563477,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "MulBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "activation",
+          "value": 0.9984039664268494,
+          "mean": 0.9984039664268494,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "TanhBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "prediction",
+          "value": 0.9984039664268494,
+          "mean": 0.9984039664268494,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "MulBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "target",
+          "value": -0.9948175549507141,
+          "mean": -0.9948175549507141,
+          "dtype": "torch.float32",
+          "shape": [
+            1,
+            1
+          ],
+          "device": "cpu",
+          "requires_grad": false,
+          "grad_fn": null,
+          "is_leaf": true,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        },
+        {
+          "name": "loss",
+          "value": 3.9729321002960205,
+          "mean": 3.9729321002960205,
+          "dtype": "torch.float32",
+          "shape": [],
+          "device": "cpu",
+          "requires_grad": true,
+          "grad_fn": "MeanBackward0",
+          "is_leaf": false,
+          "finite": true,
+          "numel": 1,
+          "value_is_first_element": false,
+          "raw_uint32": null,
+          "bits": null,
+          "hex": null
+        }
+      ],
+      "zero_grad_set_to_none": true,
+      "accumulation_micro_batches": 1,
+      "accumulated_losses": [
+        3.9729321002960205
+      ],
+      "grad_before_zero_grad": -0.016497502103447914,
+      "grad_after_zero_grad": null,
+      "grad_before_backward": null,
+      "grad_after_backward": -0.025230495259165764,
+      "gradient": -0.025230495259165764,
+      "gradient_uint32": 3167662127,
+      "gradient_dtype": "torch.float32",
+      "gradient_shape": [],
+      "gradient_sign": -1,
+      "gradient_magnitude": 0.025230495259165764,
+      "gradient_square": 0.0006365778910227861,
+      "gradient_finite": true,
+      "parameter_before": -1.7972145080566406,
+      "parameter_after": -1.6980493068695068,
+      "parameter_before_uint32": 3219524384,
+      "parameter_after_uint32": 3218692526,
+      "parameter_before_hex": "0xBFE60B20",
+      "parameter_hex": "0xBFD959AE",
+      "parameter_bits": "10111111110110010101100110101110",
+      "parameter_exponent_bits": 127,
+      "parameter_fraction_bits": 5855662,
+      "parameter_sign_bit": 1,
+      "actual_delta": 0.09916520118713379,
+      "absolute_delta": 0.09916520118713379,
+      "relative_delta": 0.05517716485293837,
+      "direction": "increased",
+      "xor_mask": 4149902,
+      "changed_bit_count": 13,
+      "changed_bit_positions": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        19,
+        22,
+        24,
+        28,
+        29,
+        30
+      ],
+      "sign_changed": false,
+      "exponent_changed": false,
+      "fraction_changed": true,
+      "ulp_previous_distance": 1.1920928955078125e-07,
+      "ulp_next_distance": 1.1920928955078125e-07,
+      "ulp_size": 1.1920928955078125e-07,
+      "ulp_relative_movement": 831858.0,
+      "ulp_distance_count": 831858,
+      "ulp_distance_same_binade": 831858,
+      "stored_fp32_unchanged": false,
+      "update_attempted_but_storage_frozen": false,
+      "snapshot_a_uint32": 3219524384,
+      "snapshot_b_uint32": 3219524384,
+      "snapshot_c_uint32": 3219524384,
+      "snapshot_d_uint32": 3219524384,
+      "snapshot_e_uint32": 3218692526,
+      "snapshot_f_uint32": null,
+      "optimizer_name": "adamw",
+      "learning_rate": 0.1,
+      "optimizer_step_before": 2,
+      "optimizer_step_after": 3,
+      "optimizer_state_present_before": true,
+      "optimizer_state_keys_before": [
+        "exp_avg",
+        "exp_avg_sq",
+        "step"
+      ],
+      "optimizer_state_keys_after": [
+        "exp_avg",
+        "exp_avg_sq",
+        "step"
+      ],
+      "moment1_before": -0.002612462965771556,
+      "moment2_before": 3.864748805426643e-07,
+      "moment1": -0.004874266218394041,
+      "moment2": 1.02266631074599e-06,
+      "bias_corrected_moment1": -0.0179862222080961,
+      "bias_corrected_moment2": 0.0003412298863917597,
+      "optimizer_total_update": 0.09916520118713379,
+      "optimizer_attempted_update": 0.09916520109002303,
+      "optimizer_adaptive_update": 0.09736800193786621,
+      "optimizer_weight_decay_update": 0.0017971992492675781,
+      "reconstruction_variant": "adamw[lerp,before,outside]",
+      "reconstruction_status": "PASS",
+      "reconstruction_bit_exact": true,
+      "reconstruction_ulp_error": 0,
+      "reconstruction_absolute_error": 0.0,
+      "reconstruction_relative_error": 0.0,
+      "reconstructed_after": -1.6980493068695068,
+      "reconstructed_uint32": 3218692526,
+      "fp64_reconstructed_after": -1.6980493069666176,
+      "fp32_candidate": -1.6980493068695068,
+      "fp32_rounding_error_abs": 9.711076387475259e-11,
+      "fp32_rounding_error_rel": 5.7189601901625886e-11,
+      "fp32_rounding_sign": 1,
+      "fp32_rounding_ulp": 0.0008146241307258606,
+      "fp32_candidate_rounds_to_stored": true,
+      "fp64_track_value": -1.698048376092672,
+      "fp64_track_loss": 3.9729320346859547,
+      "fp64_vs_fp32_abs": 9.30776834939806e-07,
+      "fp64_vs_fp32_ulp": 7.807922003790736,
+      "gradient_analytical": -0.0252305504538244,
+      "gradient_finite_difference": -0.02523055045229379,
+      "gradient_finite_difference_h": 1.7972145080566407e-06,
+      "gradient_fp64_autograd": -0.0252305504538244,
+      "gradient_vs_analytical_rel": 2.187612146482987e-06,
+      "gradient_vs_analytical_abs": 5.519465863523809e-08,
+      "gradient_vs_finite_difference_rel": 2.1875514817096435e-06,
+      "gradient_vs_finite_difference_abs": 5.519312802626519e-08,
+      "gradient_tolerance_abs": 3.814113808375209e-06,
+      "finite_difference_tolerance_abs": 5.050410780536074e-06,
+      "gradient_validation_status": "PASS",
+      "landscape_computed": true,
+      "landscape_radius": 0.25,
+      "landscape_points": 17,
+      "landscape_loss_at_centre": 3.972932051058174,
+      "landscape_minimum_loss": 3.9621648849862274,
+      "landscape_first_derivative": -0.025294813932234206,
+      "landscape_second_derivative": -0.10001853993435361,
+      "landscape_restoration_verified": true,
+      "finite": true,
+      "nonfinite_detected": false,
+      "parameter_hash_before": "8218c7bb633df032",
+      "parameter_hash_after": "6295cff573d2dfa7",
+      "events": [
+        "FORWARD_COMPLETE",
+        "LOSS_COMPUTED",
+        "BACKWARD_STARTED",
+        "GRADIENT_AVAILABLE",
+        "LANDSCAPE_PROBED",
+        "OPTIMIZER_STATE_READ",
+        "OPTIMIZER_STEP_STARTED",
+        "OPTIMIZER_STEP_COMPLETED",
+        "BIT_PATTERN_CHANGED",
+        "PARAMETER_CHANGED",
+        "FP32_ROUNDING_OBSERVED"
+      ],
+      "previous_hash": "27c87d017915b3c01664c1dc99977bca5a9f0a2a03e9c832481478d25bad63f5",
+      "record_hash": "262e6decc92e4bd1d56e7e7ae8cb62d0af1301b83bfaab30f0f2184220ec0768"
+    }
+  ],
+  "events": [
+    {
+      "step": 0,
+      "code": "INITIALIZED",
+      "detail": "w = -2.0 (0xC0000000, exponent 128, fraction 0)"
+    },
+    {
+      "step": 0,
+      "code": "FORWARD_COMPLETE",
+      "detail": "prediction and intermediates recorded"
+    },
+    {
+      "step": 0,
+      "code": "LOSS_COMPUTED",
+      "detail": "loss = 3.977567672729492"
+    },
+    {
+      "step": 0,
+      "code": "BACKWARD_STARTED",
+      "detail": "loss.backward()"
+    },
+    {
+      "step": 0,
+      "code": "GRADIENT_AVAILABLE",
+      "detail": "parameter.grad written by autograd"
+    },
+    {
+      "step": 0,
+      "code": "LANDSCAPE_PROBED",
+      "detail": "one-dimensional slice over +/-0.25 in float64"
+    },
+    {
+      "step": 0,
+      "code": "OPTIMIZER_STATE_READ",
+      "detail": "lr in force = 0.1; optimizer state before the step is not yet initialised for this parameter"
+    },
+    {
+      "step": 0,
+      "code": "OPTIMIZER_STEP_STARTED",
+      "detail": "adamw.step()"
+    },
+    {
+      "step": 0,
+      "code": "OPTIMIZER_STEP_COMPLETED",
+      "detail": "optimizer.step() returned"
+    },
+    {
+      "step": 0,
+      "code": "OPTIMIZER_STATE_READ",
+      "detail": "adopted update variant 'adamw[lerp,before,outside]', measured from this run's own transition (0 ULP error)"
+    },
+    {
+      "step": 0,
+      "code": "BIT_PATTERN_CHANGED",
+      "detail": "22 bits changed (855637 ULP)"
+    },
+    {
+      "step": 0,
+      "code": "PARAMETER_CHANGED",
+      "detail": "delta = 0.10199987888336182"
+    },
+    {
+      "step": 0,
+      "code": "FP32_ROUNDING_OBSERVED",
+      "detail": "rounding residual -2.7630892018848385e-08 (-0.23178472183644772 ULP)"
+    },
+    {
+      "step": 0,
+      "code": "STABILITY_METRIC_UPDATED",
+      "detail": "mean |update| over window = 0.10199987888336182"
+    },
+    {
+      "step": 1,
+      "code": "FORWARD_COMPLETE",
+      "detail": "prediction and intermediates recorded"
+    },
+    {
+      "step": 1,
+      "code": "LOSS_COMPUTED",
+      "detail": "loss = 3.9756317138671875"
+    },
+    {
+      "step": 1,
+      "code": "BACKWARD_STARTED",
+      "detail": "loss.backward()"
+    },
+    {
+      "step": 1,
+      "code": "GRADIENT_AVAILABLE",
+      "detail": "parameter.grad written by autograd"
+    },
+    {
+      "step": 1,
+      "code": "OPTIMIZER_STATE_READ",
+      "detail": "lr in force = 0.1; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+    },
+    {
+      "step": 1,
+      "code": "OPTIMIZER_STEP_STARTED",
+      "detail": "adamw.step()"
+    },
+    {
+      "step": 1,
+      "code": "OPTIMIZER_STEP_COMPLETED",
+      "detail": "optimizer.step() returned"
+    },
+    {
+      "step": 1,
+      "code": "BIT_PATTERN_CHANGED",
+      "detail": "12 bits changed (845451 ULP)"
+    },
+    {
+      "step": 1,
+      "code": "PARAMETER_CHANGED",
+      "detail": "delta = 0.10078561305999756"
+    },
+    {
+      "step": 1,
+      "code": "FP32_ROUNDING_OBSERVED",
+      "detail": "rounding residual -2.3437020324479363e-08 (-0.19660397619009018 ULP)"
+    },
+    {
+      "step": 1,
+      "code": "STABILITY_METRIC_UPDATED",
+      "detail": "mean |update| over window = 0.10139274597167969"
+    },
+    {
+      "step": 2,
+      "code": "FORWARD_COMPLETE",
+      "detail": "prediction and intermediates recorded"
+    },
+    {
+      "step": 2,
+      "code": "LOSS_COMPUTED",
+      "detail": "loss = 3.9729321002960205"
+    },
+    {
+      "step": 2,
+      "code": "BACKWARD_STARTED",
+      "detail": "loss.backward()"
+    },
+    {
+      "step": 2,
+      "code": "GRADIENT_AVAILABLE",
+      "detail": "parameter.grad written by autograd"
+    },
+    {
+      "step": 2,
+      "code": "LANDSCAPE_PROBED",
+      "detail": "one-dimensional slice over +/-0.25 in float64"
+    },
+    {
+      "step": 2,
+      "code": "OPTIMIZER_STATE_READ",
+      "detail": "lr in force = 0.1; optimizer state before the step is present with keys exp_avg, exp_avg_sq, step"
+    },
+    {
+      "step": 2,
+      "code": "OPTIMIZER_STEP_STARTED",
+      "detail": "adamw.step()"
+    },
+    {
+      "step": 2,
+      "code": "OPTIMIZER_STEP_COMPLETED",
+      "detail": "optimizer.step() returned"
+    },
+    {
+      "step": 2,
+      "code": "BIT_PATTERN_CHANGED",
+      "detail": "13 bits changed (831858 ULP)"
+    },
+    {
+      "step": 2,
+      "code": "PARAMETER_CHANGED",
+      "detail": "delta = 0.09916520118713379"
+    },
+    {
+      "step": 2,
+      "code": "FP32_ROUNDING_OBSERVED",
+      "detail": "rounding residual 9.711076387475259e-11 (0.0008146241307258606 ULP)"
+    },
+    {
+      "step": 2,
+      "code": "STABILITY_METRIC_UPDATED",
+      "detail": "mean |update| over window = 0.10065023104349773"
+    },
+    {
+      "step": 3,
+      "code": "RUN_COMPLETE",
+      "detail": "3 real steps executed"
+    }
+  ],
+  "landscapes": [
+    {
+      "step": 0,
+      "center": -2.0,
+      "center_uint32": 3221225472,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.9792589260839044
+        ],
+        [
+          -0.21875,
+          3.9791278483328862
+        ],
+        [
+          -0.1875,
+          3.9789793255965664
+        ],
+        [
+          -0.15625,
+          3.978811037320896
+        ],
+        [
+          -0.125,
+          3.97862035460349
+        ],
+        [
+          -0.09375,
+          3.9784042993162494
+        ],
+        [
+          -0.0625,
+          3.978159497835941
+        ],
+        [
+          -0.03125,
+          3.9778821286791115
+        ],
+        [
+          0.0,
+          3.977567863248187
+        ],
+        [
+          0.03125,
+          3.9772117987951323
+        ],
+        [
+          0.0625,
+          3.976808382596806
+        ],
+        [
+          0.09375,
+          3.9763513262107475
+        ],
+        [
+          0.125,
+          3.9758335085405205
+        ],
+        [
+          0.15625,
+          3.9752468662845737
+        ],
+        [
+          0.1875,
+          3.97458227017074
+        ],
+        [
+          0.21875,
+          3.973829385188831
+        ],
+        [
+          0.25,
+          3.972976512825342
+        ]
+      ],
+      "loss_at_center": 3.977567863248187,
+      "loss_at_center_remeasured": 3.977567863248187,
+      "central_first_difference": -0.010725278143667083,
+      "central_second_difference": -0.04280219866086554,
+      "minimum_loss": 3.972976512825342,
+      "argmin_offset": 0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice through a high-dimensional optimization problem. It is not the loss landscape of the network, and it says nothing about any other direction in weight space.",
+      "parameter_hash_before": "d5f4488360792be0",
+      "parameter_hash_after": "d5f4488360792be0"
+    },
+    {
+      "step": 2,
+      "center": -1.7972145080566406,
+      "center_uint32": 3219524384,
+      "radius": 0.25,
+      "points": 17,
+      "dtype": "float64",
+      "samples": [
+        [
+          -0.25,
+          3.976935334020112
+        ],
+        [
+          -0.21875,
+          3.976623645706729
+        ],
+        [
+          -0.1875,
+          3.9762708461332563
+        ],
+        [
+          -0.15625,
+          3.975871519375118
+        ],
+        [
+          -0.125,
+          3.975419537878567
+        ],
+        [
+          -0.09375,
+          3.9749079694776603
+        ],
+        [
+          -0.0625,
+          3.9743289724089124
+        ],
+        [
+          -0.03125,
+          3.973673676815854
+        ],
+        [
+          0.0,
+          3.972932051058174
+        ],
+        [
+          0.03125,
+          3.972092750945089
+        ],
+        [
+          0.0625,
+          3.971142949799335
+        ],
+        [
+          0.09375,
+          3.970068147026587
+        ],
+        [
+          0.125,
+          3.968851952615198
+        ],
+        [
+          0.15625,
+          3.967475844724047
+        ],
+        [
+          0.1875,
+          3.9659188972338
+        ],
+        [
+          0.21875,
+          3.964157473842614
+        ],
+        [
+          0.25,
+          3.9621648849862274
+        ]
+      ],
+      "loss_at_center": 3.972932051058174,
+      "loss_at_center_remeasured": 3.972932051058174,
+      "central_first_difference": -0.025294813932234206,
+      "central_second_difference": -0.10001853993435361,
+      "minimum_loss": 3.9621648849862274,
+      "argmin_offset": 0.25,
+      "restoration_verified": true,
+      "disclaimer": "This is a one-dimensional diagnostic slice through a high-dimensional optimization problem. It is not the loss landscape of the network, and it says nothing about any other direction in weight space.",
+      "parameter_hash_before": "8218c7bb633df032",
+      "parameter_hash_after": "8218c7bb633df032"
+    }
+  ],
+  "report": {
+    "run_name": "adamw",
+    "optimizer": "adamw",
+    "steps": 3,
+    "initial_parameter": -2.0,
+    "initial_parameter_hex": "0xC0000000",
+    "initial_loss": 3.977567672729492,
+    "initial_gradient": -0.010696807876229286,
+    "final_parameter": -1.6980493068695068,
+    "final_parameter_hex": "0xBFD959AE",
+    "final_loss": 3.9729321002960205,
+    "final_gradient": -0.025230495259165764,
+    "total_parameter_change": 0.30195069313049316,
+    "minimum_loss": 3.9729321002960205,
+    "maximum_loss": 3.977567672729492,
+    "max_abs_gradient": 0.025230495259165764,
+    "max_abs_update": 0.10199987888336182,
+    "mean_abs_update": 0.10065023104349773,
+    "std_parameter_over_final_window": 0.09997650144280165,
+    "final_window_size": 3,
+    "gradient_sign_changes": 0,
+    "update_sign_changes": 0,
+    "unchanged_fp32_steps": 0,
+    "unchanged_fp32_step_indices": [],
+    "update_attempted_below_resolution_steps": 0,
+    "update_attempted_below_resolution_indices": [],
+    "total_ulp_movement": 2105127,
+    "total_ulp_movement_note": "Sum of |movement| over steps, measured in ULPs of each step's starting value. This is the per-step movement metric and does not blow up when a step crosses a binade boundary or zero.",
+    "total_ulp_movement_steps": 3,
+    "total_representable_values_travelled": 2532946,
+    "total_representable_values_note": "Sum of the exact count of representable float32 values between before and after each step. Correct, but at a sign crossing a single step contributes roughly 2.1 billion, so it is not a summary of how far the parameter travelled; see 'total_ulp_movement' for that.",
+    "sign_crossing_steps": [],
+    "max_rounding_residual": 2.7630892018848385e-08,
+    "max_reconstruction_ulp_error": 0,
+    "reconstruction_checks": 3,
+    "reconstruction_failures": 0,
+    "max_gradient_validation_relative_error": 6.309028579778069e-05,
+    "max_gradient_validation_absolute_error": 6.749072461263023e-07,
+    "max_finite_difference_relative_error": 6.309075357954876e-05,
+    "max_finite_difference_absolute_error": 6.749122505294441e-07,
+    "min_gradient_tolerance_absolute": 3.8040017957261586e-06,
+    "min_finite_difference_tolerance_absolute": 4.3281784523666735e-06,
+    "nonfinite_steps": [],
+    "nonfinite_detected": false,
+    "max_fp32_vs_fp64_difference": 9.30776834939806e-07,
+    "chain_verified": true,
+    "event_counts": {
+      "INITIALIZED": 1,
+      "FORWARD_COMPLETE": 3,
+      "LOSS_COMPUTED": 3,
+      "BACKWARD_STARTED": 3,
+      "GRADIENT_AVAILABLE": 3,
+      "LANDSCAPE_PROBED": 2,
+      "OPTIMIZER_STATE_READ": 4,
+      "OPTIMIZER_STEP_STARTED": 3,
+      "OPTIMIZER_STEP_COMPLETED": 3,
+      "BIT_PATTERN_CHANGED": 3,
+      "PARAMETER_CHANGED": 3,
+      "FP32_ROUNDING_OBSERVED": 3,
+      "STABILITY_METRIC_UPDATED": 3,
+      "RUN_COMPLETE": 1
+    },
+    "validation": {
+      "gradient_checks": 3,
+      "gradient_failures": 0,
+      "finite_difference_failures": 0,
+      "reconstruction_checks": 3,
+      "reconstruction_failures": 0,
+      "bit_checks": 1,
+      "bit_failures": 0,
+      "ulp_checks": 1,
+      "ulp_failures": 0,
+      "max_gradient_relative_error": 6.309028579778069e-05,
+      "max_gradient_absolute_error": 6.749072461263023e-07,
+      "max_finite_difference_relative_error": 6.309075357954876e-05,
+      "max_finite_difference_absolute_error": 6.749122505294441e-07,
+      "max_reconstruction_ulp_error": 0,
+      "total_failures": 0,
+      "failure_notes": []
+    },
+    "aborted_reason": null,
+    "stability": {
+      "regime": "still moving",
+      "rationale": [
+        "mean |update| over the final window = 0.101 (threshold 1e-12)",
+        "mean |gradient| over the final window = 0.0175 (threshold 1e-12)",
+        "update sign changes in window = 0 (oscillation threshold 3)",
+        "fraction of window steps whose stored float32 bits did not change = 0 (stagnation threshold 0.5)"
+      ],
+      "final_window": 3,
+      "criteria": {
+        "window": 50,
+        "update_eps": 1e-12,
+        "gradient_eps": 1e-12,
+        "stationary_rel": 1e-09,
+        "oscillation_min_sign_changes": 3,
+        "divergence_loss_growth": 1.05,
+        "divergence_absolute": 0.001,
+        "stagnant_fraction": 0.5
+      },
+      "mean_update_magnitude": 0.10065023104349773,
+      "std_update_magnitude": 0.0014221798860083895,
+      "mean_gradient_magnitude": 0.01747493507961432,
+      "max_absolute_gradient_in_window": 0.025230495259165764,
+      "max_absolute_update_in_window": 0.10199987888336182,
+      "gradient_sign_changes_in_window": 0,
+      "update_sign_changes_in_window": 0,
+      "unchanged_fraction_in_window": 0.0,
+      "total_ulp_movement_in_window": 2105127,
+      "loss_growth_ratio_in_window": 0.9988345710708447,
+      "parameter_std_in_window": 0.09997650144280165,
+      "fp32_storage_stagnant": false,
+      "nonfinite_steps": [],
+      "disclaimer": "A small update, a small gradient, float32 storage stagnation, an oscillating update and a numerical plateau are five different observations. None of them establishes that the optimizer has converged, and none of them says anything about a global optimum: this instrument observes one coordinate of one parameter out of a high-dimensional optimization state."
+    }
+  },
+  "chain_verified": true,
+  "note": "Values are exactly as recorded. Floats are Python floats (IEEE-754 double) holding the exact value of the observed float32; hex and raw uint32 fields carry the stored binary32 word itself."
+}

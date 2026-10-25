@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks": {
+    "runs": true,
+    "workspace": true,
+    "drafts": true,
+    "extensions_except_revision": true
+  },
+  "versions": [
+    "2.0.0",
+    "2.1.0"
+  ]
+}

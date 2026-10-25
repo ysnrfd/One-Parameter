@@ -1,0 +1,60 @@
+{
+  "name": "Sandbox playground",
+  "description": "A pure JavaScript script transforms JSON inside the bounded sandbox.",
+  "nodes": [
+    {
+      "id": "input",
+      "type": "core.object",
+      "position": {
+        "x": 40,
+        "y": 100
+      },
+      "params": {
+        "value": {
+          "value": 21
+        }
+      }
+    },
+    {
+      "id": "script",
+      "type": "core.script",
+      "position": {
+        "x": 370,
+        "y": 100
+      },
+      "params": {
+        "code": "return {value: inputs.value * 2};"
+      }
+    },
+    {
+      "id": "preview",
+      "type": "core.preview",
+      "position": {
+        "x": 700,
+        "y": 100
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "input:value-script:inputs",
+      "source": "input",
+      "source_port": "value",
+      "target": "script",
+      "target_port": "inputs"
+    },
+    {
+      "id": "script:value-preview:value",
+      "source": "script",
+      "source_port": "value",
+      "target": "preview",
+      "target_port": "value"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}

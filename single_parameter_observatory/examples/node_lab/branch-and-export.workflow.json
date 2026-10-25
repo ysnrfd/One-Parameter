@@ -1,0 +1,158 @@
+{
+  "name": "Train, capture, branch, intervene, export",
+  "description": "Creates a baseline, records ten steps and a checkpoint, branches exact state, changes LR, records five more steps, verifies and exports the branch.",
+  "nodes": [
+    {
+      "id": "experiment",
+      "type": "core.experiment",
+      "position": {
+        "x": 40,
+        "y": 100
+      },
+      "params": {
+        "name": "Branch example baseline",
+        "config": {
+          "steps": 30,
+          "dataset": {
+            "samples": 16,
+            "batch_size": 4
+          },
+          "landscape": {
+            "points": 21
+          }
+        }
+      }
+    },
+    {
+      "id": "train",
+      "type": "core.train",
+      "position": {
+        "x": 370,
+        "y": 100
+      },
+      "params": {
+        "steps": 10
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "core.checkpoint",
+      "position": {
+        "x": 700,
+        "y": 100
+      },
+      "params": {
+        "name": "Before LR alternative"
+      }
+    },
+    {
+      "id": "branch",
+      "type": "core.branch",
+      "position": {
+        "x": 1030,
+        "y": 100
+      },
+      "params": {
+        "name": "Alternative LR"
+      }
+    },
+    {
+      "id": "intervene",
+      "type": "core.intervene",
+      "position": {
+        "x": 1360,
+        "y": 100
+      },
+      "params": {
+        "changes": {
+          "learning_rate": 0.01
+        }
+      }
+    },
+    {
+      "id": "train_branch",
+      "type": "core.train",
+      "position": {
+        "x": 1690,
+        "y": 100
+      },
+      "params": {
+        "steps": 5
+      }
+    },
+    {
+      "id": "verify",
+      "type": "core.verify",
+      "position": {
+        "x": 2020,
+        "y": 100
+      },
+      "params": {}
+    },
+    {
+      "id": "export",
+      "type": "core.export",
+      "position": {
+        "x": 2350,
+        "y": 100
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "experiment-run-train-run",
+      "source": "experiment",
+      "source_port": "run",
+      "target": "train",
+      "target_port": "run"
+    },
+    {
+      "id": "train-run-checkpoint-run",
+      "source": "train",
+      "source_port": "run",
+      "target": "checkpoint",
+      "target_port": "run"
+    },
+    {
+      "id": "checkpoint-run-branch-run",
+      "source": "checkpoint",
+      "source_port": "run",
+      "target": "branch",
+      "target_port": "run"
+    },
+    {
+      "id": "branch-run-intervene-run",
+      "source": "branch",
+      "source_port": "run",
+      "target": "intervene",
+      "target_port": "run"
+    },
+    {
+      "id": "intervene-run-train_branch-run",
+      "source": "intervene",
+      "source_port": "run",
+      "target": "train_branch",
+      "target_port": "run"
+    },
+    {
+      "id": "train_branch-run-verify-run",
+      "source": "train_branch",
+      "source_port": "run",
+      "target": "verify",
+      "target_port": "run"
+    },
+    {
+      "id": "verify-run-export-run",
+      "source": "verify",
+      "source_port": "run",
+      "target": "export",
+      "target_port": "run"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.35
+  }
+}

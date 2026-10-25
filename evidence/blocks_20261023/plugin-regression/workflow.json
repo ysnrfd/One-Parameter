@@ -1,0 +1,258 @@
+{
+  "name": "Plugin-authored tensor architecture",
+  "description": "Validated tensor-expression defaults/options, literal source and real V8 live pass-through, training, safe checkpoint reload and generation.",
+  "nodes": [
+    {
+      "id": "tokens",
+      "type": "local.tensor_bridge/pass",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "params": {}
+    },
+    {
+      "id": "embedding",
+      "type": "hf.op_embedding",
+      "position": {
+        "x": 350,
+        "y": 0
+      },
+      "params": {
+        "num_embeddings": 16,
+        "embedding_dim": 8
+      }
+    },
+    {
+      "id": "bridge",
+      "type": "local.tensor_bridge/pass",
+      "position": {
+        "x": 700,
+        "y": 0
+      },
+      "params": {}
+    },
+    {
+      "id": "head",
+      "type": "hf.op_linear",
+      "position": {
+        "x": 1050,
+        "y": 0
+      },
+      "params": {
+        "in_features": 8,
+        "out_features": 16,
+        "bias": false
+      }
+    },
+    {
+      "id": "model",
+      "type": "hf.graph_model",
+      "position": {
+        "x": 1400,
+        "y": 0
+      },
+      "params": {
+        "vocab_size": 16,
+        "max_positions": 32,
+        "pad_token_id": 0,
+        "bos_token_id": 2,
+        "eos_token_id": 3,
+        "seed": 42
+      }
+    },
+    {
+      "id": "data",
+      "type": "hf.data",
+      "position": {
+        "x": 1400,
+        "y": 400
+      },
+      "params": {
+        "fields": {
+          "input_ids": [
+            [
+              2,
+              4,
+              5,
+              3
+            ],
+            [
+              2,
+              4,
+              6,
+              3
+            ]
+          ],
+          "attention_mask": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "labels": [
+            [
+              2,
+              4,
+              5,
+              3
+            ],
+            [
+              2,
+              4,
+              6,
+              3
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 1750,
+        "y": 400
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.01
+      }
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "position": {
+        "x": 1750,
+        "y": 0
+      },
+      "params": {
+        "steps": 3,
+        "batch_size": 2,
+        "loss": "model"
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 2100,
+        "y": 0
+      },
+      "params": {}
+    },
+    {
+      "id": "reload",
+      "type": "hf.load",
+      "position": {
+        "x": 2450,
+        "y": 0
+      },
+      "params": {}
+    },
+    {
+      "id": "generate",
+      "type": "hf.generate",
+      "position": {
+        "x": 2800,
+        "y": 0
+      },
+      "params": {
+        "max_new_tokens": 2,
+        "do_sample": false
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "tokens-embedding-x",
+      "source": "tokens",
+      "source_port": "x",
+      "target": "embedding",
+      "target_port": "x"
+    },
+    {
+      "id": "embedding-bridge-expression",
+      "source": "embedding",
+      "source_port": "x",
+      "target": "bridge",
+      "target_port": "expression"
+    },
+    {
+      "id": "bridge-head-x",
+      "source": "bridge",
+      "source_port": "x",
+      "target": "head",
+      "target_port": "x"
+    },
+    {
+      "id": "head-model-logits",
+      "source": "head",
+      "source_port": "x",
+      "target": "model",
+      "target_port": "logits"
+    },
+    {
+      "id": "model-train-model",
+      "source": "model",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data-train-data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer-train-optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train-checkpoint-model",
+      "source": "train",
+      "source_port": "model",
+      "target": "checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "checkpoint-reload-artifact",
+      "source": "checkpoint",
+      "source_port": "artifact",
+      "target": "reload",
+      "target_port": "artifact"
+    },
+    {
+      "id": "reload-generate-model",
+      "source": "reload",
+      "source_port": "model",
+      "target": "generate",
+      "target_port": "model"
+    },
+    {
+      "id": "data-generate-data",
+      "source": "data",
+      "source_port": "data",
+      "target": "generate",
+      "target_port": "data"
+    }
+  ],
+  "view": {
+    "x": 20,
+    "y": 20,
+    "zoom": 0.5
+  }
+}

@@ -1,0 +1,13 @@
+cached-pretrained.workflow.json succeeded None
+checkpoint-roundtrip.workflow.json succeeded None
+custom-attention.workflow.json succeeded None
+custom-forward.workflow.json succeeded None
+distilbert-classification.workflow.json succeeded None
+feature-extraction.workflow.json succeeded None
+fill-mask.workflow.json succeeded None
+plugin-architecture.workflow.json succeeded None
+rmsnorm-adamw.workflow.json succeeded None
+text-pipeline.workflow.json succeeded None
+tiny-gpt2.workflow.json succeeded None
+token-classification.workflow.json succeeded None
+tokenize-train-generate.workflow.json succeeded None

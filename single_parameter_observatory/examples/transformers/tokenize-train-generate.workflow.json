@@ -1,0 +1,198 @@
+{
+  "name": "Local tokenizer to causal training",
+  "description": "Tokenize unequal-length prompts with real left padding, mask causal labels, train tiny GPT-2, run a forward pass and generate tokens from the same data.",
+  "nodes": [
+    {
+      "id": "config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "tokenizer",
+      "type": "hf.tokenizer",
+      "position": {
+        "x": 20,
+        "y": 350
+      },
+      "params": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "hello": 4,
+          "world": 5,
+          "good": 6,
+          "bad": 7,
+          "example": 8,
+          "tiny": 9,
+          "model": 10,
+          "learn": 11,
+          "visual": 12,
+          "coding": 13,
+          "yes": 14,
+          "no": 15
+        }
+      }
+    },
+    {
+      "id": "data",
+      "type": "hf.tokenize",
+      "position": {
+        "x": 350,
+        "y": 350
+      },
+      "params": {
+        "texts": [
+          "hello world",
+          "hello"
+        ],
+        "max_length": 16,
+        "labels": "causal"
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 700,
+        "y": 350
+      },
+      "params": {
+        "lr": 0.001
+      }
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "position": {
+        "x": 1030,
+        "y": 20
+      },
+      "params": {
+        "steps": 2,
+        "batch_size": 2,
+        "loss": "model"
+      }
+    },
+    {
+      "id": "forward",
+      "type": "hf.forward",
+      "position": {
+        "x": 1360,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "generate",
+      "type": "hf.generate",
+      "position": {
+        "x": 1690,
+        "y": 20
+      },
+      "params": {
+        "max_new_tokens": 3
+      }
+    },
+    {
+      "id": "inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 2020,
+        "y": 20
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "config:config-model:config",
+      "source": "config",
+      "source_port": "config",
+      "target": "model",
+      "target_port": "config"
+    },
+    {
+      "id": "tokenizer:tokenizer-data:tokenizer",
+      "source": "tokenizer",
+      "source_port": "tokenizer",
+      "target": "data",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "model:model-train:model",
+      "source": "model",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-train:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer:optimizer-train:optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train:model-forward:model",
+      "source": "train",
+      "source_port": "model",
+      "target": "forward",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-forward:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "forward",
+      "target_port": "data"
+    },
+    {
+      "id": "forward:model-generate:model",
+      "source": "forward",
+      "source_port": "model",
+      "target": "generate",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-generate:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "generate",
+      "target_port": "data"
+    },
+    {
+      "id": "generate:model-inspect:model",
+      "source": "generate",
+      "source_port": "model",
+      "target": "inspect",
+      "target_port": "model"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.6
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "name": "Custom residual attention architecture",
+  "description": "Editable embedding, RMSNorm, causal self-attention and residual addition. Train every parameter using real autograd and AdamW.",
+  "nodes": [
+    {
+      "id": "model",
+      "type": "hf.custom",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {
+        "layers": {
+          "embed": {
+            "type": "Embedding",
+            "num_embeddings": 16,
+            "embedding_dim": 8
+          },
+          "norm": {
+            "type": "RMSNorm",
+            "normalized_shape": 8,
+            "eps": 0.000001
+          },
+          "attention": {
+            "type": "SelfAttention",
+            "embed_dim": 8,
+            "num_heads": 2,
+            "dropout": 0,
+            "causal": true
+          },
+          "output": {
+            "type": "Linear",
+            "in_features": 8,
+            "out_features": 4
+          }
+        },
+        "code": "h = layers['embed'](inputs['input_ids'])\na = layers['attention'](layers['norm'](h))\nh = h + a\nreturn layers['output'](h)"
+      }
+    },
+    {
+      "id": "data",
+      "type": "hf.data",
+      "position": {
+        "x": 20,
+        "y": 350
+      },
+      "params": {
+        "fields": {
+          "input_ids": [
+            [
+              2,
+              4,
+              5
+            ],
+            [
+              2,
+              5,
+              4
+            ]
+          ],
+          "labels": [
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1,
+                0
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 350,
+        "y": 350
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.005
+      }
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "position": {
+        "x": 700,
+        "y": 20
+      },
+      "params": {
+        "steps": 3,
+        "batch_size": 2,
+        "loss": "mse"
+      }
+    },
+    {
+      "id": "evaluate",
+      "type": "hf.evaluate",
+      "position": {
+        "x": 1030,
+        "y": 20
+      },
+      "params": {
+        "loss": "mse"
+      }
+    },
+    {
+      "id": "inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1360,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1690,
+        "y": 20
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "model:model-train:model",
+      "source": "model",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-train:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer:optimizer-train:optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train:model-evaluate:model",
+      "source": "train",
+      "source_port": "model",
+      "target": "evaluate",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-evaluate:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "evaluate",
+      "target_port": "data"
+    },
+    {
+      "id": "evaluate:model-inspect:model",
+      "source": "evaluate",
+      "source_port": "model",
+      "target": "inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "inspect:model-checkpoint:model",
+      "source": "inspect",
+      "source_port": "model",
+      "target": "checkpoint",
+      "target_port": "model"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.6
+  }
+}

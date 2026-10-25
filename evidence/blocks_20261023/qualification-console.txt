@@ -1,0 +1,3 @@
+expanded: passed; 11360 parameters; loss 3.592102 -> 1.398548
+custom-two-layer: passed; 12024 parameters; loss 3.553470 -> 1.192609
+fused: passed; 11360 parameters; loss 3.592102 -> 1.398548

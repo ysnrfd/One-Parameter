@@ -1,0 +1,1965 @@
+{
+  "types": [
+    {
+      "id": "hf.config",
+      "title": "HF model configuration",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Create an offline AutoConfig recipe. No model download or remote code.",
+      "inputs": [
+        {
+          "name": "values",
+          "type": "object",
+          "required": true,
+          "default": {
+            "vocab_size": 16,
+            "n_positions": 32,
+            "n_ctx": 32,
+            "n_embd": 16,
+            "n_layer": 1,
+            "n_head": 2,
+            "bos_token_id": 2,
+            "eos_token_id": 3,
+            "pad_token_id": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "config",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "model_type",
+          "type": "string",
+          "default": "gpt2"
+        }
+      ]
+    },
+    {
+      "id": "hf.model",
+      "title": "HF AutoModel",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Instantiate an actual supported HF model from config after a meta-device parameter budget check.",
+      "inputs": [
+        {
+          "name": "config",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "task",
+          "type": "string",
+          "default": "causal-lm",
+          "options": [
+            "base",
+            "causal-lm",
+            "seq2seq-lm",
+            "sequence-classification",
+            "token-classification",
+            "question-answering",
+            "masked-lm",
+            "image-classification",
+            "audio-classification"
+          ]
+        },
+        {
+          "name": "seed",
+          "type": "integer",
+          "default": 42,
+          "min": 0,
+          "max": 2147483647
+        }
+      ]
+    },
+    {
+      "id": "hf.pretrained",
+      "title": "Cached HF pretrained model",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Load actual cached safetensors weights by public Hub repository and pinned commit. No downloads, arbitrary paths, remote code or pickle.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "repo_id",
+          "type": "string",
+          "default": "hf-internal-testing/tiny-random-gpt2"
+        },
+        {
+          "name": "revision",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "task",
+          "type": "string",
+          "default": "causal-lm",
+          "options": [
+            "base",
+            "causal-lm",
+            "seq2seq-lm",
+            "sequence-classification",
+            "token-classification",
+            "question-answering",
+            "masked-lm",
+            "image-classification",
+            "audio-classification"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hf.auto_tokenizer",
+      "title": "Cached HF AutoTokenizer",
+      "category": "Transformers \u00b7 Data",
+      "description": "Load a matching cached fast tokenizer by repository and pinned Hub commit. Never imports remote tokenizer code.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "tokenizer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "repo_id",
+          "type": "string",
+          "default": "hf-internal-testing/tiny-random-gpt2"
+        },
+        {
+          "name": "revision",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "pad_token",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "use_eos_as_pad",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "hf.tokenizer",
+      "title": "Local HF fast tokenizer",
+      "category": "Transformers \u00b7 Data",
+      "description": "Build a real offline WordLevel PreTrainedTokenizerFast from an editable vocabulary.",
+      "inputs": [
+        {
+          "name": "vocab",
+          "type": "object",
+          "required": true,
+          "default": {
+            "[PAD]": 0,
+            "[UNK]": 1,
+            "[BOS]": 2,
+            "[EOS]": 3,
+            "hello": 4,
+            "world": 5
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tokenizer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "lowercase",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "hf.tokenize",
+      "title": "Tokenize text",
+      "category": "Transformers \u00b7 Data",
+      "description": "Tokenize and pad text; causal labels mask padding with -100.",
+      "inputs": [
+        {
+          "name": "tokenizer",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "texts",
+          "type": "array",
+          "required": true,
+          "default": [
+            "hello world",
+            "hello"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "max_length",
+          "type": "integer",
+          "default": 32,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "default": "causal",
+          "options": [
+            "none",
+            "causal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hf.data",
+      "title": "Tensor dataset",
+      "category": "Transformers \u00b7 Data",
+      "description": "Finite named tensor batches: x/labels for custom models or input_ids/attention_mask/labels for HF.",
+      "inputs": [
+        {
+          "name": "fields",
+          "type": "object",
+          "required": true,
+          "default": {
+            "x": [
+              [
+                -1
+              ],
+              [
+                0
+              ],
+              [
+                1
+              ]
+            ],
+            "labels": [
+              [
+                -2
+              ],
+              [
+                0
+              ],
+              [
+                2
+              ]
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "hf.layer",
+      "title": "Layer recipe",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "A declarative PyTorch layer. Connect recipes into Compose layers / Sequential / custom forward.",
+      "inputs": [
+        {
+          "name": "recipe",
+          "type": "object",
+          "required": true,
+          "default": {
+            "type": "Linear",
+            "in_features": 1,
+            "out_features": 8
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "layer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "hf.linear",
+      "title": "Linear",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Trainable dense projection with arbitrary bounded input/output width.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "layer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "in_features",
+          "type": "integer",
+          "default": 1,
+          "min": 1
+        },
+        {
+          "name": "out_features",
+          "type": "integer",
+          "default": 8,
+          "min": 1
+        },
+        {
+          "name": "bias",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "hf.embedding",
+      "title": "Embedding",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "A trainable token embedding table.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "layer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "num_embeddings",
+          "type": "integer",
+          "default": 16,
+          "min": 1
+        },
+        {
+          "name": "embedding_dim",
+          "type": "integer",
+          "default": 8,
+          "min": 1
+        }
+      ]
+    },
+    {
+      "id": "hf.rmsnorm",
+      "title": "RMSNorm",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Actual torch.nn.RMSNorm. Normalization connects to layer outputs; optimizers bind the complete model.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "layer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "normalized_shape",
+          "type": "integer",
+          "default": 8,
+          "min": 1
+        },
+        {
+          "name": "eps",
+          "type": "number",
+          "default": 1e-06
+        }
+      ]
+    },
+    {
+      "id": "hf.layernorm",
+      "title": "LayerNorm",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Actual torch.nn.LayerNorm.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "layer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "normalized_shape",
+          "type": "integer",
+          "default": 8,
+          "min": 1
+        },
+        {
+          "name": "eps",
+          "type": "number",
+          "default": 1e-05
+        }
+      ]
+    },
+    {
+      "id": "hf.activation",
+      "title": "Activation",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "A stateless tensor activation.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "layer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "GELU",
+          "options": [
+            "GELU",
+            "ReLU",
+            "SiLU",
+            "Tanh",
+            "Sigmoid",
+            "Identity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hf.attention",
+      "title": "Self attention",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Trainable batch-first multi-head self attention with optional causal masking.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "layer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "embed_dim",
+          "type": "integer",
+          "default": 8,
+          "min": 1
+        },
+        {
+          "name": "num_heads",
+          "type": "integer",
+          "default": 2,
+          "min": 1
+        },
+        {
+          "name": "dropout",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "causal",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "hf.compose",
+      "title": "Compose layers",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Join two layer recipes or composed layer lists. Connect the layers output to Sequential.",
+      "inputs": [
+        {
+          "name": "a",
+          "type": "any",
+          "required": true,
+          "default": {}
+        },
+        {
+          "name": "b",
+          "type": "any",
+          "required": true,
+          "default": {}
+        }
+      ],
+      "outputs": [
+        {
+          "name": "layers",
+          "type": "array",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "hf.stack",
+      "title": "Append layer",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Append an individual layer to a layer list.",
+      "inputs": [
+        {
+          "name": "layers",
+          "type": "array",
+          "required": true,
+          "default": []
+        },
+        {
+          "name": "layer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "layers",
+          "type": "array",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "hf.sequential",
+      "title": "Sequential model",
+      "category": "Transformers \u00b7 Architecture",
+      "description": "Instantiate a real multi-parameter PyTorch architecture from ordered layer recipes.",
+      "inputs": [
+        {
+          "name": "layers",
+          "type": "array",
+          "required": true,
+          "default": [
+            {
+              "type": "Linear",
+              "in_features": 1,
+              "out_features": 8,
+              "bias": true
+            },
+            {
+              "type": "RMSNorm",
+              "normalized_shape": 8,
+              "eps": 1e-06
+            },
+            {
+              "type": "GELU"
+            },
+            {
+              "type": "Linear",
+              "in_features": 8,
+              "out_features": 1,
+              "bias": true
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "seed",
+          "type": "integer",
+          "default": 42,
+          "min": 0,
+          "max": 2147483647
+        }
+      ]
+    },
+    {
+      "id": "hf.custom",
+      "title": "Custom tensor forward",
+      "category": "Transformers \u00b7 Code",
+      "description": "Editable restricted Python tensor expressions and named trainable layers. No imports, attributes, loops, eval or exec.",
+      "inputs": [
+        {
+          "name": "layers",
+          "type": "object",
+          "required": true,
+          "default": {
+            "input": {
+              "type": "Linear",
+              "in_features": 1,
+              "out_features": 8
+            },
+            "output": {
+              "type": "Linear",
+              "in_features": 8,
+              "out_features": 1
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "code",
+          "type": "code",
+          "default": "x = layers['input'](inputs['x'])\nx = relu(x)\nreturn layers['output'](x)"
+        },
+        {
+          "name": "seed",
+          "type": "integer",
+          "default": 42,
+          "min": 0,
+          "max": 2147483647
+        }
+      ]
+    },
+    {
+      "id": "hf.optimizer",
+      "title": "Optimizer",
+      "category": "Transformers \u00b7 Training",
+      "description": "Optimizer recipe. Connect to Train alongside a model; AdamW updates the model's complete parameter set.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "optimizer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "AdamW",
+          "options": [
+            "AdamW",
+            "Adam",
+            "SGD",
+            "RMSprop"
+          ]
+        },
+        {
+          "name": "lr",
+          "type": "number",
+          "default": 0.01
+        },
+        {
+          "name": "weight_decay",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "momentum",
+          "type": "number",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "id": "hf.train",
+      "title": "Train multi-parameter model",
+      "category": "Transformers \u00b7 Training",
+      "description": "Actual autograd/optimizer updates, finite loss checks, gradient clipping, measured parameter hashes and loss history.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "optimizer",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "metrics",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "steps",
+          "type": "integer",
+          "default": 20,
+          "min": 1
+        },
+        {
+          "name": "batch_size",
+          "type": "integer",
+          "default": 3,
+          "min": 1,
+          "max": 128
+        },
+        {
+          "name": "loss",
+          "type": "string",
+          "default": "mse",
+          "options": [
+            "mse",
+            "cross_entropy",
+            "model"
+          ]
+        },
+        {
+          "name": "clip_grad_norm",
+          "type": "number",
+          "default": 1
+        }
+      ]
+    },
+    {
+      "id": "hf.forward",
+      "title": "Forward pass",
+      "category": "Transformers \u00b7 Inference",
+      "description": "Run a real model forward; tensors remain in the job worker and expose shape/dtype/value previews.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "result",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "hf.evaluate",
+      "title": "Evaluate model",
+      "category": "Transformers \u00b7 Inference",
+      "description": "Evaluate a finite loss and optional classification accuracy without changing weights.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "metrics",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "loss",
+          "type": "string",
+          "default": "mse",
+          "options": [
+            "mse",
+            "cross_entropy",
+            "model"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hf.generate",
+      "title": "HF generate",
+      "category": "Transformers \u00b7 Inference",
+      "description": "Real bounded HF autoregressive generation with attention masks and deterministic default sampling.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "result",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "max_new_tokens",
+          "type": "integer",
+          "default": 8,
+          "min": 1,
+          "max": 128
+        },
+        {
+          "name": "do_sample",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "temperature",
+          "type": "number",
+          "default": 1
+        }
+      ]
+    },
+    {
+      "id": "hf.pipeline",
+      "title": "HF pipeline",
+      "category": "Transformers \u00b7 Inference",
+      "description": "Actual Transformers pipeline with a job-local model/tokenizer, offline inference and bounded inputs.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "tokenizer",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "texts",
+          "type": "array",
+          "required": true,
+          "default": [
+            "hello world"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "result",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "task",
+          "type": "string",
+          "default": "text-generation",
+          "options": [
+            "text-generation",
+            "text-classification",
+            "token-classification",
+            "fill-mask",
+            "feature-extraction"
+          ]
+        },
+        {
+          "name": "max_new_tokens",
+          "type": "integer",
+          "default": 8,
+          "min": 1,
+          "max": 128
+        }
+      ]
+    },
+    {
+      "id": "hf.inspect",
+      "title": "Inspect model",
+      "category": "Transformers \u00b7 Observe",
+      "description": "Real parameter names, shapes, trainable counts, architecture, finite checks and weight hash.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "report",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "hf.checkpoint",
+      "title": "Export safe model",
+      "category": "Transformers \u00b7 Artifacts",
+      "description": "Immutable ZIP with safetensors weights and a declarative architecture recipe. No pickle or executable model code.",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "artifact",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "hf.load",
+      "title": "Load safe model",
+      "category": "Transformers \u00b7 Artifacts",
+      "description": "Load only a registered graph artifact, verify safe ZIP/recipe/safetensors and rebuild within model budgets.",
+      "inputs": [
+        {
+          "name": "artifact",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    }
+  ],
+  "templates": [
+    {
+      "id": "transformers-mlp",
+      "category": "Transformers",
+      "graph": {
+        "name": "Multi-parameter RMSNorm laboratory",
+        "description": "Dense \u2192 RMSNorm \u2192 GELU \u2192 dense; real AdamW training and safe checkpoint.",
+        "nodes": [
+          {
+            "id": "model",
+            "type": "hf.sequential",
+            "position": {
+              "x": 30,
+              "y": 30
+            },
+            "params": {}
+          },
+          {
+            "id": "data",
+            "type": "hf.data",
+            "position": {
+              "x": 30,
+              "y": 330
+            },
+            "params": {}
+          },
+          {
+            "id": "optimizer",
+            "type": "hf.optimizer",
+            "position": {
+              "x": 360,
+              "y": 330
+            },
+            "params": {}
+          },
+          {
+            "id": "train",
+            "type": "hf.train",
+            "position": {
+              "x": 700,
+              "y": 30
+            },
+            "params": {}
+          },
+          {
+            "id": "inspect",
+            "type": "hf.inspect",
+            "position": {
+              "x": 1030,
+              "y": 30
+            },
+            "params": {}
+          },
+          {
+            "id": "checkpoint",
+            "type": "hf.checkpoint",
+            "position": {
+              "x": 1360,
+              "y": 30
+            },
+            "params": {}
+          }
+        ],
+        "edges": [
+          {
+            "id": "model:model-train:model",
+            "source": "model",
+            "source_port": "model",
+            "target": "train",
+            "target_port": "model"
+          },
+          {
+            "id": "data:data-train:data",
+            "source": "data",
+            "source_port": "data",
+            "target": "train",
+            "target_port": "data"
+          },
+          {
+            "id": "optimizer:optimizer-train:optimizer",
+            "source": "optimizer",
+            "source_port": "optimizer",
+            "target": "train",
+            "target_port": "optimizer"
+          },
+          {
+            "id": "train:model-inspect:model",
+            "source": "train",
+            "source_port": "model",
+            "target": "inspect",
+            "target_port": "model"
+          },
+          {
+            "id": "inspect:model-checkpoint:model",
+            "source": "inspect",
+            "source_port": "model",
+            "target": "checkpoint",
+            "target_port": "model"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 0.7
+        }
+      },
+      "name": "Multi-parameter RMSNorm laboratory",
+      "description": "Dense \u2192 RMSNorm \u2192 GELU \u2192 dense; real AdamW training and safe checkpoint."
+    },
+    {
+      "id": "transformers-causal-lm",
+      "category": "Transformers",
+      "graph": {
+        "name": "Tiny offline GPT-2 training and generation",
+        "description": "Actual HF AutoModelForCausalLM, token batches, AdamW, generation and safetensors export. No download.",
+        "nodes": [
+          {
+            "id": "config",
+            "type": "hf.config",
+            "position": {
+              "x": 20,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "model",
+            "type": "hf.model",
+            "position": {
+              "x": 350,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "data",
+            "type": "hf.data",
+            "position": {
+              "x": 20,
+              "y": 330
+            },
+            "params": {
+              "fields": {
+                "input_ids": [
+                  [
+                    2,
+                    4,
+                    5,
+                    3
+                  ],
+                  [
+                    2,
+                    5,
+                    4,
+                    3
+                  ]
+                ],
+                "attention_mask": [
+                  [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  [
+                    1,
+                    1,
+                    1,
+                    1
+                  ]
+                ],
+                "labels": [
+                  [
+                    2,
+                    4,
+                    5,
+                    3
+                  ],
+                  [
+                    2,
+                    5,
+                    4,
+                    3
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "optimizer",
+            "type": "hf.optimizer",
+            "position": {
+              "x": 350,
+              "y": 330
+            },
+            "params": {
+              "lr": 0.001
+            }
+          },
+          {
+            "id": "train",
+            "type": "hf.train",
+            "position": {
+              "x": 700,
+              "y": 20
+            },
+            "params": {
+              "steps": 3,
+              "batch_size": 2,
+              "loss": "model"
+            }
+          },
+          {
+            "id": "generate",
+            "type": "hf.generate",
+            "position": {
+              "x": 1030,
+              "y": 20
+            },
+            "params": {
+              "max_new_tokens": 4
+            }
+          },
+          {
+            "id": "checkpoint",
+            "type": "hf.checkpoint",
+            "position": {
+              "x": 1360,
+              "y": 20
+            },
+            "params": {}
+          }
+        ],
+        "edges": [
+          {
+            "id": "config:config-model:config",
+            "source": "config",
+            "source_port": "config",
+            "target": "model",
+            "target_port": "config"
+          },
+          {
+            "id": "model:model-train:model",
+            "source": "model",
+            "source_port": "model",
+            "target": "train",
+            "target_port": "model"
+          },
+          {
+            "id": "data:data-train:data",
+            "source": "data",
+            "source_port": "data",
+            "target": "train",
+            "target_port": "data"
+          },
+          {
+            "id": "optimizer:optimizer-train:optimizer",
+            "source": "optimizer",
+            "source_port": "optimizer",
+            "target": "train",
+            "target_port": "optimizer"
+          },
+          {
+            "id": "train:model-generate:model",
+            "source": "train",
+            "source_port": "model",
+            "target": "generate",
+            "target_port": "model"
+          },
+          {
+            "id": "data:data-generate:data",
+            "source": "data",
+            "source_port": "data",
+            "target": "generate",
+            "target_port": "data"
+          },
+          {
+            "id": "generate:model-checkpoint:model",
+            "source": "generate",
+            "source_port": "model",
+            "target": "checkpoint",
+            "target_port": "model"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 0.7
+        }
+      },
+      "name": "Tiny offline GPT-2 training and generation",
+      "description": "Actual HF AutoModelForCausalLM, token batches, AdamW, generation and safetensors export. No download."
+    },
+    {
+      "id": "transformers-custom-forward",
+      "category": "Transformers",
+      "graph": {
+        "name": "Editable tensor forward",
+        "description": "Named trainable layers with an editable restricted Python tensor-forward program, autograd and AdamW.",
+        "nodes": [
+          {
+            "id": "model",
+            "type": "hf.custom",
+            "position": {
+              "x": 20,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "data",
+            "type": "hf.data",
+            "position": {
+              "x": 20,
+              "y": 330
+            },
+            "params": {}
+          },
+          {
+            "id": "optimizer",
+            "type": "hf.optimizer",
+            "position": {
+              "x": 350,
+              "y": 330
+            },
+            "params": {}
+          },
+          {
+            "id": "train",
+            "type": "hf.train",
+            "position": {
+              "x": 700,
+              "y": 20
+            },
+            "params": {
+              "steps": 10
+            }
+          },
+          {
+            "id": "evaluate",
+            "type": "hf.evaluate",
+            "position": {
+              "x": 1030,
+              "y": 20
+            },
+            "params": {}
+          }
+        ],
+        "edges": [
+          {
+            "id": "model:model-train:model",
+            "source": "model",
+            "source_port": "model",
+            "target": "train",
+            "target_port": "model"
+          },
+          {
+            "id": "data:data-train:data",
+            "source": "data",
+            "source_port": "data",
+            "target": "train",
+            "target_port": "data"
+          },
+          {
+            "id": "optimizer:optimizer-train:optimizer",
+            "source": "optimizer",
+            "source_port": "optimizer",
+            "target": "train",
+            "target_port": "optimizer"
+          },
+          {
+            "id": "train:model-evaluate:model",
+            "source": "train",
+            "source_port": "model",
+            "target": "evaluate",
+            "target_port": "model"
+          },
+          {
+            "id": "data:data-evaluate:data",
+            "source": "data",
+            "source_port": "data",
+            "target": "evaluate",
+            "target_port": "data"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 0.8
+        }
+      },
+      "name": "Editable tensor forward",
+      "description": "Named trainable layers with an editable restricted Python tensor-forward program, autograd and AdamW."
+    },
+    {
+      "id": "transformers-llama",
+      "category": "Transformers",
+      "graph": {
+        "name": "Llama decoder training and architecture",
+        "description": "Real HF LlamaForCausalLM: two decoder layers, RoPE, 4 query/2 KV heads, RMSNorm and SwiGLU. Tokenize local text, measure initial loss, train with AdamW, inspect real modules, export/reload safetensors, compare evaluation and generate. Random initialized educational model; no Meta pretrained weights or downloads.",
+        "nodes": [
+          {
+            "id": "config",
+            "type": "hf.config",
+            "title": "LlamaConfig \u00b7 editable architecture",
+            "position": {
+              "x": 20,
+              "y": 20
+            },
+            "params": {
+              "model_type": "llama",
+              "values": {
+                "vocab_size": 32,
+                "hidden_size": 64,
+                "intermediate_size": 128,
+                "num_hidden_layers": 2,
+                "num_attention_heads": 4,
+                "num_key_value_heads": 2,
+                "max_position_embeddings": 128,
+                "hidden_act": "silu",
+                "rms_norm_eps": 1e-06,
+                "rope_parameters": {
+                  "rope_type": "default",
+                  "rope_theta": 10000.0
+                },
+                "attention_dropout": 0.0,
+                "attention_bias": false,
+                "mlp_bias": false,
+                "tie_word_embeddings": false,
+                "pad_token_id": 0,
+                "bos_token_id": 2,
+                "eos_token_id": 3,
+                "use_cache": true
+              }
+            }
+          },
+          {
+            "id": "model",
+            "type": "hf.model",
+            "title": "Native LlamaForCausalLM",
+            "position": {
+              "x": 350,
+              "y": 20
+            },
+            "params": {
+              "task": "causal-lm",
+              "seed": 42
+            }
+          },
+          {
+            "id": "tokenizer",
+            "type": "hf.tokenizer",
+            "title": "Local 32-token vocabulary",
+            "position": {
+              "x": 20,
+              "y": 390
+            },
+            "params": {
+              "vocab": {
+                "[PAD]": 0,
+                "[UNK]": 1,
+                "[BOS]": 2,
+                "[EOS]": 3,
+                "the": 4,
+                "cat": 5,
+                "dog": 6,
+                "bird": 7,
+                "sleeps": 8,
+                "runs": 9,
+                "sings": 10,
+                "on": 11,
+                "mat": 12,
+                "grass": 13,
+                "tree": 14,
+                ".": 15,
+                "a": 16,
+                "small": 17,
+                "happy": 18,
+                "red": 19,
+                "blue": 20,
+                "green": 21,
+                "sees": 22,
+                "sun": 23,
+                "moon": 24,
+                "is": 25,
+                "and": 26,
+                "quiet": 27,
+                "soft": 28,
+                "warm": 29,
+                "sky": 30,
+                "cloud": 31
+              },
+              "lowercase": true
+            }
+          },
+          {
+            "id": "data",
+            "type": "hf.tokenize",
+            "title": "Tokenize eight training sentences",
+            "position": {
+              "x": 350,
+              "y": 390
+            },
+            "params": {
+              "texts": [
+                "the cat sleeps on the mat .",
+                "the dog runs on the grass .",
+                "the bird sings on the tree .",
+                "a small cat sees the moon .",
+                "a happy dog sees the sun .",
+                "the sky is blue .",
+                "the grass is green .",
+                "the sun is warm ."
+              ],
+              "max_length": 32,
+              "labels": "causal"
+            }
+          },
+          {
+            "id": "initial-inspect",
+            "type": "hf.inspect",
+            "title": "Inspect untrained Llama modules",
+            "position": {
+              "x": 680,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "initial-eval",
+            "type": "hf.evaluate",
+            "title": "Measure loss before training",
+            "position": {
+              "x": 1010,
+              "y": 20
+            },
+            "params": {
+              "loss": "model"
+            }
+          },
+          {
+            "id": "optimizer",
+            "type": "hf.optimizer",
+            "title": "AdamW \u00b7 all Llama parameters",
+            "position": {
+              "x": 1010,
+              "y": 390
+            },
+            "params": {
+              "name": "AdamW",
+              "lr": 0.003,
+              "weight_decay": 0.01
+            }
+          },
+          {
+            "id": "train",
+            "type": "hf.train",
+            "title": "Train real Llama \u00b7 40 steps",
+            "position": {
+              "x": 1340,
+              "y": 20
+            },
+            "params": {
+              "steps": 40,
+              "batch_size": 8,
+              "loss": "model",
+              "clip_grad_norm": 1.0
+            }
+          },
+          {
+            "id": "trained-eval",
+            "type": "hf.evaluate",
+            "title": "Measure loss after training",
+            "position": {
+              "x": 1670,
+              "y": 20
+            },
+            "params": {
+              "loss": "model"
+            }
+          },
+          {
+            "id": "trained-inspect",
+            "type": "hf.inspect",
+            "title": "Inspect trained modules and weights",
+            "position": {
+              "x": 2000,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "architecture-checks",
+            "type": "core.script",
+            "title": "Custom script \u00b7 verify native architecture",
+            "position": {
+              "x": 2000,
+              "y": 390
+            },
+            "params": {
+              "code": "if (inputs.architecture !== 'LlamaForCausalLM') throw new Error('Expected native LlamaForCausalLM');\nif (inputs.parameter_count !== 78144 || inputs.parameter_tensors !== 21) throw new Error('Unexpected Llama dimensions or weights');\nconst modules = inputs.modules || [];\nfor (const type of ['LlamaDecoderLayer','LlamaAttention','LlamaMLP','LlamaRMSNorm','LlamaRotaryEmbedding']) {\n  if (!modules.some(m => m.type === type)) throw new Error('Missing native component: ' + type);\n}\nconst p = inputs.parameters;\nfor (let i = 0; i < 2; i++) {\n  for (const part of ['self_attn.q_proj.weight','self_attn.k_proj.weight','self_attn.v_proj.weight','self_attn.o_proj.weight','mlp.gate_proj.weight','mlp.up_proj.weight','mlp.down_proj.weight']) {\n    if (!p.some(t => t.name === `model.layers.${i}.${part}`)) throw new Error('Missing projection ' + part);\n  }\n}\nconsole.log('Verified actual native Llama module and tensor inventory');\nreturn {value:{verified:true,architecture:inputs.architecture,parameters:inputs.parameter_count,tensors:inputs.parameter_tensors,decoder_layers:2,query_heads:4,kv_heads:2,rope:true,normalization:'RMSNorm',feed_forward:'SwiGLU'}};",
+              "timeout_ms": 1000,
+              "memory_mb": 32
+            }
+          },
+          {
+            "id": "checkpoint",
+            "type": "hf.checkpoint",
+            "title": "Export Llama safetensors + recipe",
+            "position": {
+              "x": 2330,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "reload",
+            "type": "hf.load",
+            "title": "Reconstruct and reload Llama",
+            "position": {
+              "x": 2660,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "reloaded-inspect",
+            "type": "hf.inspect",
+            "title": "Verify reloaded parameter state",
+            "position": {
+              "x": 2990,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "reloaded-eval",
+            "type": "hf.evaluate",
+            "title": "Evaluate restored Llama loss",
+            "position": {
+              "x": 3320,
+              "y": 20
+            },
+            "params": {
+              "loss": "model"
+            }
+          },
+          {
+            "id": "prompts",
+            "type": "hf.tokenize",
+            "title": "Left-padded generation prompts",
+            "position": {
+              "x": 2990,
+              "y": 390
+            },
+            "params": {
+              "texts": [
+                "the cat",
+                "the dog",
+                "the sky"
+              ],
+              "max_length": 16,
+              "labels": "none"
+            }
+          },
+          {
+            "id": "forward",
+            "type": "hf.forward",
+            "title": "Actual vocabulary logits",
+            "position": {
+              "x": 3650,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "generate",
+            "type": "hf.generate",
+            "title": "Generate token sequences",
+            "position": {
+              "x": 3980,
+              "y": 20
+            },
+            "params": {
+              "max_new_tokens": 8,
+              "do_sample": false
+            }
+          },
+          {
+            "id": "pipeline",
+            "type": "hf.pipeline",
+            "title": "Decode Llama text generation",
+            "position": {
+              "x": 4310,
+              "y": 20
+            },
+            "params": {
+              "task": "text-generation",
+              "texts": [
+                "the cat",
+                "the dog",
+                "the sky"
+              ],
+              "max_new_tokens": 8
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "config-model",
+            "source": "config",
+            "source_port": "config",
+            "target": "model",
+            "target_port": "config"
+          },
+          {
+            "id": "tokenizer-data",
+            "source": "tokenizer",
+            "source_port": "tokenizer",
+            "target": "data",
+            "target_port": "tokenizer"
+          },
+          {
+            "id": "model-initial",
+            "source": "model",
+            "source_port": "model",
+            "target": "initial-inspect",
+            "target_port": "model"
+          },
+          {
+            "id": "initial-eval-model",
+            "source": "initial-inspect",
+            "source_port": "model",
+            "target": "initial-eval",
+            "target_port": "model"
+          },
+          {
+            "id": "initial-eval-data",
+            "source": "data",
+            "source_port": "data",
+            "target": "initial-eval",
+            "target_port": "data"
+          },
+          {
+            "id": "eval-train",
+            "source": "initial-eval",
+            "source_port": "model",
+            "target": "train",
+            "target_port": "model"
+          },
+          {
+            "id": "data-train",
+            "source": "data",
+            "source_port": "data",
+            "target": "train",
+            "target_port": "data"
+          },
+          {
+            "id": "optimizer-train",
+            "source": "optimizer",
+            "source_port": "optimizer",
+            "target": "train",
+            "target_port": "optimizer"
+          },
+          {
+            "id": "train-eval",
+            "source": "train",
+            "source_port": "model",
+            "target": "trained-eval",
+            "target_port": "model"
+          },
+          {
+            "id": "data-trained-eval",
+            "source": "data",
+            "source_port": "data",
+            "target": "trained-eval",
+            "target_port": "data"
+          },
+          {
+            "id": "trained-eval-inspect",
+            "source": "trained-eval",
+            "source_port": "model",
+            "target": "trained-inspect",
+            "target_port": "model"
+          },
+          {
+            "id": "report-script",
+            "source": "trained-inspect",
+            "source_port": "report",
+            "target": "architecture-checks",
+            "target_port": "inputs"
+          },
+          {
+            "id": "inspect-checkpoint",
+            "source": "trained-inspect",
+            "source_port": "model",
+            "target": "checkpoint",
+            "target_port": "model"
+          },
+          {
+            "id": "checkpoint-reload",
+            "source": "checkpoint",
+            "source_port": "artifact",
+            "target": "reload",
+            "target_port": "artifact"
+          },
+          {
+            "id": "reload-inspect",
+            "source": "reload",
+            "source_port": "model",
+            "target": "reloaded-inspect",
+            "target_port": "model"
+          },
+          {
+            "id": "reloaded-inspect-eval",
+            "source": "reloaded-inspect",
+            "source_port": "model",
+            "target": "reloaded-eval",
+            "target_port": "model"
+          },
+          {
+            "id": "reloaded-data-eval",
+            "source": "data",
+            "source_port": "data",
+            "target": "reloaded-eval",
+            "target_port": "data"
+          },
+          {
+            "id": "tokenizer-prompts",
+            "source": "tokenizer",
+            "source_port": "tokenizer",
+            "target": "prompts",
+            "target_port": "tokenizer"
+          },
+          {
+            "id": "eval-forward",
+            "source": "reloaded-eval",
+            "source_port": "model",
+            "target": "forward",
+            "target_port": "model"
+          },
+          {
+            "id": "prompts-forward",
+            "source": "prompts",
+            "source_port": "data",
+            "target": "forward",
+            "target_port": "data"
+          },
+          {
+            "id": "forward-generate",
+            "source": "forward",
+            "source_port": "model",
+            "target": "generate",
+            "target_port": "model"
+          },
+          {
+            "id": "prompts-generate",
+            "source": "prompts",
+            "source_port": "data",
+            "target": "generate",
+            "target_port": "data"
+          },
+          {
+            "id": "generate-pipeline",
+            "source": "generate",
+            "source_port": "model",
+            "target": "pipeline",
+            "target_port": "model"
+          },
+          {
+            "id": "tokenizer-pipeline",
+            "source": "tokenizer",
+            "source_port": "tokenizer",
+            "target": "pipeline",
+            "target_port": "tokenizer"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 0.55
+        }
+      },
+      "name": "Llama decoder training and architecture",
+      "description": "Real HF LlamaForCausalLM: two decoder layers, RoPE, 4 query/2 KV heads, RMSNorm and SwiGLU. Tokenize local text, measure initial loss, train with AdamW, inspect real modules, export/reload safetensors, compare evaluation and generate. Random initialized educational model; no Meta pretrained weights or downloads."
+    }
+  ],
+  "transformers": {
+    "available": true,
+    "version": "5.20.2",
+    "device": "cpu",
+    "execution": "job-scoped CPU worker",
+    "model_tasks": [
+      "base",
+      "causal-lm",
+      "seq2seq-lm",
+      "sequence-classification",
+      "token-classification",
+      "question-answering",
+      "masked-lm",
+      "image-classification",
+      "audio-classification"
+    ],
+    "supported_operations": [
+      "hf.config",
+      "hf.model",
+      "hf.pretrained",
+      "hf.auto_tokenizer",
+      "hf.tokenizer",
+      "hf.tokenize",
+      "hf.data",
+      "hf.layer",
+      "hf.linear",
+      "hf.embedding",
+      "hf.rmsnorm",
+      "hf.layernorm",
+      "hf.activation",
+      "hf.attention",
+      "hf.compose",
+      "hf.stack",
+      "hf.sequential",
+      "hf.custom",
+      "hf.optimizer",
+      "hf.train",
+      "hf.forward",
+      "hf.evaluate",
+      "hf.generate",
+      "hf.pipeline",
+      "hf.inspect",
+      "hf.checkpoint",
+      "hf.load"
+    ],
+    "limits": {
+      "max_parameters": 2000000,
+      "max_tensor_elements": 1000000,
+      "worker_memory_mb": 2048,
+      "max_steps": 2000,
+      "operation_timeout_seconds": 300,
+      "startup_timeout_seconds": 180,
+      "max_sequence_length": 512,
+      "max_batch_size": 128
+    },
+    "network": false,
+    "cached_pretrained": true,
+    "pretrained_revision": "pinned 40-character Hub commit; cached files only",
+    "trust_remote_code": false,
+    "arbitrary_python": false,
+    "custom_code": "restricted tensor-forward Python AST",
+    "checkpoint_format": "ZIP: model.safetensors + recipe.json + manifest.json",
+    "handle_lifetime": "one workflow execution; export/load a checkpoint to reuse weights",
+    "description": "Actual Hugging Face AutoConfig/AutoModel, PyTorch modules and optimizers. Offline models from config or pinned cached safetensors weights."
+  }
+}

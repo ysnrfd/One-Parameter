@@ -1,0 +1,216 @@
+{
+  "schema_version": "spobs-plugin/1",
+  "id": "local.transformer.recipes",
+  "name": "Custom trainable architecture recipes",
+  "version": "1.0.0",
+  "description": "Author reusable JavaScript recipe nodes and GUI controls that feed real PyTorch model construction, without exposing Python objects to the plugin sandbox.",
+  "nodes": [
+    {
+      "id": "mlp_layers",
+      "title": "Custom MLP architecture",
+      "category": "Transformers · Custom recipes",
+      "description": "Generate a bounded dense/RMSNorm/GELU/dense architecture. Optional panel controls override the width parameter.",
+      "inputs": [
+        {
+          "name": "controls",
+          "type": "object",
+          "required": false,
+          "description": "Optional object from the reusable controls panel; width selects hidden features."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "layers",
+          "type": "array",
+          "description": "Validated layer recipes for a real Sequential model."
+        }
+      ],
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "default": 8,
+          "min": 1,
+          "max": 64,
+          "description": "Number of hidden features."
+        }
+      ],
+      "code": "const width = inputs.controls?.width ?? params.width;\nif (!Number.isInteger(width) || width < 1 || width > 64) throw new Error('width must be an integer from 1 to 64');\nconsole.log('Creating trainable architecture with', width, 'hidden features');\nreturn {layers: [\n  {type: 'Linear', in_features: 1, out_features: width, bias: true},\n  {type: 'RMSNorm', normalized_shape: width, eps: 0.000001},\n  {type: 'GELU'},\n  {type: 'Linear', in_features: width, out_features: 1, bias: true}\n]};"
+    }
+  ],
+  "templates": [
+    {
+      "id": "train_generated_architecture",
+      "name": "Custom plugin architecture to real training",
+      "graph": {
+        "name": "Custom plugin architecture to real training",
+        "description": "A sandboxed JavaScript extension produces architecture recipes, then real PyTorch modules train and export their weights.",
+        "nodes": [
+          {
+            "id": "recipes",
+            "type": "local.transformer.recipes/mlp_layers",
+            "position": {
+              "x": 20,
+              "y": 20
+            },
+            "params": {
+              "width": 8
+            }
+          },
+          {
+            "id": "model",
+            "type": "hf.sequential",
+            "position": {
+              "x": 350,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "data",
+            "type": "hf.data",
+            "position": {
+              "x": 350,
+              "y": 350
+            },
+            "params": {
+              "fields": {
+                "x": [
+                  [
+                    -1
+                  ],
+                  [
+                    0
+                  ],
+                  [
+                    1
+                  ]
+                ],
+                "labels": [
+                  [
+                    -2
+                  ],
+                  [
+                    0
+                  ],
+                  [
+                    2
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "optimizer",
+            "type": "hf.optimizer",
+            "position": {
+              "x": 680,
+              "y": 350
+            },
+            "params": {
+              "name": "AdamW",
+              "lr": 0.01
+            }
+          },
+          {
+            "id": "train",
+            "type": "hf.train",
+            "position": {
+              "x": 1010,
+              "y": 20
+            },
+            "params": {
+              "steps": 4,
+              "batch_size": 3,
+              "loss": "mse"
+            }
+          },
+          {
+            "id": "inspect",
+            "type": "hf.inspect",
+            "position": {
+              "x": 1340,
+              "y": 20
+            },
+            "params": {}
+          },
+          {
+            "id": "checkpoint",
+            "type": "hf.checkpoint",
+            "position": {
+              "x": 1670,
+              "y": 20
+            },
+            "params": {}
+          }
+        ],
+        "edges": [
+          {
+            "id": "recipes:layers-model:layers",
+            "source": "recipes",
+            "source_port": "layers",
+            "target": "model",
+            "target_port": "layers"
+          },
+          {
+            "id": "model:model-train:model",
+            "source": "model",
+            "source_port": "model",
+            "target": "train",
+            "target_port": "model"
+          },
+          {
+            "id": "data:data-train:data",
+            "source": "data",
+            "source_port": "data",
+            "target": "train",
+            "target_port": "data"
+          },
+          {
+            "id": "optimizer:optimizer-train:optimizer",
+            "source": "optimizer",
+            "source_port": "optimizer",
+            "target": "train",
+            "target_port": "optimizer"
+          },
+          {
+            "id": "train:model-inspect:model",
+            "source": "train",
+            "source_port": "model",
+            "target": "inspect",
+            "target_port": "model"
+          },
+          {
+            "id": "inspect:model-checkpoint:model",
+            "source": "inspect",
+            "source_port": "model",
+            "target": "checkpoint",
+            "target_port": "model"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 0.6
+        }
+      }
+    }
+  ],
+  "panels": [
+    {
+      "id": "architecture_controls",
+      "title": "Custom architecture controls",
+      "description": "Insert this object and wire its value output to Custom MLP architecture → controls to override the node width.",
+      "fields": [
+        {
+          "name": "width",
+          "type": "integer",
+          "default": 8,
+          "min": 1,
+          "max": 64,
+          "description": "Hidden feature width for the custom recipe node."
+        }
+      ]
+    }
+  ]
+}

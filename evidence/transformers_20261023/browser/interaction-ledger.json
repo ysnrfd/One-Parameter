@@ -1,0 +1,117 @@
+{
+  "schema_version": "spobs-real-browser-replay/1",
+  "date": "2026-10-23",
+  "browser": "Codex in-app Chromium browser via CUA",
+  "target": "http://127.0.0.1:8766",
+  "isolated_storage": ".studio-preview-transformers-browser",
+  "status": "passed within listed scope",
+  "checks": [
+    {
+      "feature": "HTTP connection",
+      "observed": "Connected normal HTTP tabs on ports 8765 and 8766"
+    },
+    {
+      "feature": "Experiment transport",
+      "observed": "One step plus four bounded updates produced five actual recorded steps"
+    },
+    {
+      "feature": "Timeline and microscope",
+      "observed": "Loss metric, historical record 1, exact IEEE-754 and historical optimizer data"
+    },
+    {
+      "feature": "Manual intervention",
+      "observed": "Negative zero stored as uint32 2147483648, then follow-live restored"
+    },
+    {
+      "feature": "Checkpoint and branch",
+      "observed": "Captured checkpoint, independent branch retained five-step history"
+    },
+    {
+      "feature": "Data lab",
+      "observed": "Three-row CSV created a separate data branch with zero training steps"
+    },
+    {
+      "feature": "Notes and integrity",
+      "observed": "Workspace/experiment notes saved; actual record chain verified"
+    },
+    {
+      "feature": "Browser downloads",
+      "observed": "Project JSON, experiment ZIP, raw job JSON, model ZIP and runnable Python saved from actual download events"
+    },
+    {
+      "feature": "Workspace recovery",
+      "observed": "Server restart invalidated epoch, paused writes and explicitly reloaded saved project"
+    },
+    {
+      "feature": "Layout repair",
+      "observed": "Nine-view sidebar and experiment controls reachable with body height 720 and no document overflow at 1280x720"
+    },
+    {
+      "feature": "RMSNorm training template",
+      "observed": "Job d82a1bba6c5d4ebaa9fb2bde535cf48e succeeded; 33 parameters, 20 AdamW steps, real loss and changed weight hashes"
+    },
+    {
+      "feature": "Custom plugin authoring",
+      "observed": "Created local.browser-qa via wizard; installed, disabled and re-enabled; scale node and Preview both returned value 2"
+    },
+    {
+      "feature": "Canvas interaction",
+      "observed": "Actual header pointer drag moved Preview; port clicks connected nodes; undo/redo restored the wire; queued plugin graph succeeded"
+    },
+    {
+      "feature": "Architecture plugin",
+      "observed": "Imported architecture.plugin.json through file chooser, explicitly installed; GUI width 12 inserted typed Object node"
+    },
+    {
+      "feature": "Every built-in node type",
+      "observed": "Imported and validated 135-node/124-edge fixture; job ecd514c58415415c991ba538abae8be1 succeeded 135/135, covering all 48 built-ins plus architecture plugin"
+    },
+    {
+      "feature": "Architecture wizard",
+      "observed": "Invalid hidden width retained form and displayed error; corrected 8,4 widths with LayerNorm, SiLU and RMSprop trained 81 parameters for four steps, job 6c676a84d35b461c84ff04f965ecab8b succeeded"
+    },
+    {
+      "feature": "Runnable Python export",
+      "observed": "Downloaded browser-exported-workflow.py via menu; explicit CLI execution succeeded for six nodes, RMSprop updates and owned checkpoint artifact"
+    },
+    {
+      "feature": "Script failure",
+      "observed": "Edited script to throw Browser deliberate failure; job e225dba1 showed actual failed node and error"
+    },
+    {
+      "feature": "Script cancellation",
+      "observed": "Edited infinite loop with 10000ms limit, queued and cancelled job b0ecff70; terminal node/job status cancelled"
+    },
+    {
+      "feature": "Palette placement repair",
+      "observed": "Adding Preview to a one-node graph produced a separate unoccupied position, then undo removed it"
+    },
+    {
+      "feature": "Editable tensor code",
+      "observed": "Created editable-forward template, changed ReLU to GELU and added scalar zero, then job ef3f77c6 succeeded with 25 actual parameters and ten optimizer steps"
+    },
+    {
+      "feature": "Responsive dimensions",
+      "observed": "Document client and scroll sizes matched at 1280x720, 900x700 and 390x844; explicit override reset afterward"
+    },
+    {
+      "feature": "Browser console",
+      "observed": "Final QA warning/error log read returned empty array"
+    },
+    {
+      "feature": "Original user project upgrade",
+      "observed": "Original tab reconnected to v2.0.0 and still displayed AdamW exploration with 142 steps; tab draft recovery download saved before reload"
+    },
+    {
+      "feature": "Full project save and reopen",
+      "observed": "Actual file chooser and confirmation restored 5 runs, 7 graphs, plugins, jobs and artifacts; complete corresponding state equal in independent HTTP comparison"
+    }
+  ],
+  "limitations": [
+    "Catalog execution covers each built-in type; it is not proof of every possible input combination or every upstream model.",
+    "Offline DOM regressions and backend tests provide separate coverage of control variants, malformed input, concurrency and persistence.",
+    "Viewport override screenshot capture timed out in the browser automation service; narrow-screen visual acceptance is not claimed.",
+    "A mouse dispatch on the older original tab timed out; the documented keyboard action succeeded, downloaded recovery data and completed reconnect. No browser warning or safety gate was bypassed.",
+    "The old internal error tab was not used; successful tests used the normal HTTP application pages."
+  ]
+}

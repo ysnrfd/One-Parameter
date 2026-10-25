@@ -1,0 +1,129 @@
+{
+  "status": "passed",
+  "audit_scope": "Independent static/download inspection; no model imported or run",
+  "browser_job": {
+    "file": "llama-browser.job.json",
+    "bytes": 97937,
+    "sha256": "25cd39c55a6c52369ddfd90521a0a835cef5432941a39926fecfda3907066a10",
+    "job_id": "80ada8885fa941f2bebaf9e02f558c79",
+    "graph_id": "6972c925d8d54b0685e5b148d089ed43",
+    "nodes_succeeded": 19,
+    "architecture": "LlamaForCausalLM",
+    "parameter_count": 78144,
+    "parameter_tensors": 21,
+    "module_count": 33,
+    "steps": 40,
+    "optimizer_state_tensors": 63,
+    "initial_loss": 3.488792896270752,
+    "trained_loss": 0.29380911588668823,
+    "restored_loss": 0.29380911588668823,
+    "state_sha256_before": "7b7e944150fa5a467914d7bd9b805b062460b4cac79d708c28dd135303bd25b4",
+    "state_sha256_after": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+    "reload_hash_equal": true,
+    "reload_loss_equal": true,
+    "pipeline_ids_equal_generate_ids": true,
+    "full_wordlevel_decode_equal": true,
+    "decoded_generation": [
+      "the cat sleeps on the mat . the mat .",
+      "the dog runs on the grass . the grass .",
+      "the sky is blue . the grass . the the"
+    ]
+  },
+  "browser_checkpoint": {
+    "file": "llama-browser-model.zip",
+    "bytes": 291655,
+    "sha256": "64bb9648c38ada8260a4d1d3598ab9a1037fa4658f90ee4cdb80a147a1f23781",
+    "descriptor_byte_identity": true,
+    "zip_crc_passed": true,
+    "members": [
+      "manifest.json",
+      "model.safetensors",
+      "recipe.json"
+    ],
+    "safetensors_header_valid": true,
+    "tensor_count": 21,
+    "all_float32_values_finite": true,
+    "tensor_names_shapes_equal_inspection": true,
+    "independently_reconstructed_state_sha256": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+    "manifest": {
+      "parameter_count": 78144,
+      "recipe_sha256": "6ba6ab63f0e0379136357a9d340f6669bef207086329843e92f4429ce49d9fd6",
+      "schema_version": "spobs-model-artifact/1",
+      "state_sha256": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+      "weight_bytes": 314680,
+      "weight_sha256": "dddf4987bf337f160c48b00160ba37c7ee5edb810b9820afbb298dc7b4edac4b"
+    }
+  },
+  "browser_python_program": {
+    "file": "llama-browser-workflow.py",
+    "bytes": 619306,
+    "sha256": "c270157a7420cd09d5b2cd1fd19fdecad90c3e01a68a632b367065db37962231",
+    "ast_inert_on_import": true,
+    "program_not_imported_or_executed_by_this_audit": true,
+    "embedded_project_sha256": "42b6be96c656c62db4f151c6dfd4d3cb5b6230599e2a9fd68c45d3b64fd62dfa",
+    "embedded_project_bytes": 1837216,
+    "embedded_project_hash_valid": true,
+    "application_version": "2.1.0",
+    "graph_id": "6972c925d8d54b0685e5b148d089ed43",
+    "embedded_graph_equal_browser_job_graph": true
+  },
+  "browser_export_python_execution": {
+    "job": {
+      "file": "llama-browser-python.job.json",
+      "bytes": 194250,
+      "sha256": "5b2e25155cdac517ebb695fd9f06fab7f9be279bcc8337fb241e5e08c0f351f2",
+      "job_id": "2db41b7f247a421a91109ccd6dcf92e4",
+      "graph_id": "6972c925d8d54b0685e5b148d089ed43",
+      "nodes_succeeded": 19,
+      "architecture": "LlamaForCausalLM",
+      "parameter_count": 78144,
+      "parameter_tensors": 21,
+      "module_count": 33,
+      "steps": 40,
+      "optimizer_state_tensors": 63,
+      "initial_loss": 3.488792896270752,
+      "trained_loss": 0.29380911588668823,
+      "restored_loss": 0.29380911588668823,
+      "state_sha256_before": "7b7e944150fa5a467914d7bd9b805b062460b4cac79d708c28dd135303bd25b4",
+      "state_sha256_after": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+      "reload_hash_equal": true,
+      "reload_loss_equal": true,
+      "pipeline_ids_equal_generate_ids": true,
+      "full_wordlevel_decode_equal": true,
+      "decoded_generation": [
+        "the cat sleeps on the mat . the mat .",
+        "the dog runs on the grass . the grass .",
+        "the sky is blue . the grass . the the"
+      ]
+    },
+    "checkpoint": {
+      "file": "a203aa7e8d1e47c0abf3ccd5648992be-transformers-model.zip",
+      "bytes": 291655,
+      "sha256": "aa2767aa36def1fe0eb3bc40592e148c24e88509d51a6e3b1bcaa03212a94463",
+      "descriptor_byte_identity": true,
+      "zip_crc_passed": true,
+      "members": [
+        "manifest.json",
+        "model.safetensors",
+        "recipe.json"
+      ],
+      "safetensors_header_valid": true,
+      "tensor_count": 21,
+      "all_float32_values_finite": true,
+      "tensor_names_shapes_equal_inspection": true,
+      "independently_reconstructed_state_sha256": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+      "manifest": {
+        "parameter_count": 78144,
+        "recipe_sha256": "6ba6ab63f0e0379136357a9d340f6669bef207086329843e92f4429ce49d9fd6",
+        "schema_version": "spobs-model-artifact/1",
+        "state_sha256": "42e39bb8da2d8b4350f7e65e296fff6807dafb30cd57f9ecb6c00c7535440ebb",
+        "weight_bytes": 314680,
+        "weight_sha256": "dddf4987bf337f160c48b00160ba37c7ee5edb810b9820afbb298dc7b4edac4b"
+      }
+    },
+    "graph_equal": true,
+    "stdout_equal_saved_job": true,
+    "final_weight_state_equal_browser": true,
+    "safetensors_bytes_equal_browser": true
+  }
+}

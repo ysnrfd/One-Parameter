@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "checks": {
+    "original_record_prefix_equal": true,
+    "original_config_equal": true,
+    "original_dataset_equal": true,
+    "original_graph_ids_retained": true
+  },
+  "original_records": 142,
+  "current_records": 200,
+  "graph_count": 4,
+  "job_statuses": [
+    "succeeded",
+    "succeeded"
+  ],
+  "note": "Newer workspace activity was observed during qualification and retained; no baseline restore was performed",
+  "current_project_sha256": "fe94ac13e25737ccc1e028636756f2c6e96333985dc3bf4773f5c4dc023c9daa"
+}

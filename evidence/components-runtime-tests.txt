@@ -1,0 +1,14 @@
+test_actual_isolated_worker_loads_trusted_sibling_and_replays_custom_model (single_parameter_observatory.tests.test_studio_components.TestStudioComponents.test_actual_isolated_worker_loads_trusted_sibling_and_replays_custom_model) ... ok
+test_budget_guard_runs_before_cpu_weight_allocation (single_parameter_observatory.tests.test_studio_components.TestStudioComponents.test_budget_guard_runs_before_cpu_weight_allocation) ... ok
+test_causality_padding_positions_and_shifted_loss (single_parameter_observatory.tests.test_studio_components.TestStudioComponents.test_causality_padding_positions_and_shifted_loss) ... ok
+test_custom_embedding_position_and_mask_blocks_support_actual_integer_axes_and_reload (single_parameter_observatory.tests.test_studio_components.TestStudioComponents.test_custom_embedding_position_and_mask_blocks_support_actual_integer_axes_and_reload) ... ok
+test_custom_norm_rope_attention_and_fused_swiglu_really_execute (single_parameter_observatory.tests.test_studio_components.TestStudioComponents.test_custom_norm_rope_attention_and_fused_swiglu_really_execute) ... ok
+test_graph_text_generation_pipeline_decodes_complete_sequences (single_parameter_observatory.tests.test_studio_components.TestStudioComponents.test_graph_text_generation_pipeline_decodes_complete_sequences) ... ok
+test_invalid_geometry_custom_syntax_and_disconnected_recipe_rejected (single_parameter_observatory.tests.test_studio_components.TestStudioComponents.test_invalid_geometry_custom_syntax_and_disconnected_recipe_rejected) ... ok
+test_registered_dag_matches_native_llama_logits_and_gradients (single_parameter_observatory.tests.test_studio_components.TestStudioComponents.test_registered_dag_matches_native_llama_logits_and_gradients) ... ok
+test_training_generation_checkpoint_and_deterministic_replay (single_parameter_observatory.tests.test_studio_components.TestStudioComponents.test_training_generation_checkpoint_and_deterministic_replay) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 40.026s
+
+OK

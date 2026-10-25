@@ -1,0 +1,200 @@
+{
+  "name": "Pinned cached HF fine-tuning and safe reload",
+  "description": "Load actual cached safetensors and matching fast tokenizer at an immutable Hub commit. Tokenize unequal-length texts, fine-tune with real AdamW, run the HF pipeline, export weights and reload without Hub access. Requires the separately cached public tiny fixture.",
+  "nodes": [
+    {
+      "id": "model",
+      "type": "hf.pretrained",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {
+        "repo_id": "hf-internal-testing/tiny-random-gpt2",
+        "revision": "71034c5d8bde858ff824298bdedc65515b97d2b9",
+        "task": "causal-lm"
+      }
+    },
+    {
+      "id": "tokenizer",
+      "type": "hf.auto_tokenizer",
+      "position": {
+        "x": 20,
+        "y": 350
+      },
+      "params": {
+        "repo_id": "hf-internal-testing/tiny-random-gpt2",
+        "revision": "71034c5d8bde858ff824298bdedc65515b97d2b9"
+      }
+    },
+    {
+      "id": "data",
+      "type": "hf.tokenize",
+      "position": {
+        "x": 350,
+        "y": 350
+      },
+      "params": {
+        "texts": [
+          "hello world",
+          "hello"
+        ],
+        "labels": "causal",
+        "max_length": 16
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 680,
+        "y": 350
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.0001
+      }
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "position": {
+        "x": 1010,
+        "y": 20
+      },
+      "params": {
+        "steps": 2,
+        "batch_size": 2,
+        "loss": "model"
+      }
+    },
+    {
+      "id": "pipeline",
+      "type": "hf.pipeline",
+      "position": {
+        "x": 1340,
+        "y": 20
+      },
+      "params": {
+        "task": "text-generation",
+        "texts": [
+          "hello world"
+        ],
+        "max_new_tokens": 3
+      }
+    },
+    {
+      "id": "before",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1670,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 2000,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "load",
+      "type": "hf.load",
+      "position": {
+        "x": 2330,
+        "y": 20
+      },
+      "params": {}
+    },
+    {
+      "id": "after",
+      "type": "hf.inspect",
+      "position": {
+        "x": 2660,
+        "y": 20
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "tokenizer:tokenizer-data:tokenizer",
+      "source": "tokenizer",
+      "source_port": "tokenizer",
+      "target": "data",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "model:model-train:model",
+      "source": "model",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-train:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer:optimizer-train:optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train:model-pipeline:model",
+      "source": "train",
+      "source_port": "model",
+      "target": "pipeline",
+      "target_port": "model"
+    },
+    {
+      "id": "tokenizer:tokenizer-pipeline:tokenizer",
+      "source": "tokenizer",
+      "source_port": "tokenizer",
+      "target": "pipeline",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "pipeline:model-before:model",
+      "source": "pipeline",
+      "source_port": "model",
+      "target": "before",
+      "target_port": "model"
+    },
+    {
+      "id": "before:model-checkpoint:model",
+      "source": "before",
+      "source_port": "model",
+      "target": "checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "checkpoint:artifact-load:artifact",
+      "source": "checkpoint",
+      "source_port": "artifact",
+      "target": "load",
+      "target_port": "artifact"
+    },
+    {
+      "id": "load:model-after:model",
+      "source": "load",
+      "source_port": "model",
+      "target": "after",
+      "target_port": "model"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.6
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: Title page for a forensic audit report with a dark blue background, large serif title, summary statistics, and footer information.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: N/A\nFIGURES: N/A\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857771,
+  "id": "202610012029296a6bdda9c78f4f80",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "202610012029296a6bdda9c78f4f80",
+  "usage": {
+    "completion_tokens": 62,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 2
+    },
+    "total_tokens": 2208
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "browser_interaction": "Actual save download, Open file chooser and Open project confirmation",
+  "checks": {
+    "runs": true,
+    "plugins": true,
+    "graphs": true,
+    "jobs": true,
+    "artifacts": true
+  },
+  "run_count": 5,
+  "graph_count": 7,
+  "job_count": 7,
+  "project_sha256": "5a4f276deb22e8a997fec4e53c6d2888e5b0dbc94c7d52eadab470acd5e45165"
+}

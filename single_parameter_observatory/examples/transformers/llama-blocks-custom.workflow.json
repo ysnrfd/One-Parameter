@@ -1,0 +1,859 @@
+{
+  "name": "Llama built from editable component blocks \u00b7 custom gate",
+  "description": "Every embedding, projection, RMSNorm, RoPE, attention, SwiGLU operation and residual is connected visually. The compiled graph replays for real training, generation and safetensors reload.",
+  "nodes": [
+    {
+      "id": "tokens",
+      "type": "hf.tensor_input",
+      "title": "Token IDs",
+      "position": {
+        "x": 0,
+        "y": 30
+      },
+      "params": {
+        "field": "input_ids",
+        "dtype": "int64"
+      }
+    },
+    {
+      "id": "mask",
+      "type": "hf.tensor_input",
+      "title": "Padding mask",
+      "position": {
+        "x": 0,
+        "y": 330
+      },
+      "params": {
+        "field": "attention_mask",
+        "dtype": "int64"
+      }
+    },
+    {
+      "id": "positions",
+      "type": "hf.op_positions",
+      "title": "Padding-aware position IDs",
+      "position": {
+        "x": 340,
+        "y": 340
+      },
+      "params": {}
+    },
+    {
+      "id": "embedding",
+      "type": "hf.op_embedding",
+      "title": "Token embedding \u00b7 32 \u00d7 hidden",
+      "position": {
+        "x": 340,
+        "y": 30
+      },
+      "params": {
+        "num_embeddings": 32,
+        "embedding_dim": 32
+      }
+    },
+    {
+      "id": "layer0-norm1",
+      "type": "hf.op_rmsnorm",
+      "title": "Decoder 1 \u00b7 attention RMSNorm",
+      "position": {
+        "x": 700,
+        "y": 30
+      },
+      "params": {
+        "normalized_shape": 32,
+        "eps": 1e-06
+      }
+    },
+    {
+      "id": "layer0-q",
+      "type": "hf.op_linear",
+      "title": "Q projection",
+      "position": {
+        "x": 1030,
+        "y": 0
+      },
+      "params": {
+        "in_features": 32,
+        "out_features": 32,
+        "bias": false
+      }
+    },
+    {
+      "id": "layer0-rope-q",
+      "type": "hf.op_rope",
+      "title": "RoPE \u00b7 Q",
+      "position": {
+        "x": 1360,
+        "y": 0
+      },
+      "params": {
+        "num_heads": 4,
+        "head_dim": 8,
+        "theta": 10000
+      }
+    },
+    {
+      "id": "layer0-k",
+      "type": "hf.op_linear",
+      "title": "K projection",
+      "position": {
+        "x": 1030,
+        "y": 420
+      },
+      "params": {
+        "in_features": 32,
+        "out_features": 16,
+        "bias": false
+      }
+    },
+    {
+      "id": "layer0-rope-k",
+      "type": "hf.op_rope",
+      "title": "RoPE \u00b7 K",
+      "position": {
+        "x": 1360,
+        "y": 420
+      },
+      "params": {
+        "num_heads": 2,
+        "head_dim": 8,
+        "theta": 10000
+      }
+    },
+    {
+      "id": "layer0-v",
+      "type": "hf.op_linear",
+      "title": "V projection",
+      "position": {
+        "x": 1030,
+        "y": 840
+      },
+      "params": {
+        "in_features": 32,
+        "out_features": 16,
+        "bias": false
+      }
+    },
+    {
+      "id": "layer0-attention",
+      "type": "hf.op_attention",
+      "title": "Grouped-query causal attention",
+      "position": {
+        "x": 1690,
+        "y": 30
+      },
+      "params": {
+        "num_heads": 4,
+        "num_key_value_heads": 2,
+        "head_dim": 8,
+        "causal": true,
+        "dropout": 0
+      }
+    },
+    {
+      "id": "layer0-out",
+      "type": "hf.op_linear",
+      "title": "Attention output projection",
+      "position": {
+        "x": 2020,
+        "y": 30
+      },
+      "params": {
+        "in_features": 32,
+        "out_features": 32,
+        "bias": false
+      }
+    },
+    {
+      "id": "layer0-residual1",
+      "type": "hf.op_add",
+      "title": "Attention residual",
+      "position": {
+        "x": 2350,
+        "y": 30
+      },
+      "params": {}
+    },
+    {
+      "id": "layer0-norm2",
+      "type": "hf.op_rmsnorm",
+      "title": "Feed-forward RMSNorm",
+      "position": {
+        "x": 2680,
+        "y": 30
+      },
+      "params": {
+        "normalized_shape": 32,
+        "eps": 1e-06
+      }
+    },
+    {
+      "id": "layer0-gate",
+      "type": "hf.op_linear",
+      "title": "SwiGLU gate projection",
+      "position": {
+        "x": 2680,
+        "y": 390
+      },
+      "params": {
+        "in_features": 32,
+        "out_features": 64,
+        "bias": false
+      }
+    },
+    {
+      "id": "layer0-up",
+      "type": "hf.op_linear",
+      "title": "SwiGLU up projection",
+      "position": {
+        "x": 2680,
+        "y": 810
+      },
+      "params": {
+        "in_features": 32,
+        "out_features": 64,
+        "bias": false
+      }
+    },
+    {
+      "id": "layer0-activation",
+      "type": "hf.op_custom",
+      "title": "Custom gate activation",
+      "position": {
+        "x": 3010,
+        "y": 390
+      },
+      "params": {
+        "code": "return silu(inputs['x'])",
+        "layers": {}
+      }
+    },
+    {
+      "id": "layer0-product",
+      "type": "hf.op_multiply",
+      "title": "Gate \u00d7 up",
+      "position": {
+        "x": 3340,
+        "y": 550
+      },
+      "params": {}
+    },
+    {
+      "id": "layer0-down",
+      "type": "hf.op_linear",
+      "title": "SwiGLU down projection",
+      "position": {
+        "x": 3340,
+        "y": 30
+      },
+      "params": {
+        "in_features": 64,
+        "out_features": 32,
+        "bias": false
+      }
+    },
+    {
+      "id": "layer0-residual2",
+      "type": "hf.op_add",
+      "title": "Feed-forward residual",
+      "position": {
+        "x": 3340,
+        "y": 1050
+      },
+      "params": {}
+    },
+    {
+      "id": "final-norm",
+      "type": "hf.op_rmsnorm",
+      "title": "Final RMSNorm",
+      "position": {
+        "x": 3700,
+        "y": 30
+      },
+      "params": {
+        "normalized_shape": 32,
+        "eps": 1e-06
+      }
+    },
+    {
+      "id": "lm-head",
+      "type": "hf.op_linear",
+      "title": "Vocabulary logits / LM head",
+      "position": {
+        "x": 4030,
+        "y": 30
+      },
+      "params": {
+        "in_features": 32,
+        "out_features": 32,
+        "bias": false
+      }
+    },
+    {
+      "id": "model",
+      "type": "hf.graph_model",
+      "title": "Compile connected decoder graph",
+      "position": {
+        "x": 4360,
+        "y": 30
+      },
+      "params": {
+        "vocab_size": 32,
+        "max_positions": 64,
+        "pad_token_id": 0,
+        "bos_token_id": 2,
+        "eos_token_id": 3,
+        "seed": 42
+      }
+    },
+    {
+      "id": "tokenizer",
+      "type": "hf.tokenizer",
+      "title": "Local editable vocabulary",
+      "position": {
+        "x": 0,
+        "y": 1350
+      },
+      "params": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "the": 4,
+          "cat": 5,
+          "dog": 6,
+          "bird": 7,
+          "sleeps": 8,
+          "runs": 9,
+          "sings": 10,
+          "on": 11,
+          "mat": 12,
+          "grass": 13,
+          "tree": 14,
+          ".": 15,
+          "a": 16,
+          "small": 17,
+          "happy": 18,
+          "red": 19,
+          "blue": 20,
+          "green": 21,
+          "sees": 22,
+          "sun": 23,
+          "moon": 24,
+          "is": 25,
+          "and": 26,
+          "quiet": 27,
+          "soft": 28,
+          "warm": 29,
+          "sky": 30,
+          "cloud": 31
+        },
+        "lowercase": true
+      }
+    },
+    {
+      "id": "data",
+      "type": "hf.tokenize",
+      "title": "Eight training sentences",
+      "position": {
+        "x": 340,
+        "y": 1350
+      },
+      "params": {
+        "texts": [
+          "the cat sleeps on the mat .",
+          "the dog runs on the grass .",
+          "the bird sings on the tree .",
+          "a small cat sees the moon .",
+          "a happy dog sees the sun .",
+          "the sky is blue .",
+          "the grass is green .",
+          "the sun is warm ."
+        ],
+        "max_length": 32,
+        "labels": "causal"
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "title": "AdamW",
+      "position": {
+        "x": 4030,
+        "y": 1350
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.003,
+        "weight_decay": 0.01
+      }
+    },
+    {
+      "id": "initial-eval",
+      "type": "hf.evaluate",
+      "title": "Initial causal loss",
+      "position": {
+        "x": 4690,
+        "y": 30
+      },
+      "params": {
+        "loss": "model"
+      }
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "title": "Train the connected architecture",
+      "position": {
+        "x": 5020,
+        "y": 30
+      },
+      "params": {
+        "steps": 20,
+        "batch_size": 8,
+        "loss": "model",
+        "clip_grad_norm": 1
+      }
+    },
+    {
+      "id": "trained-eval",
+      "type": "hf.evaluate",
+      "title": "Trained causal loss",
+      "position": {
+        "x": 5350,
+        "y": 30
+      },
+      "params": {
+        "loss": "model"
+      }
+    },
+    {
+      "id": "inspect",
+      "type": "hf.inspect",
+      "title": "Actual connected module and weight inventory",
+      "position": {
+        "x": 5680,
+        "y": 30
+      },
+      "params": {}
+    },
+    {
+      "id": "checkpoint",
+      "type": "hf.checkpoint",
+      "title": "Save graph recipe + trained weights",
+      "position": {
+        "x": 6010,
+        "y": 30
+      },
+      "params": {}
+    },
+    {
+      "id": "reload",
+      "type": "hf.load",
+      "title": "Rebuild the same graph and reload",
+      "position": {
+        "x": 6340,
+        "y": 30
+      },
+      "params": {}
+    },
+    {
+      "id": "reload-eval",
+      "type": "hf.evaluate",
+      "title": "Reloaded causal loss",
+      "position": {
+        "x": 6670,
+        "y": 30
+      },
+      "params": {
+        "loss": "model"
+      }
+    },
+    {
+      "id": "prompts",
+      "type": "hf.tokenize",
+      "title": "Generation prompts",
+      "position": {
+        "x": 6670,
+        "y": 390
+      },
+      "params": {
+        "texts": [
+          "the cat",
+          "the dog",
+          "the sky"
+        ],
+        "max_length": 16,
+        "labels": "none"
+      }
+    },
+    {
+      "id": "generate",
+      "type": "hf.generate",
+      "title": "Generate with the connected decoder",
+      "position": {
+        "x": 7000,
+        "y": 30
+      },
+      "params": {
+        "max_new_tokens": 8,
+        "do_sample": false
+      }
+    },
+    {
+      "id": "pipeline",
+      "type": "hf.pipeline",
+      "title": "Decode generated text",
+      "position": {
+        "x": 7330,
+        "y": 30
+      },
+      "params": {
+        "task": "text-generation",
+        "texts": [
+          "the cat",
+          "the dog",
+          "the sky"
+        ],
+        "max_new_tokens": 8
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "mask-x-positions-x",
+      "source": "mask",
+      "source_port": "x",
+      "target": "positions",
+      "target_port": "x"
+    },
+    {
+      "id": "tokens-x-embedding-x",
+      "source": "tokens",
+      "source_port": "x",
+      "target": "embedding",
+      "target_port": "x"
+    },
+    {
+      "id": "embedding-x-layer0-norm1-x",
+      "source": "embedding",
+      "source_port": "x",
+      "target": "layer0-norm1",
+      "target_port": "x"
+    },
+    {
+      "id": "layer0-norm1-x-layer0-q-x",
+      "source": "layer0-norm1",
+      "source_port": "x",
+      "target": "layer0-q",
+      "target_port": "x"
+    },
+    {
+      "id": "layer0-q-x-layer0-rope-q-x",
+      "source": "layer0-q",
+      "source_port": "x",
+      "target": "layer0-rope-q",
+      "target_port": "x"
+    },
+    {
+      "id": "positions-x-layer0-rope-q-positions",
+      "source": "positions",
+      "source_port": "x",
+      "target": "layer0-rope-q",
+      "target_port": "positions"
+    },
+    {
+      "id": "layer0-norm1-x-layer0-k-x",
+      "source": "layer0-norm1",
+      "source_port": "x",
+      "target": "layer0-k",
+      "target_port": "x"
+    },
+    {
+      "id": "layer0-k-x-layer0-rope-k-x",
+      "source": "layer0-k",
+      "source_port": "x",
+      "target": "layer0-rope-k",
+      "target_port": "x"
+    },
+    {
+      "id": "positions-x-layer0-rope-k-positions",
+      "source": "positions",
+      "source_port": "x",
+      "target": "layer0-rope-k",
+      "target_port": "positions"
+    },
+    {
+      "id": "layer0-norm1-x-layer0-v-x",
+      "source": "layer0-norm1",
+      "source_port": "x",
+      "target": "layer0-v",
+      "target_port": "x"
+    },
+    {
+      "id": "layer0-rope-q-x-layer0-attention-q",
+      "source": "layer0-rope-q",
+      "source_port": "x",
+      "target": "layer0-attention",
+      "target_port": "q"
+    },
+    {
+      "id": "layer0-rope-k-x-layer0-attention-k",
+      "source": "layer0-rope-k",
+      "source_port": "x",
+      "target": "layer0-attention",
+      "target_port": "k"
+    },
+    {
+      "id": "layer0-v-x-layer0-attention-v",
+      "source": "layer0-v",
+      "source_port": "x",
+      "target": "layer0-attention",
+      "target_port": "v"
+    },
+    {
+      "id": "mask-x-layer0-attention-mask",
+      "source": "mask",
+      "source_port": "x",
+      "target": "layer0-attention",
+      "target_port": "mask"
+    },
+    {
+      "id": "layer0-attention-x-layer0-out-x",
+      "source": "layer0-attention",
+      "source_port": "x",
+      "target": "layer0-out",
+      "target_port": "x"
+    },
+    {
+      "id": "embedding-x-layer0-residual1-a",
+      "source": "embedding",
+      "source_port": "x",
+      "target": "layer0-residual1",
+      "target_port": "a"
+    },
+    {
+      "id": "layer0-out-x-layer0-residual1-b",
+      "source": "layer0-out",
+      "source_port": "x",
+      "target": "layer0-residual1",
+      "target_port": "b"
+    },
+    {
+      "id": "layer0-residual1-x-layer0-norm2-x",
+      "source": "layer0-residual1",
+      "source_port": "x",
+      "target": "layer0-norm2",
+      "target_port": "x"
+    },
+    {
+      "id": "layer0-norm2-x-layer0-gate-x",
+      "source": "layer0-norm2",
+      "source_port": "x",
+      "target": "layer0-gate",
+      "target_port": "x"
+    },
+    {
+      "id": "layer0-norm2-x-layer0-up-x",
+      "source": "layer0-norm2",
+      "source_port": "x",
+      "target": "layer0-up",
+      "target_port": "x"
+    },
+    {
+      "id": "layer0-gate-x-layer0-activation-x",
+      "source": "layer0-gate",
+      "source_port": "x",
+      "target": "layer0-activation",
+      "target_port": "x"
+    },
+    {
+      "id": "layer0-activation-x-layer0-product-a",
+      "source": "layer0-activation",
+      "source_port": "x",
+      "target": "layer0-product",
+      "target_port": "a"
+    },
+    {
+      "id": "layer0-up-x-layer0-product-b",
+      "source": "layer0-up",
+      "source_port": "x",
+      "target": "layer0-product",
+      "target_port": "b"
+    },
+    {
+      "id": "layer0-product-x-layer0-down-x",
+      "source": "layer0-product",
+      "source_port": "x",
+      "target": "layer0-down",
+      "target_port": "x"
+    },
+    {
+      "id": "layer0-residual1-x-layer0-residual2-a",
+      "source": "layer0-residual1",
+      "source_port": "x",
+      "target": "layer0-residual2",
+      "target_port": "a"
+    },
+    {
+      "id": "layer0-down-x-layer0-residual2-b",
+      "source": "layer0-down",
+      "source_port": "x",
+      "target": "layer0-residual2",
+      "target_port": "b"
+    },
+    {
+      "id": "layer0-residual2-x-final-norm-x",
+      "source": "layer0-residual2",
+      "source_port": "x",
+      "target": "final-norm",
+      "target_port": "x"
+    },
+    {
+      "id": "final-norm-x-lm-head-x",
+      "source": "final-norm",
+      "source_port": "x",
+      "target": "lm-head",
+      "target_port": "x"
+    },
+    {
+      "id": "lm-head-x-model-logits",
+      "source": "lm-head",
+      "source_port": "x",
+      "target": "model",
+      "target_port": "logits"
+    },
+    {
+      "id": "tokenizer-tokenizer-data-tokenizer",
+      "source": "tokenizer",
+      "source_port": "tokenizer",
+      "target": "data",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "model-model-initial-eval-model",
+      "source": "model",
+      "source_port": "model",
+      "target": "initial-eval",
+      "target_port": "model"
+    },
+    {
+      "id": "data-data-initial-eval-data",
+      "source": "data",
+      "source_port": "data",
+      "target": "initial-eval",
+      "target_port": "data"
+    },
+    {
+      "id": "initial-eval-model-train-model",
+      "source": "initial-eval",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data-data-train-data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer-optimizer-train-optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train-model-trained-eval-model",
+      "source": "train",
+      "source_port": "model",
+      "target": "trained-eval",
+      "target_port": "model"
+    },
+    {
+      "id": "trained-eval-model-inspect-model",
+      "source": "trained-eval",
+      "source_port": "model",
+      "target": "inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "inspect-model-checkpoint-model",
+      "source": "inspect",
+      "source_port": "model",
+      "target": "checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "reload-model-reload-eval-model",
+      "source": "reload",
+      "source_port": "model",
+      "target": "reload-eval",
+      "target_port": "model"
+    },
+    {
+      "id": "reload-eval-model-generate-model",
+      "source": "reload-eval",
+      "source_port": "model",
+      "target": "generate",
+      "target_port": "model"
+    },
+    {
+      "id": "generate-model-pipeline-model",
+      "source": "generate",
+      "source_port": "model",
+      "target": "pipeline",
+      "target_port": "model"
+    },
+    {
+      "id": "data-data-trained-eval-data",
+      "source": "data",
+      "source_port": "data",
+      "target": "trained-eval",
+      "target_port": "data"
+    },
+    {
+      "id": "data-data-reload-eval-data",
+      "source": "data",
+      "source_port": "data",
+      "target": "reload-eval",
+      "target_port": "data"
+    },
+    {
+      "id": "checkpoint-artifact-reload-artifact",
+      "source": "checkpoint",
+      "source_port": "artifact",
+      "target": "reload",
+      "target_port": "artifact"
+    },
+    {
+      "id": "tokenizer-tokenizer-prompts-tokenizer",
+      "source": "tokenizer",
+      "source_port": "tokenizer",
+      "target": "prompts",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "prompts-data-generate-data",
+      "source": "prompts",
+      "source_port": "data",
+      "target": "generate",
+      "target_port": "data"
+    },
+    {
+      "id": "tokenizer-tokenizer-pipeline-tokenizer",
+      "source": "tokenizer",
+      "source_port": "tokenizer",
+      "target": "pipeline",
+      "target_port": "tokenizer"
+    }
+  ],
+  "view": {
+    "x": 25,
+    "y": 40,
+    "zoom": 0.55
+  }
+}

@@ -1,0 +1,444 @@
+RUF100 [*] Unused `noqa` directive (non-enabled: `BLE001`)
+  --> scripts\_run_preset_sweep_enterprise.py:82:31
+   |
+80 |                 engine.recorder, figdir, engine.analyzer
+81 |             )
+82 |     except Exception as exc:  # noqa: BLE001 - evidence sweep must record failures
+   |                               ^^^^^^^^^^^^^^
+83 |         entry.update({"status": f"FAILED: {type(exc).__name__}: {exc}"})
+84 |     summary[name] = entry
+   |
+help: Remove unused `noqa` directive
+   |
+81 |             )
+   -     except Exception as exc:  # noqa: BLE001 - evidence sweep must record failures
+82 +     except Exception as exc:
+83 |         entry.update({"status": f"FAILED: {type(exc).__name__}: {exc}"})
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `BLE001`)
+   --> scripts\_run_preset_sweep_enterprise.py:119:27
+    |
+117 |         "status": "OK",
+118 |     }
+119 | except Exception as exc:  # noqa: BLE001
+    |                           ^^^^^^^^^^^^^^
+120 |     gui_entry = {"status": f"FAILED: {type(exc).__name__}: {exc}"}
+121 | print(f"[gui] {gui_entry}", flush=True)
+    |
+help: Remove unused `noqa` directive
+    |
+118 |     }
+    - except Exception as exc:  # noqa: BLE001
+119 + except Exception as exc:
+120 |     gui_entry = {"status": f"FAILED: {type(exc).__name__}: {exc}"}
+    |
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:20:1
+   |
+18 | sys.path.insert(0, os.path.join(PDF_SKILL_DIR, "scripts"))
+19 |
+20 | from reportlab.lib import colors
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21 | from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT, TA_RIGHT
+22 | from reportlab.lib.pagesizes import A4
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:21:1
+   |
+20 | from reportlab.lib import colors
+21 | from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT, TA_RIGHT
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22 | from reportlab.lib.pagesizes import A4
+23 | from reportlab.lib.styles import ParagraphStyle
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:22:1
+   |
+20 | from reportlab.lib import colors
+21 | from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT, TA_RIGHT
+22 | from reportlab.lib.pagesizes import A4
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23 | from reportlab.lib.styles import ParagraphStyle
+24 | from reportlab.pdfbase import pdfmetrics
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:23:1
+   |
+21 | from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT, TA_RIGHT
+22 | from reportlab.lib.pagesizes import A4
+23 | from reportlab.lib.styles import ParagraphStyle
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+24 | from reportlab.pdfbase import pdfmetrics
+25 | from reportlab.pdfbase.pdfmetrics import registerFontFamily
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:24:1
+   |
+22 | from reportlab.lib.pagesizes import A4
+23 | from reportlab.lib.styles import ParagraphStyle
+24 | from reportlab.pdfbase import pdfmetrics
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+25 | from reportlab.pdfbase.pdfmetrics import registerFontFamily
+26 | from reportlab.pdfbase.ttfonts import TTFont
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:25:1
+   |
+23 | from reportlab.lib.styles import ParagraphStyle
+24 | from reportlab.pdfbase import pdfmetrics
+25 | from reportlab.pdfbase.pdfmetrics import registerFontFamily
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 | from reportlab.pdfbase.ttfonts import TTFont
+27 | from reportlab.platypus import (
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:26:1
+   |
+24 | from reportlab.pdfbase import pdfmetrics
+25 | from reportlab.pdfbase.pdfmetrics import registerFontFamily
+26 | from reportlab.pdfbase.ttfonts import TTFont
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+27 | from reportlab.platypus import (
+28 |     CondPageBreak,
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:27:1
+   |
+25 |   from reportlab.pdfbase.pdfmetrics import registerFontFamily
+26 |   from reportlab.pdfbase.ttfonts import TTFont
+27 | / from reportlab.platypus import (
+28 | |     CondPageBreak,
+29 | |     HRFlowable,
+30 | |     Image,
+31 | |     KeepTogether,
+32 | |     PageBreak,
+33 | |     Paragraph,
+34 | |     SimpleDocTemplate,
+35 | |     Spacer,
+36 | |     Table,
+37 | |     TableStyle,
+38 | | )
+   | |_^
+39 |   from reportlab.platypus.tableofcontents import TableOfContents
+40 |   from PIL import Image as PILImage
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:39:1
+   |
+37 |     TableStyle,
+38 | )
+39 | from reportlab.platypus.tableofcontents import TableOfContents
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 | from PIL import Image as PILImage
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\build_audit_pdf.py:40:1
+   |
+38 | )
+39 | from reportlab.platypus.tableofcontents import TableOfContents
+40 | from PIL import Image as PILImage
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+41 |
+42 | # ---------------------------------------------------------------- fonts ----
+   |
+help: Move module level imports to top of file
+
+F401 [*] `single_parameter_observatory.visualization` imported but unused
+  --> scripts\diagnose_series_bug.py:16:70
+   |
+14 | sys.path.insert(0, ROOT)
+15 |
+16 | from single_parameter_observatory import dashboard, visualization as viz  # noqa: E402
+   |                                                                      ^^^
+17 | from single_parameter_observatory.config import PRESETS  # noqa: E402
+18 | from single_parameter_observatory.training_engine import TrainingEngine  # noqa: E402
+   |
+help: Remove unused import: `single_parameter_observatory.visualization`
+   |
+15 |
+   - from single_parameter_observatory import dashboard, visualization as viz  # noqa: E402
+16 + from single_parameter_observatory import dashboard  # noqa: E402
+17 | from single_parameter_observatory.config import PRESETS  # noqa: E402
+   |
+
+E741 Ambiguous variable name: `l`
+  --> scripts\diagnose_series_bug.py:40:58
+   |
+38 |     print(f"--- {tag} ---")
+39 |     print(f"  records: {len(engine.recorder)}")
+40 |     print(f"  ax.lines: {len(ax.lines)}  ids={[id(l) for l in ax.lines][:6]}")
+   |                                                          ^
+41 |     for key in ("series:parameter_after", "series:loss"):
+42 |         line = panel._animated.get(key)
+   |
+
+ICN001 `matplotlib` should be imported as `mpl`
+  --> scripts\diagnose_series_bug.py:82:8
+   |
+81 | # --- isolated reproduction of the suspected save path -------------------------
+82 | import matplotlib  # noqa: E402
+   |        ^^^^^^^^^^
+83 |
+84 | matplotlib.use("Agg", force=True)
+   |
+help: Alias `matplotlib` to `mpl`
+   |
+81 | # --- isolated reproduction of the suspected save path -------------------------
+   - import matplotlib  # noqa: E402
+82 + import matplotlib as mpl  # noqa: E402
+83 |
+   - matplotlib.use("Agg", force=True)
+84 + mpl.use("Agg", force=True)
+85 | import matplotlib.pyplot as plt  # noqa: E402
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+F401 [*] `re` imported but unused
+ --> scripts\fix_test_typing.py:6:8
+  |
+5 | import pathlib
+6 | import re
+  |        ^^
+7 |
+8 | ROOT = pathlib.Path("/home/z/my-project/single_parameter_observatory/tests")
+  |
+help: Remove unused import: `re`
+  |
+5 | import pathlib
+  - import re
+6 |
+  |
+
+ICN001 `matplotlib` should be imported as `mpl`
+ --> scripts\make_audit_charts.py:5:8
+  |
+3 | from __future__ import annotations
+4 |
+5 | import matplotlib
+  |        ^^^^^^^^^^
+6 |
+7 | matplotlib.use("Agg", force=True)
+  |
+help: Alias `matplotlib` to `mpl`
+  |
+4 |
+  - import matplotlib
+5 + import matplotlib as mpl
+6 |
+  - matplotlib.use("Agg", force=True)
+7 + mpl.use("Agg", force=True)
+8 | import matplotlib.font_manager as fm
+  |
+note: This is an unsafe fix and may change runtime behavior
+
+E402 Module level import not at top of file
+  --> scripts\make_audit_charts.py:12:1
+   |
+10 | fm.fontManager.addfont("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
+11 |
+12 | import matplotlib.pyplot as plt
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+13 |
+14 | plt.rcParams["font.sans-serif"] = ["DejaVu Sans"]
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\make_audit_charts.py:26:1
+   |
+25 | OUT = "/home/z/my-project/evidence/report_assets"
+26 | import os
+   | ^^^^^^^^^
+27 |
+28 | os.makedirs(OUT, exist_ok=True)
+   |
+help: Move module level imports to top of file
+
+B905 `zip()` without an explicit `strict=` parameter
+  --> scripts\make_audit_charts.py:42:20
+   |
+40 | bars_b = ax.bar([f + width / 2 for f in frames], after, width,
+41 |                 label="1.1.0 (after fix)", color=ACCENT, edgecolor="none")
+42 | for rect, value in zip(bars_b, after):
+   |                    ^^^^^^^^^^^^^^^^^^
+43 |     if value > 0:
+44 |         ax.annotate(f"{value:.1f}", xy=(rect.get_x() + rect.get_width() / 2, value),
+   |
+help: Add explicit value for parameter `strict=`
+   |
+41 |                 label="1.1.0 (after fix)", color=ACCENT, edgecolor="none")
+   - for rect, value in zip(bars_b, after):
+42 + for rect, value in zip(bars_b, after, strict=False):
+43 |     if value > 0:
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+B905 `zip()` without an explicit `strict=` parameter
+  --> scripts\make_audit_charts.py:75:20
+   |
+73 | bars = ax.barh(labels[::-1], counts[::-1], color=colors[::-1], height=0.62,
+74 |                edgecolor="none")
+75 | for rect, value in zip(bars, counts[::-1]):
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^
+76 |     ax.annotate(f"{value}", xy=(value, rect.get_y() + rect.get_height() / 2),
+77 |                 xytext=(5, 0), textcoords="offset points",
+   |
+help: Add explicit value for parameter `strict=`
+   |
+74 |                edgecolor="none")
+   - for rect, value in zip(bars, counts[::-1]):
+75 + for rect, value in zip(bars, counts[::-1], strict=False):
+76 |     ax.annotate(f"{value}", xy=(value, rect.get_y() + rect.get_height() / 2),
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+ICN001 `matplotlib` should be imported as `mpl`
+  --> scripts\make_frame_compare.py:10:8
+   |
+ 8 | from __future__ import annotations
+ 9 |
+10 | import matplotlib
+   |        ^^^^^^^^^^
+11 |
+12 | matplotlib.use("Agg", force=True)
+   |
+help: Alias `matplotlib` to `mpl`
+   |
+9  |
+   - import matplotlib
+10 + import matplotlib as mpl
+11 |
+   - matplotlib.use("Agg", force=True)
+12 + mpl.use("Agg", force=True)
+13 | import matplotlib.font_manager as fm
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+E402 Module level import not at top of file
+  --> scripts\make_frame_compare.py:17:1
+   |
+15 | fm.fontManager.addfont("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
+16 |
+17 | import matplotlib.pyplot as plt
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18 | from PIL import Image
+   |
+help: Move module level imports to top of file
+
+E402 Module level import not at top of file
+  --> scripts\make_frame_compare.py:18:1
+   |
+17 | import matplotlib.pyplot as plt
+18 | from PIL import Image
+   | ^^^^^^^^^^^^^^^^^^^^^
+19 |
+20 | plt.rcParams["font.sans-serif"] = ["DejaVu Sans"]
+   |
+help: Move module level imports to top of file
+
+PLC0415 `import` should be at the top-level of a file
+  --> scripts\make_frame_compare.py:35:5
+   |
+34 | def crop_series_panel(path: str):
+35 |     from PIL import Image
+   |     ^^^^^^^^^^^^^^^^^^^^^
+36 |
+37 |     im = Image.open(path).convert("RGB")
+   |
+
+F841 Local variable `r` is assigned to but never used
+  --> scripts\pixel_analyze_frames.py:25:5
+   |
+23 |     y0, y1 = int(h * 0.09), int(h * 0.47)
+24 |     region = im[y0:y1, x0:x1]
+25 |     r, g, b = region[..., 0], region[..., 1], region[..., 2]
+   |     ^
+26 |     mx = region.max(axis=2)
+27 |     mn = region.min(axis=2)
+   |
+help: Remove assignment to unused variable `r`
+   |
+24 |     region = im[y0:y1, x0:x1]
+   -     r, g, b = region[..., 0], region[..., 1], region[..., 2]
+25 +     _r, g, b = region[..., 0], region[..., 1], region[..., 2]
+26 |     mx = region.max(axis=2)
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+F841 Local variable `g` is assigned to but never used
+  --> scripts\pixel_analyze_frames.py:25:8
+   |
+23 |     y0, y1 = int(h * 0.09), int(h * 0.47)
+24 |     region = im[y0:y1, x0:x1]
+25 |     r, g, b = region[..., 0], region[..., 1], region[..., 2]
+   |        ^
+26 |     mx = region.max(axis=2)
+27 |     mn = region.min(axis=2)
+   |
+help: Remove assignment to unused variable `g`
+   |
+24 |     region = im[y0:y1, x0:x1]
+   -     r, g, b = region[..., 0], region[..., 1], region[..., 2]
+25 +     r, _g, b = region[..., 0], region[..., 1], region[..., 2]
+26 |     mx = region.max(axis=2)
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+F841 Local variable `b` is assigned to but never used
+  --> scripts\pixel_analyze_frames.py:25:11
+   |
+23 |     y0, y1 = int(h * 0.09), int(h * 0.47)
+24 |     region = im[y0:y1, x0:x1]
+25 |     r, g, b = region[..., 0], region[..., 1], region[..., 2]
+   |           ^
+26 |     mx = region.max(axis=2)
+27 |     mn = region.min(axis=2)
+   |
+help: Remove assignment to unused variable `b`
+   |
+24 |     region = im[y0:y1, x0:x1]
+   -     r, g, b = region[..., 0], region[..., 1], region[..., 2]
+25 +     r, g, _b = region[..., 0], region[..., 1], region[..., 2]
+26 |     mx = region.max(axis=2)
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+F401 [*] `traceback` imported but unused
+  --> scripts\probe_diverging_export.py:8:8
+   |
+ 6 | import os
+ 7 | import sys
+ 8 | import traceback
+   |        ^^^^^^^^^
+ 9 |
+10 | ROOT = "/home/z/my-project"
+   |
+help: Remove unused import: `traceback`
+  |
+7 | import sys
+  - import traceback
+8 |
+  |
+
+Found 29 errors.
+[*] 5 fixable with `--fix` (8 unsafe fixes available with `--fix --unsafe-fixes`).

@@ -1,0 +1,858 @@
+{
+  "status": "passed",
+  "version": "2.2.0",
+  "variants": {
+    "expanded": {
+      "status": "passed",
+      "version": "2.2.0",
+      "job_id": "321434928f21448fb4c1dac2a016a729",
+      "nodes_succeeded": 36,
+      "snapshot_sha256": "ed42df562801c99449e9f01381c77efc67032dca8334e1e9f85403d6316fb2cb",
+      "architecture": "TensorGraphCausalLM",
+      "parameters": 11360,
+      "parameter_tensors": 12,
+      "modules": 24,
+      "steps": 20,
+      "initial_loss": 3.59210205078125,
+      "trained_loss": 1.398547887802124,
+      "reloaded_loss": 1.398547887802124,
+      "state_sha256": "15723c7e3f31dcf6fd6f920b7458ba725e968611621ce75f14a8c3e6fbbfa684",
+      "generated": {
+        "attention_mask": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "input_ids": [
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            30
+          ]
+        ],
+        "max_new_tokens": 8,
+        "sequences": [
+          [
+            4,
+            5,
+            8,
+            11,
+            4,
+            23,
+            15,
+            15,
+            15,
+            15
+          ],
+          [
+            4,
+            6,
+            9,
+            11,
+            4,
+            23,
+            15,
+            15,
+            15,
+            15
+          ],
+          [
+            4,
+            30,
+            25,
+            20,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ]
+        ],
+        "shape": [
+          3,
+          10
+        ]
+      },
+      "decoded": [
+        [
+          {
+            "generated_text": "the cat sleeps on the sun . . . .",
+            "generated_token_ids": [
+              4,
+              5,
+              8,
+              11,
+              4,
+              23,
+              15,
+              15,
+              15,
+              15
+            ]
+          }
+        ],
+        [
+          {
+            "generated_text": "the dog runs on the sun . . . .",
+            "generated_token_ids": [
+              4,
+              6,
+              9,
+              11,
+              4,
+              23,
+              15,
+              15,
+              15,
+              15
+            ]
+          }
+        ],
+        [
+          {
+            "generated_text": "the sky is blue . . . . . .",
+            "generated_token_ids": [
+              4,
+              30,
+              25,
+              20,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ]
+          }
+        ]
+      ],
+      "python_replay": {
+        "status": "passed",
+        "version": "2.2.0",
+        "job_id": "8d80fe125dae46dea791568d9c4aa59e",
+        "nodes_succeeded": 36,
+        "snapshot_sha256": "ed42df562801c99449e9f01381c77efc67032dca8334e1e9f85403d6316fb2cb",
+        "architecture": "TensorGraphCausalLM",
+        "parameters": 11360,
+        "parameter_tensors": 12,
+        "modules": 24,
+        "steps": 20,
+        "initial_loss": 3.59210205078125,
+        "trained_loss": 1.398547887802124,
+        "reloaded_loss": 1.398547887802124,
+        "state_sha256": "15723c7e3f31dcf6fd6f920b7458ba725e968611621ce75f14a8c3e6fbbfa684",
+        "generated": {
+          "attention_mask": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "input_ids": [
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              30
+            ]
+          ],
+          "max_new_tokens": 8,
+          "sequences": [
+            [
+              4,
+              5,
+              8,
+              11,
+              4,
+              23,
+              15,
+              15,
+              15,
+              15
+            ],
+            [
+              4,
+              6,
+              9,
+              11,
+              4,
+              23,
+              15,
+              15,
+              15,
+              15
+            ],
+            [
+              4,
+              30,
+              25,
+              20,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ]
+          ],
+          "shape": [
+            3,
+            10
+          ]
+        },
+        "decoded": [
+          [
+            {
+              "generated_text": "the cat sleeps on the sun . . . .",
+              "generated_token_ids": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                23,
+                15,
+                15,
+                15,
+                15
+              ]
+            }
+          ],
+          [
+            {
+              "generated_text": "the dog runs on the sun . . . .",
+              "generated_token_ids": [
+                4,
+                6,
+                9,
+                11,
+                4,
+                23,
+                15,
+                15,
+                15,
+                15
+              ]
+            }
+          ],
+          [
+            {
+              "generated_text": "the sky is blue . . . . . .",
+              "generated_token_ids": [
+                4,
+                30,
+                25,
+                20,
+                15,
+                15,
+                15,
+                15,
+                15,
+                15
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    "custom-two-layer": {
+      "status": "passed",
+      "version": "2.2.0",
+      "job_id": "8ca1ed08bdef49268b2010e98287e1d3",
+      "nodes_succeeded": 52,
+      "snapshot_sha256": "31f4eb6b423c318da572cbd3dafd72d88aea479b1554559e0806587f4443f416",
+      "architecture": "TensorGraphCausalLM",
+      "parameters": 12024,
+      "parameter_tensors": 21,
+      "modules": 42,
+      "steps": 25,
+      "initial_loss": 3.5534703731536865,
+      "trained_loss": 1.1926087141036987,
+      "reloaded_loss": 1.1926087141036987,
+      "state_sha256": "446b5453e1bfe38381a42caf1da55d4d59096c74648ded86d35ba0fcf2e6bdaa",
+      "generated": {
+        "attention_mask": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "input_ids": [
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            30
+          ]
+        ],
+        "max_new_tokens": 8,
+        "sequences": [
+          [
+            4,
+            5,
+            8,
+            11,
+            4,
+            14,
+            15,
+            15,
+            15,
+            11
+          ],
+          [
+            4,
+            6,
+            9,
+            11,
+            4,
+            23,
+            15,
+            15,
+            11,
+            4
+          ],
+          [
+            4,
+            30,
+            25,
+            20,
+            15,
+            15,
+            15,
+            15,
+            11,
+            4
+          ]
+        ],
+        "shape": [
+          3,
+          10
+        ]
+      },
+      "decoded": [
+        [
+          {
+            "generated_text": "the cat sleeps on the tree . . . on",
+            "generated_token_ids": [
+              4,
+              5,
+              8,
+              11,
+              4,
+              14,
+              15,
+              15,
+              15,
+              11
+            ]
+          }
+        ],
+        [
+          {
+            "generated_text": "the dog runs on the sun . . on the",
+            "generated_token_ids": [
+              4,
+              6,
+              9,
+              11,
+              4,
+              23,
+              15,
+              15,
+              11,
+              4
+            ]
+          }
+        ],
+        [
+          {
+            "generated_text": "the sky is blue . . . . on the",
+            "generated_token_ids": [
+              4,
+              30,
+              25,
+              20,
+              15,
+              15,
+              15,
+              15,
+              11,
+              4
+            ]
+          }
+        ]
+      ],
+      "python_replay": {
+        "status": "passed",
+        "version": "2.2.0",
+        "job_id": "3707b9eacd874c02905ad7ec3e803ace",
+        "nodes_succeeded": 52,
+        "snapshot_sha256": "31f4eb6b423c318da572cbd3dafd72d88aea479b1554559e0806587f4443f416",
+        "architecture": "TensorGraphCausalLM",
+        "parameters": 12024,
+        "parameter_tensors": 21,
+        "modules": 42,
+        "steps": 25,
+        "initial_loss": 3.5534703731536865,
+        "trained_loss": 1.1926087141036987,
+        "reloaded_loss": 1.1926087141036987,
+        "state_sha256": "446b5453e1bfe38381a42caf1da55d4d59096c74648ded86d35ba0fcf2e6bdaa",
+        "generated": {
+          "attention_mask": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "input_ids": [
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              30
+            ]
+          ],
+          "max_new_tokens": 8,
+          "sequences": [
+            [
+              4,
+              5,
+              8,
+              11,
+              4,
+              14,
+              15,
+              15,
+              15,
+              11
+            ],
+            [
+              4,
+              6,
+              9,
+              11,
+              4,
+              23,
+              15,
+              15,
+              11,
+              4
+            ],
+            [
+              4,
+              30,
+              25,
+              20,
+              15,
+              15,
+              15,
+              15,
+              11,
+              4
+            ]
+          ],
+          "shape": [
+            3,
+            10
+          ]
+        },
+        "decoded": [
+          [
+            {
+              "generated_text": "the cat sleeps on the tree . . . on",
+              "generated_token_ids": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                14,
+                15,
+                15,
+                15,
+                11
+              ]
+            }
+          ],
+          [
+            {
+              "generated_text": "the dog runs on the sun . . on the",
+              "generated_token_ids": [
+                4,
+                6,
+                9,
+                11,
+                4,
+                23,
+                15,
+                15,
+                11,
+                4
+              ]
+            }
+          ],
+          [
+            {
+              "generated_text": "the sky is blue . . . . on the",
+              "generated_token_ids": [
+                4,
+                30,
+                25,
+                20,
+                15,
+                15,
+                15,
+                15,
+                11,
+                4
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    "fused": {
+      "status": "passed",
+      "version": "2.2.0",
+      "job_id": "0c1680cd16b24bafa3fd937edd0f6b9f",
+      "nodes_succeeded": 32,
+      "snapshot_sha256": "8694e77aa42eee7cb3ee1a528eed345094f6f05ed19d8b2bdb55606ddfcb1a3c",
+      "architecture": "TensorGraphCausalLM",
+      "parameters": 11360,
+      "parameter_tensors": 12,
+      "modules": 23,
+      "steps": 20,
+      "initial_loss": 3.59210205078125,
+      "trained_loss": 1.398547887802124,
+      "reloaded_loss": 1.398547887802124,
+      "state_sha256": "84522417774cd60f68bca0a36b05f1900202c69f8f586bd49599bdad7cab532e",
+      "generated": {
+        "attention_mask": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "input_ids": [
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            30
+          ]
+        ],
+        "max_new_tokens": 8,
+        "sequences": [
+          [
+            4,
+            5,
+            8,
+            11,
+            4,
+            23,
+            15,
+            15,
+            15,
+            15
+          ],
+          [
+            4,
+            6,
+            9,
+            11,
+            4,
+            23,
+            15,
+            15,
+            15,
+            15
+          ],
+          [
+            4,
+            30,
+            25,
+            20,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ]
+        ],
+        "shape": [
+          3,
+          10
+        ]
+      },
+      "decoded": [
+        [
+          {
+            "generated_text": "the cat sleeps on the sun . . . .",
+            "generated_token_ids": [
+              4,
+              5,
+              8,
+              11,
+              4,
+              23,
+              15,
+              15,
+              15,
+              15
+            ]
+          }
+        ],
+        [
+          {
+            "generated_text": "the dog runs on the sun . . . .",
+            "generated_token_ids": [
+              4,
+              6,
+              9,
+              11,
+              4,
+              23,
+              15,
+              15,
+              15,
+              15
+            ]
+          }
+        ],
+        [
+          {
+            "generated_text": "the sky is blue . . . . . .",
+            "generated_token_ids": [
+              4,
+              30,
+              25,
+              20,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ]
+          }
+        ]
+      ],
+      "python_replay": {
+        "status": "passed",
+        "version": "2.2.0",
+        "job_id": "02ca85f3f269421a87d63edbadd4f4de",
+        "nodes_succeeded": 32,
+        "snapshot_sha256": "8694e77aa42eee7cb3ee1a528eed345094f6f05ed19d8b2bdb55606ddfcb1a3c",
+        "architecture": "TensorGraphCausalLM",
+        "parameters": 11360,
+        "parameter_tensors": 12,
+        "modules": 23,
+        "steps": 20,
+        "initial_loss": 3.59210205078125,
+        "trained_loss": 1.398547887802124,
+        "reloaded_loss": 1.398547887802124,
+        "state_sha256": "84522417774cd60f68bca0a36b05f1900202c69f8f586bd49599bdad7cab532e",
+        "generated": {
+          "attention_mask": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "input_ids": [
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              30
+            ]
+          ],
+          "max_new_tokens": 8,
+          "sequences": [
+            [
+              4,
+              5,
+              8,
+              11,
+              4,
+              23,
+              15,
+              15,
+              15,
+              15
+            ],
+            [
+              4,
+              6,
+              9,
+              11,
+              4,
+              23,
+              15,
+              15,
+              15,
+              15
+            ],
+            [
+              4,
+              30,
+              25,
+              20,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ]
+          ],
+          "shape": [
+            3,
+            10
+          ]
+        },
+        "decoded": [
+          [
+            {
+              "generated_text": "the cat sleeps on the sun . . . .",
+              "generated_token_ids": [
+                4,
+                5,
+                8,
+                11,
+                4,
+                23,
+                15,
+                15,
+                15,
+                15
+              ]
+            }
+          ],
+          [
+            {
+              "generated_text": "the dog runs on the sun . . . .",
+              "generated_token_ids": [
+                4,
+                6,
+                9,
+                11,
+                4,
+                23,
+                15,
+                15,
+                15,
+                15
+              ]
+            }
+          ],
+          [
+            {
+              "generated_text": "the sky is blue . . . . . .",
+              "generated_token_ids": [
+                4,
+                30,
+                25,
+                20,
+                15,
+                15,
+                15,
+                15,
+                15,
+                15
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

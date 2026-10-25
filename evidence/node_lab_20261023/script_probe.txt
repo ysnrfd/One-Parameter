@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\Atieh\Documents\ChatGPT\One Parameter\single_parameter_observatory\studio_plugins.py", line 491, in execute_script
+    raise ScriptSandboxError("Script exceeded its wall-clock deadline")
+single_parameter_observatory.studio_plugins.ScriptSandboxError: Script exceeded its wall-clock deadline

@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "LAYOUT: A body page of an engineering audit report containing two line charts, a section heading, a paragraph of text, a code block, and another paragraph.\nOVERLAPS: NONE\nCLIPPING: NONE\nTABLES: N/A\nFIGURES: Two charts are intact, uncropped, and have readable captions; the top chart is intentionally empty as described in the text.\nDEFECTS: NONE\nVERDICT: PASS",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1790857791,
+  "id": "202610012029499cbc0ebea18e4b12",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "202610012029499cbc0ebea18e4b12",
+  "usage": {
+    "completion_tokens": 90,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2146,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2236
+  }
+}

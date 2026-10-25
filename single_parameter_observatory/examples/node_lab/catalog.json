@@ -1,0 +1,963 @@
+{
+  "types": [
+    {
+      "id": "core.number",
+      "title": "Number",
+      "category": "Values",
+      "description": "A finite numeric literal.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "number",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "value",
+          "type": "number",
+          "default": 1
+        }
+      ]
+    },
+    {
+      "id": "core.text",
+      "title": "Text",
+      "category": "Values",
+      "description": "A text literal.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "value",
+          "type": "string",
+          "default": "Hello, studio"
+        }
+      ]
+    },
+    {
+      "id": "core.boolean",
+      "title": "Boolean",
+      "category": "Values",
+      "description": "A true or false literal.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "value",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "core.json",
+      "title": "JSON value",
+      "category": "Values",
+      "description": "Any strict JSON literal.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "any",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "value",
+          "type": "any",
+          "default": {}
+        }
+      ]
+    },
+    {
+      "id": "core.math",
+      "title": "Math",
+      "category": "Transform",
+      "description": "Finite arithmetic; division by zero is an explicit failure.",
+      "inputs": [
+        {
+          "name": "a",
+          "type": "number",
+          "required": true,
+          "default": 1
+        },
+        {
+          "name": "b",
+          "type": "number",
+          "required": true,
+          "default": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "number",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "string",
+          "default": "add",
+          "options": [
+            "add",
+            "subtract",
+            "multiply",
+            "divide",
+            "power",
+            "min",
+            "max",
+            "modulo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.array",
+      "title": "Array",
+      "category": "Values",
+      "description": "An array literal or an incoming array.",
+      "inputs": [
+        {
+          "name": "items",
+          "type": "array",
+          "required": true,
+          "default": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "array",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "core.object",
+      "title": "Object",
+      "category": "Values",
+      "description": "An object literal or an incoming object.",
+      "inputs": [
+        {
+          "name": "value",
+          "type": "object",
+          "required": true,
+          "default": {}
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "core.get",
+      "title": "Get property",
+      "category": "Transform",
+      "description": "Read an object key or array index; use default when absent.",
+      "inputs": [
+        {
+          "name": "object",
+          "type": "any",
+          "required": true
+        },
+        {
+          "name": "key",
+          "type": "any",
+          "required": true,
+          "default": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "any",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "default",
+          "type": "any",
+          "default": null
+        }
+      ]
+    },
+    {
+      "id": "core.script",
+      "title": "JavaScript sandbox",
+      "category": "Scripts",
+      "description": "Run bounded JavaScript in an isolated V8 child process. Return an outputs object.",
+      "inputs": [
+        {
+          "name": "inputs",
+          "type": "object",
+          "required": true,
+          "default": {}
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "any",
+          "required": true
+        },
+        {
+          "name": "outputs",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "code",
+          "type": "code",
+          "default": "return {value: inputs.value ?? 0};"
+        },
+        {
+          "name": "timeout_ms",
+          "type": "integer",
+          "default": 1000,
+          "min": 10,
+          "max": 10000
+        },
+        {
+          "name": "memory_mb",
+          "type": "integer",
+          "default": 32,
+          "min": 16,
+          "max": 64
+        }
+      ]
+    },
+    {
+      "id": "core.preview",
+      "title": "Preview",
+      "category": "Observe",
+      "description": "Expose the exact incoming JSON value in execution results.",
+      "inputs": [
+        {
+          "name": "value",
+          "type": "any",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "any",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "core.config",
+      "title": "Experiment configuration",
+      "category": "Experiments",
+      "description": "Validate a partial config and produce a complete PyTorch experiment config.",
+      "inputs": [
+        {
+          "name": "value",
+          "type": "object",
+          "required": true,
+          "default": {}
+        }
+      ],
+      "outputs": [
+        {
+          "name": "config",
+          "type": "config",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "core.dataset",
+      "title": "Custom dataset",
+      "category": "Experiments",
+      "description": "Build finite float32 input/target samples without executing training.",
+      "inputs": [
+        {
+          "name": "inputs",
+          "type": "array",
+          "required": true,
+          "default": [
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "required": true,
+          "default": [
+            -2,
+            0,
+            2
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dataset",
+          "type": "dataset",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "Node dataset"
+        },
+        {
+          "name": "batch_size",
+          "type": "integer",
+          "default": 3,
+          "min": 1,
+          "max": 100000
+        }
+      ]
+    },
+    {
+      "id": "core.experiment",
+      "title": "Create experiment",
+      "category": "Experiments",
+      "description": "Create an independent real PyTorch experiment; optionally import custom data.",
+      "inputs": [
+        {
+          "name": "config",
+          "type": "config",
+          "required": true,
+          "default": {}
+        },
+        {
+          "name": "dataset",
+          "type": "dataset",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "Node experiment"
+        },
+        {
+          "name": "preset",
+          "type": "string",
+          "default": "adamw"
+        }
+      ]
+    },
+    {
+      "id": "core.train",
+      "title": "Train",
+      "category": "Experiments",
+      "description": "Execute real training steps. Cancellation is checked between completed steps.",
+      "inputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        },
+        {
+          "name": "record",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "steps",
+          "type": "integer",
+          "default": 10,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "core.branch",
+      "title": "Branch experiment",
+      "category": "Experiments",
+      "description": "Branch exact live parameter, optimizer, scheduler, data and observation state.",
+      "inputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "Node branch"
+        }
+      ]
+    },
+    {
+      "id": "core.checkpoint",
+      "title": "Capture checkpoint",
+      "category": "Experiments",
+      "description": "Capture a complete real training checkpoint on the selected run.",
+      "inputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        },
+        {
+          "name": "checkpoint",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "Node checkpoint"
+        }
+      ]
+    },
+    {
+      "id": "core.inspect",
+      "title": "Inspect experiment",
+      "category": "Observe",
+      "description": "Read an actual recorded step or the live run snapshot; optionally include data.",
+      "inputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "record",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "dataset",
+          "type": "object",
+          "required": true
+        },
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "step",
+          "type": "integer",
+          "default": -1,
+          "min": -1,
+          "max": 1000000
+        },
+        {
+          "name": "include_dataset",
+          "type": "boolean",
+          "default": false
+        }
+      ]
+    },
+    {
+      "id": "core.intervene",
+      "title": "Manual intervention",
+      "category": "Experiments",
+      "description": "Explicitly edit finite parameter/LR or supported optimizer memory on a real paused run.",
+      "inputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        },
+        {
+          "name": "changes",
+          "type": "object",
+          "required": true,
+          "default": {
+            "parameter": 1
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        },
+        {
+          "name": "record",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "core.verify",
+      "title": "Verify record chain",
+      "category": "Observe",
+      "description": "Verify the actual immutable numerical record hash chain.",
+      "inputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        },
+        {
+          "name": "integrity",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "id": "core.control",
+      "title": "Experiment control",
+      "category": "Experiments",
+      "description": "Explicitly play, pause, reset live state, or restart an existing experiment.",
+      "inputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        },
+        {
+          "name": "record",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "string",
+          "default": "pause",
+          "options": [
+            "play",
+            "pause",
+            "reset",
+            "restart"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.export",
+      "title": "Export evidence",
+      "category": "Artifacts",
+      "description": "Generate and retain an immutable ZIP of actual numerical evidence, bound to this execution.",
+      "inputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "run",
+          "type": "run",
+          "required": true
+        },
+        {
+          "name": "artifact",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "parameters": []
+    }
+  ],
+  "templates": [
+    {
+      "id": "training",
+      "name": "Training laboratory",
+      "graph": {
+        "name": "Training laboratory",
+        "description": "Configuration → real experiment → training → checkpoint → observation.",
+        "nodes": [
+          {
+            "id": "config",
+            "type": "core.config",
+            "position": {
+              "x": 40,
+              "y": 80
+            },
+            "params": {
+              "value": {
+                "steps": 100
+              }
+            }
+          },
+          {
+            "id": "experiment",
+            "type": "core.experiment",
+            "position": {
+              "x": 370,
+              "y": 80
+            },
+            "params": {}
+          },
+          {
+            "id": "train",
+            "type": "core.train",
+            "position": {
+              "x": 700,
+              "y": 80
+            },
+            "params": {
+              "steps": 10
+            }
+          },
+          {
+            "id": "checkpoint",
+            "type": "core.checkpoint",
+            "position": {
+              "x": 1030,
+              "y": 80
+            },
+            "params": {}
+          },
+          {
+            "id": "inspect",
+            "type": "core.inspect",
+            "position": {
+              "x": 1360,
+              "y": 80
+            },
+            "params": {}
+          }
+        ],
+        "edges": [
+          {
+            "id": "config:config-experiment:config",
+            "source": "config",
+            "source_port": "config",
+            "target": "experiment",
+            "target_port": "config"
+          },
+          {
+            "id": "experiment:run-train:run",
+            "source": "experiment",
+            "source_port": "run",
+            "target": "train",
+            "target_port": "run"
+          },
+          {
+            "id": "train:run-checkpoint:run",
+            "source": "train",
+            "source_port": "run",
+            "target": "checkpoint",
+            "target_port": "run"
+          },
+          {
+            "id": "checkpoint:run-inspect:run",
+            "source": "checkpoint",
+            "source_port": "run",
+            "target": "inspect",
+            "target_port": "run"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 0.8
+        }
+      }
+    },
+    {
+      "id": "sandbox",
+      "name": "Sandbox playground",
+      "graph": {
+        "name": "Sandbox playground",
+        "description": "A pure JavaScript script transforms JSON inside the bounded sandbox.",
+        "nodes": [
+          {
+            "id": "input",
+            "type": "core.object",
+            "position": {
+              "x": 40,
+              "y": 100
+            },
+            "params": {
+              "value": {
+                "value": 21
+              }
+            }
+          },
+          {
+            "id": "script",
+            "type": "core.script",
+            "position": {
+              "x": 370,
+              "y": 100
+            },
+            "params": {
+              "code": "return {value: inputs.value * 2};"
+            }
+          },
+          {
+            "id": "preview",
+            "type": "core.preview",
+            "position": {
+              "x": 700,
+              "y": 100
+            },
+            "params": {}
+          }
+        ],
+        "edges": [
+          {
+            "id": "input:value-script:inputs",
+            "source": "input",
+            "source_port": "value",
+            "target": "script",
+            "target_port": "inputs"
+          },
+          {
+            "id": "script:value-preview:value",
+            "source": "script",
+            "source_port": "value",
+            "target": "preview",
+            "target_port": "value"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1
+        }
+      }
+    },
+    {
+      "id": "custom-data",
+      "name": "Custom-data experiment",
+      "graph": {
+        "name": "Custom-data experiment",
+        "description": "A typed dataset and config feed actual PyTorch training.",
+        "nodes": [
+          {
+            "id": "dataset",
+            "type": "core.dataset",
+            "position": {
+              "x": 40,
+              "y": 240
+            },
+            "params": {}
+          },
+          {
+            "id": "config",
+            "type": "core.config",
+            "position": {
+              "x": 40,
+              "y": 40
+            },
+            "params": {}
+          },
+          {
+            "id": "experiment",
+            "type": "core.experiment",
+            "position": {
+              "x": 370,
+              "y": 120
+            },
+            "params": {}
+          },
+          {
+            "id": "train",
+            "type": "core.train",
+            "position": {
+              "x": 700,
+              "y": 120
+            },
+            "params": {
+              "steps": 20
+            }
+          },
+          {
+            "id": "inspect",
+            "type": "core.inspect",
+            "position": {
+              "x": 1030,
+              "y": 120
+            },
+            "params": {
+              "include_dataset": true
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "config:config-experiment:config",
+            "source": "config",
+            "source_port": "config",
+            "target": "experiment",
+            "target_port": "config"
+          },
+          {
+            "id": "dataset:dataset-experiment:dataset",
+            "source": "dataset",
+            "source_port": "dataset",
+            "target": "experiment",
+            "target_port": "dataset"
+          },
+          {
+            "id": "experiment:run-train:run",
+            "source": "experiment",
+            "source_port": "run",
+            "target": "train",
+            "target_port": "run"
+          },
+          {
+            "id": "train:run-inspect:run",
+            "source": "train",
+            "source_port": "run",
+            "target": "inspect",
+            "target_port": "run"
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": 0,
+          "zoom": 0.9
+        }
+      }
+    }
+  ],
+  "sandbox": {
+    "available": true,
+    "language": "javascript",
+    "runtime": "V8 / mini-racer",
+    "execution": "synchronous-function-body",
+    "fresh_process_per_invocation": true,
+    "code_limit_bytes": 65536,
+    "input_limit_bytes": 1048576,
+    "output_limit_bytes": 1048576,
+    "max_json_depth": 64,
+    "max_output_values": 500000,
+    "max_output_array_length": 100000,
+    "timeout_ms": {
+      "min": 10,
+      "max": 10000,
+      "default": 1000
+    },
+    "memory_mb": {
+      "min": 16,
+      "max": 64,
+      "default": 32
+    },
+    "wall_grace_ms": 30000,
+    "worker_request_limit_bytes": 1442816,
+    "windows_process_memory_mb": 256,
+    "windows_process_limit": 1,
+    "windows_job_active": true,
+    "os_virtual_machine": false,
+    "logs": {
+      "max_entries": 100,
+      "max_line_characters": 2048,
+      "max_total_characters": 16384
+    },
+    "host_io": false,
+    "python": false,
+    "network": false,
+    "filesystem": false,
+    "dom": false,
+    "timers": false,
+    "webassembly": false,
+    "numbers": "IEEE-754 binary64; nonexact integer inputs rejected; use decimal strings and BigInt for wide integers",
+    "host_api": false,
+    "description": "Scripts return JSON outputs. Real experiment actions use explicit built-in nodes.",
+    "startup_timeout_ms": 30000,
+    "execution_wall_grace_ms": 3000
+  },
+  "limits": {
+    "graphs": 100,
+    "nodes_per_graph": 500,
+    "edges_per_graph": 2000,
+    "plugins": 64,
+    "queued_jobs": 16,
+    "job_history": 50,
+    "job_bytes": 8000000,
+    "job_history_bytes": 24000000,
+    "artifact_bytes": 8388608,
+    "graph_registry_bytes": 8000000,
+    "plugin_registry_bytes": 4000000,
+    "graph_bytes": 2000000
+  }
+}

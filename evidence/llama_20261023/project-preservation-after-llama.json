@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": {
+    "original_runs_equal": true,
+    "existing_graphs_equal": true,
+    "one_llama_graph_added": true
+  },
+  "saved_version": "2.1.0",
+  "llama_job_statuses": [
+    "succeeded"
+  ]
+}

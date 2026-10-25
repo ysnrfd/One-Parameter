@@ -1,0 +1,12 @@
+{
+  "scope": "Diagnosis of the failed qualification assertion; not a new full installed-runtime pass",
+  "failure_console_sha256": "b009a57a077945ae3fe202c39dff23a68e3ccebc7c8608a23a4fdb9cf3c01d1b",
+  "cause": "A new Python-export artifact for-loop rebound the function-scoped variable record that had held the sealed root observation. The round-trip comparison therefore used the wrong object.",
+  "correction": "The sealed root observation is stored once as sealed_root_record; Python export iteration uses python_node_observation. The full restored-observation equality assertion remains in place for the original root run at step 3.",
+  "qualifier_sha256": "a770ef3f9d8ce8d04270e53a48ec846296306330860c3a5740e6e27ff859fdce",
+  "qualifier_bytes": 42226,
+  "ruff": "passed",
+  "mypy": "Success: no issues found in 2 source files",
+  "static_assertion_replay": "13 frozen records plus two ZIP-container fixtures passed",
+  "fresh_installed_qualification": "must be rerun by root after rebuilt wheel is ready"
+}

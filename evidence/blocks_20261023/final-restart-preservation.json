@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "checks": {
+    "runs": true,
+    "ui_drafts": true,
+    "application_version": true,
+    "schema_version": true,
+    "workspace_content_except_revision": true,
+    "plugins": true,
+    "jobs": true,
+    "artifacts": true,
+    "active_graph_id": true,
+    "all_saved_graph_ids_retained": true,
+    "graph_content_starter-training": true,
+    "graph_content_82add0766b0944c5af89b3d02cc17381": true,
+    "graph_content_6972c925d8d54b0685e5b148d089ed43": true,
+    "graph_content_1b5cd54a27da43f68d70b12420a87a32": true,
+    "graph_content_8cbc0f763ece494989ea5a7260389b0f": true,
+    "graph_content_f72f3eda01c84b19958fea10f2ed473b": true,
+    "graph_content_3fa9d3fde7ef41749106f2b4429a2eb8": true,
+    "graph_content_22d070f6d1084a88901d5611f43ae6b3": true
+  },
+  "viewport_changes": [
+    {
+      "graph_id": "22d070f6d1084a88901d5611f43ae6b3",
+      "changed_fields": [
+        "view",
+        "revision",
+        "updated_at"
+      ]
+    }
+  ],
+  "workspace_changed_fields": [
+    "revision"
+  ],
+  "note": "Reconnection and subsequent UI state updates advanced revision counters and changed the active graph viewport. Every saved graph definition, connection, parameter, job, artifact, run and draft was preserved. This compares retained content, not exact revision counters."
+}

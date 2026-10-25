@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 794px 1123px; margin: 0; }
+    :root {
+      --c-bg: #0a1628;
+      --c-accent: #4da8da;
+      --c-text: #e8f0f8;
+      --c-muted: #7a9bb8;
+      --c-glow: #2d7ab3;
+    }
+    html, body {
+      margin: 0; padding: 0;
+      width: 794px; height: 1123px;
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-family: 'Inter', 'Liberation Sans', sans-serif;
+    }
+    @media screen {
+      html { height: auto; display: flex; justify-content: center; min-height: 100vh; background: var(--c-bg); }
+      body { transform-origin: top center; scale: min(1, calc(100vw / 794), calc(100vh / 1123)); margin: 0 auto; box-shadow: 0 0 60px rgba(0,0,0,0.35); }
+    }
+    .cover { width: 794px; height: 1123px; position: relative; box-sizing: border-box;
+             border: none; outline: none; box-shadow: none; }
+
+    /* Layer 1 - background glows (clipped) */
+    .bg-layer {
+      position: absolute; inset: 0; overflow: hidden; z-index: 1;
+    }
+    .glow-a {
+      position: absolute; top: 40px; left: 30px; width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(45, 122, 179, 0.08) 0%, rgba(45, 122, 179, 0.0) 70%);
+    }
+    .glow-b {
+      position: absolute; bottom: 60px; right: 40px; width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(45, 122, 179, 0.07) 0%, rgba(45, 122, 179, 0.0) 70%);
+    }
+
+    /* Layer 2 - luminous rectangular frame */
+    .frame {
+      position: absolute; z-index: 2;
+      top: 80px; bottom: 80px; left: 60px; right: 60px;
+      border: 2px solid var(--c-accent);
+    }
+
+    /* Layer 3 - content (no overflow hidden) */
+    .content { position: absolute; inset: 0; z-index: 3; }
+    .kicker {
+      position: absolute; left: 90px; top: 135px;
+      font-size: 11pt; font-weight: 300; color: var(--c-accent);
+      letter-spacing: 5px; text-transform: uppercase;
+    }
+    .title {
+      position: absolute; left: 90px; top: 236px;
+      font-size: 48pt; font-weight: 900; line-height: 1.15;
+      font-family: 'Playfair Display', 'Liberation Serif', Georgia, serif;
+      color: var(--c-text); max-width: 614px;
+      text-shadow: 0 0 26px rgba(77, 168, 218, 0.28);
+    }
+    .summary {
+      position: absolute; left: 90px; top: 505px;
+      font-size: 15pt; line-height: 1.7; color: var(--c-muted);
+      max-width: 520px; font-weight: 300;
+    }
+    .stats {
+      position: absolute; left: 90px; top: 742px;
+      display: flex; gap: 46px; max-width: 614px;
+    }
+    .stat .value {
+      font-size: 26pt; font-weight: 700; color: var(--c-text);
+      font-family: 'Inter', 'Liberation Sans', sans-serif;
+    }
+    .stat .label {
+      font-size: 8.5pt; color: var(--c-muted); letter-spacing: 2px;
+      text-transform: uppercase; margin-top: 6px;
+    }
+    .org {
+      position: absolute; left: 90px; top: 880px;
+      font-size: 18pt; color: var(--c-text); font-weight: 400;
+    }
+    .org .sub {
+      font-size: 10.5pt; color: var(--c-muted); margin-top: 8px; font-weight: 300;
+    }
+    .date {
+      position: absolute; left: 90px; bottom: 136px;
+      font-size: 10pt; color: var(--c-muted); letter-spacing: 3px; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="bg-layer">
+      <div class="glow-a"></div>
+      <div class="glow-b"></div>
+    </div>
+    <div class="frame"></div>
+    <div class="content">
+      <div class="kicker">Forensic Audit &middot; Enterprise Verification</div>
+      <div class="title">Single Float32<br>Parameter Observatory</div>
+      <div class="summary">
+        A full-depth audit of the uploaded 1.0.0 codebase: every module read, every
+        check executed for real, every rendered frame verified by vision model and
+        pixel analysis. Two critical defects found and fixed; the numerical core
+        reproduced bit for bit. This report is the evidence.
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="value">15</div><div class="label">Findings</div></div>
+        <div class="stat"><div class="value">2</div><div class="label">Critical fixed</div></div>
+        <div class="stat"><div class="value">128</div><div class="label">Tests passing</div></div>
+        <div class="stat"><div class="value">0</div><div class="label">ULP recon error</div></div>
+      </div>
+      <div class="org">
+        Z.ai Engineering Audit
+        <div class="sub">Audit of record for version 1.0.0 &middot; delivery of version 1.1.0</div>
+      </div>
+      <div class="date">October 2026 &middot; SPOBS-AUDIT-2026-10</div>
+    </div>
+  </div>
+</body>
+</html>

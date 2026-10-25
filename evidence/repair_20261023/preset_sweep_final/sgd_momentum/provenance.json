@@ -1,0 +1,185 @@
+{
+  "environment": {
+    "python_version": "3.12.15",
+    "python_executable": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\.venv\\Scripts\\python.exe",
+    "torch_version": "2.14.1+cpu",
+    "torch_file": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\.venv\\Lib\\site-packages\\torch\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "operating_system": "Windows 11",
+    "device": "cpu",
+    "default_dtype": "torch.float32",
+    "num_threads": 6,
+    "numpy_version": "2.5.4",
+    "matplotlib_version": "3.11.2",
+    "matplotlib_backend": "Agg",
+    "parallel_info": "cuda_available=False mps_available=False"
+  },
+  "optimizer_source_audit": {
+    "optimizer_name": "sgd",
+    "class_name": "SGD",
+    "class_module": "torch.optim.sgd",
+    "source_file": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\.venv\\Lib\\site-packages\\torch\\optim\\sgd.py",
+    "constructor_parameters": [
+      "params",
+      "lr",
+      "momentum",
+      "dampening",
+      "weight_decay",
+      "nesterov",
+      "maximize",
+      "foreach",
+      "differentiable",
+      "fused"
+    ],
+    "supported_hyperparameters": [
+      "lr",
+      "weight_decay",
+      "momentum",
+      "dampening",
+      "nesterov"
+    ],
+    "dropped_hyperparameters": [],
+    "group_flags": {
+      "dampening": 0.0,
+      "differentiable": false,
+      "foreach": null,
+      "fused": null,
+      "lr": 0.02,
+      "maximize": false,
+      "momentum": 0.9,
+      "nesterov": true,
+      "weight_decay": 0.0
+    },
+    "source_findings": {
+      "source_text_available": true,
+      "single_tensor_function_found": true,
+      "uses_lerp_for_moment1": false,
+      "uses_mul_add_for_moment1": false,
+      "has_capturable_branch": false,
+      "decay_before_update": false,
+      "decay_after_update_add_param": false,
+      "coupled_decay_into_grad": true,
+      "eps_added_outside_sqrt": false,
+      "eps_added_inside_sqrt": false,
+      "amsgrad_present": false,
+      "for_each_reference_present": true,
+      "single_tensor_source_excerpt": "def _single_tensor_sgd(\n    params: list[Tensor],\n    grads: list[Tensor],\n    momentum_buffer_list: list[Tensor | None],\n    grad_scale: Tensor | None,\n    found_inf: Tensor | None,\n    *,\n    weight_decay: float,\n    momentum: float,\n    lr: float | Tensor,\n    dampening: float,\n    nesterov: bool,\n    maximize: bool,\n    has_sparse_grad: bool,\n) -> None:\n    if grad_scale is not None or found_inf is not None:\n        raise AssertionError(\"Expected grad_scale and found_inf to be None\")\n\n    if not torch.jit.is_scripting():\n        lr = _to_scalar(lr)\n\n    for i, param in enumerate(params):\n        grad = grads[i] if not maximize else -grads[i]\n\n        if weight_decay != 0:\n            # Nested if is necessary to bypass jitscript rules\n            if isinstance(weight_decay, Tensor):\n                if weight_decay.requires_grad:\n                    # usually this is the differentiable path, which is why the param.clone() is needed\n                    grad = grad.addcmul_(param.clone(), weight_decay)\n                else:\n                    grad = grad.add(param, alpha=weight_decay)\n            else:\n                grad = grad.add(param, alpha=weight_decay)\n\n        if momentum != 0:\n            buf = momentum_buffer_list[i]\n\n            if buf is None:\n                buf = grad.detach().clone()\n                momentum_buffer_list[i] = buf\n            else:\n                buf.mul_(momentum).add_(grad, alpha=1 - dampening)\n\n            if nesterov:\n                grad = grad.add(buf, alpha=momentum)\n            else:\n                grad = buf\n\n        # Nested if is necessary to bypass jitscript rules\n        if isinstance(lr, Tensor):\n            if lr.requires_grad:\n                param.addcmul_(grad, lr, value=-1)\n            else:\n                # pyrefly: ignore [bad-argument-type]\n                param.add_(grad, alpha=-lr)\n        else:\n            param.add_(grad, alpha=-lr)\n\n"
+    },
+    "torch_version": "2.14.1+cpu"
+  },
+  "optimizer_semantics_probe": {
+    "optimizer": "sgd",
+    "torch_version": "2.14.1+cpu",
+    "probe_gradient": -0.11545121669769287,
+    "probe_loss": 3.015829086303711,
+    "measured_variant": "sgd[clone_grad,coupled_into_grad]",
+    "bit_exact": true,
+    "candidates": [
+      {
+        "variant": "sgd[clone_grad,coupled_into_grad]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "sgd[clone_grad,decoupled_after]",
+        "ulp_error": 0
+      },
+      {
+        "variant": "sgd[zeros,coupled_into_grad]",
+        "ulp_error": 17432
+      },
+      {
+        "variant": "sgd[zeros,decoupled_after]",
+        "ulp_error": 17432
+      }
+    ],
+    "source_findings": {
+      "source_text_available": true,
+      "single_tensor_function_found": true,
+      "uses_lerp_for_moment1": false,
+      "uses_mul_add_for_moment1": false,
+      "has_capturable_branch": false,
+      "decay_before_update": false,
+      "decay_after_update_add_param": false,
+      "coupled_decay_into_grad": true,
+      "eps_added_outside_sqrt": false,
+      "eps_added_inside_sqrt": false,
+      "amsgrad_present": false,
+      "for_each_reference_present": true,
+      "single_tensor_source_excerpt": "def _single_tensor_sgd(\n    params: list[Tensor],\n    grads: list[Tensor],\n    momentum_buffer_list: list[Tensor | None],\n    grad_scale: Tensor | None,\n    found_inf: Tensor | None,\n    *,\n    weight_decay: float,\n    momentum: float,\n    lr: float | Tensor,\n    dampening: float,\n    nesterov: bool,\n    maximize: bool,\n    has_sparse_grad: bool,\n) -> None:\n    if grad_scale is not None or found_inf is not None:\n        raise AssertionError(\"Expected grad_scale and found_inf to be None\")\n\n    if not torch.jit.is_scripting():\n        lr = _to_scalar(lr)\n\n    for i, param in enumerate(params):\n        grad = grads[i] if not maximize else -grads[i]\n\n        if weight_decay != 0:\n            # Nested if is necessary to bypass jitscript rules\n            if isinstance(weight_decay, Tensor):\n                if weight_decay.requires_grad:\n                    # usually this is the differentiable path, which is why the param.clone() is needed\n                    grad = grad.addcmul_(param.clone(), weight_decay)\n                else:\n                    grad = grad.add(param, alpha=weight_decay)\n            else:\n                grad = grad.add(param, alpha=weight_decay)\n\n        if momentum != 0:\n            buf = momentum_buffer_list[i]\n\n            if buf is None:\n                buf = grad.detach().clone()\n                momentum_buffer_list[i] = buf\n            else:\n                buf.mul_(momentum).add_(grad, alpha=1 - dampening)\n\n            if nesterov:\n                grad = grad.add(buf, alpha=momentum)\n            else:\n                grad = buf\n\n        # Nested if is necessary to bypass jitscript rules\n        if isinstance(lr, Tensor):\n            if lr.requires_grad:\n                param.addcmul_(grad, lr, value=-1)\n            else:\n                # pyrefly: ignore [bad-argument-type]\n                param.add_(grad, alpha=-lr)\n        else:\n            param.add_(grad, alpha=-lr)\n\n"
+    },
+    "note": "Measured on a throwaway parameter: the variant listed in 'measured_variant' is the one that reproduces this PyTorch build's update bit for bit."
+  },
+  "parameter": {
+    "name": "w",
+    "class": "Parameter",
+    "shape": [],
+    "numel": 1,
+    "dtype": "torch.float32",
+    "requires_grad": true,
+    "device": "cpu",
+    "element_size": 4,
+    "is_leaf": true,
+    "buffers": [
+      "input_scale",
+      "output_scale"
+    ],
+    "trainable_parameter_count": 1,
+    "raw_storage": {
+      "dtype": "torch.float32",
+      "element_size_bytes": 4,
+      "numel": 1,
+      "total_bytes": 4,
+      "raw_storage_bytes": "00 00 00 C0",
+      "storage_nbytes": 4,
+      "storage_nbytes_method": "UntypedStorage.nbytes()",
+      "shape": [],
+      "device": "cpu",
+      "is_floating_point": true
+    }
+  },
+  "dataset": {
+    "samples": 512,
+    "batch_size": 1,
+    "steps_per_epoch": 512,
+    "walk": "linear",
+    "shuffled": false,
+    "target_true_parameter": 1.5,
+    "noise_std": 0.0,
+    "input_min": -2.0,
+    "input_max": 2.0
+  },
+  "lr_schedule": "constant",
+  "bit_validation": {
+    "raw_uint32": 3221225472,
+    "decoded_value": -2.0,
+    "round_trip_ok": true,
+    "numpy_agreement": true,
+    "numpy_version": "2.5.4",
+    "storage_bytes": "00 00 00 C0",
+    "element_size": 4,
+    "ulp_matches_bit_spacing": true,
+    "nextafter_matches_ulp": true,
+    "status": "PASS",
+    "notes": [
+      "Round-trip check: the decoded sign/exponent/fraction re-encode to the observed raw word.",
+      "numpy and torch reinterpretation paths are compared against each other, so a systematic error in one would show up as a disagreement."
+    ]
+  },
+  "ulp_validation": {
+    "value": -2.0,
+    "previous": -2.000000238418579,
+    "next": -1.9999998807907104,
+    "walk_steps": 4,
+    "walk_reaches_next": true,
+    "walk_reaches_previous": true,
+    "ulp_distance_check": 4,
+    "ulp_distance_expected": 4,
+    "status": "PASS"
+  },
+  "notes": [
+    "Real training: torch loss.backward() and optimizer.step() only. No gradient is assigned, no parameter value is written outside the optimizer, and no trajectory is precomputed.",
+    "The float64 track is a separate real run of the same forward shape in a different precision. It is a reference, not ground truth."
+  ]
+}

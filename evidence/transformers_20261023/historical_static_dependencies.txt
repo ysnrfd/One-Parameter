@@ -1,0 +1,15 @@
+Resolved 3 packages in 5.66s
+Downloading pypdfium2 (3.8MiB)
+ Downloaded pypdfium2
+Prepared 3 packages in 6.67s
+Installed 3 packages in 123ms
+ + pypdf==6.21.2
+ + pypdfium2==5.14.0
+ + types-reportlab==5.0.0.20261008
+Resolved 3 packages in 22.18s
+Downloading reportlab (1.9MiB)
+ Downloaded reportlab
+Prepared 1 package in 6.55s
+Installed 2 packages in 256ms
+ + charset-normalizer==3.5.2
+ + reportlab==5.1.0

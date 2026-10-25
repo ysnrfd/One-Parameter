@@ -1,0 +1,159 @@
+{
+  "name": "Editable custom tensor forward",
+  "description": "Compose named modules with editable tensor expressions. The program is interpreted from a restricted AST; autograd and all trainable tensors are real.",
+  "nodes": [
+    {
+      "id": "model",
+      "type": "hf.custom",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {
+        "layers": {
+          "input": {
+            "type": "Linear",
+            "in_features": 1,
+            "out_features": 8
+          },
+          "norm": {
+            "type": "RMSNorm",
+            "normalized_shape": 8,
+            "eps": 0.000001
+          },
+          "output": {
+            "type": "Linear",
+            "in_features": 8,
+            "out_features": 1
+          }
+        },
+        "code": "h = layers['input'](inputs['x'])\nh = layers['norm'](h)\nh = gelu(h)\nreturn layers['output'](h)"
+      }
+    },
+    {
+      "id": "data",
+      "type": "hf.data",
+      "position": {
+        "x": 20,
+        "y": 350
+      },
+      "params": {
+        "fields": {
+          "x": [
+            [
+              -1
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "labels": [
+            [
+              -2
+            ],
+            [
+              0
+            ],
+            [
+              2
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 350,
+        "y": 350
+      },
+      "params": {}
+    },
+    {
+      "id": "train",
+      "type": "hf.train",
+      "position": {
+        "x": 700,
+        "y": 20
+      },
+      "params": {
+        "steps": 10,
+        "batch_size": 3,
+        "loss": "mse"
+      }
+    },
+    {
+      "id": "evaluate",
+      "type": "hf.evaluate",
+      "position": {
+        "x": 1030,
+        "y": 20
+      },
+      "params": {
+        "loss": "mse"
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1360,
+        "y": 20
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "model:model-train:model",
+      "source": "model",
+      "source_port": "model",
+      "target": "train",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-train:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "train",
+      "target_port": "data"
+    },
+    {
+      "id": "optimizer:optimizer-train:optimizer",
+      "source": "optimizer",
+      "source_port": "optimizer",
+      "target": "train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "train:model-evaluate:model",
+      "source": "train",
+      "source_port": "model",
+      "target": "evaluate",
+      "target_port": "model"
+    },
+    {
+      "id": "data:data-evaluate:data",
+      "source": "data",
+      "source_port": "data",
+      "target": "evaluate",
+      "target_port": "data"
+    },
+    {
+      "id": "evaluate:model-checkpoint:model",
+      "source": "evaluate",
+      "source_port": "model",
+      "target": "checkpoint",
+      "target_port": "model"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.6
+  }
+}

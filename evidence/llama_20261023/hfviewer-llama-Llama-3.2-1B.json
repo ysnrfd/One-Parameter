@@ -1,0 +1,999 @@
+{
+  "nodes": [
+    {
+      "id": "input",
+      "layerType": "input",
+      "name": "input",
+      "parentIds": [],
+      "childrenIds": [
+        "model.embed_tokens"
+      ],
+      "modelType": "llama",
+      "architecture": "LlamaForCausalLM",
+      "displayName": "Llama-3.2-1B",
+      "properties": {}
+    },
+    {
+      "id": "model.embed_tokens",
+      "layerType": "Embedding",
+      "name": "model.embed_tokens",
+      "parentIds": [
+        "input"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.__block_input__"
+      ],
+      "properties": {
+        "opTypeLabel": "Text embeddings",
+        "configVocab": 128256
+      },
+      "label": "Text embeddings"
+    },
+    {
+      "id": "path:model.layers.0.__block_input__",
+      "layerType": "input",
+      "name": "model.layers.0.input",
+      "parentIds": [
+        "model.embed_tokens"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.input_layernorm",
+        "op:model.layers.0.add_3"
+      ],
+      "properties": {
+        "viewerPassthroughAnchor": true,
+        "traceModulePath": "model.layers.0"
+      },
+      "detailExpansionEntries": [
+        {
+          "level": 1,
+          "visibleChildCount": 15,
+          "lastNodeId": "op:model.layers.0.add_5",
+          "collapsedLayerType": "LlamaDecoderLayer",
+          "collapsedName": "model.layers.0",
+          "collapsedTitle": "LlamaDecoderLayer",
+          "repeatCount": 16
+        }
+      ],
+      "detailExpansionRepeatCount": 16
+    },
+    {
+      "id": "path:model.layers.0.input_layernorm",
+      "layerType": "LlamaRMSNorm",
+      "name": "model.layers.0.input_layernorm",
+      "parentIds": [
+        "path:model.layers.0.__block_input__"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.self_attn.q_proj",
+        "path:model.layers.0.self_attn.k_proj",
+        "path:model.layers.0.self_attn.v_proj",
+        "op:model.layers.0.add_3"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "_assert_tensor_metadata_default",
+          "to",
+          "pow_1",
+          "mean",
+          "add",
+          "rsqrt",
+          "mul",
+          "_assert_tensor_metadata_default_1",
+          "to_1",
+          "mul_1"
+        ],
+        "traceModulePath": "model.layers.0.input_layernorm",
+        "configHidden": 2048,
+        "opTypeLabel": "RMSNorm"
+      },
+      "label": "RMSNorm"
+    },
+    {
+      "id": "path:model.layers.0.self_attn.q_proj",
+      "layerType": "Linear",
+      "name": "model.layers.0.self_attn.q_proj",
+      "parentIds": [
+        "path:model.layers.0.input_layernorm"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.self_attn.attention_output"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "linear"
+        ],
+        "traceModulePath": "model.layers.0.self_attn.q_proj"
+      },
+      "detailExpansionEntries": [
+        {
+          "level": 2,
+          "visibleChildCount": 5,
+          "lastNodeId": "path:model.layers.0.self_attn.o_proj",
+          "collapsedLayerType": "LlamaAttention",
+          "collapsedName": "model.layers.0.self_attn",
+          "collapsedTitle": "LlamaAttention"
+        }
+      ]
+    },
+    {
+      "id": "path:model.layers.0.self_attn.k_proj",
+      "layerType": "Linear",
+      "name": "model.layers.0.self_attn.k_proj",
+      "parentIds": [
+        "path:model.layers.0.input_layernorm"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.self_attn.attention_output"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "linear_1"
+        ],
+        "traceModulePath": "model.layers.0.self_attn.k_proj"
+      }
+    },
+    {
+      "id": "path:model.layers.0.self_attn.v_proj",
+      "layerType": "Linear",
+      "name": "model.layers.0.self_attn.v_proj",
+      "parentIds": [
+        "path:model.layers.0.input_layernorm"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.self_attn.attention_output"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "linear_2"
+        ],
+        "traceModulePath": "model.layers.0.self_attn.v_proj"
+      }
+    },
+    {
+      "id": "path:model.layers.0.self_attn.attention_output",
+      "layerType": "Attention",
+      "name": "model.layers.0.self_attn.attention_output",
+      "parentIds": [
+        "path:model.layers.0.self_attn.q_proj",
+        "path:model.layers.0.self_attn.k_proj",
+        "path:model.layers.0.self_attn.v_proj"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.self_attn.o_proj"
+      ],
+      "properties": {
+        "traceModulePath": "model.layers.0.self_attn.attention_output",
+        "syntheticAttentionMerge": true
+      }
+    },
+    {
+      "id": "path:model.layers.0.self_attn.o_proj",
+      "layerType": "Linear",
+      "name": "model.layers.0.self_attn.o_proj",
+      "parentIds": [
+        "path:model.layers.0.self_attn.attention_output"
+      ],
+      "childrenIds": [
+        "op:model.layers.0.add_3"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "linear_3"
+        ],
+        "traceModulePath": "model.layers.0.self_attn.o_proj"
+      }
+    },
+    {
+      "id": "op:model.layers.0.add_3",
+      "layerType": "Add",
+      "name": "model.layers.0.add_3",
+      "parentIds": [
+        "path:model.layers.0.__block_input__",
+        "path:model.layers.0.self_attn.o_proj"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.post_attention_layernorm",
+        "op:model.layers.0.add_5"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "add_3"
+        ],
+        "traceModulePath": ""
+      }
+    },
+    {
+      "id": "path:model.layers.0.post_attention_layernorm",
+      "layerType": "LlamaRMSNorm",
+      "name": "model.layers.0.post_attention_layernorm",
+      "parentIds": [
+        "op:model.layers.0.add_3"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.mlp.__block_input__"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "_assert_tensor_metadata_default_2",
+          "to_2",
+          "pow_2",
+          "mean_1",
+          "add_4",
+          "rsqrt_1",
+          "mul_6",
+          "_assert_tensor_metadata_default_3",
+          "to_3",
+          "mul_7"
+        ],
+        "traceModulePath": "model.layers.0.post_attention_layernorm",
+        "opTypeLabel": "RMSNorm"
+      },
+      "label": "RMSNorm"
+    },
+    {
+      "id": "path:model.layers.0.mlp.__block_input__",
+      "label": "input",
+      "layerType": "input",
+      "name": "model.layers.0.mlp.input",
+      "parentIds": [
+        "path:model.layers.0.post_attention_layernorm"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.mlp.gate_proj",
+        "path:model.layers.0.mlp.up_proj"
+      ],
+      "properties": {
+        "traceOpIds": [],
+        "traceModulePath": "model.layers.0.mlp",
+        "syntheticInternalInputAnchor": true
+      }
+    },
+    {
+      "id": "path:model.layers.0.mlp.gate_proj",
+      "layerType": "Linear",
+      "name": "model.layers.0.mlp.gate_proj",
+      "parentIds": [
+        "path:model.layers.0.mlp.__block_input__"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.mlp.act_fn"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "linear_4"
+        ],
+        "traceModulePath": "model.layers.0.mlp.gate_proj"
+      },
+      "detailExpansionEntries": [
+        {
+          "level": 2,
+          "visibleChildCount": 5,
+          "lastNodeId": "path:model.layers.0.mlp.down_proj",
+          "collapsedLayerType": "LlamaMLP",
+          "collapsedName": "model.layers.0.mlp",
+          "collapsedTitle": "LlamaMLP"
+        }
+      ]
+    },
+    {
+      "id": "path:model.layers.0.mlp.act_fn",
+      "layerType": "SiLUActivation",
+      "name": "model.layers.0.mlp.act_fn",
+      "parentIds": [
+        "path:model.layers.0.mlp.gate_proj"
+      ],
+      "childrenIds": [
+        "op:model.layers.0.mlp.mul"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "silu"
+        ],
+        "traceModulePath": "model.layers.0.mlp.act_fn"
+      }
+    },
+    {
+      "id": "path:model.layers.0.mlp.up_proj",
+      "layerType": "Linear",
+      "name": "model.layers.0.mlp.up_proj",
+      "parentIds": [
+        "path:model.layers.0.mlp.__block_input__"
+      ],
+      "childrenIds": [
+        "op:model.layers.0.mlp.mul"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "linear_5"
+        ],
+        "traceModulePath": "model.layers.0.mlp.up_proj"
+      }
+    },
+    {
+      "id": "op:model.layers.0.mlp.mul",
+      "layerType": "Mul",
+      "name": "model.layers.0.mlp.mul",
+      "parentIds": [
+        "path:model.layers.0.mlp.act_fn",
+        "path:model.layers.0.mlp.up_proj"
+      ],
+      "childrenIds": [
+        "path:model.layers.0.mlp.down_proj"
+      ],
+      "properties": {
+        "traceModulePath": "model.layers.0.mlp.mul",
+        "sourceModulePreserved": true,
+        "traceSemanticRole": "gated_mlp_product"
+      }
+    },
+    {
+      "id": "path:model.layers.0.mlp.down_proj",
+      "layerType": "Linear",
+      "name": "model.layers.0.mlp.down_proj",
+      "parentIds": [
+        "op:model.layers.0.mlp.mul"
+      ],
+      "childrenIds": [
+        "op:model.layers.0.add_5"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "linear_6"
+        ],
+        "traceModulePath": "model.layers.0.mlp.down_proj"
+      }
+    },
+    {
+      "id": "op:model.layers.0.add_5",
+      "layerType": "Add",
+      "name": "model.layers.0.add_5",
+      "parentIds": [
+        "op:model.layers.0.add_3",
+        "path:model.layers.0.mlp.down_proj"
+      ],
+      "childrenIds": [
+        "model.norm"
+      ],
+      "properties": {
+        "traceOpIds": [
+          "add_5"
+        ],
+        "traceModulePath": ""
+      }
+    },
+    {
+      "id": "model.norm",
+      "layerType": "LlamaRMSNorm",
+      "name": "model.norm",
+      "parentIds": [
+        "op:model.layers.0.add_5"
+      ],
+      "childrenIds": [
+        "lm_head"
+      ],
+      "properties": {
+        "opTypeLabel": "RMSNorm"
+      },
+      "label": "RMSNorm"
+    },
+    {
+      "id": "lm_head",
+      "layerType": "Linear",
+      "name": "lm_head",
+      "parentIds": [
+        "model.norm"
+      ],
+      "childrenIds": [
+        "output"
+      ],
+      "properties": {
+        "configVocab": 128256
+      }
+    },
+    {
+      "id": "output",
+      "layerType": "output",
+      "name": "output",
+      "parentIds": [
+        "lm_head"
+      ],
+      "childrenIds": [],
+      "properties": {}
+    }
+  ],
+  "metadata": {
+    "format": "huggingface",
+    "modelFormat": "huggingface",
+    "sourceType": "huggingface",
+    "repoId": "meta-llama/Llama-3.2-1B",
+    "displayName": "Llama-3.2-1B",
+    "modelType": "llama",
+    "architecture": "LlamaForCausalLM",
+    "hfGraphModeRequested": "auto",
+    "hfGraphModeResolved": "detailed-flow",
+    "hfGraphModeLabel": "Trace-backed detailed flow",
+    "hfGraphFidelity": "trace-backed",
+    "hfTraceBacked": true,
+    "hfResidualFlowGuaranteed": true,
+    "hfGraphModeFallback": false,
+    "hfGraphModeDescription": "Showing trace-backed flow. Residual edges and tensor flow are expected to be explicit.",
+    "hfConfigSummary": {
+      "sourceConfigKey": "root",
+      "model_type": "llama",
+      "num_hidden_layers": 16,
+      "hidden_size": 2048,
+      "intermediate_size": 8192,
+      "num_attention_heads": 32,
+      "num_key_value_heads": 8,
+      "head_dim": 64,
+      "max_position_embeddings": 131072,
+      "vocab_size": 128256
+    },
+    "nodeAttributes": [
+      {
+        "id": "configNodeSummary",
+        "name": "Summary",
+        "onNode": true
+      },
+      {
+        "id": "layer_type",
+        "name": "layer_type",
+        "onNode": true,
+        "description": "Decoder layer type from the model config's layer_types list."
+      },
+      {
+        "id": "resnetStage",
+        "name": "Stage",
+        "onNode": false,
+        "description": "One-based ResNet encoder stage index for a bottleneck group."
+      },
+      {
+        "id": "resnetBlocks",
+        "name": "Blocks",
+        "onNode": false,
+        "description": "Number of repeated bottleneck blocks in this ResNet encoder stage."
+      },
+      {
+        "id": "resnetChannels",
+        "name": "Channels",
+        "onNode": true,
+        "description": "Output channel width for this ResNet encoder stage."
+      },
+      {
+        "id": "configAttention",
+        "name": "Attention",
+        "onNode": false,
+        "description": "Attention mode for this decoder layer. Sliding attention uses a local token window; full attention can attend across the full context."
+      },
+      {
+        "id": "configWindow",
+        "name": "Window",
+        "onNode": false,
+        "description": "Sliding-attention window size in tokens. Full-attention layers do not use a local window."
+      },
+      {
+        "id": "configAttentionPattern",
+        "name": "Attention pattern",
+        "onNode": false,
+        "description": "Repeating attention cycle, for example 4+1 means four sliding-attention layers followed by one full-attention layer."
+      },
+      {
+        "id": "configCycleRepeat",
+        "name": "Cycle repeat",
+        "onNode": false,
+        "description": "How many times the shown decoder-cycle motif repeats in the model."
+      },
+      {
+        "id": "configHidden",
+        "name": "Hidden",
+        "onNode": false,
+        "description": "Transformer hidden-state width: the token representation size carried between sublayers."
+      },
+      {
+        "id": "configIntermediate",
+        "name": "FFN intermediate",
+        "onNode": false,
+        "description": "Dense feed-forward/MLP intermediate width inside the block."
+      },
+      {
+        "id": "configStateSize",
+        "name": "State size",
+        "onNode": false,
+        "description": "State-space dimension used by Mamba-style recurrent state updates."
+      },
+      {
+        "id": "configConvKernel",
+        "name": "Conv kernel",
+        "onNode": false,
+        "description": "Depthwise causal convolution kernel width used inside a Mamba mixer."
+      },
+      {
+        "id": "configTimeStepRank",
+        "name": "Time-step rank",
+        "onNode": false,
+        "description": "Low-rank time-step projection width used to parameterize Mamba discretization."
+      },
+      {
+        "id": "falconMambaOperation",
+        "name": "Operation",
+        "onNode": false,
+        "description": "Falcon-Mamba source-level operation represented by this node."
+      },
+      {
+        "id": "falconMambaImplementation",
+        "name": "Implementation",
+        "onNode": false,
+        "description": "Module, parameter, or function used by the Falcon-Mamba implementation."
+      },
+      {
+        "id": "bailingMoeOperation",
+        "name": "Operation",
+        "onNode": false,
+        "description": "Bailing-MoE-V2 source-level operation represented by this node."
+      },
+      {
+        "id": "bailingMoeImplementation",
+        "name": "Implementation",
+        "onNode": false,
+        "description": "Module, parameter, or function used by the Bailing-MoE-V2 implementation."
+      },
+      {
+        "id": "configMoeIntermediate",
+        "name": "Expert intermediate",
+        "onNode": false,
+        "description": "Intermediate width inside each routed MoE expert feed-forward network."
+      },
+      {
+        "id": "configHeads",
+        "name": "Heads",
+        "onNode": false,
+        "description": "Number of query/attention heads."
+      },
+      {
+        "id": "configPatch",
+        "name": "Patch size",
+        "onNode": false,
+        "description": "Vision patch size in pixels for the image encoder input stem."
+      },
+      {
+        "id": "configKvHeads",
+        "name": "KV heads",
+        "onNode": false,
+        "description": "Number of key-value heads. Equal to attention heads in classic multi-head attention; smaller in grouped-query or multi-query attention."
+      },
+      {
+        "id": "configInputHidden",
+        "name": "Input hidden",
+        "onNode": false,
+        "description": "Input hidden-state width before a projection or modality bridge."
+      },
+      {
+        "id": "configOutputTokens",
+        "name": "Output tokens",
+        "onNode": false,
+        "description": "Number of tokens produced by a tokenizer, projector, or pooling bridge."
+      },
+      {
+        "id": "configHeadDim",
+        "name": "Head dim",
+        "onNode": false,
+        "description": "Per-head vector dimension used by attention."
+      },
+      {
+        "id": "configLayers",
+        "name": "Layers",
+        "onNode": false,
+        "description": "Number of transformer decoder layers in the model."
+      },
+      {
+        "id": "configContext",
+        "name": "Context",
+        "onNode": false,
+        "description": "Maximum context length in tokens from the model config."
+      },
+      {
+        "id": "configPooling",
+        "name": "Pooling",
+        "onNode": false,
+        "description": "Pooling strategy used by a sequence-classification head."
+      },
+      {
+        "id": "configLabels",
+        "name": "Labels",
+        "onNode": false,
+        "description": "Number of output labels/classes in a classification head."
+      },
+      {
+        "id": "configLabelNames",
+        "name": "Label names",
+        "onNode": false,
+        "description": "Output label names from the model config."
+      },
+      {
+        "id": "configProblemType",
+        "name": "Problem type",
+        "onNode": false,
+        "description": "Training/inference problem type from the model config, for example multi-label classification."
+      },
+      {
+        "id": "configExperts",
+        "name": "Experts",
+        "onNode": false,
+        "description": "Total number of routed experts available in the MoE block."
+      },
+      {
+        "id": "configActiveExperts",
+        "name": "Active experts",
+        "onNode": false,
+        "description": "Number of experts selected for each token in the MoE block."
+      },
+      {
+        "id": "configSharedExperts",
+        "name": "Shared experts",
+        "onNode": false,
+        "description": "Number of dense shared experts added alongside routed experts in the MoE block."
+      },
+      {
+        "id": "configRouterGroups",
+        "name": "Router groups",
+        "onNode": false,
+        "description": "Number of expert groups used by grouped top-k MoE routing."
+      },
+      {
+        "id": "configTopkGroups",
+        "name": "Top-k groups",
+        "onNode": false,
+        "description": "Number of expert groups kept before selecting the per-token experts."
+      },
+      {
+        "id": "nemotronSource",
+        "name": "Source",
+        "onNode": false,
+        "description": "Official Nemotron-Omni repo source file used to build this visualization."
+      },
+      {
+        "id": "nemotronSourceClass",
+        "name": "Source class",
+        "onNode": false,
+        "description": "Class name in the Nemotron-Omni implementation represented by this node or collapsed structure."
+      },
+      {
+        "id": "nemotronBlockType",
+        "name": "Mixer",
+        "onNode": true,
+        "description": "Mixer type selected by the NemotronH hybrid decoder schedule for this block."
+      },
+      {
+        "id": "nemotronLayerSchedule",
+        "name": "Layer schedule",
+        "onNode": false,
+        "description": "Compact M/E/A schedule for the NemotronH decoder stack: M=Mamba, E=MoE, A=Attention."
+      },
+      {
+        "id": "deepseekSource",
+        "name": "Source",
+        "onNode": false,
+        "description": "Official DeepSeek source file used to build this visualization."
+      },
+      {
+        "id": "deepseekSourceClass",
+        "name": "Source class",
+        "onNode": false,
+        "description": "Class name in DeepSeek's official inference/model.py represented by this node or collapsed structure."
+      },
+      {
+        "id": "deepseekMultiplicity",
+        "name": "Multiplicity",
+        "onNode": false,
+        "description": "How many repeated source modules this DeepSeek collapsed structure represents."
+      },
+      {
+        "id": "kimiSource",
+        "name": "Source",
+        "onNode": false,
+        "description": "Official Kimi source files used to build this visualization."
+      },
+      {
+        "id": "kimiSourceClass",
+        "name": "Source class",
+        "onNode": false,
+        "description": "Class name in Kimi's official modeling_kimi_k25.py/modeling_deepseek.py represented by this node or collapsed structure."
+      },
+      {
+        "id": "kimiMultiplicity",
+        "name": "Multiplicity",
+        "onNode": false,
+        "description": "How many repeated source modules this Kimi collapsed structure represents."
+      },
+      {
+        "id": "lladaSource",
+        "name": "Source",
+        "onNode": false,
+        "description": "Official LLaDA source files used to build this visualization."
+      },
+      {
+        "id": "lladaSourceClass",
+        "name": "Source class",
+        "onNode": false,
+        "description": "Class name in LLaDA's official configuration_llada.py/modeling_llada.py represented by this node or collapsed structure."
+      },
+      {
+        "id": "lladaMultiplicity",
+        "name": "Multiplicity",
+        "onNode": false,
+        "description": "How many repeated source modules this LLaDA collapsed structure represents."
+      },
+      {
+        "id": "configMaskToken",
+        "name": "Mask token",
+        "onNode": false,
+        "description": "Token id used as the diffusion mask token for masked denoising."
+      },
+      {
+        "id": "configVocab",
+        "name": "Vocab size",
+        "onNode": false,
+        "description": "Vocabulary size: number of token IDs the embedding/output layers support."
+      },
+      {
+        "id": "configMelBins",
+        "name": "Mel bins",
+        "onNode": false,
+        "description": "Number of log-mel frequency bins consumed by an audio encoder."
+      },
+      {
+        "id": "configAudioFrames",
+        "name": "Audio frames",
+        "onNode": false,
+        "description": "Number of spectrogram frames consumed by the audio encoder input."
+      },
+      {
+        "id": "configOutFeatures",
+        "name": "Out features",
+        "onNode": false,
+        "description": "Output feature width of a linear head or projection."
+      },
+      {
+        "id": "clipOperation",
+        "name": "Operation",
+        "onNode": false,
+        "description": "Exact CLIP forward-pass expression represented by this semantic node."
+      },
+      {
+        "id": "clipImplementation",
+        "name": "Implementation",
+        "onNode": false,
+        "description": "Function, parameter, or torch operation used by the CLIP implementation."
+      },
+      {
+        "id": "clipOutput",
+        "name": "Output",
+        "onNode": false,
+        "description": "Named value returned or passed onward by the CLIP forward pass."
+      },
+      {
+        "id": "owlv2Operation",
+        "name": "Operation",
+        "onNode": false,
+        "description": "Exact OwlV2 forward-pass expression represented by this semantic node."
+      },
+      {
+        "id": "owlv2Implementation",
+        "name": "Implementation",
+        "onNode": false,
+        "description": "Function, module, or torch operation used by the OwlV2 implementation."
+      },
+      {
+        "id": "owlv2Output",
+        "name": "Output",
+        "onNode": false,
+        "description": "Named value returned or passed onward by the OwlV2 object-detection forward pass."
+      },
+      {
+        "id": "modernbertOperation",
+        "name": "Operation",
+        "onNode": false,
+        "description": "Exact ModernBERT forward-pass expression represented by this semantic node."
+      },
+      {
+        "id": "modernbertImplementation",
+        "name": "Implementation",
+        "onNode": false,
+        "description": "Function, module, or torch operation used by the ModernBERT implementation."
+      },
+      {
+        "id": "modernbertOutput",
+        "name": "Output",
+        "onNode": false,
+        "description": "Named value returned or passed onward by the ModernBERT forward pass."
+      },
+      {
+        "id": "xlmRobertaOperation",
+        "name": "Operation",
+        "onNode": false,
+        "description": "Exact XLM-RoBERTa forward-pass expression represented by this semantic node."
+      },
+      {
+        "id": "xlmRobertaImplementation",
+        "name": "Implementation",
+        "onNode": false,
+        "description": "Function, module, or torch operation used by the XLM-RoBERTa implementation."
+      },
+      {
+        "id": "xlmRobertaOutput",
+        "name": "Output",
+        "onNode": false,
+        "description": "Named value returned or passed onward by the XLM-RoBERTa forward pass."
+      },
+      {
+        "id": "bgeM3Function",
+        "name": "Function",
+        "onNode": false,
+        "description": "BGE-M3 retrieval functionality represented by this head."
+      },
+      {
+        "id": "bgeM3Operation",
+        "name": "Operation",
+        "onNode": false,
+        "description": "Exact BGE-M3 source-level expression represented by this semantic node."
+      },
+      {
+        "id": "bgeM3Implementation",
+        "name": "Implementation",
+        "onNode": false,
+        "description": "Function, module, or checkpoint head used by the FlagEmbedding BGE-M3 implementation."
+      },
+      {
+        "id": "bgeM3Output",
+        "name": "Output",
+        "onNode": false,
+        "description": "Named value returned or passed onward by the BGE-M3 forward/encode path."
+      },
+      {
+        "id": "bgeM3Outputs",
+        "name": "Outputs",
+        "onNode": false,
+        "description": "BGE-M3 output set represented by a merged output node."
+      },
+      {
+        "id": "whisperSource",
+        "name": "Source",
+        "onNode": false,
+        "description": "Official Whisper source file used to build this visualization."
+      },
+      {
+        "id": "whisperSourceClass",
+        "name": "Source class",
+        "onNode": false,
+        "description": "Class name in Transformers' Whisper implementation represented by this node or collapsed structure."
+      },
+      {
+        "id": "whisperOperation",
+        "name": "Operation",
+        "onNode": false,
+        "description": "Source/config-backed operation represented by this Whisper semantic node."
+      },
+      {
+        "id": "configFusionInputs",
+        "name": "Fusion inputs",
+        "onNode": false,
+        "description": "Modalities merged into the decoder input stream by a multimodal fusion node."
+      },
+      {
+        "id": "convInputChannels",
+        "name": "Input channels",
+        "onNode": false,
+        "description": "Conv2d input channel count from the traced torch.nn.Conv2d module."
+      },
+      {
+        "id": "convOutputChannels",
+        "name": "Output channels",
+        "onNode": false,
+        "description": "Conv2d output channel count from the traced torch.nn.Conv2d module."
+      },
+      {
+        "id": "convKernelSize",
+        "name": "Kernel size",
+        "onNode": false,
+        "description": "Conv2d kernel size from the traced torch.nn.Conv2d module."
+      },
+      {
+        "id": "convStride",
+        "name": "Stride",
+        "onNode": false,
+        "description": "Conv2d stride from the traced torch.nn.Conv2d module."
+      },
+      {
+        "id": "convGroups",
+        "name": "Groups",
+        "onNode": false,
+        "description": "Conv2d groups value from the traced torch.nn.Conv2d module."
+      },
+      {
+        "id": "pi05ChunkSize",
+        "name": "Chunk",
+        "onNode": true,
+        "description": "Number of continuous action steps predicted by the Pi05 flow-matching head."
+      },
+      {
+        "id": "pi05ActionDim",
+        "name": "Act dim",
+        "onNode": true,
+        "description": "Padded continuous action-vector width used by the Pi05 policy."
+      },
+      {
+        "id": "pi05DenoiseSteps",
+        "name": "Denoise steps",
+        "onNode": true,
+        "description": "Number of flow-matching denoising steps used by Pi05 inference."
+      },
+      {
+        "id": "kokoroStyleDim",
+        "name": "Style dim",
+        "onNode": false,
+        "description": "Kokoro voice/style conditioning vector width from the checkpoint config."
+      },
+      {
+        "id": "kokoroMelBins",
+        "name": "Mel bins",
+        "onNode": false,
+        "description": "Number of mel-frequency bins used by the Kokoro acoustic representation."
+      },
+      {
+        "id": "kokoroMaxDur",
+        "name": "Max duration",
+        "onNode": false,
+        "description": "Maximum per-token duration bucket count used by Kokoro's duration projection."
+      },
+      {
+        "id": "kokoroKernel",
+        "name": "Kernel",
+        "onNode": false,
+        "description": "Kokoro text encoder convolution kernel size from the checkpoint config."
+      },
+      {
+        "id": "kokoroUpsampleRates",
+        "name": "Upsample rates",
+        "onNode": false,
+        "description": "iSTFTNet generator upsampling rates from the Kokoro config."
+      },
+      {
+        "id": "kokoroIstft",
+        "name": "iSTFT",
+        "onNode": false,
+        "description": "iSTFT window/hop settings used by the Kokoro waveform generator."
+      },
+      {
+        "id": "kokoroSampleRate",
+        "name": "Sample rate",
+        "onNode": false,
+        "description": "Kokoro waveform sample rate in Hz."
+      },
+      {
+        "id": "zImageComponent",
+        "name": "Component",
+        "onNode": false,
+        "description": "Diffusers pipeline component represented by this Z-Image node."
+      },
+      {
+        "id": "zImageOperation",
+        "name": "Operation",
+        "onNode": false,
+        "description": "Source/config-backed operation represented by this Z-Image semantic node."
+      },
+      {
+        "id": "zImageDenoiseForwards",
+        "name": "DiT forwards",
+        "onNode": true,
+        "description": "Number of transformer denoising forwards used by the Z-Image Turbo pipeline."
+      },
+      {
+        "id": "zImageLatentChannels",
+        "name": "Latent channels",
+        "onNode": false,
+        "description": "Latent channel count consumed by the Z-Image transformer and VAE."
+      }
+    ]
+  }
+}

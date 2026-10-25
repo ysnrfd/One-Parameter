@@ -1,0 +1,592 @@
+{
+  "scope": "current checkout; smoke runs with explicit step override",
+  "started_utc": "2026-10-23T12:04:57.531705+00:00",
+  "version": "1.1.1",
+  "python": "3.12.15 (main, Oct  1 2026, 21:00:48) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "checkout": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter",
+  "source_hashes_start": {
+    "single_parameter_observatory/__init__.py": "ef37532660ef9e9a8734e1deb1d6b604f5e987668e8e51e9c4a19e7e07eef018",
+    "single_parameter_observatory/__main__.py": "35f65dc619c9cca43d1f06e2f047a53339ff999beae64c032c964dd7465884bf",
+    "single_parameter_observatory/config.py": "a71df6ea378f6d2e735d0a8293f6143401d849669e289b3c4657c952981fa66a",
+    "single_parameter_observatory/convergence.py": "74774a2211593da598f0cb1f5073a507a72c2efeceb132f1d448b2775c902ad6",
+    "single_parameter_observatory/dashboard.py": "b48ea5bf9982a9a1bffdeea78af8e479dbd8a081db2b6655fea44d1ee0cce471",
+    "single_parameter_observatory/errors.py": "beea2246e4dc872ca452d74a024fca5a678e5c81e6ed0b00f93283b453ce704d",
+    "single_parameter_observatory/exporters.py": "3995c17a905bac9ab8c435305c504b88a20da2da56f240fbbae8103f0607a4da",
+    "single_parameter_observatory/fp32_inspector.py": "cc2f12f9448d7127253cc7d519e582a4e0e3470e99c4a84948bbe73a8995b049",
+    "single_parameter_observatory/main.py": "71347dd051a4f68154d406aef2f7fe0493d32d2ecda3f3d9f806dd02de596045",
+    "single_parameter_observatory/model.py": "62afb3597d6fc6ccc574c86e183ba5f568a6b9aee047790e693600d61fed40c8",
+    "single_parameter_observatory/numerical_analysis.py": "2bcb7a614c49148a848c5baf5ff4a4b701a0a288a7b4c9edf771ac8b99efa227",
+    "single_parameter_observatory/optimizer_inspector.py": "38674ceb17df6cd2eee0bd5abd7e7ef24d9681e6c2e34d49eee8e19edb7a505b",
+    "single_parameter_observatory/recorder.py": "3397e514642053810bfd3b70d7bc57697ff8b459f4bffbb0703e590111a6c19a",
+    "single_parameter_observatory/run_checks.py": "0811229fe63356dfcab08fc0ca593f1d341239da0d0e442b2246df9967d7c502",
+    "single_parameter_observatory/tracker.py": "c18da4e8cd67345a0a427180062324f01d60ebdbe312d6d167d44015c50398a5",
+    "single_parameter_observatory/training_engine.py": "ab2684189c57e57236330667f50d4a93cb207411c4ba1bd6b450bf4f3dac0860",
+    "single_parameter_observatory/validation.py": "4d5b21374809704d54ed69643abc8bdd5e0d1218c7c01caa1a7f440fbe8b6773",
+    "single_parameter_observatory/visualization.py": "c1413240fe9d55978bd30568c46b52aa55fa7dde69beba60bed0ea641a7557a0",
+    "pyproject.toml": "793eac61bbda2928ec4dae1ad7beea62ed0e8b3a9b202c0a3a429b517e1c0638",
+    "scripts/run_preset_sweep.py": "3c215092b41cdd84b58b42ba62d3bcd19419926edb59533714d6902a0f9dbd58"
+  },
+  "presets": {
+    "adamw": {
+      "preset": "adamw",
+      "description": "Default. Decoupled weight decay, real autograd, moderate steps.",
+      "config": {
+        "name": "adamw",
+        "seed": 20260926,
+        "initial_value": -2.0,
+        "optimizer": "adamw",
+        "lr": 0.1,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0.01,
+        "momentum": 0.0,
+        "dampening": 0.0,
+        "nesterov": false,
+        "amsgrad": false,
+        "maximize": false,
+        "lr_schedule": "constant",
+        "lr_final_factor": 0.1,
+        "steps": 3,
+        "zero_grad_set_to_none": true,
+        "accumulation_micro_batches": 1,
+        "stop_on_nonfinite": true,
+        "dataset": {
+          "samples": 512,
+          "batch_size": 1,
+          "input_min": -2.0,
+          "input_max": 2.0,
+          "target_true_parameter": 1.5,
+          "noise_std": 0.0,
+          "shuffle_batches": false,
+          "seed": 20260926,
+          "walk": "linear"
+        },
+        "model": {
+          "input_scale": 1.0,
+          "output_scale": 1.0,
+          "use_tanh": true
+        },
+        "landscape": {
+          "enabled": true,
+          "every": 25,
+          "radius": 0.25,
+          "points": 17,
+          "dtype": "float64"
+        },
+        "validation": {
+          "enabled": true,
+          "every": 1,
+          "gradient_rtol": 1e-06,
+          "finite_difference_rtol": 5e-05,
+          "fd_sweep_decades": [
+            -10.0,
+            -8.0,
+            -6.0,
+            -4.0,
+            -2.0
+          ],
+          "reconstruction_ulp_tolerance": 0,
+          "search_update_variants": true
+        },
+        "stability": {
+          "window": 50,
+          "update_eps": 1e-12,
+          "gradient_eps": 1e-12,
+          "stationary_rel": 1e-09,
+          "oscillation_min_sign_changes": 3,
+          "divergence_loss_growth": 1.05,
+          "divergence_absolute": 0.001,
+          "stagnant_fraction": 0.5
+        },
+        "run_fp64_reference_track": true,
+        "record_full_state_snapshots": true,
+        "live_speed_steps_per_second": 30.0
+      },
+      "step_override": 3,
+      "status": "OK",
+      "steps_executed": 3,
+      "aborted": false,
+      "abort_reason": null,
+      "report": {
+        "run_name": "adamw",
+        "optimizer": "adamw",
+        "steps": 3,
+        "initial_parameter": -2.0,
+        "initial_parameter_hex": "0xC0000000",
+        "initial_loss": 3.977567672729492,
+        "initial_gradient": -0.010696807876229286,
+        "final_parameter": -1.6980493068695068,
+        "final_parameter_hex": "0xBFD959AE",
+        "final_loss": 3.9729321002960205,
+        "final_gradient": -0.025230495259165764,
+        "total_parameter_change": 0.30195069313049316,
+        "minimum_loss": 3.9729321002960205,
+        "maximum_loss": 3.977567672729492,
+        "max_abs_gradient": 0.025230495259165764,
+        "max_abs_update": 0.10199987888336182,
+        "mean_abs_update": 0.10065023104349773,
+        "std_parameter_over_final_window": 0.09997650144280165,
+        "final_window_size": 3,
+        "gradient_sign_changes": 0,
+        "update_sign_changes": 0,
+        "unchanged_fp32_steps": 0,
+        "unchanged_fp32_step_indices": [],
+        "update_attempted_below_resolution_steps": 0,
+        "update_attempted_below_resolution_indices": [],
+        "total_ulp_movement": 2105127,
+        "total_ulp_movement_note": "Sum of |movement| over steps, measured in ULPs of each step's starting value. This is the per-step movement metric and does not blow up when a step crosses a binade boundary or zero.",
+        "total_ulp_movement_steps": 3,
+        "total_representable_values_travelled": 2532946,
+        "total_representable_values_note": "Sum of the exact count of representable float32 values between before and after each step. Correct, but at a sign crossing a single step contributes roughly 2.1 billion, so it is not a summary of how far the parameter travelled; see 'total_ulp_movement' for that.",
+        "sign_crossing_steps": [],
+        "max_rounding_residual": 2.7630892018848385e-08,
+        "max_reconstruction_ulp_error": 0,
+        "reconstruction_checks": 3,
+        "reconstruction_failures": 0,
+        "max_gradient_validation_relative_error": 6.309028579778069e-05,
+        "max_gradient_validation_absolute_error": 6.749072461263023e-07,
+        "max_finite_difference_relative_error": 6.309075357954876e-05,
+        "max_finite_difference_absolute_error": 6.749122505294441e-07,
+        "min_gradient_tolerance_absolute": 3.8040017957261586e-06,
+        "min_finite_difference_tolerance_absolute": 4.3281784523666735e-06,
+        "nonfinite_steps": [],
+        "nonfinite_detected": false,
+        "max_fp32_vs_fp64_difference": 9.30776834939806e-07,
+        "chain_verified": true,
+        "event_counts": {
+          "INITIALIZED": 1,
+          "FORWARD_COMPLETE": 3,
+          "LOSS_COMPUTED": 3,
+          "BACKWARD_STARTED": 3,
+          "GRADIENT_AVAILABLE": 3,
+          "LANDSCAPE_PROBED": 2,
+          "OPTIMIZER_STATE_READ": 4,
+          "OPTIMIZER_STEP_STARTED": 3,
+          "OPTIMIZER_STEP_COMPLETED": 3,
+          "BIT_PATTERN_CHANGED": 3,
+          "PARAMETER_CHANGED": 3,
+          "FP32_ROUNDING_OBSERVED": 3,
+          "STABILITY_METRIC_UPDATED": 3,
+          "RUN_COMPLETE": 1
+        },
+        "validation": {
+          "gradient_checks": 3,
+          "gradient_failures": 0,
+          "finite_difference_failures": 0,
+          "reconstruction_checks": 3,
+          "reconstruction_failures": 0,
+          "bit_checks": 1,
+          "bit_failures": 0,
+          "ulp_checks": 1,
+          "ulp_failures": 0,
+          "max_gradient_relative_error": 6.309028579778069e-05,
+          "max_gradient_absolute_error": 6.749072461263023e-07,
+          "max_finite_difference_relative_error": 6.309075357954876e-05,
+          "max_finite_difference_absolute_error": 6.749122505294441e-07,
+          "max_reconstruction_ulp_error": 0,
+          "total_failures": 0,
+          "failure_notes": []
+        },
+        "aborted_reason": null,
+        "stability": {
+          "regime": "still moving",
+          "rationale": [
+            "mean |update| over the final window = 0.101 (threshold 1e-12)",
+            "mean |gradient| over the final window = 0.0175 (threshold 1e-12)",
+            "update sign changes in window = 0 (oscillation threshold 3)",
+            "fraction of window steps whose stored float32 bits did not change = 0 (stagnation threshold 0.5)"
+          ],
+          "final_window": 3,
+          "criteria": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "mean_update_magnitude": 0.10065023104349773,
+          "std_update_magnitude": 0.0014221798860083895,
+          "mean_gradient_magnitude": 0.01747493507961432,
+          "max_absolute_gradient_in_window": 0.025230495259165764,
+          "max_absolute_update_in_window": 0.10199987888336182,
+          "gradient_sign_changes_in_window": 0,
+          "update_sign_changes_in_window": 0,
+          "unchanged_fraction_in_window": 0.0,
+          "total_ulp_movement_in_window": 2105127,
+          "loss_growth_ratio_in_window": 0.9988345710708447,
+          "parameter_std_in_window": 0.09997650144280165,
+          "fp32_storage_stagnant": false,
+          "nonfinite_steps": [],
+          "disclaimer": "A small update, a small gradient, float32 storage stagnation, an oscillating update and a numerical plateau are five different observations. None of them establishes that the optimizer has converged, and none of them says anything about a global optimum: this instrument observes one coordinate of one parameter out of a high-dimensional optimization state."
+        }
+      },
+      "artifacts": {
+        "summary.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\summary.json",
+          "bytes": 7472,
+          "sha256": "ff251c852cae87a49a6d37e5c86a4e29388a4e91a03b01f276c5cb0a91c2afd6"
+        },
+        "trajectory.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\trajectory.csv",
+          "bytes": 15091,
+          "sha256": "523814eac6e73b945c6322137c1c95b0466a7e013ededcd1f3770d8f8c743ce5"
+        },
+        "trajectory.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\trajectory.json",
+          "bytes": 44484,
+          "sha256": "0b368a763d76fcc3be0c17ceacec9a5a2d832e60ddda68cb006c25de7050248d"
+        },
+        "trajectory.npz": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\trajectory.npz",
+          "bytes": 25070,
+          "sha256": "fd3b8fdc3289c0663569e5da8b35237eb61750359037b7a0a77c677113836a92"
+        },
+        "bit_history.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\bit_history.csv",
+          "bytes": 1125,
+          "sha256": "5f2d00064949bfc8d48b85e541701002d2de5dad52ce5748923b3eb4df79d3f3"
+        },
+        "optimizer_state_history.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\optimizer_state_history.csv",
+          "bytes": 1535,
+          "sha256": "f7c150b2028d3f11eadf2f84b726222ae81eb69883e9ff85acdb023a55287aaa"
+        },
+        "landscape.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\landscape.json",
+          "bytes": 4446,
+          "sha256": "673fd862893fa6adbd7a73d5cddb557e3f316762f42368078bb5b938b2dc0429"
+        },
+        "stability.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\stability.csv",
+          "bytes": 923,
+          "sha256": "666ff2d20dd067a0f21d215f01a6a493e0d624f24555fc5775c50084d881b624"
+        },
+        "events.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\events.csv",
+          "bytes": 2426,
+          "sha256": "c2c9595e29e875af461adacc0dc2ee38a92c002b61af4f423af1b08fec0af4cb"
+        },
+        "validation.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\validation.json",
+          "bytes": 2182,
+          "sha256": "efb24b2e92f6f5cd4d57bd15e29bd318b72f008cf524bd73ca9794bc44782124"
+        },
+        "provenance.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\provenance.json",
+          "bytes": 15033,
+          "sha256": "2dc3b13ec041703f67664ba149944f30b604818e1c8514a8e95ebafb742f15d6"
+        },
+        "trajectory.parquet": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\adamw\\trajectory.parquet",
+          "bytes": 91481,
+          "sha256": "564a99ba9be536378879759368bb4b7a7243298cb1e06638a2088a6ea77fcc42"
+        }
+      },
+      "optional_exports_unavailable": [],
+      "wall_seconds": 4.344819500000085
+    },
+    "diverging": {
+      "preset": "diverging",
+      "description": "Divergence regime: the learning rate is far outside the stable range, which drives the real loss and the real parameter to non-finite values so the non-finite detector is exercised. Uses the linear (non-tanh) model, because a saturated tanh kills the gradient and the run would stall at a large finite value instead of diverging.",
+      "config": {
+        "name": "diverging",
+        "seed": 20260926,
+        "initial_value": -5.0,
+        "optimizer": "sgd",
+        "lr": 1000000000.0,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0.0,
+        "momentum": 0.0,
+        "dampening": 0.0,
+        "nesterov": false,
+        "amsgrad": false,
+        "maximize": false,
+        "lr_schedule": "constant",
+        "lr_final_factor": 0.1,
+        "steps": 3,
+        "zero_grad_set_to_none": true,
+        "accumulation_micro_batches": 1,
+        "stop_on_nonfinite": true,
+        "dataset": {
+          "samples": 512,
+          "batch_size": 1,
+          "input_min": -8.0,
+          "input_max": 8.0,
+          "target_true_parameter": 1.5,
+          "noise_std": 0.0,
+          "shuffle_batches": false,
+          "seed": 20260926,
+          "walk": "linear"
+        },
+        "model": {
+          "input_scale": 1.0,
+          "output_scale": 1.0,
+          "use_tanh": false
+        },
+        "landscape": {
+          "enabled": true,
+          "every": 25,
+          "radius": 0.25,
+          "points": 17,
+          "dtype": "float64"
+        },
+        "validation": {
+          "enabled": true,
+          "every": 1,
+          "gradient_rtol": 1e-06,
+          "finite_difference_rtol": 5e-05,
+          "fd_sweep_decades": [
+            -10.0,
+            -8.0,
+            -6.0,
+            -4.0,
+            -2.0
+          ],
+          "reconstruction_ulp_tolerance": 0,
+          "search_update_variants": true
+        },
+        "stability": {
+          "window": 50,
+          "update_eps": 1e-12,
+          "gradient_eps": 1e-12,
+          "stationary_rel": 1e-09,
+          "oscillation_min_sign_changes": 3,
+          "divergence_loss_growth": 1.05,
+          "divergence_absolute": 0.001,
+          "stagnant_fraction": 0.5
+        },
+        "run_fp64_reference_track": true,
+        "record_full_state_snapshots": true,
+        "live_speed_steps_per_second": 30.0
+      },
+      "step_override": 3,
+      "status": "OK",
+      "steps_executed": 3,
+      "aborted": true,
+      "abort_reason": "non-finite state at step 2: the run was stopped rather than continuing with meaningless values",
+      "report": {
+        "run_name": "diverging",
+        "optimizer": "sgd",
+        "steps": 3,
+        "initial_parameter": -5.0,
+        "initial_parameter_hex": "0xC0A00000",
+        "initial_loss": 2704.0,
+        "initial_gradient": -832.0,
+        "final_parameter": 1.3314081022775404e+34,
+        "final_parameter_hex": "0x78241BD5",
+        "final_loss": "inf",
+        "final_gradient": -1.331408049746644e+25,
+        "total_parameter_change": 1.3314081022775404e+34,
+        "minimum_loss": 2704.0,
+        "maximum_loss": "inf",
+        "max_abs_gradient": 1.331408049746644e+25,
+        "max_abs_update": 1.3314081022881067e+34,
+        "mean_abs_update": 4.4380270076622435e+33,
+        "std_parameter_over_final_window": 7.68688826254237e+33,
+        "final_window_size": 3,
+        "gradient_sign_changes": 2,
+        "update_sign_changes": 2,
+        "unchanged_fp32_steps": 0,
+        "unchanged_fp32_step_indices": [],
+        "update_attempted_below_resolution_steps": 0,
+        "update_attempted_below_resolution_indices": [],
+        "total_ulp_movement": 4835295072592639744,
+        "total_ulp_movement_note": "Sum of |movement| over steps, measured in ULPs of each step's starting value. This is the per-step movement metric and does not blow up when a step crosses a binade boundary or zero.",
+        "total_ulp_movement_steps": 3,
+        "total_representable_values_travelled": 9305950943,
+        "total_representable_values_note": "Sum of the exact count of representable float32 values between before and after each step. Correct, but at a sign crossing a single step contributes roughly 2.1 billion, so it is not a summary of how far the parameter travelled; see 'total_ulp_movement' for that.",
+        "sign_crossing_steps": [
+          0,
+          1,
+          2
+        ],
+        "max_rounding_residual": 5.2541462695474924e+26,
+        "max_reconstruction_ulp_error": 0,
+        "reconstruction_checks": 3,
+        "reconstruction_failures": 0,
+        "max_gradient_validation_relative_error": 2.9182309594834865e-08,
+        "max_gradient_validation_absolute_error": 2.873103125525299e+16,
+        "max_finite_difference_relative_error": 2.9159022482897964e-08,
+        "max_finite_difference_absolute_error": 2.855030976885555e+16,
+        "min_gradient_tolerance_absolute": 0.0034107353515625,
+        "min_finite_difference_tolerance_absolute": 0.044178735348850744,
+        "nonfinite_steps": [
+          2
+        ],
+        "nonfinite_detected": true,
+        "max_fp32_vs_fp64_difference": 2.4472075341054287e+26,
+        "chain_verified": true,
+        "event_counts": {
+          "INITIALIZED": 1,
+          "FORWARD_COMPLETE": 3,
+          "LOSS_COMPUTED": 3,
+          "BACKWARD_STARTED": 3,
+          "GRADIENT_AVAILABLE": 3,
+          "LANDSCAPE_PROBED": 2,
+          "OPTIMIZER_STATE_READ": 4,
+          "OPTIMIZER_STEP_STARTED": 3,
+          "OPTIMIZER_STEP_COMPLETED": 3,
+          "BIT_PATTERN_CHANGED": 3,
+          "PARAMETER_CHANGED": 3,
+          "FP32_ROUNDING_OBSERVED": 3,
+          "STABILITY_METRIC_UPDATED": 3,
+          "NONFINITE_DETECTED": 1,
+          "RUN_ABORTED": 1
+        },
+        "validation": {
+          "gradient_checks": 3,
+          "gradient_failures": 0,
+          "finite_difference_failures": 0,
+          "reconstruction_checks": 3,
+          "reconstruction_failures": 0,
+          "bit_checks": 1,
+          "bit_failures": 0,
+          "ulp_checks": 1,
+          "ulp_failures": 0,
+          "max_gradient_relative_error": 2.9182309594834865e-08,
+          "max_gradient_absolute_error": 2.873103125525299e+16,
+          "max_finite_difference_relative_error": 2.9159022482897964e-08,
+          "max_finite_difference_absolute_error": 2.855030976885555e+16,
+          "max_reconstruction_ulp_error": 0,
+          "total_failures": 0,
+          "failure_notes": []
+        },
+        "aborted_reason": "non-finite state at step 2: the run was stopped rather than continuing with meaningless values",
+        "stability": {
+          "regime": "non-finite",
+          "rationale": [
+            "non-finite state observed at steps [2]",
+            "no stability conclusion is possible for this run"
+          ],
+          "final_window": 3,
+          "criteria": {
+            "window": 50,
+            "update_eps": 1e-12,
+            "gradient_eps": 1e-12,
+            "stationary_rel": 1e-09,
+            "oscillation_min_sign_changes": 3,
+            "divergence_loss_growth": 1.05,
+            "divergence_absolute": 0.001,
+            "stagnant_fraction": 0.5
+          },
+          "mean_update_magnitude": 4.4380270076622435e+33,
+          "std_update_magnitude": 7.686888262542369e+33,
+          "mean_gradient_magnitude": 4.4380268325240346e+24,
+          "max_absolute_gradient_in_window": 1.331408049746644e+25,
+          "max_absolute_update_in_window": 1.3314081022881067e+34,
+          "gradient_sign_changes_in_window": 2,
+          "update_sign_changes_in_window": 2,
+          "unchanged_fraction_in_window": 0.0,
+          "total_ulp_movement_in_window": 4835295072592639744,
+          "loss_growth_ratio_in_window": 1.625599878736553e+22,
+          "parameter_std_in_window": 7.68688826254237e+33,
+          "fp32_storage_stagnant": false,
+          "nonfinite_steps": [
+            2
+          ],
+          "disclaimer": "A small update, a small gradient, float32 storage stagnation, an oscillating update and a numerical plateau are five different observations. None of them establishes that the optimizer has converged, and none of them says anything about a global optimum: this instrument observes one coordinate of one parameter out of a high-dimensional optimization state."
+        }
+      },
+      "artifacts": {
+        "summary.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\summary.json",
+          "bytes": 7468,
+          "sha256": "b459e22356a020adee43ec9019622cd008df6795fd6c6490ecc28b46d554821c"
+        },
+        "trajectory.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\trajectory.csv",
+          "bytes": 14104,
+          "sha256": "d20c98406dfc848fafda539bc22547f31974ca505941cf4f1f200d465ee0985b"
+        },
+        "trajectory.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\trajectory.json",
+          "bytes": 43556,
+          "sha256": "aa62ed5acbab0f2a382269b979008d337e74e9e205b1285c7e3ffd8c548b462a"
+        },
+        "trajectory.npz": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\trajectory.npz",
+          "bytes": 26071,
+          "sha256": "58021a21945130107ef49b8a5b41e96d38737dcc4e532558dad53c481f060de2"
+        },
+        "bit_history.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\bit_history.csv",
+          "bytes": 1159,
+          "sha256": "faffbcefcdbad5841875446f89d8a4e22dbca0697852e7e82203fa9dc85f718e"
+        },
+        "optimizer_state_history.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\optimizer_state_history.csv",
+          "bytes": 975,
+          "sha256": "600d930f5c10bb8762203fe777d22cf7b57bebc8e81320a41240e610107f7fa6"
+        },
+        "landscape.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\landscape.json",
+          "bytes": 4264,
+          "sha256": "e55721b672619043d62796bf90fe57ea957d0fb6edde76bd8d058185e3bf549c"
+        },
+        "stability.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\stability.csv",
+          "bytes": 895,
+          "sha256": "65621ee29076217fae5e49d09c7c7aa99bf5d32fa34fee9ecaadb6cccb4ff5f3"
+        },
+        "events.csv": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\events.csv",
+          "bytes": 2644,
+          "sha256": "db6153e815d143f8c5d5ecb204091688e659fd4d8ff8de0b1cbde59446cff1f3"
+        },
+        "validation.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\validation.json",
+          "bytes": 2118,
+          "sha256": "05245d6e7658305ae4498fd8edf7cf81518db754706050eabf13af4a0995a552"
+        },
+        "provenance.json": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\provenance.json",
+          "bytes": 9635,
+          "sha256": "862d527bda8338440db8f9300165a91d5891062e4aa78f47b8c74ecbe09bbfd9"
+        },
+        "trajectory.parquet": {
+          "path": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\evidence\\repair_20261023\\sweep_smoke\\diverging\\trajectory.parquet",
+          "bytes": 89492,
+          "sha256": "4f81d64041c7571328b63bbc61a768843dc52b04cbdb23f92a606c2798c0a4a4"
+        }
+      },
+      "optional_exports_unavailable": [],
+      "wall_seconds": 0.22812270000031276
+    }
+  },
+  "source_hashes_end": {
+    "single_parameter_observatory/__init__.py": "ef37532660ef9e9a8734e1deb1d6b604f5e987668e8e51e9c4a19e7e07eef018",
+    "single_parameter_observatory/__main__.py": "35f65dc619c9cca43d1f06e2f047a53339ff999beae64c032c964dd7465884bf",
+    "single_parameter_observatory/config.py": "a71df6ea378f6d2e735d0a8293f6143401d849669e289b3c4657c952981fa66a",
+    "single_parameter_observatory/convergence.py": "74774a2211593da598f0cb1f5073a507a72c2efeceb132f1d448b2775c902ad6",
+    "single_parameter_observatory/dashboard.py": "b48ea5bf9982a9a1bffdeea78af8e479dbd8a081db2b6655fea44d1ee0cce471",
+    "single_parameter_observatory/errors.py": "beea2246e4dc872ca452d74a024fca5a678e5c81e6ed0b00f93283b453ce704d",
+    "single_parameter_observatory/exporters.py": "3995c17a905bac9ab8c435305c504b88a20da2da56f240fbbae8103f0607a4da",
+    "single_parameter_observatory/fp32_inspector.py": "cc2f12f9448d7127253cc7d519e582a4e0e3470e99c4a84948bbe73a8995b049",
+    "single_parameter_observatory/main.py": "71347dd051a4f68154d406aef2f7fe0493d32d2ecda3f3d9f806dd02de596045",
+    "single_parameter_observatory/model.py": "62afb3597d6fc6ccc574c86e183ba5f568a6b9aee047790e693600d61fed40c8",
+    "single_parameter_observatory/numerical_analysis.py": "2bcb7a614c49148a848c5baf5ff4a4b701a0a288a7b4c9edf771ac8b99efa227",
+    "single_parameter_observatory/optimizer_inspector.py": "38674ceb17df6cd2eee0bd5abd7e7ef24d9681e6c2e34d49eee8e19edb7a505b",
+    "single_parameter_observatory/recorder.py": "3397e514642053810bfd3b70d7bc57697ff8b459f4bffbb0703e590111a6c19a",
+    "single_parameter_observatory/run_checks.py": "0811229fe63356dfcab08fc0ca593f1d341239da0d0e442b2246df9967d7c502",
+    "single_parameter_observatory/tracker.py": "c18da4e8cd67345a0a427180062324f01d60ebdbe312d6d167d44015c50398a5",
+    "single_parameter_observatory/training_engine.py": "ab2684189c57e57236330667f50d4a93cb207411c4ba1bd6b450bf4f3dac0860",
+    "single_parameter_observatory/validation.py": "4d5b21374809704d54ed69643abc8bdd5e0d1218c7c01caa1a7f440fbe8b6773",
+    "single_parameter_observatory/visualization.py": "c1413240fe9d55978bd30568c46b52aa55fa7dde69beba60bed0ea641a7557a0",
+    "pyproject.toml": "793eac61bbda2928ec4dae1ad7beea62ed0e8b3a9b202c0a3a429b517e1c0638",
+    "scripts/run_preset_sweep.py": "3c215092b41cdd84b58b42ba62d3bcd19419926edb59533714d6902a0f9dbd58"
+  },
+  "source_changed_during_run": false,
+  "finished_utc": "2026-10-23T12:05:02.206388+00:00",
+  "status": "PASS"
+}

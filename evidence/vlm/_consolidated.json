@@ -1,0 +1,164 @@
+[
+  {
+    "frame": "frames_frame_00001",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL - The frame is an uninitialized/placeholder state missing two required panels, all data series, and specific stylin",
+    "defects": "Missing bottom-left and bottom-right panels (bit strip and state card). Missing data series and purple marker in the line plot. The \"UPDATE\" box in the causal chain is not highlighted orange as specif",
+    "text_read": "Step: \"no step executed yet\". w value: not available. Loss: not available. FPS readout: \"114 FPS drawn | step rate 30/s\". Bit count: not available.",
+    "series": "The line plot shows zero series; no data points or lines are drawn. The purple marker is not visible. The panel contains only a central status message.",
+    "bits": "Zero bit squares are drawn. No hex word is readable."
+  },
+  {
+    "frame": "frames_frame_00002",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL - The primary data visualization (the recorded series line plot) is empty, failing to display the historical trends",
+    "defects": "The line plot panel is visually empty despite being at step 25; no historical data lines for w, delta, gradient, or loss are rendered within the axes. The \"interpolation notice\" text is present but sl",
+    "text_read": "Step: 25 / 199; w: 0.5814498662948608; Loss: 0.40814332799682657; FPS: 115 FPS drawn (top right) and 26 FPS drawn (state card); Bits changed: 14 of 32; Hex: 0x3",
+    "series": "The line plot shows 4 series (w, delta w, gradient, loss) in the legend, but no data lines or points are visible in the plot area (it appears empty/flat). A pur",
+    "bits": "32 bit squares are drawn. Orange squares (changed bits) are located at positions (from left, 0-indexed): 5, 6, 7, 10, 12"
+  },
+  {
+    "frame": "frames_frame_00003",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL (The dashboard frame fails to render the core data series in the live plot, making the \"recorded series\" panel non-",
+    "defects": "The primary defect is that the line plot in the top-right panel contains no visible data series despite the legend; the graph area is nearly blank except for the marker and a baseline. Additionally, t",
+    "text_read": "Step number is 58 (of 199). w value is 1.5134968757629395. Loss is 3.171363716812338e-07. FPS readout is \"24 FPS drawn\" (top-right of series panel) and \"32 FPS ",
+    "series": "The line plot shows four series (w, delta w, gradient, loss) in the legend. However, the plot area is effectively empty of data lines or points; only a flat ora",
+    "bits": "There are 32 bit squares drawn in the strip. The orange squares (representing changed bits) are located at positions 14,"
+  },
+  {
+    "frame": "frames_frame_00004",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL (The primary data visualization panel \"recorded series\" fails to render the actual time-series lines or data points",
+    "defects": "The \"recorded series\" panel is effectively empty of plotted data series despite the legend; the purple marker is pinned to the left border; the state card text for \"delta\" and \"attempted\" is slightly ",
+    "text_read": "Step: 95 / 199; w: 1.4991327524161818; Loss: 3.486945331763404e-09; FPS: 21 (top-right) and 25 (state card); Bits changed: 18 of 32; Hex: 0x3FBEE395.",
+    "series": "The line plot shows 4 series (w, delta w, gradient, loss) in the legend. However, the plot area is nearly empty; only a single horizontal orange line is visible",
+    "bits": "32 bit squares are drawn. The orange squares (representing changed bits) correspond to the exponent and the start of the"
+  },
+  {
+    "frame": "frames_frame_00005",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL (The primary data visualization panel is empty of series data, making it a non-functional frame for a \"live view\" d",
+    "defects": "The \"recorded series (live)\" panel is missing its actual data lines/points despite being at step 128. The purple marker is pinned to the origin. Text in the state card (\"attempted\", \"gradient\") is sli",
+    "text_read": "Step 128 / 199; w = 1.4393825116157317; loss = 0.07953578341464943; FPS readout = 20 FPS drawn | step rate 30/s; bits changed = 6 of 32.",
+    "series": "The line plot shows four series (w, delta w, gradient, loss) in the legend, but no data lines or points are visible (the plot area is empty). A purple circular ",
+    "bits": "32 bit squares are drawn. The orange squares (changed) are at positions: 21, 22, 26, 29, 30, and 31 (0-indexed from left"
+  },
+  {
+    "frame": "frames_frame_00006",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL - The primary data visualization panel (recorded series) fails to render the historical line data for all four trac",
+    "defects": "The \"recorded series (live)\" panel is missing its actual line data despite being at step 160 of 199. The purple marker and interpolation notice are present, but the four core data series are not rende",
+    "text_read": "Step 160 / 199; w = 1.42787154892273; loss = 0.0009374211003215714; 23 FPS drawn (top-right); bits changed 5 of 32.",
+    "series": "The line plot shows four series (w, delta w, gradient, loss) in the legend. However, the plot area is effectively empty; no data lines or points are visible for",
+    "bits": "32 bit squares are drawn. Five squares are orange (changed): the 20th, 21st, 22nd, 27th, and 28th positions from the lef"
+  },
+  {
+    "frame": "frames_frame_00007",
+    "verdict": "PASS",
+    "verdict_raw": "PASS",
+    "defects": "NONE",
+    "text_read": "Step 199 / 199; w 1.434201717375569; loss 0.0008589244833578127; FPS readout \"23 FPS drawn\" (top-right of panel) and \"24 FPS drawn\" (state card); bits changed 8",
+    "series": "The line plot shows four series (w, delta w, gradient, loss), but the data area is currently empty (no lines or data points are drawn). A purple circular marker",
+    "bits": "32 bit squares are drawn. The orange squares (changed this step) are at positions: 18, 19, 20, 22, 23, 25, 29, and 30 (0"
+  },
+  {
+    "frame": "frames_gui_frame_00001",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL - The dashboard is in an uninitialized/idle state where two primary data visualization panels (bits and state card)",
+    "defects": "Missing visual content in bottom-left and bottom-right panels (empty text instead of bit-pattern strip and state card HUD). The causal chain lacks the requested orange highlight for the active phase (",
+    "text_read": "Step: 0 (implied by \"no step executed\"). FPS readout: \"0 FPS drawn | step rate 25/s\". Bit count/Hex/Loss: Not available (panels are empty).",
+    "series": "The line plot shows 0 series; the plot area is empty with a central message \"no step executed yet\". No data points, lines, or purple marker are visible.",
+    "bits": "0 bit squares are drawn. The bottom-left panel contains only a text string."
+  },
+  {
+    "frame": "frames_gui_frame_00002",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL - The dashboard is in an uninitialized state with missing UI components (bottom panels) and no data rendered.",
+    "defects": "Missing two required panels (bit strip and state card). The causal chain lacks the orange highlight for the \"UPDATE\" phase (it says \"active phase: none\"). No data series are plotted in the live view.",
+    "text_read": "Step: \"no step executed yet\". FPS: \"10 FPS drawn\". Bit count/Hex/Loss/W: Not available (N/A).",
+    "series": "The line plot shows zero series; it is empty except for a flat orange baseline at y=0. No data points or lines exist. The purple marker is not visible.",
+    "bits": "Zero bit squares are drawn; the bit-pattern panel is missing."
+  },
+  {
+    "frame": "frames_gui_frame_00003",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL - The primary data visualization panel (recorded series) is missing its plotted data lines, rendering the dashboard",
+    "defects": "The top-right \"recorded series\" panel fails to render the actual data lines for any of the four tracked series, leaving the main plotting area blank despite having a legend and axis labels. Additional",
+    "text_read": "Step 12 / 59; w = -0.7580891492652803; loss = 3.6818940630394958; FPS readout = 10 FPS drawn | step rate 25/s (top-right) and 16 FPS drawn (state card); bits ch",
+    "series": "The line plot shows four series (w, delta w, gradient, loss) in the legend. However, the plot area is effectively empty of data lines or points; only a horizont",
+    "bits": "32 bit squares are drawn. Orange squares (changed this step) are located at indices: 7, 8, 20, 24, 25, 26, 27, 30, and 3"
+  },
+  {
+    "frame": "frames_gui_frame_00004",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL. While the layout, text, and bit-level details are correctly rendered, the core \"recorded series\" panel fails to di",
+    "defects": "The main defect is that the \"recorded series (live)\" panel is completely empty of plotted data despite being at step 19/59. No lines or points exist for the four defined series, making the primary vis",
+    "text_read": "Step number: 19 / 59. w value: -0.055091513100634613. Loss: 1.6531101539611816. FPS readout: 8 FPS drawn | step rate 25/s (top-right panel); 13 FPS drawn (state",
+    "series": "The line plot shows four series (w, delta w, gradient, loss). However, the data area is empty; no data points or lines are visible for any series (the plot is b",
+    "bits": "32 bit squares are drawn. Orange squares (changed this step) are at positions: 5, 6, 9, 12, 14, 20, 21, 22, 23, 28, 31 ("
+  },
+  {
+    "frame": "frames_gui_frame_00005",
+    "verdict": "PASS",
+    "verdict_raw": "PASS",
+    "defects": "NONE",
+    "text_read": "Step number: 26 / 59. w value: 0.669556581321716. Loss: 0.44617757582762625. FPS readout: 8 FPS drawn | step rate 25/s. Bit count: bits changed 15 of 32.",
+    "series": "The line plot shows four series in the legend (w, delta w, gradient, loss). However, the plot area is currently empty of data lines or points except for a singl",
+    "bits": "32 bit squares are drawn. There are 15 orange squares (representing changed bits), primarily clustered in the exponent a"
+  },
+  {
+    "frame": "frames_gui_frame_00006",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL (The primary data visualization panel is missing its plotted data series, making it non-functional as a live observ",
+    "defects": "The \"recorded series (live)\" panel is effectively empty of data series despite having a legend and axis labels. Text in the bottom-right state card (\"dep\" and \"step\") appears slightly misaligned or ov",
+    "text_read": "Step number: 34 / 59; w value: 1.1519353860595703; loss: 0.00095409574460834265; FPS readout: 8 FPS drawn | step rate 25/s; bits changed: 12 of 32.",
+    "series": "The line plot shows four series (w, delta w, gradient, loss) in the legend. However, no data lines or points are visible in the plotting area; only a flat orang",
+    "bits": "32 bit squares are drawn. The orange squares (changed) correspond to positions approximately 10-14, 17-19, 21, 24, 26, a"
+  },
+  {
+    "frame": "frames_gui_frame_00007",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL. The primary function of the \"recorded series\" panel\u2014to show the live history of the optimization\u2014is completely mis",
+    "defects": "The \"recorded series (live)\" panel is a major defect: despite being step 41 of 59, the entire line chart area is blank with no recorded lines or data points. The purple marker is floating at the maxim",
+    "text_read": "Step 41 / 59; w = 1.3561949729919434; loss = 0.094453217079863e-05; FPS readout = 8 FPS drawn | step rate 25/s; bits changed = 9 of 32; hex word = 0x3FAD97CC.",
+    "series": "The plot shows four series (w, delta w, gradient, loss). However, the data area is completely empty; no lines or data points are visible for any series. A purpl",
+    "bits": "32 bit squares are drawn. There are 9 orange squares (changed this step), located at bit positions approximately 10-14 a"
+  },
+  {
+    "frame": "frames_gui_frame_00008",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL - The dashboard frame fails to render the core time-series data in the top-right panel, leaving the \"recorded serie",
+    "defects": "The primary defect is that the \"recorded series (live)\" panel in the top-right is empty; despite being at step 41, no data series (lines or points) have been rendered within the plot axes. Additionall",
+    "text_read": "Step 41 / 59; w = 1.3561949729919434; loss = 0.094453217079863e-05; 8 FPS drawn | step rate 25/s; bits changed 9 of 32; hex word = 0x3FAD97CC.",
+    "series": "The line plot shows four series (w, delta w, gradient, loss). However, the plot area is effectively empty of data lines or points; only the x and y axes (0.00 t",
+    "bits": "32 bit squares are drawn. The orange squares (representing changed bits) are located at positions: 10, 11, 12, 13, 14, 1"
+  },
+  {
+    "frame": "frames_gui_frame_00009",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL. The primary visualization panel (recorded series) fails to render any data series or the active marker, making it ",
+    "defects": "The top-right \"recorded series\" panel is completely empty of plotted data despite being at step 54; no lines, points, or the purple marker are rendered. Some text in the state card (\"dep\") appears sli",
+    "text_read": "Step number: 54 / 59. w value: 1.4987703561782837. Loss: 0. FPS readout: 8 FPS drawn | step rate 25/s. Bit count: bits changed 9 of 32.",
+    "series": "The line plot shows four series (w, delta w, gradient, loss). No data lines or points are visible within the plot area (the axes are empty), though the legend i",
+    "bits": "There are 32 bit squares drawn. The orange squares (representing changed bits) are located at positions 12, 13, 14, 17, "
+  },
+  {
+    "frame": "frames_gui_frame_00010",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL (The primary visualization panel\u2014the recorded series\u2014is missing its data lines, making the \"live view\" non-function",
+    "defects": "The \"recorded series (live)\" panel is effectively empty, containing no visible line data for any of the four tracked variables despite being at step 59. The purple marker is floating without a trail. ",
+    "text_read": "Step 59 / 59; w = 1.5160308731658936; loss = 6.247593660191342e-07; FPS readout = 8 FPS drawn | step rate 25/s; bits changed = 9 of 32; hex = 0x3FC20D46.",
+    "series": "The line plot shows four series (w, delta w, gradient, loss). However, no data lines or points are visible in the plot area; the series appear to be empty or fl",
+    "bits": "32 bit squares are drawn. 9 squares are orange (changed), located at positions (from left, 0-indexed): 11, 13, 16, 18, 2"
+  },
+  {
+    "frame": "run_checks_frames_frame_00001",
+    "verdict": "FAIL",
+    "verdict_raw": "FAIL (Missing data series in the live plot and incorrect active phase highlighting in the causal chain diagram).",
+    "defects": "The causal chain title says \"(active phase: none)\" instead of highlighting the \"UPDATE\" box in orange as requested. The recorded series panel is missing all data series lines and the purple marker des",
+    "text_read": "Step 1 / 1; w = -1.7972145080566406; loss = 3.97563171336871875; FPS readout = 16 FPS drawn | step rate 100/s (top-right) and 53 FPS drawn (bottom-right); bits ",
+    "series": "The line plot shows four series (w, delta w, gradient, loss) in the legend. However, no data lines or points are visible in the plotting area; only a flat orang",
+    "bits": "32 bit squares are drawn. The orange squares (changed) correspond to the pattern for `0xBFE60B20` (bits 1, 8-14, 17-19, "
+  }
+]

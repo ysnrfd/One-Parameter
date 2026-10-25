@@ -1,0 +1,254 @@
+[
+  {
+    "case": "sgd/constant/acc1/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/constant/acc1/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/constant/acc3/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/constant/acc3/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/cosine/acc1/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/cosine/acc1/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/cosine/acc3/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/cosine/acc3/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/exponential/acc1/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/exponential/acc1/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/exponential/acc3/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "sgd/exponential/acc3/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/constant/acc1/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/constant/acc1/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/constant/acc3/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/constant/acc3/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/cosine/acc1/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/cosine/acc1/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/cosine/acc3/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/cosine/acc3/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/exponential/acc1/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/exponential/acc1/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/exponential/acc3/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adam/exponential/acc3/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/constant/acc1/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/constant/acc1/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/constant/acc3/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/constant/acc3/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/cosine/acc1/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/cosine/acc1/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/cosine/acc3/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/cosine/acc3/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/exponential/acc1/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/exponential/acc1/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/exponential/acc3/specialFalse",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  },
+  {
+    "case": "adamw/exponential/acc3/specialTrue",
+    "steps": 8,
+    "failures": 0,
+    "ulp": 0,
+    "chain": true
+  }
+]

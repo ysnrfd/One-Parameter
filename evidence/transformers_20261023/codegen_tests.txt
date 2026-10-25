@@ -1,0 +1,12 @@
+test_embedded_project_hash_is_checked_before_project_use (single_parameter_observatory.tests.test_studio_codegen.TestStudioPythonCodegen.test_embedded_project_hash_is_checked_before_project_use) ... ok
+test_explicit_script_executes_real_graph_with_portable_plugin_checkpoint_and_artifact (single_parameter_observatory.tests.test_studio_codegen.TestStudioPythonCodegen.test_explicit_script_executes_real_graph_with_portable_plugin_checkpoint_and_artifact) ... ok
+test_import_is_inert_and_exact_data_cannot_become_python_source (single_parameter_observatory.tests.test_studio_codegen.TestStudioPythonCodegen.test_import_is_inert_and_exact_data_cannot_become_python_source) ... ok
+test_invalid_script_deadlines_reject_before_loading_runtime (single_parameter_observatory.tests.test_studio_codegen.TestStudioPythonCodegen.test_invalid_script_deadlines_reject_before_loading_runtime) ... ok
+test_missing_workflows_active_jobs_and_nonfinite_data_reject_export (single_parameter_observatory.tests.test_studio_codegen.TestStudioPythonCodegen.test_missing_workflows_active_jobs_and_nonfinite_data_reject_export) ... ok
+test_nonexistent_and_active_job_projects_cannot_be_downloaded_as_runnable_source (single_parameter_observatory.tests.test_studio_codegen.TestStudioPythonDownload.test_nonexistent_and_active_job_projects_cannot_be_downloaded_as_runnable_source) ... ok
+test_python_download_is_binary_attachment_of_current_project_and_rejects_stale_epoch (single_parameter_observatory.tests.test_studio_codegen.TestStudioPythonDownload.test_python_download_is_binary_attachment_of_current_project_and_rejects_stale_epoch) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 7.761s
+
+OK

@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "path": "download/single_parameter_observatory_1.2.0.zip",
+      "bytes": 30930642,
+      "sha256": "39b054f0c41b1917a5cdf24f0f9fcb8fa014df21bd0f7209fbb31ae40deb910c",
+      "unchanged": true
+    },
+    {
+      "path": "download/dist/single_parameter_observatory-1.2.0-py3-none-any.whl",
+      "bytes": 323842,
+      "sha256": "d659b76965d555a8432ac29cbd49732c44b0c5938291ab03a0d094ff076c9d6b",
+      "unchanged": true
+    },
+    {
+      "path": "download/dist/single_parameter_observatory-1.2.0.tar.gz",
+      "bytes": 322162,
+      "sha256": "f43d2446ed73ad3db520c5831c4c1e796dfa0fde9aecb761dc2a7a6e19b413e9",
+      "unchanged": true
+    }
+  ]
+}

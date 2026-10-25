@@ -1,0 +1,128 @@
+{
+  "name": "Offline token-classification pipeline",
+  "description": "Build an actual tiny DistilBERT task model and local fast tokenizer, then execute its matching HF pipeline without a model download.",
+  "nodes": [
+    {
+      "id": "config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {
+        "model_type": "distilbert",
+        "values": {
+          "vocab_size": 17,
+          "max_position_embeddings": 32,
+          "n_layers": 1,
+          "n_heads": 2,
+          "dim": 16,
+          "hidden_dim": 32,
+          "num_labels": 2,
+          "pad_token_id": 0,
+          "dropout": 0.1,
+          "attention_dropout": 0.1
+        }
+      }
+    },
+    {
+      "id": "model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 20
+      },
+      "params": {
+        "task": "token-classification"
+      }
+    },
+    {
+      "id": "tokenizer",
+      "type": "hf.tokenizer",
+      "position": {
+        "x": 20,
+        "y": 350
+      },
+      "params": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "hello": 4,
+          "world": 5,
+          "good": 6,
+          "bad": 7,
+          "example": 8,
+          "tiny": 9,
+          "model": 10,
+          "learn": 11,
+          "visual": 12,
+          "coding": 13,
+          "yes": 14,
+          "no": 15,
+          "[MASK]": 16
+        },
+        "lowercase": false
+      }
+    },
+    {
+      "id": "pipeline",
+      "type": "hf.pipeline",
+      "position": {
+        "x": 700,
+        "y": 20
+      },
+      "params": {
+        "task": "token-classification",
+        "texts": [
+          "hello world"
+        ]
+      }
+    },
+    {
+      "id": "inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1030,
+        "y": 20
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "config:config-model:config",
+      "source": "config",
+      "source_port": "config",
+      "target": "model",
+      "target_port": "config"
+    },
+    {
+      "id": "model:model-pipeline:model",
+      "source": "model",
+      "source_port": "model",
+      "target": "pipeline",
+      "target_port": "model"
+    },
+    {
+      "id": "tokenizer:tokenizer-pipeline:tokenizer",
+      "source": "tokenizer",
+      "source_port": "tokenizer",
+      "target": "pipeline",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "pipeline:model-inspect:model",
+      "source": "pipeline",
+      "source_port": "model",
+      "target": "inspect",
+      "target_port": "model"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.6
+  }
+}

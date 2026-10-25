@@ -1,0 +1,13 @@
+{
+  "package_file": "C:\\Users\\Atieh\\Documents\\ChatGPT\\One Parameter\\download\\.venv\\Lib\\site-packages\\single_parameter_observatory\\__init__.py",
+  "runtime_dependency_scope": "reused verified project dependency directory",
+  "version": "1.1.1",
+  "metadata_version": "1.1.1",
+  "installed_python_members_verified": 34,
+  "wheel_sha256": "c90ca242a6470ef85d8cb66588c3406a5ec954bbaf1a190ba6e939f66553d298",
+  "final_report_included": true,
+  "final_real_steps": 2,
+  "chain_verified": true,
+  "validation_failures": 0,
+  "status": "PASS"
+}

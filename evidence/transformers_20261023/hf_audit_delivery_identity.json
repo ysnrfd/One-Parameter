@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "json_blocks_checked": 3,
+  "powershell_blocks_parsed": 4,
+  "local_links_checked": 27,
+  "guides": [
+    {
+      "path": "TRANSFORMERS_AUDIT.md",
+      "sha256": "1d275dc3d66c10493431f352d180e6c556750b1f0f5764a7eff39e9fdf7c0e16",
+      "bytes": 15060,
+      "packaged_identical": true
+    },
+    {
+      "path": "TRANSFORMERS_STUDIO.md",
+      "sha256": "42f6967ef691b83f01f56e39600d4898251550a79a5696428920afc5883f433e",
+      "bytes": 25352,
+      "packaged_identical": true
+    }
+  ],
+  "examples": [
+    {
+      "path": "architecture.plugin.json",
+      "sha256": "876ded703bd37d2a9b0a6a939cbd05b40973fc388b96ba6145549f08cfbc1bd3",
+      "bytes": 6206,
+      "packaged_identical": true
+    },
+    {
+      "path": "cached-pretrained.workflow.json",
+      "sha256": "6e77169df2caacd1a84e1d3399c109511a2bb66863e4f0c8be6848263fb240eb",
+      "bytes": 4307,
+      "packaged_identical": true
+    },
+    {
+      "path": "checkpoint-roundtrip.workflow.json",
+      "sha256": "063f7e5c506173d8dc7a962a0a50a813fc6b161580c394f4ed9d89120b057fc9",
+      "bytes": 3667,
+      "packaged_identical": true
+    },
+    {
+      "path": "custom-attention.workflow.json",
+      "sha256": "4dce6e05ec7980108e836e367054baf64d94ba646e4d6aef846461a073a6c3cf",
+      "bytes": 4363,
+      "packaged_identical": true
+    },
+    {
+      "path": "custom-forward.workflow.json",
+      "sha256": "29313c14adf4a84f11be45f4f567a345293b5c0614cff79f02b07812551c0ff0",
+      "bytes": 3195,
+      "packaged_identical": true
+    },
+    {
+      "path": "distilbert-classification.workflow.json",
+      "sha256": "07edf793d3f7acf9949abc7fa7aa49bdb42fac0e93c6eed5f3f4d1f09a4011e6",
+      "bytes": 4836,
+      "packaged_identical": true
+    },
+    {
+      "path": "feature-extraction.workflow.json",
+      "sha256": "3527ad96fa5c91c525920ad8eaa3cd4da6c27d52a072f1ab26fd7a137ccb552a",
+      "bytes": 2666,
+      "packaged_identical": true
+    },
+    {
+      "path": "fill-mask.workflow.json",
+      "sha256": "c75af36d41619bcf848d08bb899f944ad8795fb079cd7519e6886641a7760667",
+      "bytes": 2641,
+      "packaged_identical": true
+    },
+    {
+      "path": "plugin-architecture.workflow.json",
+      "sha256": "0bb3a5df68e9d1d18697338186fb6d18dfd64207efed97133e28be24f5ada4b3",
+      "bytes": 2878,
+      "packaged_identical": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "ee9c39abb2945df1d4ea06728fc82f3a2d2de2c4b927a512184431d0ffb208c4",
+      "bytes": 5927,
+      "packaged_identical": true
+    },
+    {
+      "path": "rmsnorm-adamw.workflow.json",
+      "sha256": "71f09a5b053db4318ec8143ccf8eca8126f44e3ac4aedae83e7433d99c2f8abb",
+      "bytes": 5532,
+      "packaged_identical": true
+    },
+    {
+      "path": "text-pipeline.workflow.json",
+      "sha256": "287db142aee060491bceb7ce6b0c7f71927ddfa0974dcdaf14f76c046369387c",
+      "bytes": 2252,
+      "packaged_identical": true
+    },
+    {
+      "path": "tiny-gpt2.workflow.json",
+      "sha256": "5f9cfda7180d5c1ae4247c4b10feb3ae89f4a28b5cf49d108af5a370c16e695f",
+      "bytes": 3698,
+      "packaged_identical": true
+    },
+    {
+      "path": "token-classification.workflow.json",
+      "sha256": "89cb1c8c55f2d7ced3e9e051466f649d6d8fc6a2c36996207a4102c70a895ab1",
+      "bytes": 2667,
+      "packaged_identical": true
+    },
+    {
+      "path": "tokenize-train-generate.workflow.json",
+      "sha256": "8a1754a7444088582a6d1a2d0a7c86f0a803a0388151e9ab10089cfe3d7a7acb",
+      "bytes": 3969,
+      "packaged_identical": true
+    }
+  ]
+}

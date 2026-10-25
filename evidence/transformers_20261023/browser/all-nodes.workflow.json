@@ -1,0 +1,2932 @@
+{
+  "name": "Real browser QA: every built-in and architecture plugin",
+  "description": "QA fixture: all 13 successful example graphs plus targeted remaining HF layer blocks and all 21 scalar/core types. Requires local.transformer.recipes and the pinned cached tiny GPT-2 fixture. Importing does not execute; this fixture has not itself been executed at creation.",
+  "nodes": [
+    {
+      "id": "qa01:model",
+      "type": "hf.pretrained",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "params": {
+        "repo_id": "hf-internal-testing/tiny-random-gpt2",
+        "revision": "71034c5d8bde858ff824298bdedc65515b97d2b9",
+        "task": "causal-lm"
+      },
+      "title": "cached-pretrained · model"
+    },
+    {
+      "id": "qa01:tokenizer",
+      "type": "hf.auto_tokenizer",
+      "position": {
+        "x": 20,
+        "y": 350
+      },
+      "params": {
+        "repo_id": "hf-internal-testing/tiny-random-gpt2",
+        "revision": "71034c5d8bde858ff824298bdedc65515b97d2b9"
+      },
+      "title": "cached-pretrained · tokenizer"
+    },
+    {
+      "id": "qa01:data",
+      "type": "hf.tokenize",
+      "position": {
+        "x": 350,
+        "y": 350
+      },
+      "params": {
+        "texts": [
+          "hello world",
+          "hello"
+        ],
+        "labels": "causal",
+        "max_length": 16
+      },
+      "title": "cached-pretrained · data"
+    },
+    {
+      "id": "qa01:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 680,
+        "y": 350
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.0001
+      },
+      "title": "cached-pretrained · optimizer"
+    },
+    {
+      "id": "qa01:train",
+      "type": "hf.train",
+      "position": {
+        "x": 1010,
+        "y": 20
+      },
+      "params": {
+        "steps": 2,
+        "batch_size": 2,
+        "loss": "model"
+      },
+      "title": "cached-pretrained · train"
+    },
+    {
+      "id": "qa01:pipeline",
+      "type": "hf.pipeline",
+      "position": {
+        "x": 1340,
+        "y": 20
+      },
+      "params": {
+        "task": "text-generation",
+        "texts": [
+          "hello world"
+        ],
+        "max_new_tokens": 3
+      },
+      "title": "cached-pretrained · pipeline"
+    },
+    {
+      "id": "qa01:before",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1670,
+        "y": 20
+      },
+      "params": {},
+      "title": "cached-pretrained · before"
+    },
+    {
+      "id": "qa01:checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 2000,
+        "y": 20
+      },
+      "params": {},
+      "title": "cached-pretrained · checkpoint"
+    },
+    {
+      "id": "qa01:load",
+      "type": "hf.load",
+      "position": {
+        "x": 2330,
+        "y": 20
+      },
+      "params": {},
+      "title": "cached-pretrained · load"
+    },
+    {
+      "id": "qa01:after",
+      "type": "hf.inspect",
+      "position": {
+        "x": 2660,
+        "y": 20
+      },
+      "params": {},
+      "title": "cached-pretrained · after"
+    },
+    {
+      "id": "qa02:model",
+      "type": "hf.sequential",
+      "position": {
+        "x": 20,
+        "y": 1020
+      },
+      "params": {},
+      "title": "checkpoint-roundtrip · model"
+    },
+    {
+      "id": "qa02:data",
+      "type": "hf.data",
+      "position": {
+        "x": 20,
+        "y": 1350
+      },
+      "params": {
+        "fields": {
+          "x": [
+            [
+              -1
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "labels": [
+            [
+              -2
+            ],
+            [
+              0
+            ],
+            [
+              2
+            ]
+          ]
+        }
+      },
+      "title": "checkpoint-roundtrip · data"
+    },
+    {
+      "id": "qa02:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 350,
+        "y": 1350
+      },
+      "params": {
+        "name": "SGD",
+        "lr": 0.01,
+        "momentum": 0.9
+      },
+      "title": "checkpoint-roundtrip · optimizer"
+    },
+    {
+      "id": "qa02:train",
+      "type": "hf.train",
+      "position": {
+        "x": 700,
+        "y": 1020
+      },
+      "params": {
+        "steps": 4,
+        "batch_size": 3,
+        "loss": "mse"
+      },
+      "title": "checkpoint-roundtrip · train"
+    },
+    {
+      "id": "qa02:before",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1030,
+        "y": 1020
+      },
+      "params": {},
+      "title": "checkpoint-roundtrip · before"
+    },
+    {
+      "id": "qa02:checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1360,
+        "y": 1020
+      },
+      "params": {},
+      "title": "checkpoint-roundtrip · checkpoint"
+    },
+    {
+      "id": "qa02:load",
+      "type": "hf.load",
+      "position": {
+        "x": 1690,
+        "y": 1020
+      },
+      "params": {},
+      "title": "checkpoint-roundtrip · load"
+    },
+    {
+      "id": "qa02:after",
+      "type": "hf.inspect",
+      "position": {
+        "x": 2020,
+        "y": 1020
+      },
+      "params": {},
+      "title": "checkpoint-roundtrip · after"
+    },
+    {
+      "id": "qa02:evaluate",
+      "type": "hf.evaluate",
+      "position": {
+        "x": 2350,
+        "y": 1020
+      },
+      "params": {
+        "loss": "mse"
+      },
+      "title": "checkpoint-roundtrip · evaluate"
+    },
+    {
+      "id": "qa03:model",
+      "type": "hf.custom",
+      "position": {
+        "x": 20,
+        "y": 2020
+      },
+      "params": {
+        "layers": {
+          "embed": {
+            "type": "Embedding",
+            "num_embeddings": 16,
+            "embedding_dim": 8
+          },
+          "norm": {
+            "type": "RMSNorm",
+            "normalized_shape": 8,
+            "eps": 0.000001
+          },
+          "attention": {
+            "type": "SelfAttention",
+            "embed_dim": 8,
+            "num_heads": 2,
+            "dropout": 0,
+            "causal": true
+          },
+          "output": {
+            "type": "Linear",
+            "in_features": 8,
+            "out_features": 4
+          }
+        },
+        "code": "h = layers['embed'](inputs['input_ids'])\na = layers['attention'](layers['norm'](h))\nh = h + a\nreturn layers['output'](h)"
+      },
+      "title": "custom-attention · model"
+    },
+    {
+      "id": "qa03:data",
+      "type": "hf.data",
+      "position": {
+        "x": 20,
+        "y": 2350
+      },
+      "params": {
+        "fields": {
+          "input_ids": [
+            [
+              2,
+              4,
+              5
+            ],
+            [
+              2,
+              5,
+              4
+            ]
+          ],
+          "labels": [
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1,
+                0
+              ]
+            ]
+          ]
+        }
+      },
+      "title": "custom-attention · data"
+    },
+    {
+      "id": "qa03:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 350,
+        "y": 2350
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.005
+      },
+      "title": "custom-attention · optimizer"
+    },
+    {
+      "id": "qa03:train",
+      "type": "hf.train",
+      "position": {
+        "x": 700,
+        "y": 2020
+      },
+      "params": {
+        "steps": 3,
+        "batch_size": 2,
+        "loss": "mse"
+      },
+      "title": "custom-attention · train"
+    },
+    {
+      "id": "qa03:evaluate",
+      "type": "hf.evaluate",
+      "position": {
+        "x": 1030,
+        "y": 2020
+      },
+      "params": {
+        "loss": "mse"
+      },
+      "title": "custom-attention · evaluate"
+    },
+    {
+      "id": "qa03:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1360,
+        "y": 2020
+      },
+      "params": {},
+      "title": "custom-attention · inspect"
+    },
+    {
+      "id": "qa03:checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1690,
+        "y": 2020
+      },
+      "params": {},
+      "title": "custom-attention · checkpoint"
+    },
+    {
+      "id": "qa04:model",
+      "type": "hf.custom",
+      "position": {
+        "x": 20,
+        "y": 3020
+      },
+      "params": {
+        "layers": {
+          "input": {
+            "type": "Linear",
+            "in_features": 1,
+            "out_features": 8
+          },
+          "norm": {
+            "type": "RMSNorm",
+            "normalized_shape": 8,
+            "eps": 0.000001
+          },
+          "output": {
+            "type": "Linear",
+            "in_features": 8,
+            "out_features": 1
+          }
+        },
+        "code": "h = layers['input'](inputs['x'])\nh = layers['norm'](h)\nh = gelu(h)\nreturn layers['output'](h)"
+      },
+      "title": "custom-forward · model"
+    },
+    {
+      "id": "qa04:data",
+      "type": "hf.data",
+      "position": {
+        "x": 20,
+        "y": 3350
+      },
+      "params": {
+        "fields": {
+          "x": [
+            [
+              -1
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "labels": [
+            [
+              -2
+            ],
+            [
+              0
+            ],
+            [
+              2
+            ]
+          ]
+        }
+      },
+      "title": "custom-forward · data"
+    },
+    {
+      "id": "qa04:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 350,
+        "y": 3350
+      },
+      "params": {},
+      "title": "custom-forward · optimizer"
+    },
+    {
+      "id": "qa04:train",
+      "type": "hf.train",
+      "position": {
+        "x": 700,
+        "y": 3020
+      },
+      "params": {
+        "steps": 10,
+        "batch_size": 3,
+        "loss": "mse"
+      },
+      "title": "custom-forward · train"
+    },
+    {
+      "id": "qa04:evaluate",
+      "type": "hf.evaluate",
+      "position": {
+        "x": 1030,
+        "y": 3020
+      },
+      "params": {
+        "loss": "mse"
+      },
+      "title": "custom-forward · evaluate"
+    },
+    {
+      "id": "qa04:checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1360,
+        "y": 3020
+      },
+      "params": {},
+      "title": "custom-forward · checkpoint"
+    },
+    {
+      "id": "qa05:config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 4020
+      },
+      "params": {
+        "model_type": "distilbert",
+        "values": {
+          "vocab_size": 16,
+          "max_position_embeddings": 32,
+          "n_layers": 1,
+          "n_heads": 2,
+          "dim": 16,
+          "hidden_dim": 32,
+          "num_labels": 2,
+          "pad_token_id": 0,
+          "dropout": 0,
+          "attention_dropout": 0,
+          "seq_classif_dropout": 0
+        }
+      },
+      "title": "distilbert-classification · config"
+    },
+    {
+      "id": "qa05:model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 4020
+      },
+      "params": {
+        "task": "sequence-classification"
+      },
+      "title": "distilbert-classification · model"
+    },
+    {
+      "id": "qa05:tokenizer",
+      "type": "hf.tokenizer",
+      "position": {
+        "x": 20,
+        "y": 4620
+      },
+      "params": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "hello": 4,
+          "world": 5,
+          "good": 6,
+          "bad": 7,
+          "example": 8,
+          "tiny": 9,
+          "model": 10,
+          "learn": 11,
+          "visual": 12,
+          "coding": 13,
+          "yes": 14,
+          "no": 15
+        }
+      },
+      "title": "distilbert-classification · tokenizer"
+    },
+    {
+      "id": "qa05:data",
+      "type": "hf.data",
+      "position": {
+        "x": 20,
+        "y": 4320
+      },
+      "params": {
+        "fields": {
+          "input_ids": [
+            [
+              2,
+              6,
+              8,
+              3
+            ],
+            [
+              2,
+              7,
+              8,
+              3
+            ]
+          ],
+          "attention_mask": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "labels": [
+            1,
+            0
+          ]
+        }
+      },
+      "title": "distilbert-classification · data"
+    },
+    {
+      "id": "qa05:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 350,
+        "y": 4320
+      },
+      "params": {
+        "lr": 0.001
+      },
+      "title": "distilbert-classification · optimizer"
+    },
+    {
+      "id": "qa05:train",
+      "type": "hf.train",
+      "position": {
+        "x": 700,
+        "y": 4020
+      },
+      "params": {
+        "steps": 3,
+        "batch_size": 2,
+        "loss": "model"
+      },
+      "title": "distilbert-classification · train"
+    },
+    {
+      "id": "qa05:evaluate",
+      "type": "hf.evaluate",
+      "position": {
+        "x": 1030,
+        "y": 4020
+      },
+      "params": {
+        "loss": "model"
+      },
+      "title": "distilbert-classification · evaluate"
+    },
+    {
+      "id": "qa05:pipeline",
+      "type": "hf.pipeline",
+      "position": {
+        "x": 1360,
+        "y": 4020
+      },
+      "params": {
+        "task": "text-classification",
+        "texts": [
+          "good example",
+          "bad example"
+        ]
+      },
+      "title": "distilbert-classification · pipeline"
+    },
+    {
+      "id": "qa05:checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1690,
+        "y": 4020
+      },
+      "params": {},
+      "title": "distilbert-classification · checkpoint"
+    },
+    {
+      "id": "qa06:config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 5020
+      },
+      "params": {
+        "model_type": "distilbert",
+        "values": {
+          "vocab_size": 17,
+          "max_position_embeddings": 32,
+          "n_layers": 1,
+          "n_heads": 2,
+          "dim": 16,
+          "hidden_dim": 32,
+          "num_labels": 2,
+          "pad_token_id": 0,
+          "dropout": 0.1,
+          "attention_dropout": 0.1
+        }
+      },
+      "title": "feature-extraction · config"
+    },
+    {
+      "id": "qa06:model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 5020
+      },
+      "params": {
+        "task": "base"
+      },
+      "title": "feature-extraction · model"
+    },
+    {
+      "id": "qa06:tokenizer",
+      "type": "hf.tokenizer",
+      "position": {
+        "x": 20,
+        "y": 5350
+      },
+      "params": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "hello": 4,
+          "world": 5,
+          "good": 6,
+          "bad": 7,
+          "example": 8,
+          "tiny": 9,
+          "model": 10,
+          "learn": 11,
+          "visual": 12,
+          "coding": 13,
+          "yes": 14,
+          "no": 15,
+          "[MASK]": 16
+        },
+        "lowercase": false
+      },
+      "title": "feature-extraction · tokenizer"
+    },
+    {
+      "id": "qa06:pipeline",
+      "type": "hf.pipeline",
+      "position": {
+        "x": 700,
+        "y": 5020
+      },
+      "params": {
+        "task": "feature-extraction",
+        "texts": [
+          "hello world",
+          "hello"
+        ]
+      },
+      "title": "feature-extraction · pipeline"
+    },
+    {
+      "id": "qa06:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1030,
+        "y": 5020
+      },
+      "params": {},
+      "title": "feature-extraction · inspect"
+    },
+    {
+      "id": "qa07:config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 6020
+      },
+      "params": {
+        "model_type": "distilbert",
+        "values": {
+          "vocab_size": 17,
+          "max_position_embeddings": 32,
+          "n_layers": 1,
+          "n_heads": 2,
+          "dim": 16,
+          "hidden_dim": 32,
+          "num_labels": 2,
+          "pad_token_id": 0,
+          "dropout": 0.1,
+          "attention_dropout": 0.1
+        }
+      },
+      "title": "fill-mask · config"
+    },
+    {
+      "id": "qa07:model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 6020
+      },
+      "params": {
+        "task": "masked-lm"
+      },
+      "title": "fill-mask · model"
+    },
+    {
+      "id": "qa07:tokenizer",
+      "type": "hf.tokenizer",
+      "position": {
+        "x": 20,
+        "y": 6350
+      },
+      "params": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "hello": 4,
+          "world": 5,
+          "good": 6,
+          "bad": 7,
+          "example": 8,
+          "tiny": 9,
+          "model": 10,
+          "learn": 11,
+          "visual": 12,
+          "coding": 13,
+          "yes": 14,
+          "no": 15,
+          "[MASK]": 16
+        },
+        "lowercase": false
+      },
+      "title": "fill-mask · tokenizer"
+    },
+    {
+      "id": "qa07:pipeline",
+      "type": "hf.pipeline",
+      "position": {
+        "x": 700,
+        "y": 6020
+      },
+      "params": {
+        "task": "fill-mask",
+        "texts": [
+          "hello [MASK]"
+        ]
+      },
+      "title": "fill-mask · pipeline"
+    },
+    {
+      "id": "qa07:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1030,
+        "y": 6020
+      },
+      "params": {},
+      "title": "fill-mask · inspect"
+    },
+    {
+      "id": "qa08:recipes",
+      "type": "local.transformer.recipes/mlp_layers",
+      "position": {
+        "x": 20,
+        "y": 7020
+      },
+      "params": {
+        "width": 8
+      },
+      "title": "plugin-architecture · recipes"
+    },
+    {
+      "id": "qa08:model",
+      "type": "hf.sequential",
+      "position": {
+        "x": 350,
+        "y": 7020
+      },
+      "params": {},
+      "title": "plugin-architecture · model"
+    },
+    {
+      "id": "qa08:data",
+      "type": "hf.data",
+      "position": {
+        "x": 350,
+        "y": 7350
+      },
+      "params": {
+        "fields": {
+          "x": [
+            [
+              -1
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "labels": [
+            [
+              -2
+            ],
+            [
+              0
+            ],
+            [
+              2
+            ]
+          ]
+        }
+      },
+      "title": "plugin-architecture · data"
+    },
+    {
+      "id": "qa08:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 680,
+        "y": 7350
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.01
+      },
+      "title": "plugin-architecture · optimizer"
+    },
+    {
+      "id": "qa08:train",
+      "type": "hf.train",
+      "position": {
+        "x": 1010,
+        "y": 7020
+      },
+      "params": {
+        "steps": 4,
+        "batch_size": 3,
+        "loss": "mse"
+      },
+      "title": "plugin-architecture · train"
+    },
+    {
+      "id": "qa08:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1340,
+        "y": 7020
+      },
+      "params": {},
+      "title": "plugin-architecture · inspect"
+    },
+    {
+      "id": "qa08:checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1670,
+        "y": 7020
+      },
+      "params": {},
+      "title": "plugin-architecture · checkpoint"
+    },
+    {
+      "id": "qa09:input",
+      "type": "hf.linear",
+      "position": {
+        "x": 20,
+        "y": 8020
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · input"
+    },
+    {
+      "id": "qa09:norm",
+      "type": "hf.rmsnorm",
+      "position": {
+        "x": 20,
+        "y": 8240
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · norm"
+    },
+    {
+      "id": "qa09:gelu",
+      "type": "hf.activation",
+      "position": {
+        "x": 20,
+        "y": 8460
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · gelu"
+    },
+    {
+      "id": "qa09:output",
+      "type": "hf.linear",
+      "position": {
+        "x": 20,
+        "y": 8680
+      },
+      "params": {
+        "in_features": 8,
+        "out_features": 1
+      },
+      "title": "rmsnorm-adamw · output"
+    },
+    {
+      "id": "qa09:first",
+      "type": "hf.compose",
+      "position": {
+        "x": 350,
+        "y": 8020
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · first"
+    },
+    {
+      "id": "qa09:hidden",
+      "type": "hf.stack",
+      "position": {
+        "x": 680,
+        "y": 8020
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · hidden"
+    },
+    {
+      "id": "qa09:layers",
+      "type": "hf.stack",
+      "position": {
+        "x": 1010,
+        "y": 8020
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · layers"
+    },
+    {
+      "id": "qa09:model",
+      "type": "hf.sequential",
+      "position": {
+        "x": 1340,
+        "y": 8020
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · model"
+    },
+    {
+      "id": "qa09:data",
+      "type": "hf.data",
+      "position": {
+        "x": 1340,
+        "y": 8300
+      },
+      "params": {
+        "fields": {
+          "x": [
+            [
+              -1
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "labels": [
+            [
+              -2
+            ],
+            [
+              0
+            ],
+            [
+              2
+            ]
+          ]
+        }
+      },
+      "title": "rmsnorm-adamw · data"
+    },
+    {
+      "id": "qa09:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 1670,
+        "y": 8300
+      },
+      "params": {
+        "name": "AdamW",
+        "lr": 0.01
+      },
+      "title": "rmsnorm-adamw · optimizer"
+    },
+    {
+      "id": "qa09:train",
+      "type": "hf.train",
+      "position": {
+        "x": 2000,
+        "y": 8020
+      },
+      "params": {
+        "steps": 10,
+        "batch_size": 3,
+        "loss": "mse"
+      },
+      "title": "rmsnorm-adamw · train"
+    },
+    {
+      "id": "qa09:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 2330,
+        "y": 8020
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · inspect"
+    },
+    {
+      "id": "qa09:checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 2660,
+        "y": 8020
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · checkpoint"
+    },
+    {
+      "id": "qa09:load",
+      "type": "hf.load",
+      "position": {
+        "x": 2990,
+        "y": 8020
+      },
+      "params": {},
+      "title": "rmsnorm-adamw · load"
+    },
+    {
+      "id": "qa09:evaluate",
+      "type": "hf.evaluate",
+      "position": {
+        "x": 3320,
+        "y": 8020
+      },
+      "params": {
+        "loss": "mse"
+      },
+      "title": "rmsnorm-adamw · evaluate"
+    },
+    {
+      "id": "qa10:config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 9020
+      },
+      "params": {},
+      "title": "text-pipeline · config"
+    },
+    {
+      "id": "qa10:model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 9020
+      },
+      "params": {},
+      "title": "text-pipeline · model"
+    },
+    {
+      "id": "qa10:tokenizer",
+      "type": "hf.tokenizer",
+      "position": {
+        "x": 20,
+        "y": 9350
+      },
+      "params": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "hello": 4,
+          "world": 5,
+          "good": 6,
+          "bad": 7,
+          "example": 8,
+          "tiny": 9,
+          "model": 10,
+          "learn": 11,
+          "visual": 12,
+          "coding": 13,
+          "yes": 14,
+          "no": 15
+        }
+      },
+      "title": "text-pipeline · tokenizer"
+    },
+    {
+      "id": "qa10:pipeline",
+      "type": "hf.pipeline",
+      "position": {
+        "x": 700,
+        "y": 9020
+      },
+      "params": {
+        "task": "text-generation",
+        "texts": [
+          "hello world",
+          "hello"
+        ],
+        "max_new_tokens": 3
+      },
+      "title": "text-pipeline · pipeline"
+    },
+    {
+      "id": "qa10:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1030,
+        "y": 9020
+      },
+      "params": {},
+      "title": "text-pipeline · inspect"
+    },
+    {
+      "id": "qa11:config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 10020
+      },
+      "params": {},
+      "title": "tiny-gpt2 · config"
+    },
+    {
+      "id": "qa11:model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 10020
+      },
+      "params": {},
+      "title": "tiny-gpt2 · model"
+    },
+    {
+      "id": "qa11:data",
+      "type": "hf.data",
+      "position": {
+        "x": 20,
+        "y": 10350
+      },
+      "params": {
+        "fields": {
+          "input_ids": [
+            [
+              2,
+              4,
+              5,
+              3
+            ],
+            [
+              2,
+              5,
+              4,
+              3
+            ]
+          ],
+          "attention_mask": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "labels": [
+            [
+              2,
+              4,
+              5,
+              3
+            ],
+            [
+              2,
+              5,
+              4,
+              3
+            ]
+          ]
+        }
+      },
+      "title": "tiny-gpt2 · data"
+    },
+    {
+      "id": "qa11:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 350,
+        "y": 10350
+      },
+      "params": {
+        "lr": 0.001
+      },
+      "title": "tiny-gpt2 · optimizer"
+    },
+    {
+      "id": "qa11:train",
+      "type": "hf.train",
+      "position": {
+        "x": 700,
+        "y": 10020
+      },
+      "params": {
+        "steps": 3,
+        "batch_size": 2,
+        "loss": "model"
+      },
+      "title": "tiny-gpt2 · train"
+    },
+    {
+      "id": "qa11:generate",
+      "type": "hf.generate",
+      "position": {
+        "x": 1030,
+        "y": 10020
+      },
+      "params": {
+        "max_new_tokens": 4
+      },
+      "title": "tiny-gpt2 · generate"
+    },
+    {
+      "id": "qa11:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1360,
+        "y": 10020
+      },
+      "params": {},
+      "title": "tiny-gpt2 · inspect"
+    },
+    {
+      "id": "qa11:checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 1690,
+        "y": 10020
+      },
+      "params": {},
+      "title": "tiny-gpt2 · checkpoint"
+    },
+    {
+      "id": "qa12:config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 11020
+      },
+      "params": {
+        "model_type": "distilbert",
+        "values": {
+          "vocab_size": 17,
+          "max_position_embeddings": 32,
+          "n_layers": 1,
+          "n_heads": 2,
+          "dim": 16,
+          "hidden_dim": 32,
+          "num_labels": 2,
+          "pad_token_id": 0,
+          "dropout": 0.1,
+          "attention_dropout": 0.1
+        }
+      },
+      "title": "token-classification · config"
+    },
+    {
+      "id": "qa12:model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 11020
+      },
+      "params": {
+        "task": "token-classification"
+      },
+      "title": "token-classification · model"
+    },
+    {
+      "id": "qa12:tokenizer",
+      "type": "hf.tokenizer",
+      "position": {
+        "x": 20,
+        "y": 11350
+      },
+      "params": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "hello": 4,
+          "world": 5,
+          "good": 6,
+          "bad": 7,
+          "example": 8,
+          "tiny": 9,
+          "model": 10,
+          "learn": 11,
+          "visual": 12,
+          "coding": 13,
+          "yes": 14,
+          "no": 15,
+          "[MASK]": 16
+        },
+        "lowercase": false
+      },
+      "title": "token-classification · tokenizer"
+    },
+    {
+      "id": "qa12:pipeline",
+      "type": "hf.pipeline",
+      "position": {
+        "x": 700,
+        "y": 11020
+      },
+      "params": {
+        "task": "token-classification",
+        "texts": [
+          "hello world"
+        ]
+      },
+      "title": "token-classification · pipeline"
+    },
+    {
+      "id": "qa12:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 1030,
+        "y": 11020
+      },
+      "params": {},
+      "title": "token-classification · inspect"
+    },
+    {
+      "id": "qa13:config",
+      "type": "hf.config",
+      "position": {
+        "x": 20,
+        "y": 12020
+      },
+      "params": {},
+      "title": "tokenize-train-generate · config"
+    },
+    {
+      "id": "qa13:model",
+      "type": "hf.model",
+      "position": {
+        "x": 350,
+        "y": 12020
+      },
+      "params": {},
+      "title": "tokenize-train-generate · model"
+    },
+    {
+      "id": "qa13:tokenizer",
+      "type": "hf.tokenizer",
+      "position": {
+        "x": 20,
+        "y": 12350
+      },
+      "params": {
+        "vocab": {
+          "[PAD]": 0,
+          "[UNK]": 1,
+          "[BOS]": 2,
+          "[EOS]": 3,
+          "hello": 4,
+          "world": 5,
+          "good": 6,
+          "bad": 7,
+          "example": 8,
+          "tiny": 9,
+          "model": 10,
+          "learn": 11,
+          "visual": 12,
+          "coding": 13,
+          "yes": 14,
+          "no": 15
+        }
+      },
+      "title": "tokenize-train-generate · tokenizer"
+    },
+    {
+      "id": "qa13:data",
+      "type": "hf.tokenize",
+      "position": {
+        "x": 350,
+        "y": 12350
+      },
+      "params": {
+        "texts": [
+          "hello world",
+          "hello"
+        ],
+        "max_length": 16,
+        "labels": "causal"
+      },
+      "title": "tokenize-train-generate · data"
+    },
+    {
+      "id": "qa13:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 700,
+        "y": 12350
+      },
+      "params": {
+        "lr": 0.001
+      },
+      "title": "tokenize-train-generate · optimizer"
+    },
+    {
+      "id": "qa13:train",
+      "type": "hf.train",
+      "position": {
+        "x": 1030,
+        "y": 12020
+      },
+      "params": {
+        "steps": 2,
+        "batch_size": 2,
+        "loss": "model"
+      },
+      "title": "tokenize-train-generate · train"
+    },
+    {
+      "id": "qa13:forward",
+      "type": "hf.forward",
+      "position": {
+        "x": 1360,
+        "y": 12020
+      },
+      "params": {},
+      "title": "tokenize-train-generate · forward"
+    },
+    {
+      "id": "qa13:generate",
+      "type": "hf.generate",
+      "position": {
+        "x": 1690,
+        "y": 12020
+      },
+      "params": {
+        "max_new_tokens": 3
+      },
+      "title": "tokenize-train-generate · generate"
+    },
+    {
+      "id": "qa13:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 2020,
+        "y": 12020
+      },
+      "params": {},
+      "title": "tokenize-train-generate · inspect"
+    },
+    {
+      "id": "layers:embedding",
+      "type": "hf.embedding",
+      "position": {
+        "x": 20,
+        "y": 14020
+      },
+      "params": {
+        "num_embeddings": 16,
+        "embedding_dim": 8
+      }
+    },
+    {
+      "id": "layers:norm",
+      "type": "hf.layernorm",
+      "position": {
+        "x": 20,
+        "y": 14260
+      },
+      "params": {
+        "normalized_shape": 8
+      }
+    },
+    {
+      "id": "layers:attention",
+      "type": "hf.attention",
+      "position": {
+        "x": 20,
+        "y": 14500
+      },
+      "params": {
+        "embed_dim": 8,
+        "num_heads": 2,
+        "causal": true
+      }
+    },
+    {
+      "id": "layers:projection",
+      "type": "hf.layer",
+      "position": {
+        "x": 20,
+        "y": 14740
+      },
+      "params": {
+        "recipe": {
+          "type": "Linear",
+          "in_features": 8,
+          "out_features": 4,
+          "bias": true
+        }
+      }
+    },
+    {
+      "id": "layers:first",
+      "type": "hf.compose",
+      "position": {
+        "x": 350,
+        "y": 14020
+      },
+      "params": {}
+    },
+    {
+      "id": "layers:attention-layers",
+      "type": "hf.stack",
+      "position": {
+        "x": 680,
+        "y": 14020
+      },
+      "params": {}
+    },
+    {
+      "id": "layers:all-layers",
+      "type": "hf.stack",
+      "position": {
+        "x": 1010,
+        "y": 14020
+      },
+      "params": {}
+    },
+    {
+      "id": "layers:model",
+      "type": "hf.sequential",
+      "position": {
+        "x": 1340,
+        "y": 14020
+      },
+      "params": {}
+    },
+    {
+      "id": "layers:data",
+      "type": "hf.data",
+      "position": {
+        "x": 1340,
+        "y": 14350
+      },
+      "params": {
+        "fields": {
+          "x": [
+            [
+              2,
+              4,
+              5
+            ],
+            [
+              2,
+              5,
+              4
+            ]
+          ],
+          "labels": [
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1,
+                0
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "layers:optimizer",
+      "type": "hf.optimizer",
+      "position": {
+        "x": 1670,
+        "y": 14350
+      },
+      "params": {}
+    },
+    {
+      "id": "layers:train",
+      "type": "hf.train",
+      "position": {
+        "x": 2000,
+        "y": 14020
+      },
+      "params": {
+        "steps": 2,
+        "batch_size": 2,
+        "loss": "mse"
+      }
+    },
+    {
+      "id": "layers:inspect",
+      "type": "hf.inspect",
+      "position": {
+        "x": 2330,
+        "y": 14020
+      },
+      "params": {}
+    },
+    {
+      "id": "layers:checkpoint",
+      "type": "hf.checkpoint",
+      "position": {
+        "x": 2660,
+        "y": 14020
+      },
+      "params": {}
+    },
+    {
+      "id": "scalar:number",
+      "type": "core.number",
+      "position": {
+        "x": 20,
+        "y": 15520
+      },
+      "params": {
+        "value": 2
+      }
+    },
+    {
+      "id": "scalar:text",
+      "type": "core.text",
+      "position": {
+        "x": 20,
+        "y": 15740
+      },
+      "params": {
+        "value": "Browser coverage fixture"
+      }
+    },
+    {
+      "id": "scalar:boolean",
+      "type": "core.boolean",
+      "position": {
+        "x": 20,
+        "y": 15960
+      },
+      "params": {}
+    },
+    {
+      "id": "scalar:json",
+      "type": "core.json",
+      "position": {
+        "x": 20,
+        "y": 16180
+      },
+      "params": {
+        "value": {
+          "covered": true,
+          "integer": 123
+        }
+      }
+    },
+    {
+      "id": "scalar:array",
+      "type": "core.array",
+      "position": {
+        "x": 350,
+        "y": 16180
+      },
+      "params": {
+        "items": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "id": "scalar:object",
+      "type": "core.object",
+      "position": {
+        "x": 350,
+        "y": 15520
+      },
+      "params": {
+        "value": {
+          "value": 21
+        }
+      }
+    },
+    {
+      "id": "scalar:get",
+      "type": "core.get",
+      "position": {
+        "x": 680,
+        "y": 15520
+      },
+      "params": {
+        "key": "value"
+      }
+    },
+    {
+      "id": "scalar:math",
+      "type": "core.math",
+      "position": {
+        "x": 1010,
+        "y": 15520
+      },
+      "params": {
+        "operation": "add"
+      }
+    },
+    {
+      "id": "scalar:math-preview",
+      "type": "core.preview",
+      "position": {
+        "x": 1340,
+        "y": 15520
+      },
+      "params": {}
+    },
+    {
+      "id": "scalar:script",
+      "type": "core.script",
+      "position": {
+        "x": 680,
+        "y": 15800
+      },
+      "params": {
+        "code": "console.log('Real browser sandbox smoke'); return {value: inputs.value * 2};"
+      }
+    },
+    {
+      "id": "scalar:script-preview",
+      "type": "core.preview",
+      "position": {
+        "x": 1010,
+        "y": 15800
+      },
+      "params": {}
+    },
+    {
+      "id": "scalar:config",
+      "type": "core.config",
+      "position": {
+        "x": 20,
+        "y": 16500
+      },
+      "params": {
+        "value": {
+          "steps": 20
+        }
+      }
+    },
+    {
+      "id": "scalar:dataset",
+      "type": "core.dataset",
+      "position": {
+        "x": 350,
+        "y": 16500
+      },
+      "params": {
+        "inputs": [
+          -1,
+          0,
+          1
+        ],
+        "targets": [
+          -2,
+          0,
+          2
+        ],
+        "name": "Browser combined QA dataset",
+        "batch_size": 3
+      }
+    },
+    {
+      "id": "scalar:experiment",
+      "type": "core.experiment",
+      "position": {
+        "x": 680,
+        "y": 16500
+      },
+      "params": {
+        "name": "Browser combined core training QA",
+        "preset": "adamw"
+      }
+    },
+    {
+      "id": "scalar:train",
+      "type": "core.train",
+      "position": {
+        "x": 1010,
+        "y": 16500
+      },
+      "params": {
+        "steps": 3
+      }
+    },
+    {
+      "id": "scalar:branch",
+      "type": "core.branch",
+      "position": {
+        "x": 1340,
+        "y": 16500
+      },
+      "params": {
+        "name": "Browser combined core branch"
+      }
+    },
+    {
+      "id": "scalar:checkpoint",
+      "type": "core.checkpoint",
+      "position": {
+        "x": 1670,
+        "y": 16500
+      },
+      "params": {
+        "name": "Browser combined core checkpoint"
+      }
+    },
+    {
+      "id": "scalar:intervene",
+      "type": "core.intervene",
+      "position": {
+        "x": 2000,
+        "y": 16500
+      },
+      "params": {
+        "changes": {
+          "parameter": 0.5
+        }
+      }
+    },
+    {
+      "id": "scalar:inspect",
+      "type": "core.inspect",
+      "position": {
+        "x": 2330,
+        "y": 16500
+      },
+      "params": {
+        "include_dataset": true
+      }
+    },
+    {
+      "id": "scalar:verify",
+      "type": "core.verify",
+      "position": {
+        "x": 2660,
+        "y": 16500
+      },
+      "params": {}
+    },
+    {
+      "id": "scalar:control",
+      "type": "core.control",
+      "position": {
+        "x": 2990,
+        "y": 16500
+      },
+      "params": {
+        "operation": "pause"
+      }
+    },
+    {
+      "id": "scalar:export",
+      "type": "core.export",
+      "position": {
+        "x": 3320,
+        "y": 16500
+      },
+      "params": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "qa01:tokenizer:tokenizer-data:tokenizer",
+      "source": "qa01:tokenizer",
+      "source_port": "tokenizer",
+      "target": "qa01:data",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "qa01:model:model-train:model",
+      "source": "qa01:model",
+      "source_port": "model",
+      "target": "qa01:train",
+      "target_port": "model"
+    },
+    {
+      "id": "qa01:data:data-train:data",
+      "source": "qa01:data",
+      "source_port": "data",
+      "target": "qa01:train",
+      "target_port": "data"
+    },
+    {
+      "id": "qa01:optimizer:optimizer-train:optimizer",
+      "source": "qa01:optimizer",
+      "source_port": "optimizer",
+      "target": "qa01:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "qa01:train:model-pipeline:model",
+      "source": "qa01:train",
+      "source_port": "model",
+      "target": "qa01:pipeline",
+      "target_port": "model"
+    },
+    {
+      "id": "qa01:tokenizer:tokenizer-pipeline:tokenizer",
+      "source": "qa01:tokenizer",
+      "source_port": "tokenizer",
+      "target": "qa01:pipeline",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "qa01:pipeline:model-before:model",
+      "source": "qa01:pipeline",
+      "source_port": "model",
+      "target": "qa01:before",
+      "target_port": "model"
+    },
+    {
+      "id": "qa01:before:model-checkpoint:model",
+      "source": "qa01:before",
+      "source_port": "model",
+      "target": "qa01:checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "qa01:checkpoint:artifact-load:artifact",
+      "source": "qa01:checkpoint",
+      "source_port": "artifact",
+      "target": "qa01:load",
+      "target_port": "artifact"
+    },
+    {
+      "id": "qa01:load:model-after:model",
+      "source": "qa01:load",
+      "source_port": "model",
+      "target": "qa01:after",
+      "target_port": "model"
+    },
+    {
+      "id": "qa02:model:model-train:model",
+      "source": "qa02:model",
+      "source_port": "model",
+      "target": "qa02:train",
+      "target_port": "model"
+    },
+    {
+      "id": "qa02:data:data-train:data",
+      "source": "qa02:data",
+      "source_port": "data",
+      "target": "qa02:train",
+      "target_port": "data"
+    },
+    {
+      "id": "qa02:optimizer:optimizer-train:optimizer",
+      "source": "qa02:optimizer",
+      "source_port": "optimizer",
+      "target": "qa02:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "qa02:train:model-before:model",
+      "source": "qa02:train",
+      "source_port": "model",
+      "target": "qa02:before",
+      "target_port": "model"
+    },
+    {
+      "id": "qa02:before:model-checkpoint:model",
+      "source": "qa02:before",
+      "source_port": "model",
+      "target": "qa02:checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "qa02:checkpoint:artifact-load:artifact",
+      "source": "qa02:checkpoint",
+      "source_port": "artifact",
+      "target": "qa02:load",
+      "target_port": "artifact"
+    },
+    {
+      "id": "qa02:load:model-after:model",
+      "source": "qa02:load",
+      "source_port": "model",
+      "target": "qa02:after",
+      "target_port": "model"
+    },
+    {
+      "id": "qa02:after:model-evaluate:model",
+      "source": "qa02:after",
+      "source_port": "model",
+      "target": "qa02:evaluate",
+      "target_port": "model"
+    },
+    {
+      "id": "qa02:data:data-evaluate:data",
+      "source": "qa02:data",
+      "source_port": "data",
+      "target": "qa02:evaluate",
+      "target_port": "data"
+    },
+    {
+      "id": "qa03:model:model-train:model",
+      "source": "qa03:model",
+      "source_port": "model",
+      "target": "qa03:train",
+      "target_port": "model"
+    },
+    {
+      "id": "qa03:data:data-train:data",
+      "source": "qa03:data",
+      "source_port": "data",
+      "target": "qa03:train",
+      "target_port": "data"
+    },
+    {
+      "id": "qa03:optimizer:optimizer-train:optimizer",
+      "source": "qa03:optimizer",
+      "source_port": "optimizer",
+      "target": "qa03:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "qa03:train:model-evaluate:model",
+      "source": "qa03:train",
+      "source_port": "model",
+      "target": "qa03:evaluate",
+      "target_port": "model"
+    },
+    {
+      "id": "qa03:data:data-evaluate:data",
+      "source": "qa03:data",
+      "source_port": "data",
+      "target": "qa03:evaluate",
+      "target_port": "data"
+    },
+    {
+      "id": "qa03:evaluate:model-inspect:model",
+      "source": "qa03:evaluate",
+      "source_port": "model",
+      "target": "qa03:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "qa03:inspect:model-checkpoint:model",
+      "source": "qa03:inspect",
+      "source_port": "model",
+      "target": "qa03:checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "qa04:model:model-train:model",
+      "source": "qa04:model",
+      "source_port": "model",
+      "target": "qa04:train",
+      "target_port": "model"
+    },
+    {
+      "id": "qa04:data:data-train:data",
+      "source": "qa04:data",
+      "source_port": "data",
+      "target": "qa04:train",
+      "target_port": "data"
+    },
+    {
+      "id": "qa04:optimizer:optimizer-train:optimizer",
+      "source": "qa04:optimizer",
+      "source_port": "optimizer",
+      "target": "qa04:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "qa04:train:model-evaluate:model",
+      "source": "qa04:train",
+      "source_port": "model",
+      "target": "qa04:evaluate",
+      "target_port": "model"
+    },
+    {
+      "id": "qa04:data:data-evaluate:data",
+      "source": "qa04:data",
+      "source_port": "data",
+      "target": "qa04:evaluate",
+      "target_port": "data"
+    },
+    {
+      "id": "qa04:evaluate:model-checkpoint:model",
+      "source": "qa04:evaluate",
+      "source_port": "model",
+      "target": "qa04:checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "qa05:config:config-model:config",
+      "source": "qa05:config",
+      "source_port": "config",
+      "target": "qa05:model",
+      "target_port": "config"
+    },
+    {
+      "id": "qa05:model:model-train:model",
+      "source": "qa05:model",
+      "source_port": "model",
+      "target": "qa05:train",
+      "target_port": "model"
+    },
+    {
+      "id": "qa05:data:data-train:data",
+      "source": "qa05:data",
+      "source_port": "data",
+      "target": "qa05:train",
+      "target_port": "data"
+    },
+    {
+      "id": "qa05:optimizer:optimizer-train:optimizer",
+      "source": "qa05:optimizer",
+      "source_port": "optimizer",
+      "target": "qa05:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "qa05:train:model-evaluate:model",
+      "source": "qa05:train",
+      "source_port": "model",
+      "target": "qa05:evaluate",
+      "target_port": "model"
+    },
+    {
+      "id": "qa05:data:data-evaluate:data",
+      "source": "qa05:data",
+      "source_port": "data",
+      "target": "qa05:evaluate",
+      "target_port": "data"
+    },
+    {
+      "id": "qa05:evaluate:model-pipeline:model",
+      "source": "qa05:evaluate",
+      "source_port": "model",
+      "target": "qa05:pipeline",
+      "target_port": "model"
+    },
+    {
+      "id": "qa05:tokenizer:tokenizer-pipeline:tokenizer",
+      "source": "qa05:tokenizer",
+      "source_port": "tokenizer",
+      "target": "qa05:pipeline",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "qa05:pipeline:model-checkpoint:model",
+      "source": "qa05:pipeline",
+      "source_port": "model",
+      "target": "qa05:checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "qa06:config:config-model:config",
+      "source": "qa06:config",
+      "source_port": "config",
+      "target": "qa06:model",
+      "target_port": "config"
+    },
+    {
+      "id": "qa06:model:model-pipeline:model",
+      "source": "qa06:model",
+      "source_port": "model",
+      "target": "qa06:pipeline",
+      "target_port": "model"
+    },
+    {
+      "id": "qa06:tokenizer:tokenizer-pipeline:tokenizer",
+      "source": "qa06:tokenizer",
+      "source_port": "tokenizer",
+      "target": "qa06:pipeline",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "qa06:pipeline:model-inspect:model",
+      "source": "qa06:pipeline",
+      "source_port": "model",
+      "target": "qa06:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "qa07:config:config-model:config",
+      "source": "qa07:config",
+      "source_port": "config",
+      "target": "qa07:model",
+      "target_port": "config"
+    },
+    {
+      "id": "qa07:model:model-pipeline:model",
+      "source": "qa07:model",
+      "source_port": "model",
+      "target": "qa07:pipeline",
+      "target_port": "model"
+    },
+    {
+      "id": "qa07:tokenizer:tokenizer-pipeline:tokenizer",
+      "source": "qa07:tokenizer",
+      "source_port": "tokenizer",
+      "target": "qa07:pipeline",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "qa07:pipeline:model-inspect:model",
+      "source": "qa07:pipeline",
+      "source_port": "model",
+      "target": "qa07:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "qa08:recipes:layers-model:layers",
+      "source": "qa08:recipes",
+      "source_port": "layers",
+      "target": "qa08:model",
+      "target_port": "layers"
+    },
+    {
+      "id": "qa08:model:model-train:model",
+      "source": "qa08:model",
+      "source_port": "model",
+      "target": "qa08:train",
+      "target_port": "model"
+    },
+    {
+      "id": "qa08:data:data-train:data",
+      "source": "qa08:data",
+      "source_port": "data",
+      "target": "qa08:train",
+      "target_port": "data"
+    },
+    {
+      "id": "qa08:optimizer:optimizer-train:optimizer",
+      "source": "qa08:optimizer",
+      "source_port": "optimizer",
+      "target": "qa08:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "qa08:train:model-inspect:model",
+      "source": "qa08:train",
+      "source_port": "model",
+      "target": "qa08:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "qa08:inspect:model-checkpoint:model",
+      "source": "qa08:inspect",
+      "source_port": "model",
+      "target": "qa08:checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "qa09:input:layer-first:a",
+      "source": "qa09:input",
+      "source_port": "layer",
+      "target": "qa09:first",
+      "target_port": "a"
+    },
+    {
+      "id": "qa09:norm:layer-first:b",
+      "source": "qa09:norm",
+      "source_port": "layer",
+      "target": "qa09:first",
+      "target_port": "b"
+    },
+    {
+      "id": "qa09:first:layers-hidden:layers",
+      "source": "qa09:first",
+      "source_port": "layers",
+      "target": "qa09:hidden",
+      "target_port": "layers"
+    },
+    {
+      "id": "qa09:gelu:layer-hidden:layer",
+      "source": "qa09:gelu",
+      "source_port": "layer",
+      "target": "qa09:hidden",
+      "target_port": "layer"
+    },
+    {
+      "id": "qa09:hidden:layers-layers:layers",
+      "source": "qa09:hidden",
+      "source_port": "layers",
+      "target": "qa09:layers",
+      "target_port": "layers"
+    },
+    {
+      "id": "qa09:output:layer-layers:layer",
+      "source": "qa09:output",
+      "source_port": "layer",
+      "target": "qa09:layers",
+      "target_port": "layer"
+    },
+    {
+      "id": "qa09:layers:layers-model:layers",
+      "source": "qa09:layers",
+      "source_port": "layers",
+      "target": "qa09:model",
+      "target_port": "layers"
+    },
+    {
+      "id": "qa09:model:model-train:model",
+      "source": "qa09:model",
+      "source_port": "model",
+      "target": "qa09:train",
+      "target_port": "model"
+    },
+    {
+      "id": "qa09:data:data-train:data",
+      "source": "qa09:data",
+      "source_port": "data",
+      "target": "qa09:train",
+      "target_port": "data"
+    },
+    {
+      "id": "qa09:optimizer:optimizer-train:optimizer",
+      "source": "qa09:optimizer",
+      "source_port": "optimizer",
+      "target": "qa09:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "qa09:train:model-inspect:model",
+      "source": "qa09:train",
+      "source_port": "model",
+      "target": "qa09:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "qa09:inspect:model-checkpoint:model",
+      "source": "qa09:inspect",
+      "source_port": "model",
+      "target": "qa09:checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "qa09:checkpoint:artifact-load:artifact",
+      "source": "qa09:checkpoint",
+      "source_port": "artifact",
+      "target": "qa09:load",
+      "target_port": "artifact"
+    },
+    {
+      "id": "qa09:load:model-evaluate:model",
+      "source": "qa09:load",
+      "source_port": "model",
+      "target": "qa09:evaluate",
+      "target_port": "model"
+    },
+    {
+      "id": "qa09:data:data-evaluate:data",
+      "source": "qa09:data",
+      "source_port": "data",
+      "target": "qa09:evaluate",
+      "target_port": "data"
+    },
+    {
+      "id": "qa10:config:config-model:config",
+      "source": "qa10:config",
+      "source_port": "config",
+      "target": "qa10:model",
+      "target_port": "config"
+    },
+    {
+      "id": "qa10:model:model-pipeline:model",
+      "source": "qa10:model",
+      "source_port": "model",
+      "target": "qa10:pipeline",
+      "target_port": "model"
+    },
+    {
+      "id": "qa10:tokenizer:tokenizer-pipeline:tokenizer",
+      "source": "qa10:tokenizer",
+      "source_port": "tokenizer",
+      "target": "qa10:pipeline",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "qa10:pipeline:model-inspect:model",
+      "source": "qa10:pipeline",
+      "source_port": "model",
+      "target": "qa10:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "qa11:config:config-model:config",
+      "source": "qa11:config",
+      "source_port": "config",
+      "target": "qa11:model",
+      "target_port": "config"
+    },
+    {
+      "id": "qa11:model:model-train:model",
+      "source": "qa11:model",
+      "source_port": "model",
+      "target": "qa11:train",
+      "target_port": "model"
+    },
+    {
+      "id": "qa11:data:data-train:data",
+      "source": "qa11:data",
+      "source_port": "data",
+      "target": "qa11:train",
+      "target_port": "data"
+    },
+    {
+      "id": "qa11:optimizer:optimizer-train:optimizer",
+      "source": "qa11:optimizer",
+      "source_port": "optimizer",
+      "target": "qa11:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "qa11:train:model-generate:model",
+      "source": "qa11:train",
+      "source_port": "model",
+      "target": "qa11:generate",
+      "target_port": "model"
+    },
+    {
+      "id": "qa11:data:data-generate:data",
+      "source": "qa11:data",
+      "source_port": "data",
+      "target": "qa11:generate",
+      "target_port": "data"
+    },
+    {
+      "id": "qa11:generate:model-inspect:model",
+      "source": "qa11:generate",
+      "source_port": "model",
+      "target": "qa11:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "qa11:inspect:model-checkpoint:model",
+      "source": "qa11:inspect",
+      "source_port": "model",
+      "target": "qa11:checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "qa12:config:config-model:config",
+      "source": "qa12:config",
+      "source_port": "config",
+      "target": "qa12:model",
+      "target_port": "config"
+    },
+    {
+      "id": "qa12:model:model-pipeline:model",
+      "source": "qa12:model",
+      "source_port": "model",
+      "target": "qa12:pipeline",
+      "target_port": "model"
+    },
+    {
+      "id": "qa12:tokenizer:tokenizer-pipeline:tokenizer",
+      "source": "qa12:tokenizer",
+      "source_port": "tokenizer",
+      "target": "qa12:pipeline",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "qa12:pipeline:model-inspect:model",
+      "source": "qa12:pipeline",
+      "source_port": "model",
+      "target": "qa12:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "qa13:config:config-model:config",
+      "source": "qa13:config",
+      "source_port": "config",
+      "target": "qa13:model",
+      "target_port": "config"
+    },
+    {
+      "id": "qa13:tokenizer:tokenizer-data:tokenizer",
+      "source": "qa13:tokenizer",
+      "source_port": "tokenizer",
+      "target": "qa13:data",
+      "target_port": "tokenizer"
+    },
+    {
+      "id": "qa13:model:model-train:model",
+      "source": "qa13:model",
+      "source_port": "model",
+      "target": "qa13:train",
+      "target_port": "model"
+    },
+    {
+      "id": "qa13:data:data-train:data",
+      "source": "qa13:data",
+      "source_port": "data",
+      "target": "qa13:train",
+      "target_port": "data"
+    },
+    {
+      "id": "qa13:optimizer:optimizer-train:optimizer",
+      "source": "qa13:optimizer",
+      "source_port": "optimizer",
+      "target": "qa13:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "qa13:train:model-forward:model",
+      "source": "qa13:train",
+      "source_port": "model",
+      "target": "qa13:forward",
+      "target_port": "model"
+    },
+    {
+      "id": "qa13:data:data-forward:data",
+      "source": "qa13:data",
+      "source_port": "data",
+      "target": "qa13:forward",
+      "target_port": "data"
+    },
+    {
+      "id": "qa13:forward:model-generate:model",
+      "source": "qa13:forward",
+      "source_port": "model",
+      "target": "qa13:generate",
+      "target_port": "model"
+    },
+    {
+      "id": "qa13:data:data-generate:data",
+      "source": "qa13:data",
+      "source_port": "data",
+      "target": "qa13:generate",
+      "target_port": "data"
+    },
+    {
+      "id": "qa13:generate:model-inspect:model",
+      "source": "qa13:generate",
+      "source_port": "model",
+      "target": "qa13:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "layers:embedding:layer-layers:first:a",
+      "source": "layers:embedding",
+      "source_port": "layer",
+      "target": "layers:first",
+      "target_port": "a"
+    },
+    {
+      "id": "layers:norm:layer-layers:first:b",
+      "source": "layers:norm",
+      "source_port": "layer",
+      "target": "layers:first",
+      "target_port": "b"
+    },
+    {
+      "id": "layers:first:layers-layers:attention-layers:layers",
+      "source": "layers:first",
+      "source_port": "layers",
+      "target": "layers:attention-layers",
+      "target_port": "layers"
+    },
+    {
+      "id": "layers:attention:layer-layers:attention-layers:layer",
+      "source": "layers:attention",
+      "source_port": "layer",
+      "target": "layers:attention-layers",
+      "target_port": "layer"
+    },
+    {
+      "id": "layers:attention-layers:layers-layers:all-layers:layers",
+      "source": "layers:attention-layers",
+      "source_port": "layers",
+      "target": "layers:all-layers",
+      "target_port": "layers"
+    },
+    {
+      "id": "layers:projection:layer-layers:all-layers:layer",
+      "source": "layers:projection",
+      "source_port": "layer",
+      "target": "layers:all-layers",
+      "target_port": "layer"
+    },
+    {
+      "id": "layers:all-layers:layers-layers:model:layers",
+      "source": "layers:all-layers",
+      "source_port": "layers",
+      "target": "layers:model",
+      "target_port": "layers"
+    },
+    {
+      "id": "layers:model:model-layers:train:model",
+      "source": "layers:model",
+      "source_port": "model",
+      "target": "layers:train",
+      "target_port": "model"
+    },
+    {
+      "id": "layers:data:data-layers:train:data",
+      "source": "layers:data",
+      "source_port": "data",
+      "target": "layers:train",
+      "target_port": "data"
+    },
+    {
+      "id": "layers:optimizer:optimizer-layers:train:optimizer",
+      "source": "layers:optimizer",
+      "source_port": "optimizer",
+      "target": "layers:train",
+      "target_port": "optimizer"
+    },
+    {
+      "id": "layers:train:model-layers:inspect:model",
+      "source": "layers:train",
+      "source_port": "model",
+      "target": "layers:inspect",
+      "target_port": "model"
+    },
+    {
+      "id": "layers:inspect:model-layers:checkpoint:model",
+      "source": "layers:inspect",
+      "source_port": "model",
+      "target": "layers:checkpoint",
+      "target_port": "model"
+    },
+    {
+      "id": "scalar:number:value-scalar:math:b",
+      "source": "scalar:number",
+      "source_port": "value",
+      "target": "scalar:math",
+      "target_port": "b"
+    },
+    {
+      "id": "scalar:object:value-scalar:get:object",
+      "source": "scalar:object",
+      "source_port": "value",
+      "target": "scalar:get",
+      "target_port": "object"
+    },
+    {
+      "id": "scalar:get:value-scalar:math:a",
+      "source": "scalar:get",
+      "source_port": "value",
+      "target": "scalar:math",
+      "target_port": "a"
+    },
+    {
+      "id": "scalar:math:value-scalar:math-preview:value",
+      "source": "scalar:math",
+      "source_port": "value",
+      "target": "scalar:math-preview",
+      "target_port": "value"
+    },
+    {
+      "id": "scalar:object:value-scalar:script:inputs",
+      "source": "scalar:object",
+      "source_port": "value",
+      "target": "scalar:script",
+      "target_port": "inputs"
+    },
+    {
+      "id": "scalar:script:value-scalar:script-preview:value",
+      "source": "scalar:script",
+      "source_port": "value",
+      "target": "scalar:script-preview",
+      "target_port": "value"
+    },
+    {
+      "id": "scalar:config:config-scalar:experiment:config",
+      "source": "scalar:config",
+      "source_port": "config",
+      "target": "scalar:experiment",
+      "target_port": "config"
+    },
+    {
+      "id": "scalar:dataset:dataset-scalar:experiment:dataset",
+      "source": "scalar:dataset",
+      "source_port": "dataset",
+      "target": "scalar:experiment",
+      "target_port": "dataset"
+    },
+    {
+      "id": "scalar:experiment:run-scalar:train:run",
+      "source": "scalar:experiment",
+      "source_port": "run",
+      "target": "scalar:train",
+      "target_port": "run"
+    },
+    {
+      "id": "scalar:train:run-scalar:branch:run",
+      "source": "scalar:train",
+      "source_port": "run",
+      "target": "scalar:branch",
+      "target_port": "run"
+    },
+    {
+      "id": "scalar:branch:run-scalar:checkpoint:run",
+      "source": "scalar:branch",
+      "source_port": "run",
+      "target": "scalar:checkpoint",
+      "target_port": "run"
+    },
+    {
+      "id": "scalar:checkpoint:run-scalar:intervene:run",
+      "source": "scalar:checkpoint",
+      "source_port": "run",
+      "target": "scalar:intervene",
+      "target_port": "run"
+    },
+    {
+      "id": "scalar:intervene:run-scalar:inspect:run",
+      "source": "scalar:intervene",
+      "source_port": "run",
+      "target": "scalar:inspect",
+      "target_port": "run"
+    },
+    {
+      "id": "scalar:inspect:run-scalar:verify:run",
+      "source": "scalar:inspect",
+      "source_port": "run",
+      "target": "scalar:verify",
+      "target_port": "run"
+    },
+    {
+      "id": "scalar:verify:run-scalar:control:run",
+      "source": "scalar:verify",
+      "source_port": "run",
+      "target": "scalar:control",
+      "target_port": "run"
+    },
+    {
+      "id": "scalar:control:run-scalar:export:run",
+      "source": "scalar:control",
+      "source_port": "run",
+      "target": "scalar:export",
+      "target_port": "run"
+    }
+  ],
+  "view": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.05
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "spobs-llama-browser-replay/1",
+  "date": "2026-10-23",
+  "target": "http://127.0.0.1:8765",
+  "version": "2.1.0",
+  "status": "passed within listed scope",
+  "checks": [
+    "Downloaded the current user project and recovery drafts before the server upgrade.",
+    "Reconnected to Studio 2.1.0 and selected the Llama template from the Transformers gallery.",
+    "Created a new Llama graph, preserving existing experiments and graphs.",
+    "Validated the 19-node / 24-edge workflow through the UI.",
+    "Queued actual browser job 80ada8885fa941f2bebaf9e02f558c79; all 19 nodes succeeded.",
+    "Observed 78,144 parameters, 21 tensors, 40 training steps, changed weight hashes and the actual loss curve.",
+    "Selected decoder layer 1, then layer 0; projection names and shapes changed to the corresponding actual module paths.",
+    "Observed native RMSNorm, grouped-query attention, RoPE, residual branches and SwiGLU module details.",
+    "Expanded the 33-module inventory and filtered k_proj, yielding precisely the two layer key-projection rows.",
+    "Downloaded exact job JSON and the registered trained checkpoint ZIP using actual browser download events.",
+    "Downloaded the runnable Python project through the Workflow menu. Its subsequent explicit isolated CLI execution succeeded and reproduced the browser model's final state hash.",
+    "Read the browser warning/error log after the completed replay: empty array."
+  ],
+  "evidence": {
+    "browser_job": "llama-browser.job.json",
+    "checkpoint": "llama-browser-model.zip",
+    "python_export": "llama-browser-workflow.py",
+    "python_execution": "llama-browser-python.job.json",
+    "independent_download_verification": "download-verification.json",
+    "decoder_screenshot": "llama-decoder-layer-1.jpg",
+    "inventory_screenshot": "llama-module-filter.jpg"
+  },
+  "scope": "Native Llama execution and its module/tensor inspector; diagram cards explain the instantiated model and are not individually executing FX nodes.",
+  "concurrent_workspace_activity": "A later read observed 200 scalar records and an additional completed Llama workflow. These newer changes were retained. The original 142-record prefix, configuration, dataset and graph identities were independently verified as preserved."
+}

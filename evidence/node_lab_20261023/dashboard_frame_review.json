@@ -1,0 +1,15 @@
+{
+  "schema_version": "spobs-frame-review/1",
+  "reviewed_at": "2026-10-23T17:07:53.772Z",
+  "path": "C:/Users/Atieh/Documents/ChatGPT/One Parameter/evidence/node_lab_20261023/run_checks_frames/session-4yo2wekp_ink/frame_00001.png",
+  "sha256": "e42286a715386c19a6d16b0e41248ac95d16039d7e7589930daed7026cef9486",
+  "scope": "Visual inspection of the actual saved Matplotlib dashboard frame. This is separate from web Node Lab browser acceptance.",
+  "observations": [
+    "Full canvas contains the causal chain with UPDATE highlighted.",
+    "The recorded-series panel contains visible parameter, delta, gradient and loss traces with step markers.",
+    "The final state card shows step9 of9, finiteYES and bit-exact reconstruction PASS.",
+    "All32 float32 bit cells are visible with changed bits highlighted."
+  ],
+  "user_acceptance": "not inferred",
+  "web_browser_verified": false
+}

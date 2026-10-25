@@ -1,0 +1,10 @@
+{
+  "frames": 167,
+  "elapsed_seconds": 5.161605299999792,
+  "fps": 32.35427551967345,
+  "full_canvas_draws": 11,
+  "steps_recorded": 86,
+  "target_fps": 120,
+  "fp64_reference": true,
+  "note": "Isolated headless observation after final source changes; not a frame-rate guarantee."
+}
