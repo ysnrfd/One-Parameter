@@ -1,0 +1,12 @@
+include LICENSE README.md AUDIT.md REPAIR_REPORT.md STUDIO.md STUDIO_REPORT.md requirements.txt
+include Launch?Studio.cmd
+include NODE_LAB.md PLUGIN_SDK.md NODE_LAB_REPORT.md
+include TRANSFORMERS_STUDIO.md TRANSFORMERS_AUDIT.md TRANSFORMERS_REPORT.md
+include LLAMA_STUDIO.md LLAMA_SOURCE_NOTES.md LLAMA_BLOCKS.md
+recursive-include examples/node_lab *.json *.md *.ps1 *.py
+recursive-include examples/transformers *.json *.md *.ps1 *.py
+recursive-include single_parameter_observatory *.md py.typed LICENSE requirements.txt
+recursive-include single_parameter_observatory/studio_web *.html *.css *.js
+recursive-include single_parameter_observatory/examples/node_lab *.json *.md *.ps1 *.py
+recursive-include single_parameter_observatory/examples/transformers *.json *.md *.ps1 *.py
+global-exclude *.py[cod]

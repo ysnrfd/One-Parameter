@@ -1,0 +1,14 @@
+# Canonical dependency metadata lives in pyproject.toml.
+# This file remains for tooling that expects a requirements file; it mirrors
+# the runtime dependencies of the package.
+torch>=2.6,<3.0
+numpy>=1.23
+matplotlib>=3.6
+mini-racer>=0.14.1,<0.15
+transformers>=5.20.2,<5.21
+accelerate>=1.1,<2
+safetensors>=0.8,<1
+
+# Optional, for the Parquet export path:
+#   pandas>=1.5
+#   pyarrow>=12.0

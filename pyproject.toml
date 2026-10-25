@@ -1,0 +1,137 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "single-parameter-observatory"
+dynamic = ["version"]
+description = "Visual workflows for multi-parameter PyTorch and Hugging Face Transformers, with scalar numerical forensics."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "ysnrfd" }]
+keywords = [
+    "pytorch",
+    "float32",
+    "ieee-754",
+    "numerical-analysis",
+    "optimizer",
+    "forensics",
+    "observability",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Software Development :: Quality Assurance",
+    "Typing :: Typed",
+]
+dependencies = [
+    "torch>=2.6,<3.0",
+    "numpy>=1.23",
+    "matplotlib>=3.6",
+    "mini-racer>=0.14.1,<0.15",
+    "transformers>=5.20.2,<5.21",
+    "accelerate>=1.1,<2",
+    "safetensors>=0.8,<1",
+]
+
+[project.optional-dependencies]
+# The Parquet/ DataFrame export path.  Without these the export still
+# completes; `trajectory.parquet` is simply reported as not written.
+export = [
+    "pandas>=1.5",
+    "pyarrow>=12.0",
+]
+dev = [
+    "ruff>=0.5",
+    "mypy>=1.8",
+    "build>=1.0",
+]
+audit = [
+    "pypdf>=6.21,<7",
+    "pypdfium2>=5.14,<6",
+    "reportlab>=5.1,<6",
+    "types-reportlab>=5.0",
+]
+
+[project.scripts]
+spobs = "single_parameter_observatory.main:main"
+spobs-studio = "single_parameter_observatory.studio_server:main"
+
+[tool.setuptools]
+# Runtime assets are explicitly declared below; they are not Python packages.
+include-package-data = false
+packages = [
+    "single_parameter_observatory",
+    "single_parameter_observatory.tests",
+]
+
+[tool.setuptools.package-data]
+"single_parameter_observatory" = ["py.typed", "*.md", "LICENSE", "requirements.txt", "studio_web/*", "examples/node_lab/*", "examples/transformers/*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "single_parameter_observatory.__version__"}
+
+[tool.ruff]
+target-version = "py310"
+line-length = 110
+extend-exclude = ["evidence", "runs", "figures", "frames"]
+
+[tool.ruff.lint]
+# The codebase is deliberately hand-laid-out (aligned value tables, comment
+# towers that carry audit rationale).  Formatting is therefore NOT enforced:
+# several tests grep the source text of the engine (for example
+# `test_gradient_is_never_fabricated`), and reflowing it would break the very
+# invariants those tests pin.  Lint rules are chosen for real defects only.
+select = [
+    "E",      # pycodestyle errors (line length E501 is ignored below)
+    "F",      # pyflakes
+    "W",      # pycodestyle warnings
+    "B",      # flake8-bugbear: likely-bug patterns
+    "UP",     # pyupgrade: outdated syntax
+    "ICN",    # import conventions
+    "PLC0415", # import outside top level: allowed only with an explanatory noqa
+    "RUF",    # ruff-specific rules
+]
+ignore = [
+    "E501",   # line length: hand-aligned forensic tables exceed it by design
+    "B008",   # argument defaults in call positions (dataclass field() is idiomatic)
+    "RUF012", # mutable class attrs need ClassVar: dataclass fields are fine as-is
+    "RUF022", # unsorted __all__: the lists are curated in definition order on purpose
+    "RUF007", # zip vs itertools.pairwise: the zip idiom is the clearer one here
+]
+
+[tool.ruff.lint.per-file-ignores]
+# `main.py` and `run_checks.py` bootstrap sys.path before importing the package
+# absolutely; the E402 "module level import not at top of file" is the point.
+"single_parameter_observatory/main.py" = ["E402"]
+# `run_checks.py` imports the project lazily *inside* each check on purpose:
+# check 1 records which module fails to import, and every later check keeps
+# running and records its own outcome instead of the whole log dying on the
+# first broken import.
+"single_parameter_observatory/run_checks.py" = ["E402", "PLC0415"]
+# The test bootstrap imports `_bootstrap` for its sys.path side effect, and
+# the defensive-path tests intentionally assert that *something* raises when
+# an instrument is handed garbage.
+"**/tests/*.py" = ["F401", "B017", "PLC0415"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_ignores = false
+warn_redundant_casts = true
+no_implicit_optional = true
+check_untyped_defs = true
+# matplotlib, pandas and torch ship partial or no type information; the audit
+# surface for them is behavioural (bit-exact reconstruction), not nominal.
+[[tool.mypy.overrides]]
+module = ["matplotlib.*", "pandas.*", "torch.*", "pyarrow.*"]
+ignore_missing_imports = true
